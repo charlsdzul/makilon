@@ -24,7 +24,7 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $baseURL = "http://localhost/pulpox11/public/";
+	public $baseURL = "http://localhost/makilon/public/";
 
 	//public $baseURL = 'http://pulpox11.com/';
 
