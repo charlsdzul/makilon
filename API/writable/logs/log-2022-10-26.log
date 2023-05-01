@@ -1,0 +1,277 @@
+ERROR - 2022-10-26 20:05:01 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): php_network_getaddresses: getaddrinfo for www.doinmobiliaria.comm failed: Host desconocido.  in C:\xampp\htdocs\pulpox11\system\Email\Email.php:1863
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): ph...', 'C:\\xampp\\htdocs...', 1863)
+#1 C:\xampp\htdocs\pulpox11\system\Email\Email.php(1863): fsockopen('tls://www.doinm...', 465, NULL, NULL, 60)
+#2 C:\xampp\htdocs\pulpox11\system\Email\Email.php(1777): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\pulpox11\system\Email\Email.php(1662): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\pulpox11\system\Email\Email.php(1560): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php(85): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->registro()
+#7 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#8 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2022-10-26 20:05:01 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2022-10-26 20:05:01 --> 
+ERROR - 2022-10-26 20:05:01 --> c.dzul@hotmail.com - Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br /><pre>Date: Wed, 26 Oct 2022 20:05:01 -0600
+From: &quot;Pulpox&quot; &lt;antonio.dzul@doinmobiliaria.com&gt;
+Return-Path: &lt;antonio.dzul@doinmobiliaria.com&gt;
+To: c.dzul@hotmail.com
+Subject: =?UTF-8?Q?Registro=20Pulpox?=
+Reply-To: &lt;antonio.dzul@doinmobiliaria.com&gt;
+User-Agent: CodeIgniter
+X-Sender: antonio.dzul@doinmobiliaria.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;6359e74d5847e0.51821942@doinmobiliaria.com&gt;
+Mime-Version: 1.0
+
+</pre>
+ERROR - 2022-10-26 20:07:05 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): php_network_getaddresses: getaddrinfo for https failed: Host desconocido.  in C:\xampp\htdocs\pulpox11\system\Email\Email.php:1863
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): ph...', 'C:\\xampp\\htdocs...', 1863)
+#1 C:\xampp\htdocs\pulpox11\system\Email\Email.php(1863): fsockopen('tls://https://s...', 465, NULL, NULL, 60)
+#2 C:\xampp\htdocs\pulpox11\system\Email\Email.php(1777): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\pulpox11\system\Email\Email.php(1662): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\pulpox11\system\Email\Email.php(1560): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php(85): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->registro()
+#7 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#8 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2022-10-26 20:07:05 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2022-10-26 20:07:05 --> 
+ERROR - 2022-10-26 20:07:05 --> c.dzul@hotmail.com - Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br /><pre>Date: Wed, 26 Oct 2022 20:07:02 -0600
+From: &quot;Pulpox&quot; &lt;antonio.dzul@doinmobiliaria.com&gt;
+Return-Path: &lt;antonio.dzul@doinmobiliaria.com&gt;
+To: c.dzul@hotmail.com
+Subject: =?UTF-8?Q?Registro=20Pulpox?=
+Reply-To: &lt;antonio.dzul@doinmobiliaria.com&gt;
+User-Agent: CodeIgniter
+X-Sender: antonio.dzul@doinmobiliaria.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;6359e7c69ef0c2.98094075@doinmobiliaria.com&gt;
+Mime-Version: 1.0
+
+</pre>
+ERROR - 2022-10-26 20:30:33 --> TypeError: Unsupported operand types: CodeIgniter\I18n\Time + string in C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php:72
+Stack trace:
+#0 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->registro()
+#1 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#2 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-10-26 20:30:52 --> TypeError: Unsupported operand types: CodeIgniter\I18n\Time + string in C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php:72
+Stack trace:
+#0 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->registro()
+#1 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#2 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-10-26 20:31:21 --> TypeError: Unsupported operand types: CodeIgniter\I18n\Time + string in C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php:72
+Stack trace:
+#0 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->registro()
+#1 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#2 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-10-26 20:32:26 --> TypeError: Unsupported operand types: CodeIgniter\I18n\Time + string in C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php:72
+Stack trace:
+#0 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->registro()
+#1 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#2 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#4 {main}
+ERROR - 2022-10-26 21:11:35 --> TypeError: mysqli_result::fetch_object(): Argument #1 ($class) must be a valid class name, App\Entities\UsuarioPreregistro given in C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php:148
+Stack trace:
+#0 C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php(148): mysqli_result->fetch_object('App\\Entities\\Us...')
+#1 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(149): CodeIgniter\Database\MySQLi\Result->fetchObject('App\\Entities\\Us...')
+#2 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(106): CodeIgniter\Database\BaseResult->getCustomResultObject('App\\Entities\\Us...')
+#3 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(377): CodeIgniter\Database\BaseResult->getResult('App\\Entities\\Us...')
+#4 C:\xampp\htdocs\pulpox11\system\Model.php(250): CodeIgniter\Database\BaseResult->getFirstRow('App\\Entities\\Us...')
+#5 C:\xampp\htdocs\pulpox11\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php(62): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->registro()
+#8 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2022-10-26 21:14:22 --> TypeError: mysqli_result::fetch_object(): Argument #1 ($class) must be a valid class name, App\Entities\UsuarioPreregistro given in C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php:148
+Stack trace:
+#0 C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php(148): mysqli_result->fetch_object('App\\Entities\\Us...')
+#1 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(149): CodeIgniter\Database\MySQLi\Result->fetchObject('App\\Entities\\Us...')
+#2 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(106): CodeIgniter\Database\BaseResult->getCustomResultObject('App\\Entities\\Us...')
+#3 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(377): CodeIgniter\Database\BaseResult->getResult('App\\Entities\\Us...')
+#4 C:\xampp\htdocs\pulpox11\system\Model.php(250): CodeIgniter\Database\BaseResult->getFirstRow('App\\Entities\\Us...')
+#5 C:\xampp\htdocs\pulpox11\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php(60): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->registro()
+#8 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2022-10-26 21:14:26 --> TypeError: mysqli_result::fetch_object(): Argument #1 ($class) must be a valid class name, App\Entities\UsuarioPreregistro given in C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php:148
+Stack trace:
+#0 C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php(148): mysqli_result->fetch_object('App\\Entities\\Us...')
+#1 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(149): CodeIgniter\Database\MySQLi\Result->fetchObject('App\\Entities\\Us...')
+#2 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(106): CodeIgniter\Database\BaseResult->getCustomResultObject('App\\Entities\\Us...')
+#3 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(377): CodeIgniter\Database\BaseResult->getResult('App\\Entities\\Us...')
+#4 C:\xampp\htdocs\pulpox11\system\Model.php(250): CodeIgniter\Database\BaseResult->getFirstRow('App\\Entities\\Us...')
+#5 C:\xampp\htdocs\pulpox11\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php(60): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->registro()
+#8 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2022-10-26 21:15:34 --> TypeError: mysqli_result::fetch_object(): Argument #1 ($class) must be a valid class name, App\Entities\UsuarioPreregistro given in C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php:148
+Stack trace:
+#0 C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php(148): mysqli_result->fetch_object('App\\Entities\\Us...')
+#1 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(149): CodeIgniter\Database\MySQLi\Result->fetchObject('App\\Entities\\Us...')
+#2 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(106): CodeIgniter\Database\BaseResult->getCustomResultObject('App\\Entities\\Us...')
+#3 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(377): CodeIgniter\Database\BaseResult->getResult('App\\Entities\\Us...')
+#4 C:\xampp\htdocs\pulpox11\system\Model.php(250): CodeIgniter\Database\BaseResult->getFirstRow('App\\Entities\\Us...')
+#5 C:\xampp\htdocs\pulpox11\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php(60): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->registro()
+#8 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2022-10-26 21:16:17 --> TypeError: mysqli_result::fetch_object(): Argument #1 ($class) must be a valid class name, App\Entities\UsuarioPreregistro given in C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php:148
+Stack trace:
+#0 C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php(148): mysqli_result->fetch_object('App\\Entities\\Us...')
+#1 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(149): CodeIgniter\Database\MySQLi\Result->fetchObject('App\\Entities\\Us...')
+#2 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(106): CodeIgniter\Database\BaseResult->getCustomResultObject('App\\Entities\\Us...')
+#3 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(377): CodeIgniter\Database\BaseResult->getResult('App\\Entities\\Us...')
+#4 C:\xampp\htdocs\pulpox11\system\Model.php(250): CodeIgniter\Database\BaseResult->getFirstRow('App\\Entities\\Us...')
+#5 C:\xampp\htdocs\pulpox11\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php(60): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->registro()
+#8 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2022-10-26 21:16:50 --> TypeError: mysqli_result::fetch_object(): Argument #1 ($class) must be a valid class name, App\Entities\UsuarioPreregistro given in C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php:148
+Stack trace:
+#0 C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php(148): mysqli_result->fetch_object('App\\Entities\\Us...')
+#1 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(149): CodeIgniter\Database\MySQLi\Result->fetchObject('App\\Entities\\Us...')
+#2 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(106): CodeIgniter\Database\BaseResult->getCustomResultObject('App\\Entities\\Us...')
+#3 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(377): CodeIgniter\Database\BaseResult->getResult('App\\Entities\\Us...')
+#4 C:\xampp\htdocs\pulpox11\system\Model.php(250): CodeIgniter\Database\BaseResult->getFirstRow('App\\Entities\\Us...')
+#5 C:\xampp\htdocs\pulpox11\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php(60): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->registro()
+#8 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2022-10-26 21:16:52 --> TypeError: mysqli_result::fetch_object(): Argument #1 ($class) must be a valid class name, App\Entities\UsuarioPreregistro given in C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php:148
+Stack trace:
+#0 C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php(148): mysqli_result->fetch_object('App\\Entities\\Us...')
+#1 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(149): CodeIgniter\Database\MySQLi\Result->fetchObject('App\\Entities\\Us...')
+#2 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(106): CodeIgniter\Database\BaseResult->getCustomResultObject('App\\Entities\\Us...')
+#3 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(377): CodeIgniter\Database\BaseResult->getResult('App\\Entities\\Us...')
+#4 C:\xampp\htdocs\pulpox11\system\Model.php(250): CodeIgniter\Database\BaseResult->getFirstRow('App\\Entities\\Us...')
+#5 C:\xampp\htdocs\pulpox11\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php(60): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->registro()
+#8 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2022-10-26 21:18:47 --> TypeError: mysqli_result::fetch_object(): Argument #1 ($class) must be a valid class name, App\Entities\UsuarioPreregistro given in C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php:148
+Stack trace:
+#0 C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php(148): mysqli_result->fetch_object('App\\Entities\\Us...')
+#1 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(149): CodeIgniter\Database\MySQLi\Result->fetchObject('App\\Entities\\Us...')
+#2 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(106): CodeIgniter\Database\BaseResult->getCustomResultObject('App\\Entities\\Us...')
+#3 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(377): CodeIgniter\Database\BaseResult->getResult('App\\Entities\\Us...')
+#4 C:\xampp\htdocs\pulpox11\system\Model.php(250): CodeIgniter\Database\BaseResult->getFirstRow('App\\Entities\\Us...')
+#5 C:\xampp\htdocs\pulpox11\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php(60): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->registro()
+#8 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+ERROR - 2022-10-26 21:20:48 --> TypeError: mysqli_result::fetch_object(): Argument #1 ($class) must be a valid class name, App\Entities\UsuarioPreregistro given in C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php:148
+Stack trace:
+#0 C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Result.php(148): mysqli_result->fetch_object('App\\Entities\\Us...')
+#1 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(149): CodeIgniter\Database\MySQLi\Result->fetchObject('App\\Entities\\Us...')
+#2 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(106): CodeIgniter\Database\BaseResult->getCustomResultObject('App\\Entities\\Us...')
+#3 C:\xampp\htdocs\pulpox11\system\Database\BaseResult.php(377): CodeIgniter\Database\BaseResult->getResult('App\\Entities\\Us...')
+#4 C:\xampp\htdocs\pulpox11\system\Model.php(250): CodeIgniter\Database\BaseResult->getFirstRow('App\\Entities\\Us...')
+#5 C:\xampp\htdocs\pulpox11\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php(59): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->registro()
+#8 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2022-10-26 21:30:32 --> Constant expression contains invalid operations
+in APPPATH\Models\UsuarioPreregistroModel.php on line 24.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2022-10-26 21:31:16 --> Constant expression contains invalid operations
+in APPPATH\Models\UsuarioPreregistroModel.php on line 24.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+ERROR - 2022-10-26 21:33:15 --> ParseError: syntax error, unexpected variable "$model", expecting "function" or "const" in C:\xampp\htdocs\pulpox11\app\Models\UsuarioPreregistroModel.php:36
+Stack trace:
+#0 C:\xampp\htdocs\pulpox11\system\Autoloader\Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\pulpox11\system\Autoloader\Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Usua...')
+#2 C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php(36): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Usua...')
+#3 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->registro()
+#4 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#5 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-10-26 21:37:13 --> syntax error, unexpected token ";", expecting ")"
+in APPPATH\Controllers\API\v1\Usuarios.php on line 50.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH\\Controllers\\API\\v1\\Usuarios.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\API\\v1\\usuarios')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\API\\v1\\usuarios')
+ 4 SYSTEMPATH\CodeIgniter.php(852): class_exists('\\App\\Controllers\\API\\v1\\usuarios', true)
+ 5 SYSTEMPATH\CodeIgniter.php(444): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-26 21:55:35 --> Constant expression contains invalid operations
+in APPPATH\Models\UsuarioPreregistroModel.php on line 31.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2022-10-26 21:58:40 --> syntax error, unexpected token "}"
+in APPPATH\Controllers\API\v1\Usuarios.php on line 84.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH\\Controllers\\API\\v1\\Usuarios.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\API\\v1\\usuarios')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\API\\v1\\usuarios')
+ 4 SYSTEMPATH\CodeIgniter.php(852): class_exists('\\App\\Controllers\\API\\v1\\usuarios', true)
+ 5 SYSTEMPATH\CodeIgniter.php(444): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-10-26 22:04:33 --> TypeError: log_message(): Argument #2 ($message) must be of type string, array given, called in C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php on line 82 and defined in C:\xampp\htdocs\pulpox11\system\Common.php:787
+Stack trace:
+#0 C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php(82): log_message('error', Array)
+#1 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->registro()
+#2 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#3 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#5 {main}
+ERROR - 2022-10-26 22:06:56 --> The usupr_correo field must contain a valid email address.
+ERROR - 2022-10-26 22:08:04 --> c.dzul@hotmail.com*99 - c.dzul@hotmail.com*99 - c.dzul@hotmail.com*99 -  | The usupr_correo field must contain a valid email address. | The usupr_password field is required. | The usupr_sta field is required.
+ERROR - 2022-10-26 22:09:35 --> c.dzul@hotmail.com*99* - c.dzul@hotmail.com*99* - c.dzul@hotmail.com*99* -  | The usupr_correo field must contain a valid email address. | The usupr_password field is required. | The usupr_sta field is required.
+ERROR - 2022-10-26 22:14:02 --> c.dzul@hotmail.com - c.dzul@hotmail.com -  | The usupr_password field is required. | The usupr_sta field is required.
+ERROR - 2022-10-26 22:14:12 --> c.dzul@hotmail.com - c.dzul@hotmail.com -  | The usupr_password field is required. | The usupr_sta field is required.
+ERROR - 2022-10-26 22:15:27 --> c.dzul@hotmail.com - c.dzul@hotmail.com -  | The usupr_password field is required. | The usupr_sta field is required.
+CRITICAL - 2022-10-26 22:34:14 --> lang(): Argument #1 ($line) must be of type string, null given, called in C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php on line 32
+in SYSTEMPATH\Common.php on line 748.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(32): lang(null)
+ 2 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->confirmacion('c.dzul@hotmail.com', '7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-26 22:37:07 --> lang(): Argument #1 ($line) must be of type string, null given, called in C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php on line 32
+in SYSTEMPATH\Common.php on line 748.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(32): lang(null)
+ 2 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->confirmacion('c.dzul@hotmail.com', '7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

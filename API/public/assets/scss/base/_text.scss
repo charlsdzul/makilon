@@ -1,0 +1,60 @@
+/*-------------------------------------
+TEXT
+--------------------------------------*/
+h1 {
+	font-size: 3.5rem;
+}
+h2 {
+	font-size: 3rem;
+}
+h3 {
+	font-size: 2.75rem;
+}
+h4 {
+	font-size: 2.25rem;
+}
+h5 {
+	font-size: 1.75rem;
+}
+h6 {
+	font-size: 1.5rem;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 500;
+	color: $color_dark;
+}
+
+a,
+p,
+.plpx-span-text-dark {
+	color: $color_dark;
+}
+
+.plpx-span-text-white {
+	color: white;
+}
+
+.plpx-span-text-1 {
+	font-size: 1rem;
+}
+
+.plpx-span-text-2 {
+	font-size: 1.5rem;
+}
+
+.plpx-span-text-3 {
+	font-size: 2rem;
+}
+
+.plpx-span-text-4 {
+	font-size: 2.5rem;
+}
+
+.plpx-span-text-5 {
+	font-size: 3rem;
+}

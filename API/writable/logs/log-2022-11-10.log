@@ -1,0 +1,150 @@
+INFO - 2022-11-10 20:40:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 20:40:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2022-11-10 20:40:52 --> mysqli_sql_exception: Unknown column 'log_correo_usuario' in 'field list' in C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `lo...', 0)
+#1 C:\xampp\htdocs\pulpox11\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `lo...')
+#2 C:\xampp\htdocs\pulpox11\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `lo...')
+#3 C:\xampp\htdocs\pulpox11\system\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `lo...', Array, false)
+#4 C:\xampp\htdocs\pulpox11\system\Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\pulpox11\system\BaseModel.php(748): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\pulpox11\system\Model.php(667): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\pulpox11\app\Libraries\plpxLogger.php(29): CodeIgniter\Model->insert(Object(App\Entities\LogUsuario))
+#8 C:\xampp\htdocs\pulpox11\system\RESTful\ResourceController.php(285): App\Libraries\PlpxLogger->loggerUsuario(Object(App\Entities\LogUsuario))
+#9 C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php(43): CodeIgniter\RESTful\ResourceController->loggerUsuario(Object(App\Entities\LogUsuario))
+#10 C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php(92): App\Controllers\API\v1\Usuarios->logUsuario('Incia sesi\xC3\xB3n -...', NULL, 'c.dzul@hotmail....')
+#11 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#12 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#13 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#15 {main}
+CRITICAL - 2022-11-10 20:40:52 --> Unknown column 'log_correo_usuario' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `log_usuarios` (`log_controller`, `log_method`, `log_inserted_at`, `log_usuario`, `log_mensaje`, `log_correo_usuario`) VALUES (\'API/v1/Usuarios\', \'login\', \'2022-11-10 20:40:52\', \'\', \'2022-11-10 20:40:52\', \'c.dzul@hotmail.com\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `log_usuarios` (`log_controller`, `log_method`, `log_inserted_at`, `log_usuario`, `log_mensaje`, `log_correo_usuario`) VALUES (\'API/v1/Usuarios\', \'login\', \'2022-11-10 20:40:52\', \'\', \'2022-11-10 20:40:52\', \'c.dzul@hotmail.com\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `log_usuarios` (`log_controller`, `log_method`, `log_inserted_at`, `log_usuario`, `log_mensaje`, `log_correo_usuario`) VALUES (\'API/v1/Usuarios\', \'login\', \'2022-11-10 20:40:52\', \'\', \'2022-11-10 20:40:52\', \'c.dzul@hotmail.com\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `log_usuarios` (`log_controller`, `log_method`, `log_inserted_at`, `log_usuario`, `log_mensaje`, `log_correo_usuario`) VALUES (:log_controller:, :log_method:, :log_inserted_at:, :log_usuario:, :log_mensaje:, :log_correo_usuario:)', [...], false)
+ 5 SYSTEMPATH\Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(748): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(667): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Libraries\plpxLogger.php(29): CodeIgniter\Model->insert(Object(App\Entities\LogUsuario))
+ 9 SYSTEMPATH\RESTful\ResourceController.php(285): App\Libraries\PlpxLogger->loggerUsuario(Object(App\Entities\LogUsuario))
+10 APPPATH\Controllers\API\v1\Usuarios.php(43): CodeIgniter\RESTful\ResourceController->loggerUsuario(Object(App\Entities\LogUsuario))
+11 APPPATH\Controllers\API\v1\Usuarios.php(92): App\Controllers\API\v1\Usuarios->logUsuario('Incia sesión - Password invalido:  c.dzul@hotmail.com', null, 'c.dzul@hotmail.com')
+12 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+13 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+14 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+15 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2022-11-10 20:42:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 20:52:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 20:53:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 20:54:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2022-11-10 20:54:23 --> mysqli_sql_exception: CONSTRAINT `log_usuarios.log_mensaje_json` failed for `pulpox_ads`.`log_usuarios` in C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\pulpox11\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `lo...', 0)
+#1 C:\xampp\htdocs\pulpox11\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `lo...')
+#2 C:\xampp\htdocs\pulpox11\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `lo...')
+#3 C:\xampp\htdocs\pulpox11\system\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `lo...', Array, false)
+#4 C:\xampp\htdocs\pulpox11\system\Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\pulpox11\system\BaseModel.php(748): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\pulpox11\system\Model.php(667): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\pulpox11\app\Libraries\plpxLogger.php(29): CodeIgniter\Model->insert(Object(App\Entities\LogUsuario))
+#8 C:\xampp\htdocs\pulpox11\system\RESTful\ResourceController.php(285): App\Libraries\PlpxLogger->loggerUsuario(Object(App\Entities\LogUsuario))
+#9 C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php(45): CodeIgniter\RESTful\ResourceController->loggerUsuario(Object(App\Entities\LogUsuario))
+#10 C:\xampp\htdocs\pulpox11\app\Controllers\API\v1\Usuarios.php(94): App\Controllers\API\v1\Usuarios->logUsuario('36', NULL, 'c.dzul@hotmail....', 'Incia sesi\xC3\xB3n -...', NULL)
+#11 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#12 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#13 C:\xampp\htdocs\pulpox11\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\pulpox11\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#15 {main}
+CRITICAL - 2022-11-10 20:54:23 --> CONSTRAINT `log_usuarios.log_mensaje_json` failed for `pulpox_ads`.`log_usuarios`
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `log_usuarios` (`log_controller`, `log_method`, `log_inserted_at`, `log_usuario_id`, `log_usuario`, `log_usuario_correo`, `log_mensaje`, `log_mensaje_json`) VALUES (\'API/v1/Usuarios\', \'login\', \'2022-11-10 20:54:23\', \'36\', \'\', \'c.dzul@hotmail.com\', \'Incia sesión - Password invalido:  c.dzul@hotmail.com\', \'\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `log_usuarios` (`log_controller`, `log_method`, `log_inserted_at`, `log_usuario_id`, `log_usuario`, `log_usuario_correo`, `log_mensaje`, `log_mensaje_json`) VALUES (\'API/v1/Usuarios\', \'login\', \'2022-11-10 20:54:23\', \'36\', \'\', \'c.dzul@hotmail.com\', \'Incia sesión - Password invalido:  c.dzul@hotmail.com\', \'\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `log_usuarios` (`log_controller`, `log_method`, `log_inserted_at`, `log_usuario_id`, `log_usuario`, `log_usuario_correo`, `log_mensaje`, `log_mensaje_json`) VALUES (\'API/v1/Usuarios\', \'login\', \'2022-11-10 20:54:23\', \'36\', \'\', \'c.dzul@hotmail.com\', \'Incia sesión - Password invalido:  c.dzul@hotmail.com\', \'\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `log_usuarios` (`log_controller`, `log_method`, `log_inserted_at`, `log_usuario_id`, `log_usuario`, `log_usuario_correo`, `log_mensaje`, `log_mensaje_json`) VALUES (:log_controller:, :log_method:, :log_inserted_at:, :log_usuario_id:, :log_usuario:, :log_usuario_correo:, :log_mensaje:, :log_mensaje_json:)', [...], false)
+ 5 SYSTEMPATH\Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(748): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(667): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Libraries\plpxLogger.php(29): CodeIgniter\Model->insert(Object(App\Entities\LogUsuario))
+ 9 SYSTEMPATH\RESTful\ResourceController.php(285): App\Libraries\PlpxLogger->loggerUsuario(Object(App\Entities\LogUsuario))
+10 APPPATH\Controllers\API\v1\Usuarios.php(45): CodeIgniter\RESTful\ResourceController->loggerUsuario(Object(App\Entities\LogUsuario))
+11 APPPATH\Controllers\API\v1\Usuarios.php(94): App\Controllers\API\v1\Usuarios->logUsuario('36', null, 'c.dzul@hotmail.com', 'Incia sesión - Password invalido:  c.dzul@hotmail.com', null)
+12 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+13 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+14 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+15 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2022-11-10 20:55:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 20:58:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 20:59:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 20:59:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 21:55:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 21:55:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 21:56:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 21:57:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 21:58:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 21:58:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 21:59:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 22:02:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2022-11-10 22:02:34 --> Attempt to read property "mensaje_objeto" on array
+in APPPATH\Controllers\API\v1\Usuarios.php on line 56.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(56): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "mensaje_objeto" on array', 'APPPATH\\Controllers\\API\\v1\\Usuarios.php', 56)
+ 2 APPPATH\Controllers\API\v1\Usuarios.php(138): App\Controllers\API\v1\Usuarios->logUsuario([...])
+ 3 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 4 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2022-11-10 22:03:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 22:04:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2022-11-10 22:04:00 --> Attempt to read property "usuario_correo" on array
+in APPPATH\Controllers\API\v1\Usuarios.php on line 54.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "usuario_correo" on array', 'APPPATH\\Controllers\\API\\v1\\Usuarios.php', 54)
+ 2 APPPATH\Controllers\API\v1\Usuarios.php(139): App\Controllers\API\v1\Usuarios->logUsuario([...])
+ 3 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 4 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2022-11-10 22:04:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2022-11-10 22:04:31 --> Attempt to read property "usuario_correo" on array
+in APPPATH\Controllers\API\v1\Usuarios.php on line 54.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "usuario_correo" on array', 'APPPATH\\Controllers\\API\\v1\\Usuarios.php', 54)
+ 2 APPPATH\Controllers\API\v1\Usuarios.php(139): App\Controllers\API\v1\Usuarios->logUsuario([...])
+ 3 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 4 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2022-11-10 22:04:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 22:05:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2022-11-10 22:05:44 --> Attempt to read property "usuario_correo" on array
+in APPPATH\Controllers\API\v1\Usuarios.php on line 55.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(55): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "usuario_correo" on array', 'APPPATH\\Controllers\\API\\v1\\Usuarios.php', 55)
+ 2 APPPATH\Controllers\API\v1\Usuarios.php(142): App\Controllers\API\v1\Usuarios->logUsuario([...])
+ 3 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 4 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2022-11-10 22:05:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 22:06:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2022-11-10 22:06:02 --> Attempt to read property "usuario_correo" on array
+in APPPATH\Controllers\API\v1\Usuarios.php on line 55.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(55): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "usuario_correo" on array', 'APPPATH\\Controllers\\API\\v1\\Usuarios.php', 55)
+ 2 APPPATH\Controllers\API\v1\Usuarios.php(142): App\Controllers\API\v1\Usuarios->logUsuario([...])
+ 3 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 4 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2022-11-10 22:06:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 22:08:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2022-11-10 22:08:12 --> Controller: \App\Controllers\API\v1\usuarios | Metodo: logout | LogLine: 175 | Intento de accion sin estar logueado: logout
+INFO - 2022-11-10 22:08:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 22:08:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 22:08:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 22:09:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 22:09:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2022-11-10 22:09:14 --> Controller: \App\Controllers\API\v1\usuarios | Metodo: logout | LogLine: 173 | Intento de accion sin estar logueado: logout
+INFO - 2022-11-10 22:09:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 22:09:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 22:09:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 22:12:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 22:12:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-10 22:12:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

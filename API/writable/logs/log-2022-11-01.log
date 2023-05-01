@@ -1,0 +1,70 @@
+ALERT - 2022-11-01 22:34:52 --> c.dzul@hotmail.com -  | The usupr_sta field is required. | Controller: \App\Controllers\API\v1\usuarios | Metodo: confirmacion | LogLine: 106
+ALERT - 2022-11-01 22:37:05 --> c.dzul@hotmail.com -  | The usupr_sta field is required. | Controller: \App\Controllers\API\v1\usuarios | Metodo: confirmacion | LogLine: 113
+ALERT - 2022-11-01 22:37:44 --> c.dzul@hotmail.com -  | The usupr_sta field is required. | Controller: \App\Controllers\API\v1\usuarios | Metodo: confirmacion | LogLine: 113
+INFO - 2022-11-01 22:44:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:45:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:48:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:48:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:49:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:49:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:50:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:50:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:50:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:51:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:51:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:51:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:51:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:51:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:51:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:51:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:52:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:52:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:52:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 22:52:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:06:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:15:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:15:40 --> Password invalido del correo: c.dzul@hotmail.com | Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 63
+INFO - 2022-11-01 23:16:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:16:44 --> Password invalido del correo: c.dzul@hotmail.com | Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 66
+INFO - 2022-11-01 23:18:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:18:57 --> Password invalido del correo: c.dzul@hotmail.com | Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 66
+INFO - 2022-11-01 23:20:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:20:35 --> Password invalido del correo: c.dzul@hotmail.com | Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 66
+INFO - 2022-11-01 23:21:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:21:57 --> Password invalido del correo: c.dzul@hotmail.com | Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 66
+INFO - 2022-11-01 23:22:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:22:00 --> Password invalido del correo: c.dzul@hotmail.com | Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 66
+INFO - 2022-11-01 23:22:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:22:06 --> Password invalido del correo: c.dzul@hotmail.com | Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 66
+INFO - 2022-11-01 23:22:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:22:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:22:15 --> Password invalido del correo: c.dzul@hotmail.com | Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 66
+INFO - 2022-11-01 23:23:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:23:26 --> Password invalido del correo: c.dzul@hotmail.com | Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 66
+INFO - 2022-11-01 23:25:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:25:26 --> Password invalido del correo: c.dzul@hotmail.com | Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 66
+INFO - 2022-11-01 23:26:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:26:39 --> Password invalido del correo: c.dzul@hotmail.com | Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 66
+INFO - 2022-11-01 23:31:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:31:01 --> Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 66 | Password invalido del correo: c.dzul@hotmail.com
+INFO - 2022-11-01 23:31:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:31:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:31:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:31:31 --> Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 66 | Password invalido del correo: c.dzul@hotmail.com
+INFO - 2022-11-01 23:31:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:31:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:31:42 --> Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 66 | Password invalido del correo: c.dzul@hotmail.com
+INFO - 2022-11-01 23:40:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:40:07 --> Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 64 | Password invalido del correo: c.dzul@hotmail.com
+INFO - 2022-11-01 23:40:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:40:37 --> Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 64 | Password invalido del correo: c.dzul@hotmail.com
+INFO - 2022-11-01 23:41:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:41:11 --> Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 64 | Password invalido del correo: c.dzul@hotmail.com
+INFO - 2022-11-01 23:41:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:41:25 --> Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 64 | Password invalido del correo: c.dzul@hotmail.com
+INFO - 2022-11-01 23:41:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:41:29 --> Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 64 | Password invalido del correo: c.dzul@hotmail.com
+INFO - 2022-11-01 23:41:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:41:33 --> Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 51 | Correo no existe: c.dzul@hotmail.com8
+INFO - 2022-11-01 23:41:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2022-11-01 23:41:38 --> Controller: \App\Controllers\API\v1\usuarios | Metodo: login | LogLine: 64 | Password invalido del correo: c.dzul@hotmail.com

@@ -1,0 +1,143 @@
+/******************************* INICIO */
+
+.datos_anuncio {
+	color: $color_light_dark;
+	font-size: smaller;
+}
+
+.link_anuncio {
+	color: $color_info;
+
+	&:hover {
+		color: $color_info_dark;
+	}
+}
+
+.modalidad_anuncio {
+	color: $color_dark;
+	font-size: smaller;
+}
+
+.pulpox-titulo-filtro {
+	font-weight: bold;
+	color: $color_info_dark;
+}
+
+tr:hover {
+	//background-color: #e6f4ff;
+
+	a {
+		color: #00508a !important;
+	}
+
+	.modalidad_anuncio {
+		color: #00508a !important;
+	}
+
+	.datos_anuncio {
+		color: #00508a !important;
+	}
+}
+
+#resultadosTitulo {
+	font-size: 2em;
+	color: $color_secondary;
+}
+
+#resultadosNumero {
+	font-size: 1.25em;
+	color: $color_info;
+}
+
+#mensajeNoResultados {
+	font-size: 2em;
+	color: $color_info;
+}
+
+#divFiltrosDesktop {
+	padding: 1em;
+	border-radius: $border_radius;
+	-webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+	box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+	background-color: white;
+}
+
+#pulpox_btn_filtros {
+	border: 0;
+	width: 75%;
+	padding: 0.5em;
+	font-size: 1.25em;
+	background-color: $color_secondary;
+	color: white;
+	&:active {
+		color: white;
+		background-color: $color_secondary_dark;
+	}
+}
+
+.plpx-resultados-anuncios {
+	background-color: gray;
+}
+
+.plpx-resultados-anuncio__lateral {
+	background-color: green;
+
+	width: 15em;
+	height: 7.5em;
+	margin-bottom: 1em;
+}
+
+.plpx-resultados-anuncio__table {
+	background-color: red;
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 575.98px) {
+	.plpx-resultados-plpx-resultados-anuncio__table {
+		display: block;
+	}
+	.plpx-resultados-anuncios {
+		display: none;
+	}
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (min-width: 576px) and (max-width: 767.98px) {
+	.plpx-resultados-plpx-resultados-anuncio__table {
+		display: block;
+	}
+	.plpx-resultados-anuncios {
+		display: none;
+	}
+}
+
+// Medium devices (tablets, less than 992px)
+@media (min-width: 768px) and (max-width: 991.98px) {
+	.plpx-resultados-plpx-resultados-anuncio__table {
+		display: block !important;
+	}
+	.plpx-resultados-anuncios {
+		display: none;
+	}
+}
+
+// Large devices (desktops, less than 1200px)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.plpx-resultados-anuncio__table {
+		display: none;
+	}
+	.plpx-resultados-anuncios {
+		display: block;
+	}
+}
+
+// Large devices (desktops, less than 1200px)
+@media (min-width: 1200px) {
+	.plpx-resultados-anuncio__table {
+		display: none;
+	}
+	.plpx-resultados-anuncios {
+		display: block;
+	}
+}

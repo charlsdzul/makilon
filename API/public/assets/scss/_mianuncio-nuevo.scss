@@ -1,0 +1,163 @@
+/* Formulario Nuevo Anuncio*/
+
+#div_telefono_preview,
+#div_celular_preview,
+#div_correo_preview {
+	display: none;
+}
+
+.bootstrap-maxlength {
+	color: $color_secondary_medium_light;
+}
+
+.panel-image-progress {
+	width: 7em;
+	height: 8em;
+	margin: 0.25em;
+}
+
+.panel-image {
+	width: 100%;
+	height: 7em;
+	background-color: $color_gray_light;
+	border-radius: $border_radius;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.imagen_preview {
+	max-width: 100%;
+	max-height: 100%;
+	padding: 0.25em;
+}
+
+.panel-image--icon {
+	filter: $color_primary_filter;
+	opacity: 0.5;
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.panel-image--div_progreso {
+	background-color: $color_gray_light;
+	border-radius: $border_radius;
+	width: 100%;
+	height: 1em;
+	margin-top: 0.15em;
+}
+
+.panel-image--bar_progreso {
+	border-radius: $border_radius;
+	background-color: $color_info;
+	width: 0;
+	height: 100%;
+	font-size: 0.6em;
+	text-align: center;
+	color: white;
+}
+
+.panel-image--div-delete {
+	width: 100%;
+	text-align: center;
+}
+
+.icon-delete {
+	height: 1.25em;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.pulpox-message--principal {
+	text-align: center;
+	width: 100%;
+	color: $color_primary;
+}
+
+/* ANUNCIO PREVIEW*/
+
+.icon-label {
+	display: inline-block;
+	vertical-align: text-top;
+}
+
+#titulo_preview {
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+.icon-label {
+	vertical-align: baseline;
+}
+
+.anuncio-nuevo-preview_icon {
+	height: 1.5em;
+	display: inline-block;
+}
+
+#anuncio_preview {
+	border-style: solid;
+	border-width: 1px;
+	border-color: $color_gray_light;
+	border-radius: $border_radius;
+	word-break: break-all;
+	word-wrap: break-word;
+	padding: 0.5em;
+}
+
+/* CAROUSEL DE IMÁGENES*/
+
+.carousel-control-prev,
+.carousel-control-next {
+	width: 50%;
+}
+
+.carousel {
+	width: 18em;
+	height: 18em;
+}
+
+.carousel .carousel-item {
+	background-color: $color_gray_light;
+}
+
+.carousel-inner {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	text-align: center;
+}
+
+.carousel-item {
+	height: 100%;
+	width: 100%;
+}
+
+.carousel-inner--img {
+	max-width: 100%;
+	max-height: 100%;
+}
+.carousel-control-prev {
+	color: orange;
+}
+
+#nuevo_anuncio_previo {
+	@include shadow_div;
+	padding: 2em;
+}
+
+#modalidad_preview,
+#estado_ciudad,
+#seccion_apartado {
+	font-size: medium;
+	font-weight: 700;
+}
+
+#modalidad_mensaje--div {
+	font-size: medium;
+	color: #636161;
+	text-align: center;
+}

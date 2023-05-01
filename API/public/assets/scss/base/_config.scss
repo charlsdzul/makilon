@@ -1,0 +1,252 @@
+@import "../../../pulpox_ads_nuevo/assets/scss/base/colors.scss";
+
+@font-face {
+	font-family: "PulpoxFonts";
+	src: url("/pulpox_ads_nuevo/assets/fonts/GoogleSans-Regular.woff");
+}
+
+/*-------------------------------------
+GENERAL
+--------------------------------------*/
+* {
+	box-sizing: border-box !important;
+	margin: 0;
+	padding: 0;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: "PulpoxFonts", "GoogleSans-Regular";
+	background-color: hsl(340, 100%, 98%);
+}
+
+img {
+	max-width: 100%;
+}
+
+li {
+	list-style: none;
+}
+
+.plpx-w1 {
+	width: 1em;
+}
+
+.plpx-wf {
+	width: 100%;
+}
+
+.plpx-wa {
+	width: auto;
+}
+
+$border_radius: 4px;
+$border_width: 0.5px;
+$border_color: lightgrey;
+$border_style: solid;
+$btn_padding: 0.35em 0.75em 0.35em 0.75em;
+$btn_line_padding: 0.3em 0.75em 0.3em 0.75em;
+$btn_margin: 0.25em;
+
+@mixin shadow_div {
+	-webkit-box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.62);
+	-moz-box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.62);
+	box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.62);
+}
+
+@mixin btn_shadow {
+	-webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
+	box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
+}
+
+@mixin border_div {
+	border-style: solid;
+	border-width: 1px;
+	border-color: $color_dark_opaque;
+	border-radius: $border_radius;
+}
+
+.plpx-select {
+	border-radius: $border_radius;
+	border: 1px solid $color_secondary_opaque;
+	color: $color_secondary_opaque;
+	padding: $btn_padding;
+	display: block;
+	width: 100%;
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 0 0.1em $color_secondary_opaque;
+	}
+}
+
+.plpx-titulo-filtro {
+	font-weight: bold !important;
+	color: $color_secondary !important;
+}
+
+.div_opciones {
+	border: 0;
+	margin-top: 1em;
+	text-align: center;
+}
+
+.pulpox-invalid-feedback {
+	color: $color_danger_light;
+	font-size: 0.75em;
+	display: none;
+}
+
+.div-mensaje,
+.div-titulo,
+.div-modSecApa,
+.div-forma-contacto,
+.div-modalidad-mensaje,
+.div-carousel {
+	margin-top: 0.75em;
+}
+
+#titulo_preview {
+	word-break: break-all;
+	word-wrap: break-word;
+	color: $color_dark;
+}
+
+.div-modSecApa {
+	color: $color_medium_dark;
+}
+
+.div-mensaje {
+	color: $color_medium_dark;
+	border-radius: $border_radius;
+	border-color: $color_primary;
+	border-style: $border_style;
+	border-width: $border_width;
+	padding: 0.5em;
+	white-space: pre;
+}
+
+#modalidad_mensaje--div {
+	font-size: medium;
+	color: $color_medium_dark;
+	text-align: center;
+}
+
+.div-contacto {
+	display: none;
+	color: $color_dark;
+}
+
+.div-titulo {
+	border-bottom: solid;
+	border-color: $color_primary;
+	border-width: $border_width;
+}
+
+.icon-label {
+	display: inline-block;
+	vertical-align: text-top;
+}
+
+.icon-label {
+	vertical-align: baseline;
+}
+
+.anuncio-nuevo-preview_icon {
+	height: 2.5em;
+	display: inline-block;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+#nuevo_anuncio_previo {
+	@include shadow_div;
+	padding: 2em;
+}
+
+#modalidad_preview,
+#estado_ciudad,
+#seccion_apartado {
+	font-size: medium;
+	font-weight: 700;
+}
+
+.div-contacto {
+	display: none;
+}
+
+/* CONFIRM JqueryCOnfirm.js */
+
+.contenido-confirm {
+	color: $color_medium_dark;
+}
+
+.titulo-confirm {
+	color: $color_dark;
+	font-weight: bold;
+}
+
+/* CAROUSEL DE IMÁGENES*/
+
+.carousel-control-prev,
+.carousel-control-next {
+	width: 50%;
+}
+
+.carousel {
+	width: 18em;
+	height: 18em;
+}
+
+.carousel .carousel-item {
+	background-color: $color_gray_light;
+}
+
+.carousel-inner {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	text-align: center;
+}
+
+.carousel-item {
+	height: 100%;
+	width: 100%;
+}
+
+.carousel-inner--img {
+	max-width: 100%;
+	max-height: 100%;
+}
+.carousel-control-prev {
+	color: orange;
+}
+
+.plpx-icon-primary {
+	filter: $color_primary_filter;
+	display: inline-block;
+}
+
+.icon-delete {
+	filter: $color_primary_filter_danger;
+}
+
+.div-informacion-anuncio {
+	padding: 0.75em;
+	color: $color_dark;
+	background-color: $color_gray_light;
+	@include border_div;
+}

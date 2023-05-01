@@ -1,0 +1,106 @@
+ERROR - 2022-10-27 21:30:17 --> Se intento confirmar una cuenta. Correo o codigo de confirmacion invalidos: c.dzul@hotmail.com - 7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------
+ERROR - 2022-10-27 21:35:53 --> Se intento confirmar una cuenta. Correo o codigo de confirmacion invalidos: c.dzul@hotmail.com - 7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------
+ERROR - 2022-10-27 21:36:27 --> Se intento confirmar una cuenta. Correo o codigo de confirmacion invalidos: c.dzul@hotmail.com - 7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------
+ERROR - 2022-10-27 21:36:33 --> Se intento confirmar una cuenta. Correo o codigo de confirmacion invalidos: c.dzul@hotmail.com - 7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------
+CRITICAL - 2022-10-27 21:44:49 --> Unclosed '{' on line 7
+in APPPATH\Libraries\plpxLogger.php on line 18.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH\\Libraries\\plpxLogger.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Libraries\\PlpxLogger')
+ 3 APPPATH\Controllers\API\v1\Usuarios.php(32): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Libraries\\PlpxLogger')
+ 4 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->confirmacion('c.dzul@hotmail.com', '7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------')
+ 5 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-27 21:45:10 --> security is an invalid log level.
+in SYSTEMPATH\Log\Logger.php on line 257.
+ 1 SYSTEMPATH\Log\Logger.php(257): CodeIgniter\Log\Exceptions\LogException::forInvalidLogLevel('security')
+ 2 SYSTEMPATH\Common.php(800): CodeIgniter\Log\Logger->log('security', 'Se intentó confirmar una cuenta. Formato de correo o codigo de confirmacion invalidos: c.dzul@hotmail.com - 7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------ | Controller: {controller} | Metodo: {metodo}', [...])
+ 3 APPPATH\Libraries\plpxLogger.php(16): log_message('security', 'Se intentó confirmar una cuenta. Formato de correo o codigo de confirmacion invalidos: c.dzul@hotmail.com - 7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------ | Controller: {controller} | Metodo: {metodo}', [...])
+ 4 APPPATH\Controllers\API\v1\Usuarios.php(36): App\Libraries\PlpxLogger->log('security', 'Se intentó confirmar una cuenta. Formato de correo o codigo de confirmacion invalidos: c.dzul@hotmail.com - 7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------')
+ 5 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->confirmacion('c.dzul@hotmail.com', '7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------')
+ 6 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-10-27 22:00:41 --> Se intentó confirmar una cuenta. Formato de correo o codigo de confirmacion invalidos: c.dzul@hotmail.com - 7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------ | Controller: \App\Controllers\API\v1\usuarios | Metodo: \App\Controllers\API\v1\usuarios
+WARNING - 2022-10-27 22:01:07 --> Se intentó confirmar una cuenta. Formato de correo o codigo de confirmacion invalidos: c.dzul@hotmail.com - 7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------ | Controller: \App\Controllers\API\v1\usuarios | Metodo: \App\Controllers\API\v1\usuarios
+ERROR - 2022-10-27 22:01:24 --> Se intentó confirmar una cuenta. Formato de correo o codigo de confirmacion invalidos: c.dzul@hotmail.com - 7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------ | Controller: \App\Controllers\API\v1\usuarios | Metodo: \App\Controllers\API\v1\usuarios
+WARNING - 2022-10-27 22:02:31 --> Se intentó confirmar una cuenta. Formato de correo o codigo de confirmacion invalidos: c.dzul@hotmail.com - 7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------ | Controller: \App\Controllers\API\v1\usuarios | Metodo: confirmacion
+WARNING - 2022-10-27 22:02:37 --> Se intentó confirmar una cuenta. Formato de correo o codigo de confirmacion invalidos: c.dzul@hotmail.com - 7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------ | Controller: \App\Controllers\API\v1\usuarios | Metodo: confirmacion
+WARNING - 2022-10-27 22:10:04 --> Se intentó confirmar una cuenta. Formato de correo o codigo de confirmacion invalidos: c.dzul@hotmail.com - 7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------ | Controller: \App\Controllers\API\v1\usuarios | Metodo: confirmacion
+WARNING - 2022-10-27 22:10:16 --> Se intentó confirmar una cuenta. Formato de correo o codigo de confirmacion invalidos: c.dzul@hotmail.com - 7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------ | Controller: \App\Controllers\API\v1\usuarios | Metodo: confirmacion
+WARNING - 2022-10-27 22:14:16 --> Se intentó confirmar una cuenta. Formato de correo o codigo de confirmacion invalidos: c.dzul@hotmail.com  -  7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------ | Controller: \App\Controllers\API\v1\usuarios | Metodo: confirmacion
+WARNING - 2022-10-27 22:15:00 --> Se intentó confirmar una cuenta. Formato de correo o codigo de confirmacion invalidos: c.dzul@hotmail.com  -  7fe77ed6f1c6e38b0f2dbd7e7a59beac4da091134587d661bb070044d5ebcdfb------ | Controller: \App\Controllers\API\v1\usuarios | Metodo: confirmacion | LogLine: 38
+WARNING - 2022-10-27 22:26:50 --> Se intentó confirmar una cuenta. Formato de correo o codigo de confirmacion invalidos: c.dzul@hotmail.com***  -  19c61a178bea958f923f4e6ebc49e07e4777015f1d0dbaacb6b6db0e6b194950 | Controller: \App\Controllers\API\v1\usuarios | Metodo: confirmacion | LogLine: 38
+WARNING - 2022-10-27 22:26:58 --> Se intentó confirmar una cuenta. Formato de correo o codigo de confirmacion invalidos: c.dzul@hotmail.com  -  **19c61a178bea958f923f4e6ebc49e07e4777015f1d0dbaacb6b6db0e6b194950 | Controller: \App\Controllers\API\v1\usuarios | Metodo: confirmacion | LogLine: 38
+WARNING - 2022-10-27 22:27:11 --> Combinacion de correo y codigo recibidos no existe en bdd: c.dzul@hotmail.com -  19c61a178bea958f923f4e6ebc49e07e4777015f1d0dbaacb6b6db0e6b194951 | Controller: \App\Controllers\API\v1\usuarios | Metodo: confirmacion | LogLine: 64
+WARNING - 2022-10-27 22:27:40 --> Combinacion de correo y codigo recibidos no existe en bdd: c.dzul@hotmail.com -  19c61a178bea958f923f4e6ebc49e07e4777015f1d0dbaacb6b6db0e6b194951 | Controller: \App\Controllers\API\v1\usuarios | Metodo: confirmacion | LogLine: 64
+CRITICAL - 2022-10-27 22:28:13 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 1597.
+ 1 SYSTEMPATH\BaseModel.php(1597): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(852): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(693): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\API\v1\Usuarios.php(78): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->confirmacion('c.dzul@hotmail.com', '19c61a178bea958f923f4e6ebc49e07e4777015f1d0dbaacb6b6db0e6b194950')
+ 6 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-27 22:29:19 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 1597.
+ 1 SYSTEMPATH\BaseModel.php(1597): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(852): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(693): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\API\v1\Usuarios.php(78): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->confirmacion('c.dzul@hotmail.com', '19c61a178bea958f923f4e6ebc49e07e4777015f1d0dbaacb6b6db0e6b194950')
+ 6 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-27 22:30:52 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 1597.
+ 1 SYSTEMPATH\BaseModel.php(1597): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(852): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(693): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\API\v1\Usuarios.php(78): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->confirmacion('c.dzul@hotmail.com', '19c61a178bea958f923f4e6ebc49e07e4777015f1d0dbaacb6b6db0e6b194950')
+ 6 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-27 22:31:55 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 1597.
+ 1 SYSTEMPATH\BaseModel.php(1597): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(852): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(693): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\API\v1\Usuarios.php(79): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->confirmacion('c.dzul@hotmail.com', '19c61a178bea958f923f4e6ebc49e07e4777015f1d0dbaacb6b6db0e6b194950')
+ 6 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-27 22:34:44 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 1597.
+ 1 SYSTEMPATH\BaseModel.php(1597): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(852): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(693): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\API\v1\Usuarios.php(79): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->confirmacion('c.dzul@hotmail.com', '19c61a178bea958f923f4e6ebc49e07e4777015f1d0dbaacb6b6db0e6b194950')
+ 6 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-27 22:35:33 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 1597.
+ 1 SYSTEMPATH\BaseModel.php(1597): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(852): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(693): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\API\v1\Usuarios.php(80): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->confirmacion('c.dzul@hotmail.com', '19c61a178bea958f923f4e6ebc49e07e4777015f1d0dbaacb6b6db0e6b194950')
+ 6 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-27 22:35:57 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 1597.
+ 1 SYSTEMPATH\BaseModel.php(1597): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(852): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(693): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\API\v1\Usuarios.php(80): CodeIgniter\Model->update([...])
+ 5 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->confirmacion('c.dzul@hotmail.com', '19c61a178bea958f923f4e6ebc49e07e4777015f1d0dbaacb6b6db0e6b194950')
+ 6 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
