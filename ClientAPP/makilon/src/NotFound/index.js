@@ -1,14 +1,13 @@
-import React from "react";
 import Container from "react-bootstrap/esm/Container";
 
-const Home = (props) => {
+const NotFound = (props) => {
 	return (
 		<>
 			<Container fluid>
-				<h1>Home</h1>
+				<h1>NotFound</h1>
 			</Container>
 		</>
 	);
 };
 
-export default Home;
+export default NotFound;

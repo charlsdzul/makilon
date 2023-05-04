@@ -1,14 +1,14 @@
 import React from "react";
 import Container from "react-bootstrap/esm/Container";
 
-const Home = (props) => {
+const Dashboard = (props) => {
 	return (
 		<>
 			<Container fluid>
-				<h1>Home</h1>
+				<h1>Dashboard</h1>
 			</Container>
 		</>
 	);
 };
 
-export default Home;
+export default Dashboard;
