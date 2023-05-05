@@ -2,8 +2,16 @@ import React from "react";
 import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
+import api from "../../Utils/api";
 
 const Login = (props) => {
+	const iniciarSesion = async () => {
+		console.log("iniciarSesion");
+		const response = await api.get("apartados", { data: "datoo" }).catch((erro) => erro);
+
+		console.log(response);
+	};
+
 	return (
 		<>
 			<Container fluid mt={5}>
@@ -21,7 +29,7 @@ const Login = (props) => {
 					<Form.Group className="mb-3" controlId="formBasicCheckbox">
 						<Form.Check type="checkbox" label="Check me out" />
 					</Form.Group>
-					<Button variant="primary" type="button" onClick={() => console.log("click")}>
+					<Button variant="primary" type="button" onClick={iniciarSesion}>
 						Submit
 					</Button>
 				</Form>
