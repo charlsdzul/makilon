@@ -15,7 +15,6 @@ export default {
 			method: "get",
 			url: API_URL + url,
 			params: params,
-			headers: { "Access-Control-Allow-Origin": "*" },
 		}).then((res) => res);
 	},
 };
