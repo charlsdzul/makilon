@@ -18,6 +18,7 @@ use App\Entities\LogSistema;
 use App\Libraries\PlpxLogger;
 
 use Error;
+use stdClass;
 
 /**
  * An extendable controller to provide a RESTful API for a resource.
@@ -291,10 +292,51 @@ class ResourceController extends BaseResource
 		];
 
 		if ($isError) {
-			$response = [...$response, "errors" => $data];
+			$response = [...$response, "errors" => [$data]];
 		} else {
-			$response = [...$response, "data" => $data];
+			$response = [...$response, "data" => [$data]];
 		}
+
+		return $this->respond($response, $responseCode);
+	}
+
+	public function apiResponse($responseName, $data = null)
+	{
+		$responseDesc = strtoupper($responseName);
+		$responseCode = $this->codesPlpx[$responseName];
+
+		$isError = false;
+
+		$errorsName = ["server_error", "invalid_request"];
+
+		if (in_array($responseName, $errorsName)) {
+			$isError = true;
+		}
+
+		$response = [
+			"code" => $responseCode,
+			"codeDescription" => $responseDesc,
+		];
+
+		if ($isError) {
+			$response = [...$response, "errors" => [$data]];
+		} else {
+			$response = [...$response, "data" => [$data]];
+		}
+
+		return $this->respond($response, $responseCode);
+	}
+
+	public function apiResponseError($responseName, $errors = null)
+	{
+		$responseDesc = strtoupper($responseName);
+		$responseCode = $this->codesPlpx[$responseName];
+
+		$response = new stdClass();
+		$response->status = $responseCode;
+		$response->description = $responseDesc;
+		$response->errors = $errors;
+		$response = (array) $response;
 
 		return $this->respond($response, $responseCode);
 	}

@@ -94,101 +94,100 @@ class Usuarios extends ResourceController
 	public function login()
 	{
 		$logAccion = "Iniciar sesión";
-
-		try {
-			if (!usuarioEstaLogueado()) {
-				if (!loginValidator($this->request->getJSON(), $errors)) {
-					$dataLog = [
-						"mensaje" => lang("Common.errorDatosValidacion"),
-						"mensaje_objeto" => $errors,
-						"request_respond" => "invalid_request",
-					];
-
-					$this->logSistema(["tipo" => "notice", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
-					return $this->respondPlpx("invalid_request", $errors, false);
-				}
-
-				$correo = $this->request->getJsonVar("usuario_correo");
-				$pwd = $this->request->getJsonVar("usuario_psw");
-
-				$usuarioModel = new UsuarioModel();
-
-				$usuario = $usuarioModel
-					->select("usu_id,usu_usuario,usu_password,usu_correo,usu_nombre,usu_apellido,usu_tipo,usu_sta")
-					->where("usu_correo", $correo)
-					->first();
-
-				if (is_null($usuario)) {
-					$dataLog = [
-						"mensaje" => "Correo no existe: $correo",
-						"mensaje_objeto" => null,
-						"request_respond" => "invalid_request - " . lang("Usuario.correoContrasenaInvalida"),
-					];
-
-					$this->logSistema(["tipo" => "notice", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
-					return $this->respondPlpx("invalid_request", "Usuario.correoContrasenaInvalida", false);
-				}
-
-				if ($usuario->usu_sta == 0) {
-					$dataLog = [
-						"usuario_id" => $usuario->usu_id,
-						"usuario_usuario" => $usuario->usu_usuario,
-						"usuario_correo" => $usuario->usu_correo,
-						"mensaje" => "Cuenta inactiva",
-						"request_respond" => "invalid_request - " . lang("Usuario.cuentaInactiva"),
-					];
-
-					$this->logUsuario(["accion" => $logAccion, ...$dataLog]);
-					return $this->respondPlpx("invalid_request", "Usuario.correoContrasenaInvalida", false);
-				}
-
-				if (!password_verify($pwd, $usuario->usu_password)) {
-					$dataLog = [
-						"usuario_id" => $usuario->usu_id,
-						"usuario_usuario" => $usuario->usu_usuario,
-						"usuario_correo" => $usuario->usu_correo,
-						"mensaje" => "Password incorrecto",
-						"request_respond" => "invalid_request - " . lang("Usuario.correoContrasenaInvalida"),
-					];
-
-					$this->logUsuario(["accion" => $logAccion, ...$dataLog]);
-					return $this->respondPlpx("invalid_request", "Usuario.correoContrasenaInvalida", false);
-				}
-
-				//CREA SESIÓN CON DATOS DEL USUARIO
-				$dataSessionUsuario = [
-					"usu_id" => $usuario->usu_id,
-					"usu_usuario" => $usuario->usu_usuario,
-					"usu_correo" => $usuario->usu_correo,
-					"usu_nombre" => $usuario->usu_nombre,
-					"usu_apellido" => $usuario->usu_apellido,
-					"usu_tipo" => $usuario->usu_tipo,
-				];
-
-				$this->session->set($dataSessionUsuario);
-
-				$dataLog = [
-					"usuario_id" => $usuario->usu_id,
-					"usuario_usuario" => $usuario->usu_usuario,
-					"usuario_correo" => $usuario->usu_correo,
-					"mensaje" => "Sesión iniciada",
-					"request_respond" => "ok - " . lang("Usuario.sesionIniciada"),
-				];
-
-				$this->logUsuario(["accion" => $logAccion, ...$dataLog]);
-			}
-
-			return $this->respondPlpx("ok", "Usuario.sesionIniciada", true);
-		} catch (Error $e) {
+		//echo $this->request->getVar();
+		//var_dump($this->request->getPost());
+		//return;
+		if (!loginValidator($this->request->getPost(), $errors)) {
 			$dataLog = [
-				"mensaje" => "Error general",
-				"mensaje_objeto" => $e,
-				"request_respond" => "server_error - " . lang("Common.solicitudNoProcesada"),
+				"mensaje" => lang("Common.errorDatosValidacion"),
+				"mensaje_objeto" => $errors,
+				"request_respond" => "invalid_request",
 			];
 
-			$this->logSistema(["tipo" => "critical", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
-			return $this->respondPlpx("server_error", "Common.solicitudNoProcesada", false);
+			$this->logSistema(["tipo" => "notice", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
+			return $this->apiResponseError("invalid_request", $errors);
 		}
+
+		$correo = $this->request->getPost("correo");
+		$contrasena = $this->request->getPost("contrasena");
+
+		$usuarioModel = new UsuarioModel();
+
+		$usuario = $usuarioModel
+			->select("usu_id,usu_usuario,usu_password,usu_correo,usu_nombre,usu_apellido,usu_tipo,usu_sta")
+			->where("usu_correo", $correo)
+			->first();
+
+		if (is_null($usuario)) {
+			$dataLog = [
+				"mensaje" => "Correo no existe: $correo",
+				"mensaje_objeto" => null,
+				"request_respond" => "invalid_request - " . lang("Usuario.correoContrasenaInvalida"),
+			];
+
+			$this->logSistema(["tipo" => "notice", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
+			return $this->respondPlpx("invalid_request", "Usuario.correoContrasenaInvalida");
+		}
+
+		if ($usuario->usu_sta == 0) {
+			$dataLog = [
+				"usuario_id" => $usuario->usu_id,
+				"usuario_usuario" => $usuario->usu_usuario,
+				"usuario_correo" => $usuario->usu_correo,
+				"mensaje" => "Cuenta inactiva",
+				"request_respond" => "invalid_request - " . lang("Usuario.cuentaInactiva"),
+			];
+
+			$this->logUsuario(["accion" => $logAccion, ...$dataLog]);
+			return $this->respondPlpx("invalid_request", lang("Usuario.correoContrasenaInvalida"));
+		}
+
+		if (!password_verify($contrasena, $usuario->usu_password)) {
+			$dataLog = [
+				"usuario_id" => $usuario->usu_id,
+				"usuario_usuario" => $usuario->usu_usuario,
+				"usuario_correo" => $usuario->usu_correo,
+				"mensaje" => "Password incorrecto",
+				"request_respond" => "invalid_request - " . lang("Usuario.correoContrasenaInvalida"),
+			];
+
+			$this->logUsuario(["accion" => $logAccion, ...$dataLog]);
+			return $this->respondPlpx("invalid_request", lang("Usuario.correoContrasenaInvalida"));
+		}
+
+		// 	//CREA SESIÓN CON DATOS DEL USUARIO
+		// 	$dataSessionUsuario = [
+		// 		"usu_id" => $usuario->usu_id,
+		// 		"usu_usuario" => $usuario->usu_usuario,
+		// 		"usu_correo" => $usuario->usu_correo,
+		// 		"usu_nombre" => $usuario->usu_nombre,
+		// 		"usu_apellido" => $usuario->usu_apellido,
+		// 		"usu_tipo" => $usuario->usu_tipo,
+		// 	];
+
+		// 	$this->session->set($dataSessionUsuario);
+
+		// 	$dataLog = [
+		// 		"usuario_id" => $usuario->usu_id,
+		// 		"usuario_usuario" => $usuario->usu_usuario,
+		// 		"usuario_correo" => $usuario->usu_correo,
+		// 		"mensaje" => "Sesión iniciada",
+		// 		"request_respond" => "ok - " . lang("Usuario.sesionIniciada"),
+		// 	];
+
+		// 	$this->logUsuario(["accion" => $logAccion, ...$dataLog]);
+
+		// 	return $this->respondPlpx("ok", "Usuario.sesionIniciada", true);
+		// } catch (Error $e) {
+		// 	$dataLog = [
+		// 		"mensaje" => "Error general",
+		// 		"mensaje_objeto" => $e,
+		// 		"request_respond" => "server_error - " . lang("Common.solicitudNoProcesada"),
+		// 	];
+
+		// 	$this->logSistema(["tipo" => "critical", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
+		// 	return $this->respondPlpx("server_error", "Common.solicitudNoProcesada", false);
+		// }
 	}
 
 	/**

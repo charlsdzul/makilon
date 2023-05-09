@@ -25,52 +25,66 @@ function validateRequestNullOrEmpty($datos = null, &$mensaje = "")
 	return $isValid;
 }
 
+function validateRequestData($datos = null, &$error = "")
+{
+	$isValid = false;
+
+	if (is_null($datos) || !$datos) {
+		$error = getErrorsCommon(200);
+		$isValid = true;
+	}
+
+	return $isValid;
+}
+
 function validateEmail($correo = null, &$error = [])
 {
 	$isValid = true;
 
 	if (isset($correo)) {
 		if ($correo == "") {
-			$error = getResponseUsuario(1000);
+			$error = getErrorsUsuario(1000);
 			$isValid = false;
 		} elseif (!is_string($correo)) {
-			$error = getResponseCommon(100);
+			$error = getErrorsCommon(100);
 			$isValid = false;
 		} elseif (strlen($correo) > 70) {
-			$error = getResponseCommon(101);
+			$error = getErrorsCommon(101);
 			$isValid = false;
 		} elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-			$error = getResponseUsuario(1001);
+			$error = getErrorsUsuario(1001);
 			$isValid = false;
 		}
 	} else {
-		$error = getResponseCommon(200);
+		$error = getErrorsCommon(200);
 		$isValid = false;
 	}
 
+	$error = [...$error, "id" => "correo"];
 	return $isValid;
 }
 
-function validatePassword($psw = null, &$error = [])
+function validatePassword($psw = null, &$errors = [])
 {
 	$isValid = true;
 
 	if (isset($psw)) {
 		if ($psw == "") {
-			$error = getResponseUsuario(1002);
+			$errors = getErrorsUsuario(1002);
 			$isValid = false;
 		} elseif (strlen($psw) < 8) {
-			$error = getResponseUsuario(1003);
+			$errors = getErrorsUsuario(1003);
 			$isValid = false;
 		} elseif (strlen($psw) > 15) {
-			$error = getResponseUsuario(1004);
+			$errors = getErrorsUsuario(1004);
 			$isValid = false;
 		}
 	} else {
-		$error = getResponseCommon(200);
+		$errors = getErrorsCommon(200);
 		$isValid = false;
 	}
 
+	$errors = [...$errors, "id" => "contrasena"];
 	return $isValid;
 }
 
@@ -79,7 +93,7 @@ function validatePasswords($pwd1 = "", $pwd2 = "", &$errors = [])
 	$isValid = true;
 
 	if ($pwd1 != $pwd2) {
-		$errors = getResponseUsuario(1006);
+		$errors = getErrorsUsuario(1006);
 		$isValid = false;
 	}
 

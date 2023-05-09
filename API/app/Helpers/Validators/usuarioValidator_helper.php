@@ -7,22 +7,22 @@ function loginValidator($datos = null, &$errors = null)
 {
 	$errors = new stdClass();
 	$errorsValidation = [];
-	$correo = $datos->usuario_correo ?? null;
-	$psw = $datos->usuario_psw ?? null;
+	$correo = $datos["correo"] ?? "";
+	$contrasena = $datos["contrasena"] ?? "";
 
-	if (validateRequestNullOrEmpty($datos, $mensaje)) {
-		$errorsValidation += ["datos" => $mensaje];
+	if (validateRequestData($datos, $errorsValidate)) {
+		$errorsValidation += ["datos" => $errorsValidate];
 	} else {
-		if (!validateEmail($correo, $errors)) {
-			$errorsValidation += $errors;
+		if (!validateEmail($correo, $errorsEmail)) {
+			$errorsValidation += [$errorsEmail];
 		}
 
-		if (!validatePassword($psw, $mensaje)) {
-			$errorsValidation += ["usuario_psw" => $mensaje];
+		if (!validatePassword($contrasena, $errorsContrasena)) {
+			$errorsValidation += [...$errorsValidation, ...$errorsContrasena];
 		}
 	}
 
-	$errors->errorsValidation = $errorsValidation;
+	$errors = $errorsValidation;
 	return count($errorsValidation) == 0;
 }
 

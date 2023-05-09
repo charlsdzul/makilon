@@ -18,6 +18,7 @@ return [
 	"queryParamsInvalidos" => "Parámetro {0} de URL inválido.",
 	"idInvalido" => "ID inválido.",
 	"intentoNoLogueado" => "Intento de accion sin estar logueado",
+	"errorDatos" => "Error en los datos recibidos.",
 
 	//------
 	"correo" => "Correo",
