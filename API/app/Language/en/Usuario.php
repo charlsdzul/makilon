@@ -33,6 +33,8 @@ return [
 	"datosNoActualizados" => "No se pudieron actualizar tus datos",
 	"respuestaRecuperarPassword" => "Si el correo que ingresaste es válido, te enviaremos las indicaciones para reestablecer tu contraseña.",
 	"errorRecuperarPassword" => "No se pudo procesar tu solicitud, intenta más tarde.",
+	"errorLogin" => "No pudiste iniciar sesión.",
+
 	"email" => [
 		"emailAsunto" => "Registro Pulpox",
 		"emailCuerpo" => "Para confirmar tu correo (<b>{0}</b>) y registro, da click en este enlace -> {1}",

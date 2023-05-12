@@ -39,6 +39,7 @@ function getErrorsUsuario($code = null)
 		1004 => ["code" => 1004, "title" => lang("Usuario.contrasenaInvalida"), "detail" => lang("Usuario.contrasenaMaxima")],
 		1005 => ["code" => 1005, "title" => lang("Usuario.contrasenaInvalida"), "detail" => lang("Usuario.contrasenaInvalida")],
 		1006 => ["code" => 1006, "title" => lang("Usuario.contrasenaInvalida"), "detail" => lang("Usuario.contrasenasNoIguales")],
+		1007 => ["code" => 1007, "title" => lang("Usuario.errorLogin"), "detail" => lang("Usuario.correoContrasenaInvalida")],
 	];
 
 	$error = $codes[$code];

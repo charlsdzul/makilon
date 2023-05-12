@@ -12,6 +12,7 @@ use CodeIgniter\I18n\Time;
 use App\Libraries\PlpxLogger;
 use Exception;
 use CodeIgniter\HTTP\Response;
+use Firebase\JWT\JWT;
 
 class Usuarios extends ResourceController
 {
@@ -94,9 +95,7 @@ class Usuarios extends ResourceController
 	public function login()
 	{
 		$logAccion = "Iniciar sesión";
-		//echo $this->request->getVar();
-		//var_dump($this->request->getPost());
-		//return;
+
 		if (!loginValidator($this->request->getPost(), $errors)) {
 			$dataLog = [
 				"mensaje" => lang("Common.errorDatosValidacion"),
@@ -110,13 +109,14 @@ class Usuarios extends ResourceController
 
 		$correo = $this->request->getPost("correo");
 		$contrasena = $this->request->getPost("contrasena");
-
 		$usuarioModel = new UsuarioModel();
 
 		$usuario = $usuarioModel
 			->select("usu_id,usu_usuario,usu_password,usu_correo,usu_nombre,usu_apellido,usu_tipo,usu_sta")
 			->where("usu_correo", $correo)
 			->first();
+
+		//var_dump($usuario);
 
 		if (is_null($usuario)) {
 			$dataLog = [
@@ -126,7 +126,8 @@ class Usuarios extends ResourceController
 			];
 
 			$this->logSistema(["tipo" => "notice", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
-			return $this->respondPlpx("invalid_request", "Usuario.correoContrasenaInvalida");
+			$response = getErrorsUsuario(1007);
+			return $this->apiResponseError("invalid_request", [...$response, "id" => "login"]);
 		}
 
 		if ($usuario->usu_sta == 0) {
@@ -155,6 +156,27 @@ class Usuarios extends ResourceController
 			return $this->respondPlpx("invalid_request", lang("Usuario.correoContrasenaInvalida"));
 		}
 
+		$key = getenv("JWT_SECRET");
+		$iat = time(); // current timestamp value
+		$exp = $iat + 3600;
+
+		$payload = [
+			"iss" => "Issuer of the JWT",
+			"aud" => "Audience that the JWT",
+			"sub" => "Subject of the JWT",
+			"iat" => $iat, //Time the JWT issued at
+			"exp" => $exp, // Expiration time of token
+			"email" => $correo,
+		];
+
+		$token = JWT::encode($payload, $key, "HS256");
+
+		$response = [
+			"token" => $token,
+			"title" => lang("Usuario.sesionIniciada"),
+			"code" => 200,
+		];
+
 		// 	//CREA SESIÓN CON DATOS DEL USUARIO
 		// 	$dataSessionUsuario = [
 		// 		"usu_id" => $usuario->usu_id,
@@ -177,7 +199,7 @@ class Usuarios extends ResourceController
 
 		// 	$this->logUsuario(["accion" => $logAccion, ...$dataLog]);
 
-		// 	return $this->respondPlpx("ok", "Usuario.sesionIniciada", true);
+		return $this->respondPlpx("ok", $response, true);
 		// } catch (Error $e) {
 		// 	$dataLog = [
 		// 		"mensaje" => "Error general",

@@ -60,31 +60,37 @@ function validateEmail($correo = null, &$error = [])
 		$isValid = false;
 	}
 
-	$error = [...$error, "id" => "correo"];
+	if (!$isValid) {
+		$error = [...$error, "id" => "correo"];
+	}
+
 	return $isValid;
 }
 
-function validatePassword($psw = null, &$errors = [])
+function validatePassword($psw = null, &$error = [])
 {
 	$isValid = true;
 
 	if (isset($psw)) {
 		if ($psw == "") {
-			$errors = getErrorsUsuario(1002);
+			$error = getErrorsUsuario(1002);
 			$isValid = false;
 		} elseif (strlen($psw) < 8) {
-			$errors = getErrorsUsuario(1003);
+			$error = getErrorsUsuario(1003);
 			$isValid = false;
 		} elseif (strlen($psw) > 15) {
-			$errors = getErrorsUsuario(1004);
+			$error = getErrorsUsuario(1004);
 			$isValid = false;
 		}
 	} else {
-		$errors = getErrorsCommon(200);
+		$error = getErrorsCommon(200);
 		$isValid = false;
 	}
 
-	$errors = [...$errors, "id" => "contrasena"];
+	if (!$isValid) {
+		$error = [...$error, "id" => "contrasena"];
+	}
+
 	return $isValid;
 }
 

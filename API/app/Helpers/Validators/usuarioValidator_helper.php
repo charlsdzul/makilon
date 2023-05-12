@@ -14,11 +14,11 @@ function loginValidator($datos = null, &$errors = null)
 		$errorsValidation += ["datos" => $errorsValidate];
 	} else {
 		if (!validateEmail($correo, $errorsEmail)) {
-			$errorsValidation += [$errorsEmail];
+			array_push($errorsValidation, $errorsEmail);
 		}
 
 		if (!validatePassword($contrasena, $errorsContrasena)) {
-			$errorsValidation += [...$errorsValidation, ...$errorsContrasena];
+			array_push($errorsValidation, $errorsContrasena);
 		}
 	}
 
