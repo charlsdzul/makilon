@@ -96,120 +96,110 @@ class Usuarios extends ResourceController
 	{
 		$logAccion = "Iniciar sesión";
 
-		if (!loginValidator($this->request->getPost(), $errors)) {
-			$dataLog = [
-				"mensaje" => lang("Common.errorDatosValidacion"),
-				"mensaje_objeto" => $errors,
-				"request_respond" => "invalid_request",
+		try {
+			if (!loginValidator($this->request->getPost(), $errors)) {
+				$dataLog = [
+					"mensaje" => lang("Common.errorDatosValidacion"),
+					"mensaje_objeto" => $errors,
+					"request_respond" => "invalid_request",
+				];
+
+				$this->logSistema(["tipo" => "notice", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
+				return $this->apiResponseError("invalid_request", $errors);
+			}
+
+			$correo = $this->request->getPost("correo");
+			$contrasena = $this->request->getPost("contrasena");
+			$usuarioModel = new UsuarioModel();
+
+			$usuario = $usuarioModel
+				->select("usu_id,usu_usuario,usu_password,usu_correo,usu_nombre,usu_apellido,usu_tipo,usu_sta")
+				->where("usu_correo", $correo)
+				->first();
+
+			if (is_null($usuario)) {
+				$dataLog = [
+					"mensaje" => "Correo no existe: $correo",
+					"mensaje_objeto" => null,
+					"request_respond" => "invalid_request - " . lang("Usuario.correoContrasenaInvalida"),
+				];
+
+				$this->logSistema(["tipo" => "notice", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
+				$response = getErrorsUsuario(1007);
+				return $this->apiResponseError("invalid_request", [[...$response, "id" => "login1"]]);
+			}
+
+			if ($usuario->usu_sta == 0) {
+				$dataLog = [
+					"usuario_id" => $usuario->usu_id,
+					"usuario_usuario" => $usuario->usu_usuario,
+					"usuario_correo" => $usuario->usu_correo,
+					"mensaje" => "Cuenta inactiva",
+					"request_respond" => "invalid_request - " . lang("Usuario.cuentaInactiva"),
+				];
+
+				$this->logUsuario(["accion" => $logAccion, ...$dataLog]);
+				$response = getErrorsUsuario(1008);
+				return $this->apiResponseError("invalid_request", [[...$response, "id" => "login"]]);
+			}
+
+			if (!password_verify($contrasena, $usuario->usu_password)) {
+				$dataLog = [
+					"usuario_id" => $usuario->usu_id,
+					"usuario_usuario" => $usuario->usu_usuario,
+					"usuario_correo" => $usuario->usu_correo,
+					"mensaje" => "Password incorrecto",
+					"request_respond" => "invalid_request - " . lang("Usuario.correoContrasenaInvalida"),
+				];
+
+				$this->logUsuario(["accion" => $logAccion, ...$dataLog]);
+				$response = getErrorsUsuario(1007);
+				return $this->apiResponseError("invalid_request", [[...$response, "id" => "login"]]);
+			}
+
+			$key = getenv("JWT_SECRET");
+			$iat = time(); // current timestamp value
+			$exp = $iat + 3600;
+
+			$payload = [
+				"iat" => $iat, //Time the JWT issued at
+				"exp" => $exp, // Expiration time of token
+				"email" => $correo,
 			];
 
-			$this->logSistema(["tipo" => "notice", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
-			return $this->apiResponseError("invalid_request", $errors);
-		}
+			$token = JWT::encode($payload, $key, "HS256");
 
-		$correo = $this->request->getPost("correo");
-		$contrasena = $this->request->getPost("contrasena");
-		$usuarioModel = new UsuarioModel();
-
-		$usuario = $usuarioModel
-			->select("usu_id,usu_usuario,usu_password,usu_correo,usu_nombre,usu_apellido,usu_tipo,usu_sta")
-			->where("usu_correo", $correo)
-			->first();
-
-		//var_dump($usuario);
-
-		if (is_null($usuario)) {
-			$dataLog = [
-				"mensaje" => "Correo no existe: $correo",
-				"mensaje_objeto" => null,
-				"request_respond" => "invalid_request - " . lang("Usuario.correoContrasenaInvalida"),
+			$response = [
+				"token" => $token,
+				"createdAt" => $iat,
+				"email" => $usuario->usu_correo,
+				"role" => "admin",
+				"user" => $usuario->usu_usuario,
+				"name" => $usuario->usu_nombre,
+				"title" => lang("Usuario.sesionIniciada"),
 			];
 
-			$this->logSistema(["tipo" => "notice", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
-			$response = getErrorsUsuario(1007);
-			return $this->apiResponseError("invalid_request", [...$response, "id" => "login"]);
-		}
-
-		if ($usuario->usu_sta == 0) {
 			$dataLog = [
 				"usuario_id" => $usuario->usu_id,
 				"usuario_usuario" => $usuario->usu_usuario,
 				"usuario_correo" => $usuario->usu_correo,
-				"mensaje" => "Cuenta inactiva",
-				"request_respond" => "invalid_request - " . lang("Usuario.cuentaInactiva"),
+				"mensaje" => "Sesión iniciada",
+				"request_respond" => "ok - " . lang("Usuario.sesionIniciada"),
 			];
 
 			$this->logUsuario(["accion" => $logAccion, ...$dataLog]);
-			return $this->respondPlpx("invalid_request", lang("Usuario.correoContrasenaInvalida"));
-		}
 
-		if (!password_verify($contrasena, $usuario->usu_password)) {
+			return $this->apiResponse("ok", [[...$response, "id" => "login"]]);
+		} catch (Error $e) {
 			$dataLog = [
-				"usuario_id" => $usuario->usu_id,
-				"usuario_usuario" => $usuario->usu_usuario,
-				"usuario_correo" => $usuario->usu_correo,
-				"mensaje" => "Password incorrecto",
-				"request_respond" => "invalid_request - " . lang("Usuario.correoContrasenaInvalida"),
+				"mensaje" => "Error general",
+				"mensaje_objeto" => $e,
+				"request_respond" => "server_error - " . lang("Common.solicitudNoProcesada"),
 			];
 
-			$this->logUsuario(["accion" => $logAccion, ...$dataLog]);
-			return $this->respondPlpx("invalid_request", lang("Usuario.correoContrasenaInvalida"));
+			$this->logSistema(["tipo" => "critical", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
+			return $this->respondPlpx("server_error", "Common.solicitudNoProcesada", false);
 		}
-
-		$key = getenv("JWT_SECRET");
-		$iat = time(); // current timestamp value
-		$exp = $iat + 3600;
-
-		$payload = [
-			"iss" => "Issuer of the JWT",
-			"aud" => "Audience that the JWT",
-			"sub" => "Subject of the JWT",
-			"iat" => $iat, //Time the JWT issued at
-			"exp" => $exp, // Expiration time of token
-			"email" => $correo,
-		];
-
-		$token = JWT::encode($payload, $key, "HS256");
-
-		$response = [
-			"token" => $token,
-			"title" => lang("Usuario.sesionIniciada"),
-			"code" => 200,
-		];
-
-		// 	//CREA SESIÓN CON DATOS DEL USUARIO
-		// 	$dataSessionUsuario = [
-		// 		"usu_id" => $usuario->usu_id,
-		// 		"usu_usuario" => $usuario->usu_usuario,
-		// 		"usu_correo" => $usuario->usu_correo,
-		// 		"usu_nombre" => $usuario->usu_nombre,
-		// 		"usu_apellido" => $usuario->usu_apellido,
-		// 		"usu_tipo" => $usuario->usu_tipo,
-		// 	];
-
-		// 	$this->session->set($dataSessionUsuario);
-
-		// 	$dataLog = [
-		// 		"usuario_id" => $usuario->usu_id,
-		// 		"usuario_usuario" => $usuario->usu_usuario,
-		// 		"usuario_correo" => $usuario->usu_correo,
-		// 		"mensaje" => "Sesión iniciada",
-		// 		"request_respond" => "ok - " . lang("Usuario.sesionIniciada"),
-		// 	];
-
-		// 	$this->logUsuario(["accion" => $logAccion, ...$dataLog]);
-
-		return $this->respondPlpx("ok", $response, true);
-		// } catch (Error $e) {
-		// 	$dataLog = [
-		// 		"mensaje" => "Error general",
-		// 		"mensaje_objeto" => $e,
-		// 		"request_respond" => "server_error - " . lang("Common.solicitudNoProcesada"),
-		// 	];
-
-		// 	$this->logSistema(["tipo" => "critical", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
-		// 	return $this->respondPlpx("server_error", "Common.solicitudNoProcesada", false);
-		// }
 	}
 
 	/**

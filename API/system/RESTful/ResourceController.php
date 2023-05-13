@@ -305,24 +305,11 @@ class ResourceController extends BaseResource
 		$responseDesc = strtoupper($responseName);
 		$responseCode = $this->codesPlpx[$responseName];
 
-		$isError = false;
-
-		$errorsName = ["server_error", "invalid_request"];
-
-		if (in_array($responseName, $errorsName)) {
-			$isError = true;
-		}
-
-		$response = [
-			"code" => $responseCode,
-			"codeDescription" => $responseDesc,
-		];
-
-		if ($isError) {
-			$response = [...$response, "errors" => [$data]];
-		} else {
-			$response = [...$response, "data" => [$data]];
-		}
+		$response = new stdClass();
+		$response->status = $responseCode;
+		$response->description = $responseDesc;
+		$response->data = $data;
+		$response = (array) $response;
 
 		return $this->respond($response, $responseCode);
 	}
