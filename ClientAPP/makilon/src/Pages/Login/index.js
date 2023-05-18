@@ -3,13 +3,16 @@ import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
 import api from "../../Utils/api";
+import AuthService from "../../Services/auth.services";
 
 const Login = (props) => {
 	const iniciarSesion = async () => {
-		console.log("iniciarSesion");
-		const response = await api.get("apartados", { data: "datoo" }).catch((erro) => erro);
-
+		const response = await AuthService.login("c.dzul@hotmail.com", "12345678");
 		console.log(response);
+
+		if (response.data.accessToken) {
+			localStorage.setItem("token", response.data.accessToken);
+		}
 	};
 
 	return (

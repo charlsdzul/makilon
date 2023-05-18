@@ -1,8 +1,10 @@
 import axios from "axios";
-const API_URL = "http://localhost/makilon/API/public/api/v1/";
+const APIURL = "http://localhost/makilon/API/public/api/v1/";
+
+export const API_URL = APIURL;
 
 export default {
-	post: async ({ url, formData }) => {
+	post: async (url, formData) => {
 		return await axios({
 			method: "post",
 			url: API_URL + url,

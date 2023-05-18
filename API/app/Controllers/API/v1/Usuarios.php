@@ -170,7 +170,7 @@ class Usuarios extends ResourceController
 			$token = JWT::encode($payload, $key, "HS256");
 
 			$response = [
-				"token" => $token,
+				"accessToken" => $token,
 				"createdAt" => $iat,
 				"email" => $usuario->usu_correo,
 				"role" => "admin",
@@ -189,7 +189,7 @@ class Usuarios extends ResourceController
 
 			$this->logUsuario(["accion" => $logAccion, ...$dataLog]);
 
-			return $this->apiResponse("ok", [[...$response, "id" => "login"]]);
+			return $this->apiResponse("ok", [...$response, "id" => "login"]);
 		} catch (Error $e) {
 			$dataLog = [
 				"mensaje" => "Error general",
