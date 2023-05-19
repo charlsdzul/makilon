@@ -1,10 +1,11 @@
 import { Navigate } from "react-router-dom";
 
-const ProtectedRoute = ({ auth, children }) => {
+const ProtectedRoute = ({ session, children }) => {
+	console.log("ProtectedRoute", session);
 	const redirectPath = "/notaccess";
-	if (!auth) {
-		return <Navigate to={redirectPath} replace />;
-	}
+	// if (!auth) {
+	// 	return <Navigate to={redirectPath} replace />;
+	// }
 
 	return children;
 };
