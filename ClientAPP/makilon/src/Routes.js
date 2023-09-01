@@ -55,7 +55,7 @@ export const router = createBrowserRouter([
 				path: "dashboard",
 				errorElement: <ErrorBundary />,
 				element: (
-					<ProtectedRoute session={session}>
+					<ProtectedRoute>
 						<AuthContext.Consumer>{(auth) => <Dashboard props={{ ...auth }} />}</AuthContext.Consumer>
 					</ProtectedRoute>
 				),

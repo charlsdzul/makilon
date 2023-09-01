@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import AppWrapper from "../../../../../../Users/Chrls/Desktop/Nueva carpeta/AppWrapper";
+import AppWrapper from "./Utils/AuthContext";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = React.createRoot(document.getElementById("root"));
 console.log("root");
-root.render(
+ReactDOM.render(
 	<React.StrictMode>
 		<AppWrapper />
-	</React.StrictMode>
+	</React.StrictMode>,
+	root
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,12 +1,17 @@
-import { Navigate } from "react-router-dom";
+import AuthContext from "./Utils/AuthContext";
+import { Route, Redirect } from "react-router-dom";
 
-const ProtectedRoute = ({ session, children }) => {
-	console.log("ProtectedRoute", session);
-	const redirectPath = "/notaccess";
-	// if (!auth) {
-	// 	return <Navigate to={redirectPath} replace />;
-	// }
-
-	return children;
+const ProtectedRoute = ({ session, children: Component }) => {
+	return (
+		<AuthContext.Consumer>
+			{(auth) => (
+				<Route
+					render={(props) => {
+						return <Component auth={auth} {...props} />;
+					}}
+				/>
+			)}
+		</AuthContext.Consumer>
+	);
 };
 export default ProtectedRoute;
