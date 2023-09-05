@@ -10,8 +10,10 @@ const Login = (props) => {
 		const response = await AuthService.login("c.dzul@hotmail.com", "12345678");
 		console.log(response);
 
-		if (response.data.accessToken) {
+		if (response.status===200) {
 			localStorage.setItem("token", response.data.accessToken);
+		}else{
+			//alert("hay error")
 		}
 	};
 
@@ -26,7 +28,7 @@ const Login = (props) => {
 					</Form.Group>
 
 					<Form.Group className="mb-3" controlId="formBasicPassword">
-						<Form.Label>Password</Form.Label>
+						<Form.Label>Password</Form.Label>																																										
 						<Form.Control type="password" placeholder="Password" />
 					</Form.Group>
 					<Form.Group className="mb-3" controlId="formBasicCheckbox">

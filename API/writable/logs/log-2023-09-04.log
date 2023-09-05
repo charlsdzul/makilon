@@ -1,0 +1,1329 @@
+INFO - 2023-09-04 21:11:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-04 21:12:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-04 21:12:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-04 21:29:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-04 21:29:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-04 21:30:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-04 21:35:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-09-04 21:35:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 21:35:49 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 21:35:49 --> Unknown column 'usu_correo1' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = :usu_correo1:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 21:36:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 21:36:03 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 21:36:03 --> Unknown column 'usu_correo1' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = :usu_correo1:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 21:37:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 21:37:44 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 21:37:44 --> Unknown column 'usu_correo1' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = :usu_correo1:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 21:37:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 21:37:59 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 21:37:59 --> Unknown column 'usu_correo1' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = :usu_correo1:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 21:48:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 21:48:26 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 21:48:26 --> Unknown column 'usu_correo1' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = :usu_correo1:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 21:51:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 21:51:57 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(121): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 21:51:57 --> Unknown column 'usu_correo1' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = :usu_correo1:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\API\v1\Usuarios.php(121): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 21:52:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 21:52:04 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(121): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 21:52:04 --> Unknown column 'usu_correo1' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = :usu_correo1:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\API\v1\Usuarios.php(121): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 21:52:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 21:52:10 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(121): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 21:52:10 --> Unknown column 'usu_correo1' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = :usu_correo1:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\API\v1\Usuarios.php(121): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 21:52:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 21:52:30 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(121): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 21:52:30 --> Unknown column 'usu_correo1' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = :usu_correo1:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\API\v1\Usuarios.php(121): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 21:52:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 21:52:50 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(121): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 21:52:50 --> Unknown column 'usu_correo1' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = :usu_correo1:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\API\v1\Usuarios.php(121): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 21:59:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 21:59:45 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(121): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 21:59:45 --> Unknown column 'usu_correo1' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = \'c.dzul@hotmail.com\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`, `usu_usuario`, `usu_password`, `usu_correo`, `usu_nombre`, `usu_apellido`, `usu_tipo`, `usu_sta`
+FROM `usuarios`
+WHERE `usu_correo1` = :usu_correo1:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\API\v1\Usuarios.php(121): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 9 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:00:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:00:01 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(121): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:00:01 --> Undefined variable $usuario
+in APPPATH\Controllers\API\v1\Usuarios.php on line 128.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(128): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'APPPATH\\Controllers\\API\\v1\\Usuarios.php', 128)
+ 2 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:00:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:00:12 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(121): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:00:12 --> Undefined variable $usuario
+in APPPATH\Controllers\API\v1\Usuarios.php on line 128.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(128): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'APPPATH\\Controllers\\API\\v1\\Usuarios.php', 128)
+ 2 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:00:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:00:38 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(121): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:00:38 --> Undefined variable $usuario
+in APPPATH\Controllers\API\v1\Usuarios.php on line 128.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(128): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'APPPATH\\Controllers\\API\\v1\\Usuarios.php', 128)
+ 2 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:00:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:00:51 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(121): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:00:51 --> Undefined variable $usuario
+in APPPATH\Controllers\API\v1\Usuarios.php on line 128.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(128): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'APPPATH\\Controllers\\API\\v1\\Usuarios.php', 128)
+ 2 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:01:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:01:10 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(121): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:03:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:03:44 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:04:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:04:18 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:05:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:05:23 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:07:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:07:04 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:08:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:08:23 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:12:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:12:40 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:12:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:12:51 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:17:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:17:01 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:17:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:17:44 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(118): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:18:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:18:44 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(119): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:19:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:19:39 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(119): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:20:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:20:21 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(119): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:20:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:20:38 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(119): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:21:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:21:22 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(119): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:23:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:23:02 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(119): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:23:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:23:50 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(120): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:24:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:24:33 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(124): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:25:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:25:44 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(124): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:25:44 --> Call to a member function getFirstRow() on bool
+in SYSTEMPATH\Model.php on line 250.
+ 1 SYSTEMPATH\BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 2 APPPATH\Controllers\API\v1\Usuarios.php(124): CodeIgniter\BaseModel->first()
+ 3 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 4 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:25:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:25:51 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(124): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:25:51 --> Call to a member function getFirstRow() on bool
+in SYSTEMPATH\Model.php on line 250.
+ 1 SYSTEMPATH\BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 2 APPPATH\Controllers\API\v1\Usuarios.php(124): CodeIgniter\BaseModel->first()
+ 3 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 4 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:27:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:27:10 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(124): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:27:10 --> Call to a member function getFirstRow() on bool
+in SYSTEMPATH\Model.php on line 250.
+ 1 SYSTEMPATH\BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 2 APPPATH\Controllers\API\v1\Usuarios.php(124): CodeIgniter\BaseModel->first()
+ 3 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 4 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:27:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:27:32 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(124): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:28:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:28:17 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(124): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:28:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:28:34 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(124): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:28:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:28:56 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(124): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:29:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:29:35 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(124): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:29:35 --> Call to a member function getFirstRow() on bool
+in SYSTEMPATH\Model.php on line 250.
+ 1 SYSTEMPATH\BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 2 APPPATH\Controllers\API\v1\Usuarios.php(124): CodeIgniter\BaseModel->first()
+ 3 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 4 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:31:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:31:10 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(125): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:31:10 --> Call to a member function getFirstRow() on bool
+in SYSTEMPATH\Model.php on line 250.
+ 1 SYSTEMPATH\BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 2 APPPATH\Controllers\API\v1\Usuarios.php(125): CodeIgniter\BaseModel->first()
+ 3 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 4 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:31:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:31:23 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(125): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:31:23 --> Call to a member function getFirstRow() on bool
+in SYSTEMPATH\Model.php on line 250.
+ 1 SYSTEMPATH\BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 2 APPPATH\Controllers\API\v1\Usuarios.php(125): CodeIgniter\BaseModel->first()
+ 3 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 4 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:32:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:32:12 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(125): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:32:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:32:55 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(125): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:33:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:33:12 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(125): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:33:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:33:40 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(125): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:33:40 --> Array to string conversion
+in APPPATH\Controllers\API\v1\Usuarios.php on line 211.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(211): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'APPPATH\\Controllers\\API\\v1\\Usuarios.php', 211)
+ 2 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:33:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:33:54 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(125): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:33:54 --> Array to string conversion
+in APPPATH\Controllers\API\v1\Usuarios.php on line 212.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(212): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'APPPATH\\Controllers\\API\\v1\\Usuarios.php', 212)
+ 2 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:34:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:34:17 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(125): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:34:17 --> Array to string conversion
+in APPPATH\Controllers\API\v1\Usuarios.php on line 212.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(212): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'APPPATH\\Controllers\\API\\v1\\Usuarios.php', 212)
+ 2 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:34:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:34:55 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(125): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:34:55 --> Array to string conversion
+in APPPATH\Controllers\API\v1\Usuarios.php on line 213.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(213): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'APPPATH\\Controllers\\API\\v1\\Usuarios.php', 213)
+ 2 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:35:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:35:46 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(125): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:35:46 --> Array to string conversion
+in APPPATH\Controllers\API\v1\Usuarios.php on line 213.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(213): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'APPPATH\\Controllers\\API\\v1\\Usuarios.php', 213)
+ 2 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:35:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:35:54 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(125): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:35:54 --> Array to string conversion
+in APPPATH\Controllers\API\v1\Usuarios.php on line 213.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(213): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'APPPATH\\Controllers\\API\\v1\\Usuarios.php', 213)
+ 2 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:36:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:36:28 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(125): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:36:28 --> Array to string conversion
+in APPPATH\Controllers\API\v1\Usuarios.php on line 213.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(213): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'APPPATH\\Controllers\\API\\v1\\Usuarios.php', 213)
+ 2 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:37:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:37:01 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(125): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-09-04 22:37:01 --> Array to string conversion
+in APPPATH\Controllers\API\v1\Usuarios.php on line 213.
+ 1 APPPATH\Controllers\API\v1\Usuarios.php(213): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'APPPATH\\Controllers\\API\\v1\\Usuarios.php', 213)
+ 2 SYSTEMPATH\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(70): CodeIgniter\CodeIgniter->run()
+INFO - 2023-09-04 22:37:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:37:41 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(125): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:38:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:38:37 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(125): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:39:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:39:12 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(127): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:39:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:39:52 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(128): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:40:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:40:12 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(128): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:41:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:41:05 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(128): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}
+INFO - 2023-09-04 22:45:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-09-04 22:45:09 --> mysqli_sql_exception: Unknown column 'usu_correo1' in 'where clause' in C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\makilon\API\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `usu_id`...', 0)
+#1 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usu_id`...')
+#2 C:\xampp\htdocs\makilon\API\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usu_id`...')
+#3 C:\xampp\htdocs\makilon\API\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT `usu_id`...', Array, false)
+#4 C:\xampp\htdocs\makilon\API\system\Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\makilon\API\system\BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\makilon\API\app\Controllers\API\v1\Usuarios.php(128): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(902): App\Controllers\API\v1\Usuarios->login()
+#8 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\API\v1\Usuarios))
+#9 C:\xampp\htdocs\makilon\API\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\makilon\API\public\index.php(70): CodeIgniter\CodeIgniter->run()
+#11 {main}

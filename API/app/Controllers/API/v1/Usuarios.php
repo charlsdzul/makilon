@@ -11,6 +11,7 @@ use Error;
 use CodeIgniter\I18n\Time;
 use App\Libraries\PlpxLogger;
 use Exception;
+use ErrorException;
 use CodeIgniter\HTTP\Response;
 use Firebase\JWT\JWT;
 
@@ -65,8 +66,8 @@ class Usuarios extends ResourceController
 		try {
 			$logger = new PlpxLogger();
 			$timeNow = new Time("now");
-			$mensajeJson = is_object($dataLog["mensaje_objeto"]) ? json_encode($dataLog["mensaje_objeto"]) : null;
-
+			$mensajeJson = is_object($dataLog["mensaje_objeto"]) ? json_encode($dataLog["mensaje_objeto"]) : $dataLog["mensaje_objeto"];
+			
 			$lSistema = new \App\Entities\LogSistema([
 				"logsis_controller" => $this->controllerName,
 				"logsis_method" => $this->router->methodName(),
@@ -111,16 +112,16 @@ class Usuarios extends ResourceController
 			$correo = $this->request->getPost("correo");
 			$contrasena = $this->request->getPost("contrasena");
 			$usuarioModel = new UsuarioModel();
-
-			$usuario = $usuarioModel
-				->select("usu_id,usu_usuario,usu_password,usu_correo,usu_nombre,usu_apellido,usu_tipo,usu_sta")
-				->where("usu_correo", $correo)
-				->first();
-
+							
+					$usuario = $usuarioModel
+					->select("usu_id,usu_usuario,usu_password,usu_correo,usu_nombre,usu_apellido,usu_tipo,usu_sta")
+					->where("usu_correo1", $correo)
+					->first();				
+				
 			if (is_null($usuario)) {
 				$dataLog = [
 					"mensaje" => "Correo no existe: $correo",
-					"mensaje_objeto" => null,
+					"mensaje_json" => null,
 					"request_respond" => "invalid_request - " . lang("Usuario.correoContrasenaInvalida"),
 				];
 
@@ -191,14 +192,15 @@ class Usuarios extends ResourceController
 
 			return $this->apiResponse("ok", [...$response, "id" => "login"]);
 		} catch (Error $e) {
+		
 			$dataLog = [
-				"mensaje" => "Error general",
-				"mensaje_objeto" => $e,
-				"request_respond" => "server_error - " . lang("Common.solicitudNoProcesada"),
+				"mensaje" => lang("Common.solicitudNoProcesada"),
+				"mensaje_objeto" => $e->getMessage(),
+				"request_respond" => "server_error",
 			];
-
+			
 			$this->logSistema(["tipo" => "critical", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
-			return $this->respondPlpx("server_error", "Common.solicitudNoProcesada", false);
+			return $this->apiResponseError("server_error", getErrorsCommon(801,lang("Usuario.errorLogin")));
 		}
 	}
 
