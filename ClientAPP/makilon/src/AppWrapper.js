@@ -1,7 +1,7 @@
 import App from "./App";
 import AuthContext from "./Utils/AuthContext.js";
 
-const session = { token: "123456", user: "charls" };
+const session = { token: "123456", user: "" };
 
 function AppWrapper() {
 	return (

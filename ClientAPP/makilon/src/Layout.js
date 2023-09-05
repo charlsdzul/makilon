@@ -8,14 +8,16 @@ const Layout = () => {
 
 
   return (
+ <>
     <AuthContext.Consumer>
       {(auth) => (
         <>
          <TopBar auth={auth}></TopBar>
-      <RouterProvider router={router}></RouterProvider>
        </>
       )}
     </AuthContext.Consumer>
+            <RouterProvider router={router} ></RouterProvider></>
+
   );
 };
 
