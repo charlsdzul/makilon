@@ -4,6 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
 const TopBar = (props) => {
+	console.log(props)
 	return (
 		<>
 			<Navbar bg="light" expand="lg">
