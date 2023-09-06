@@ -1,13 +1,13 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Layout from "./Layout";
+import LayoutApp from "./LayoutApp";
 
 
 function App() {
 	console.log("App");
 
 	return (
-		<Layout/>		 
+		<LayoutApp/>		 
 	);
 }
 

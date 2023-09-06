@@ -115,7 +115,7 @@ class Usuarios extends ResourceController
 							
 					$usuario = $usuarioModel
 					->select("usu_id,usu_usuario,usu_password,usu_correo,usu_nombre,usu_apellido,usu_tipo,usu_sta")
-					->where("usu_correo1", $correo)
+					->where("usu_correo", $correo)
 					->first();				
 				
 			if (is_null($usuario)) {

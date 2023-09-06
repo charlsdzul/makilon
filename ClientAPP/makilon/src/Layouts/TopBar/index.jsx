@@ -3,11 +3,15 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
+
 const TopBar = (props) => {
 	console.log(props)
 	return (
 		<>
-			<Navbar bg="light" expand="lg">
+		      
+
+
+			{/* <Navbar bg="light" expand="lg">
 				<Container>
 					<Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -25,7 +29,7 @@ const TopBar = (props) => {
 						</Nav>
 					</Navbar.Collapse>
 				</Container>
-			</Navbar>
+			</Navbar> */}
 		</>
 	);
 };
