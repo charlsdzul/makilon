@@ -11,15 +11,19 @@ import stylesLogin from '../../CSS/login.module.css'
 import { Card, Space } from 'antd';
 import CButton from "../../Components/CButton";
 import { rulesLogin } from "./rulesLogin";
+import { useTranslation } from "react-i18next";
 
 
 const Login = (props) => {
+	const { t } = useTranslation(["charls"]);
+
 	console.log(styles)
 	const formRef = useRef(null);
 
 	const [form] = Form.useForm();
 	const nameValue = Form.useWatch('usuario', form);
 
+	console.log(t("demo"))
 	
 
 	const onRequiredTypeChange = ( e) => {
