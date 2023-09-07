@@ -23,7 +23,7 @@ const Login = (props) => {
 	const [form] = Form.useForm();
 	const nameValue = Form.useWatch('usuario', form);
 
-	console.log(t("demo"))
+	console.log("asasas",t("demo"))
 	
 
 	const onRequiredTypeChange = ( e) => {
@@ -83,7 +83,7 @@ console.log(e)
     >
       
       <Form.Item label="Usuario"  name="usuario" required tooltip="This is a required field"  rules={rulesLogin.usuario}>
-        <Input placeholder="input placeholder"  size="large" />
+        <Input placeholder={t("demo")}  size="large" />
       </Form.Item>
 
       <Form.Item
