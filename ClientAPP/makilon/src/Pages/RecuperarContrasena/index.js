@@ -9,6 +9,7 @@ import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import styles from '../../CSS/common.module.css'
 import stylesLogin from '../../CSS/login.module.css'
 import { Card, Space } from 'antd';
+import CButton from "../../Components/CButton";
 
 
 const cardStyle = { 
@@ -109,7 +110,7 @@ const RecuperarContrasena = (props) => {
   <Row justify="center" gutter={16}>
   <Col span={24} >
 
-	<Button type="primary" htmlType="submit" size="large" block >Recuperar contraseña</Button>
+	<CButton  htmlType="submit" size="large" block text="Recuperar contraseña"/>
 
 	</Col>
 

@@ -9,6 +9,8 @@ import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import styles from '../../CSS/common.module.css'
 import stylesLogin from '../../CSS/login.module.css'
 import { Card, Space } from 'antd';
+import CButton from "../../Components/CButton";
+import { rulesLogin } from "./rulesLogin";
 
 
 const Login = (props) => {
@@ -18,19 +20,7 @@ const Login = (props) => {
 	const [form] = Form.useForm();
 	const nameValue = Form.useWatch('usuario', form);
 
-	const usuarioRules = [
-        {
-          required: true,
-          message: 'Ingresa usuario',
-        },
-      ]
-
-	  const contrasenaRules = [
-        {
-          required: true,
-          message: 'Ingresa contrasena',
-        },
-      ]  
+	
 
 	const onRequiredTypeChange = ( e) => {
 		console.log(e)
@@ -88,14 +78,14 @@ console.log(e)
 
     >
       
-      <Form.Item label="Usuario"  name="usuario" required tooltip="This is a required field"  rules={usuarioRules}>
+      <Form.Item label="Usuario"  name="usuario" required tooltip="This is a required field"  rules={rulesLogin.usuario}>
         <Input placeholder="input placeholder"  size="large" />
       </Form.Item>
 
       <Form.Item
         label="Contraseña"
 		name="contrasena" 
-		rules={contrasenaRules}
+		rules={rulesLogin.contrasena}
         tooltip={{ title: 'Tooltip with customize icon', icon: <InfoCircleOutlined /> }}
       >
         <Input.Password  size="large" placeholder="input placeholder"          iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
@@ -106,14 +96,16 @@ console.log(e)
 	  <Row justify="center" gutter={16}>
 	  <Col span={24} >
 
-        <Button type="primary"  size="large" htmlType="submit" block >Ingresar</Button>
+		<CButton htmlType="submit" size="large"    block text="Ingresar" />
 
 		</Col>
 
 		<Col >
 
 
-<Button type="link">¿Olvidaste tu contraseña?</Button>
+
+<CButton text="¿Olvidaste tu contraseña?" type="link"  />
+
 
 </Col>
 
