@@ -6,19 +6,13 @@ import { Button, Form, Input, Radio } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { Col, Divider, Row } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import styles from '../../CSS/common.module.css'
+import stylesLogin from '../../CSS/login.module.css'
+import { Card, Space } from 'antd';
 
-
-const cardStyle = { 
-    //width: "360px", 
-    //height: "192px", 
-    borderRadius: "5px", 
-    //marginRight: "24px", 
-	backgroundColor:"white",
-    boxShadow: "rgba(208, 216, 243, 0.6) 0 4px 8px 5px" ,
-	padding:"1rem"
- }
 
 const Login = (props) => {
+	console.log(styles)
 	const formRef = useRef(null);
 
 	const [form] = Form.useForm();
@@ -31,20 +25,15 @@ const Login = (props) => {
         },
       ]
 
-
 	  const contrasenaRules = [
         {
           required: true,
           message: 'Ingresa contrasena',
         },
-      ]
+      ]  
 
-	  
-
-	// const [requiredMark, setRequiredMarkType] = useState('optional');
 	const onRequiredTypeChange = ( e) => {
 		console.log(e)
-		//setRequiredMarkType(requiredMarkValue);
 	  };
 
 	const iniciarSesion = async ({usuario, contrasena}) => {
@@ -79,14 +68,12 @@ console.log(e)
 
 	return (
 		
-		<CContainer>
+		<CContainer className={stylesLogin.c_container}>
 
 <Row justify="center">
-      <Col span={5}>
+      <Col  xs={16} sm={12}  md={10}  lg={8}  xl={6}  xxl={4}>
 
-		<div style={cardStyle}>
-
-
+	  <Card title="Iniciar Sesion" size="default" type="inner" className={styles.c_shadow}>
 		<Row justify="center">
 
 		<Form
@@ -94,34 +81,32 @@ console.log(e)
       form={form}
       layout="vertical"
 	  ref={formRef}
-    //   initialValues={{ requiredMarkValue: requiredMark }}
       onValuesChange={onRequiredTypeChange}
 	  onFinish={onFinish}
 	  onFinishFailed={onFinishFailed}
 
 
-    //   requiredMark={requiredMark}
     >
       
       <Form.Item label="Usuario"  name="usuario" required tooltip="This is a required field"  rules={usuarioRules}>
-        <Input placeholder="input placeholder" />
+        <Input placeholder="input placeholder"  size="large" />
       </Form.Item>
+
       <Form.Item
         label="Contraseña"
 		name="contrasena" 
 		rules={contrasenaRules}
         tooltip={{ title: 'Tooltip with customize icon', icon: <InfoCircleOutlined /> }}
       >
-        <Input.Password placeholder="input placeholder"          iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+        <Input.Password  size="large" placeholder="input placeholder"          iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
 />
       </Form.Item>
 
 
-      <Form.Item>
 	  <Row justify="center" gutter={16}>
 	  <Col span={24} >
 
-        <Button type="primary" htmlType="submit" block >Iniciar sesion</Button>
+        <Button type="primary"  size="large" htmlType="submit" block >Ingresar</Button>
 
 		</Col>
 
@@ -130,11 +115,9 @@ console.log(e)
 
 <Button type="link">¿Olvidaste tu contraseña?</Button>
 
-
 </Col>
 
 		</Row>
-      </Form.Item>
     </Form>		
 
 	</Row>
@@ -142,20 +125,18 @@ console.log(e)
 
 
 	<Row justify="center" gutter={16}>
-	<Button type="primary"  style={{ background: "#16ff3f", borderColor: "yellow" }}>Crear cuenta</Button>
+	<Button type="primary"  size="large"  style={{ background: "#16ff3f", borderColor: "yellow" }}>Crear cuenta</Button>
 	</Row>
 
 
 
-	</div>
+	
 
+    </Card>
 
 
 	</Col>
     </Row>
-
-
-	
 
 		</CContainer>
 			

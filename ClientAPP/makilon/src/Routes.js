@@ -2,6 +2,7 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import AuthContext from "./Utils/AuthContext";
+import RecuperarContrasena from "./Pages/RecuperarContrasena";
 
 const Register = React.lazy(() => import("./Pages/Register"));
 const Vacant = React.lazy(() => import("./Pages/Vacant"));
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
 			{
 				path: "login",
 				element: <Login />,
+			},
+			{
+				path: "login/recuperar",
+				element: <RecuperarContrasena />,
 			},
 			{
 				path: "registro",

@@ -1,0 +1,20 @@
+.c_container  { 
+
+ }
+
+ .c_layoutapp { 
+	background-color:snow;    height: 100vh;
+
+
+ }
+
+.c_card_style  { 
+    border-radius: 5px;
+	background-color:white;
+    box-shadow: rgba(208, 216, 243, 0.6) 0 4px 8px 5px ;
+	padding:1rem;
+ }
+
+ .c_shadow  { 
+    box-shadow: rgba(208, 216, 243, 0.6) 0 4px 8px 5px ;
+ }

@@ -3,6 +3,8 @@ import AuthContext from "./Utils/AuthContext";
 import TopBar from "./Layouts/TopBar";
 import { router } from "./Routes";
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import styles from './CSS/common.module.css'
+
 const { Header, Content, Footer } = Layout;
 
 const LayoutApp = () => {
@@ -11,7 +13,7 @@ const LayoutApp = () => {
 
     <AuthContext.Consumer>
       {(auth) => (        
-            <Layout className="layout">
+            <Layout className={styles.c_layoutapp } >
                {/* <TopBar auth={auth}></TopBar> */}
             <Header style={{ display: 'flex', alignItems: 'center' }}>
 
@@ -19,6 +21,8 @@ const LayoutApp = () => {
   theme="dark"
   mode="horizontal"
   defaultSelectedKeys={['2']}
+  style={{ flex: "auto", minWidth: 0 }}
+
   items={new Array(15).fill(null).map((_, index) => {
     const key = index + 1;
     return {
@@ -32,7 +36,7 @@ const LayoutApp = () => {
 
        <Content
         style={{
-          padding: '1rem',
+          padding: '1rem'
         }}
       > 
         
