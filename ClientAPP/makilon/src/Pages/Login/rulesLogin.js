@@ -24,5 +24,3 @@ export const rulesLogin = {
 		},
 	],
 };
-
-export const getRules = () => {};

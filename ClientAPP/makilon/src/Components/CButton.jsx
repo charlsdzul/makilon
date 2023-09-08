@@ -1,9 +1,13 @@
-import React, {  } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { Button } from 'antd';
+import { Button } from "antd";
 
 const CButton = (props) => {
-	return  <Button type={props.type}  size={props.size}  htmlType={props.htmlType} block={props.block} >{props.text}</Button>
+	return (
+		<Button type={props.type} size={props.size} htmlType={props.htmlType} block={props.block} style={props.style}>
+			{props.text}
+		</Button>
+	);
 };
 
 CButton.propTypes = {
@@ -12,7 +16,9 @@ CButton.propTypes = {
 	text: PropTypes.string,
 	htmlType: PropTypes.string,
 	size: PropTypes.string,
-    block: PropTypes.bool,
+	block: PropTypes.bool,
+	style: PropTypes.object,
+
 	// value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.number, PropTypes.string]),
 	// displayFormat: PropTypes.string,
 	// useMaskBehavior: PropTypes.bool,
@@ -38,15 +44,16 @@ CButton.propTypes = {
 	// visible: PropTypes.bool,
 	// emptyBox: PropTypes.bool,
 	// showClearButton: PropTypes.bool,
-  };
+};
 
 CButton.defaultProps = {
 	id: "",
 	text: "",
 	type: "primary",
-	htmlType:"",
-	size:"default",
-	block:false
-}
+	htmlType: "",
+	size: "default",
+	block: false,
+	style: null,
+};
 
 export default CButton;

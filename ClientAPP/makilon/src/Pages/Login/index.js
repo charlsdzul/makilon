@@ -18,10 +18,9 @@ const Login = (props) => {
 	const { t } = useTranslation(["Usuario", "Common"]);
 	const [rules] = useState(asignarMensajeTranslation(t, rulesLogin));
 
-	console.log(t("Usuario.email.emailAsunto"));
-	console.log(t("Usuario.correoCodigoInvalido"));
+	//console.log(t("Usuario.email.emailAsunto"));
+	//console.log(t("Usuario.correoCodigoInvalido"));
 
-	console.log(styles);
 	const formRef = useRef(null);
 
 	const [form] = Form.useForm();
@@ -58,53 +57,53 @@ const Login = (props) => {
 		console.log(e);
 	};
 
-	console.log("render");
-
 	return (
 		<CContainer className={stylesLogin.c_container}>
 			<Row justify="center">
 				<Col xs={16} sm={12} md={10} lg={8} xl={6} xxl={4}>
 					<Card title="Iniciar Sesion" size="default" type="inner" className={styles.c_shadow}>
 						<Row justify="center">
-							<Form
-								form={form}
-								layout="vertical"
-								ref={formRef}
-								onValuesChange={onRequiredTypeChange}
-								onFinish={onFinish}
-								onFinishFailed={onFinishFailed}>
-								<Form.Item label="Usuario" name="usuario" required tooltip="This is a required field" rules={rules.usuario}>
-									<Input placeholder={t("demo")} size="large" />
-								</Form.Item>
+							<Col span={24}>
+								<Form
+									form={form}
+									layout="vertical"
+									ref={formRef}
+									onValuesChange={onRequiredTypeChange}
+									onFinish={onFinish}
+									onFinishFailed={onFinishFailed}>
+									<Form.Item label="Usuario" name="usuario" required tooltip="This is a required field" rules={rules.usuario}>
+										<Input placeholder={t("demo")} size="large" />
+									</Form.Item>
 
-								<Form.Item
-									label="Contraseña"
-									name="contrasena"
-									rules={rules.contrasena}
-									tooltip={{ title: "Tooltip with customize icon", icon: <InfoCircleOutlined /> }}>
-									<Input.Password
-										size="large"
-										placeholder="input placeholder"
-										iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
-									/>
-								</Form.Item>
+									<Form.Item
+										label="Contraseña"
+										name="contrasena"
+										rules={rules.contrasena}
+										tooltip={{ title: "Tooltip with customize icon", icon: <InfoCircleOutlined /> }}>
+										<Input.Password
+											size="large"
+											placeholder="input placeholder"
+											iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+										/>
+									</Form.Item>
 
-								<Row justify="center" gutter={16}>
-									<Col span={24}>
-										<CButton htmlType="submit" size="large" block text="Ingresar" />
-									</Col>
+									<Row justify="center" gutter={16}>
+										<Col span={24}>
+											<CButton htmlType="submit" size="large" block text="Ingresar" />
+										</Col>
 
-									<Col>
-										<CButton text="¿Olvidaste tu contraseña?" type="link" />
-									</Col>
-								</Row>
-							</Form>
+										<Col span={24}>
+											<CButton text="¿Olvidaste tu contraseña?" type="link" />
+										</Col>
+									</Row>
+								</Form>
+							</Col>
 						</Row>
 
-						<Row justify="center" gutter={16}>
-							<Button type="primary" size="large" style={{ background: "#16ff3f", borderColor: "yellow" }}>
-								Crear cuenta
-							</Button>
+						<Row justify="center">
+							<Col>
+								<CButton type="primary" text="Crear cuenta" size="large" style={{ background: "#16ff3f", borderColor: "yellow" }} />
+							</Col>
 						</Row>
 					</Card>
 				</Col>
