@@ -12,6 +12,12 @@ import { Card, Space } from 'antd';
 import CButton from "../../Components/CButton";
 
 
+
+
+
+
+
+
 const cardStyle = { 
     //width: "360px", 
     //height: "192px", 
@@ -32,7 +38,7 @@ const RecuperarContrasena = (props) => {
 	
 		const usuarioRules = [
 			{
-			  required: true,
+			  required:   true,
 			  message: 'Ingresa usuario',
 			},
 		  ]
@@ -44,6 +50,8 @@ const RecuperarContrasena = (props) => {
 			},
 		  ]  
 	
+
+		  
 		const onRequiredTypeChange = ( e) => {
 			console.log(e)
 		  };
@@ -58,6 +66,9 @@ const RecuperarContrasena = (props) => {
 				//alert("hay error")
 			}
 		};
+
+
+		
 	
 		const onClick = (e) =>{
 	console.log(e)

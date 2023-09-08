@@ -5,6 +5,8 @@ import "./index.css";
 import AppWrapper from "./AppWrapper";
 import "./i18n";
 
+
+
 const domNode = document.getElementById('root');
 localStorage.setItem("i18nextLng","en-US")
 const root = createRoot(domNode);

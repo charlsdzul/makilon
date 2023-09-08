@@ -325,6 +325,7 @@ class ResourceController extends BaseResource
 		$response->errors = $errors;
 		$response = (array) $response;
 
+		
 		return $this->respond($response, $responseCode);
 	}
 
