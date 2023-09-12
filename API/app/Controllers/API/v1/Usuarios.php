@@ -200,7 +200,7 @@ class Usuarios extends ResourceController
 			];
 			
 			$this->logSistema(["tipo" => "critical", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
-			return $this->apiResponseError("server_error", getErrorsCommon(801,lang("Usuario.errorLogin")));
+			return $this->apiResponseError("server_error", [getErrorsCommon(801,lang("Usuario.errorLogin"))]);
 		}
 	}
 

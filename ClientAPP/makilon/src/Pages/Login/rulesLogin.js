@@ -1,26 +1,26 @@
 export const rulesLogin = {
-	usuario: [
+	correo: [
 		{
 			required: true,
-			message: "Usuario.correoEnBlanco",
+			message: "Login.rules.correoEnBlanco",
 		},
 		{
 			pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-			message: "Usuario:correoInvalido",
+			message: "Login.rules.correoInvalido",
 		},
 		{
 			max: 70,
-			message: "Common.longitudDatoIncorreto",
+			message: "Login.rules.longitudDatoIncorreto",
 		},
 	],
 	contrasena: [
 		{
 			required: true,
-			message: "Usuario.contrasenaEnBlanco",
+			message: "Login.rules.contrasenaEnBlanco",
 		},
 		{
 			max: 15,
-			message: "Usuario.contrasenaMaxima",
+			message: "Login.rules.contrasenaMaxima",
 		},
 	],
 };

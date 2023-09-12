@@ -1,0 +1,32 @@
+{
+	"Login": {
+		"labels": {
+			"title": "Iniciar Sesion",
+			"usuario": "Usuario",
+			"correo": "Correo electronico",
+			"contrasena": "Contraseña",
+			"ingresar": "Ingresar",
+			"olvidasteContrasena": "¿Olvidaste tu contraseña?",
+			"crearCuenta": "Crear cuenta"
+		},
+		"tooltips": {
+			"title": "Iniciar Sesion",
+			"correo": "Correo que definiste cuando creaste tu cuenta.",
+			"contrasena": "Contraseña que definiste cuando creaste tu cuenta.",
+			"ingresar": "Ingresar",
+			"olvidasteContrasena": "¿Olvidaste tu contraseña?",
+			"crearCuenta": "Crear cuenta"
+		},
+		"placeholders": {
+			"correo": "Ingresa tu correo.",
+			"contrasena": "Ingresa tu contraseña"
+		},
+		"rules": {
+			"correoEnBlanco": "Ingresa un correo.",
+			"correoInvalido": "Correo inválido",
+			"contrasenaEnBlanco": "Ingresa una contraseña",
+			"contrasenaMaxima": "Contraseña debe tener máximo 15 caracteres",
+			"longitudDatoIncorreto": "Longitud de dato incorrecto"
+		}
+	}
+}

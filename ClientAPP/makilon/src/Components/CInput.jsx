@@ -1,25 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button } from "antd";
+import { Input } from "antd";
 
-const CButton = (props) => {
-	return (
-		<Button type={props.type} size={props.size} htmlType={props.htmlType} block={props.block} style={props.style} loading={props.loading}>
-			{props.text}
-		</Button>
-	);
+const CInput = (props) => {
+	return <Input placeholder={props.placeholder} size={props.size} disabled={props.disabled}></Input>;
 };
 
-CButton.propTypes = {
-	id: PropTypes.string,
-	type: PropTypes.string,
-	text: PropTypes.string,
-	htmlType: PropTypes.string,
+CInput.propTypes = {
+	placeholder: PropTypes.string,
 	size: PropTypes.string,
-	block: PropTypes.bool,
-	style: PropTypes.object,
-	loading: PropTypes.bool,
-
+	disabled: PropTypes.bool,
+	//htmlType: PropTypes.string,
+	//size: PropTypes.string,
+	//block: PropTypes.bool,
+	//style: PropTypes.object,
+	//loading: PropTypes.bool,
 	// value: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.number, PropTypes.string]),
 	// displayFormat: PropTypes.string,
 	// useMaskBehavior: PropTypes.bool,
@@ -47,15 +42,15 @@ CButton.propTypes = {
 	// showClearButton: PropTypes.bool,
 };
 
-CButton.defaultProps = {
-	id: "",
-	text: "",
-	type: "primary",
-	htmlType: "",
-	size: "default",
-	block: false,
-	style: null,
-	loading: false,
+CInput.defaultProps = {
+	placeholder: "",
+	size: "",
+	disabled: false,
+	// htmlType: "",
+	// size: "default",
+	// block: false,
+	// style: null,
+	// loading: false,
 };
 
-export default CButton;
+export default CInput;

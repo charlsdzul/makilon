@@ -16,7 +16,7 @@ const login = async (correo, contrasena) => {
 	const response = await api
 		.post("usuario/login", formData)
 		.then((response) => response.data)
-		.catch((error) => error.response.data);
+		.catch((error) => error.response);
 
 	return response;
 };

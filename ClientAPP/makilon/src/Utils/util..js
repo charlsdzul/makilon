@@ -1,9 +1,32 @@
-export const asignarMensajeTranslation = (t, rules) => {
-	for (const field in rules) {
-		rules[field].forEach((props) => {
-			props.message = t(props.message);
-		});
-	}
+import { MODAL_TYPES } from "./utilConst";
+import { Modal } from "antd";
 
-	return rules;
+export const asignarMensajeTranslation = ({ t, rules, production = true }) => {
+	if (production) {
+		for (const field in rules) {
+			rules[field].forEach((props) => {
+				props.message = t(props.message);
+			});
+		}
+
+		return rules;
+	} else {
+		const rules = [];
+
+		for (const field in rules) {
+			rules.push([field]);
+		}
+
+		return rules;
+	}
+};
+
+export const showModal = ({ type, title, message }) => {
+	if (type === MODAL_TYPES.INFO) {
+		Modal.info({ title: title, content: message });
+	} else if (type === MODAL_TYPES.WARNING) {
+		Modal.warning({ title: title, content: message });
+	} else if (type === MODAL_TYPES.ERROR) {
+		Modal.error({ title: title, content: message });
+	}
 };

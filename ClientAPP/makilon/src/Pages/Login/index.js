@@ -1,99 +1,93 @@
 import React, { useState, useRef } from "react";
-import api from "../../Utils/api";
 import AuthService from "../../Services/auth.services";
 import CContainer from "../../Components/CContainer";
-import { Button, Form, Input, Radio } from "antd";
+import { Divider, Form, Input } from "antd";
 import { InfoCircleOutlined } from "@ant-design/icons";
-import { Col, Divider, Row } from "antd";
+import { Col, Row } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import styles from "../../CSS/common.module.css";
 import stylesLogin from "../../CSS/login.module.css";
-import { Card, Space } from "antd";
+import { Card } from "antd";
 import CButton from "../../Components/CButton";
 import { rulesLogin } from "./rulesLogin";
 import { useTranslation } from "react-i18next";
-import { asignarMensajeTranslation } from "../../Utils/util.";
+import { asignarMensajeTranslation, showModal } from "../../Utils/util.";
+import { StatusCodes } from "http-status-codes";
+import { MODAL_TYPES } from "../../Utils/utilConst";
 
 const Login = (props) => {
-	const { t } = useTranslation(["Usuario", "Common"]);
-	const [rules] = useState(asignarMensajeTranslation(t, rulesLogin));
-
-	//console.log(t("Usuario.email.emailAsunto"));
-	//console.log(t("Usuario.correoCodigoInvalido"));
-
 	const formRef = useRef(null);
-
 	const [form] = Form.useForm();
-	const nameValue = Form.useWatch("usuario", form);
+	const [requesting, setRequesting] = useState(false);
 
-	const onRequiredTypeChange = (e) => {
-		console.log(e);
+	const { t } = useTranslation(["Login"]);
+	const [rules] = useState(asignarMensajeTranslation({ t, rules: rulesLogin, production: true }));
+
+	const handleSuccessForm = (e) => {
+		setRequesting(true);
+		iniciarSesion({ correo: e.correo, contrasena: e.contrasena });
 	};
 
-	const iniciarSesion = async ({ usuario, contrasena }) => {
-		const response = await AuthService.login(usuario, contrasena);
+	const iniciarSesion = async ({ correo, contrasena }) => {
+		const response = await AuthService.login(correo, contrasena);
 		console.log(response);
+		setRequesting(false);
 
 		if (response.status === 200) {
 			localStorage.setItem("token", response.data.accessToken);
-		} else {
-			//alert("hay error")
+			return;
 		}
-	};
 
-	const onClick = (e) => {
-		console.log(e);
-	};
+		let modalType = "";
+		let modalTitulo = "";
+		let modalMensaje = "";
+		const errors = response?.data?.errors ?? [];
 
-	const onFinish = (e) => {
-		console.log("onFinish");
-		console.log(e);
+		if (errors.length > 0) {
+			modalTitulo = errors[0].title ?? "";
+			modalMensaje = errors[0].detail ?? "";
+		}
 
-		iniciarSesion({ usuario: e.usuario, contrasena: e.contrasena });
-	};
+		if (response.status === StatusCodes.BAD_REQUEST) {
+			modalType = MODAL_TYPES.WARNING;
+		} else {
+			modalType = MODAL_TYPES.ERROR;
+		}
 
-	const onFinishFailed = (e) => {
-		console.log("onFinishFailed");
-		console.log(e);
+		showModal({ type: modalType, title: modalTitulo, message: modalMensaje });
 	};
 
 	return (
 		<CContainer className={stylesLogin.c_container}>
 			<Row justify="center">
 				<Col xs={16} sm={12} md={10} lg={8} xl={6} xxl={4}>
-					<Card title="Iniciar Sesion" size="default" type="inner" className={styles.c_shadow}>
+					<Card title={t("Login.labels.title")} size="default" type="inner" className={styles.c_shadow}>
 						<Row justify="center">
 							<Col span={24}>
-								<Form
-									form={form}
-									layout="vertical"
-									ref={formRef}
-									onValuesChange={onRequiredTypeChange}
-									onFinish={onFinish}
-									onFinishFailed={onFinishFailed}>
-									<Form.Item label="Usuario" name="usuario" required tooltip="This is a required field" rules={rules.usuario}>
-										<Input placeholder={t("demo")} size="large" />
+								<Form form={form} layout="vertical" ref={formRef} onFinish={handleSuccessForm}>
+									<Form.Item name="correo" required label={t("Login.labels.correo")} tooltip={t("Login.tooltips.correo")} rules={rules.correo}>
+										<Input placeholder={t("Login.placeholders.correo")} size="large" disabled={requesting} />
 									</Form.Item>
-
 									<Form.Item
-										label="Contraseña"
 										name="contrasena"
-										rules={rules.contrasena}
-										tooltip={{ title: "Tooltip with customize icon", icon: <InfoCircleOutlined /> }}>
+										required
+										label={t("Login.labels.contrasena")}
+										tooltip={{ title: t("Login.tooltips.contrasena"), icon: <InfoCircleOutlined /> }}
+										rules={rules.contrasena}>
 										<Input.Password
 											size="large"
-											placeholder="input placeholder"
+											disabled={requesting}
+											placeholder={t("Login.placeholders.contrasena")}
 											iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
 										/>
 									</Form.Item>
-
 									<Row justify="center" gutter={16}>
 										<Col span={24}>
-											<CButton htmlType="submit" size="large" block text="Ingresar" />
+											<CButton htmlType="submit" size="large" block text={t("Login.labels.ingresar")} loading={requesting} />
 										</Col>
 
-										<Col span={24}>
-											<CButton text="¿Olvidaste tu contraseña?" type="link" />
+										<Col>
+											<CButton text={t("Login.labels.olvidasteContrasena")} type="link" disabled={requesting} />
 										</Col>
 									</Row>
 								</Form>
@@ -101,8 +95,18 @@ const Login = (props) => {
 						</Row>
 
 						<Row justify="center">
+							<Col span={24}>
+								<Divider orientation="left" />
+							</Col>
+
 							<Col>
-								<CButton type="primary" text="Crear cuenta" size="large" style={{ background: "#16ff3f", borderColor: "yellow" }} />
+								<CButton
+									type="primary"
+									text={t("Login.labels.crearCuenta")}
+									size="large"
+									style={{ background: "#16ff3f", borderColor: "yellow" }}
+									disabled={requesting}
+								/>
 							</Col>
 						</Row>
 					</Card>

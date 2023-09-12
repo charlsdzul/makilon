@@ -42,7 +42,7 @@ function validateEmail($correo = null, &$error = [])
 	$isValid = true;
 
 	if (isset($correo)) {
-		if ($correo == "") {
+		if ($correo == ""  || $correo == "undefined" || $correo == "null") {
 			$error = getErrorsUsuario(1000);
 			$isValid = false;
 		} elseif (!is_string($correo)) {
@@ -72,7 +72,7 @@ function validatePassword($psw = null, &$error = [])
 	$isValid = true;
 
 	if (isset($psw)) {
-		if ($psw == "") {
+		if ($psw == "" || $psw == "undefined" || $psw == "null") {
 			$error = getErrorsUsuario(1002);
 			$isValid = false;
 		} elseif (strlen($psw) < 8) {
