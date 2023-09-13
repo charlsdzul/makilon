@@ -32,15 +32,27 @@ function getErrorsUsuario($code = null)
 {
 	$codes = [
 		//1000
-		1000 => ["code" => 1000, "title" => lang("Usuario.correoInvalido"), "detail" => lang("Usuario.correoEnBlanco")],
-		1001 => ["code" => 1001, "title" => lang("Usuario.correoInvalido"), "detail" => lang("Usuario.correoInvalido")],
-		1002 => ["code" => 1002, "title" => lang("Usuario.contrasenaInvalida"), "detail" => lang("Usuario.contrasenaEnBlanco")],
-		1003 => ["code" => 1003, "title" => lang("Usuario.contrasenaInvalida"), "detail" => lang("Usuario.contrasenaMinima")],
-		1004 => ["code" => 1004, "title" => lang("Usuario.contrasenaInvalida"), "detail" => lang("Usuario.contrasenaMaxima")],
-		1005 => ["code" => 1005, "title" => lang("Usuario.contrasenaInvalida"), "detail" => lang("Usuario.contrasenaInvalida")],
-		1006 => ["code" => 1006, "title" => lang("Usuario.contrasenaInvalida"), "detail" => lang("Usuario.contrasenasNoIguales")],
-		1007 => ["code" => 1007, "title" => lang("Usuario.errorLogin"), "detail" => lang("Usuario.correoContrasenaInvalida")],
-		1008 => ["code" => 1008, "title" => lang("Usuario.errorLogin"), "detail" => lang("Usuario.cuentaInactiva")],
+		1000 => ["code" => $code, "title" => lang("Usuario.correoInvalido"), "detail" => lang("Usuario.correoEnBlanco")],
+		1001 => ["code" => $code, "title" => lang("Usuario.correoInvalido"), "detail" => lang("Usuario.correoInvalido")],
+		1002 => ["code" => $code, "title" => lang("Usuario.contrasenaInvalida"), "detail" => lang("Usuario.contrasenaEnBlanco")],
+		1003 => ["code" => $code, "title" => lang("Usuario.contrasenaInvalida"), "detail" => lang("Usuario.contrasenaMinima")],
+		1004 => ["code" => $code, "title" => lang("Usuario.contrasenaInvalida"), "detail" => lang("Usuario.contrasenaMaxima")],
+		1005 => ["code" => $code, "title" => lang("Usuario.contrasenaInvalida"), "detail" => lang("Usuario.contrasenaInvalida")],
+		1006 => ["code" => $code, "title" => lang("Usuario.contrasenaInvalida"), "detail" => lang("Usuario.contrasenasNoIguales")],
+		1007 => ["code" => $code, "title" => lang("Usuario.errorLogin"), "detail" => lang("Usuario.correoContrasenaInvalida")],
+		1008 => ["code" => $code, "title" => lang("Usuario.errorLogin"), "detail" => lang("Usuario.cuentaInactiva")],
+	];
+
+	$error = $codes[$code];
+	return $error;
+}
+
+function getErrorsjwt($code = null)
+{
+	$codes = [
+		//2000
+		2000 => ["code" => $code, "title" => lang("Usuario.jwt.jwtInvalido"), "detail" => lang("Usuario.jwt.jwtInvalido")],
+		
 	];
 
 	$error = $codes[$code];

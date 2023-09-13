@@ -1,9 +1,12 @@
 import React, { useState, useRef } from "react";
-import AuthService from "../../Services/auth.services";
+import AuthService from "../../Services/authservice.services";
 import CContainer from "../../Components/CContainer";
 import { Divider, Form, Input } from "antd";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import { Col, Row } from "antd";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import styles from "../../CSS/common.module.css";
 import stylesLogin from "../../CSS/login.module.css";
@@ -19,22 +22,25 @@ const Login = (props) => {
 	const formRef = useRef(null);
 	const [form] = Form.useForm();
 	const [requesting, setRequesting] = useState(false);
+	const navigate = useNavigate();
 
 	const { t } = useTranslation(["Login"]);
 	const [rules] = useState(asignarMensajeTranslation({ t, rules: rulesLogin, production: true }));
 
 	const handleSuccessForm = (e) => {
 		setRequesting(true);
-		iniciarSesion({ correo: e.correo, contrasena: e.contrasena });
+		login({ correo: e.correo, contrasena: e.contrasena });
 	};
 
-	const iniciarSesion = async ({ correo, contrasena }) => {
-		const response = await AuthService.login(correo, contrasena);
+	const login = async ({ correo, contrasena }) => {
+		const auth = new AuthService();
+		const response = await auth.authorize(correo, contrasena);
 		console.log(response);
 		setRequesting(false);
 
 		if (response.status === 200) {
-			localStorage.setItem("token", response.data.accessToken);
+			const accesToken = response?.data?.token;
+			iniciarSesion(accesToken);
 			return;
 		}
 
@@ -54,7 +60,20 @@ const Login = (props) => {
 			modalType = MODAL_TYPES.ERROR;
 		}
 
-		showModal({ type: modalType, title: modalTitulo, message: modalMensaje });
+		showModal({ type: modalType, title: modalTitulo, content: modalMensaje });
+	};
+
+	const iniciarSesion = (token) => {
+		Cookies.remove("token");
+
+		if (token) {
+			Cookies.set("token", token);
+			navigate("/dashboard");
+		} else {
+			const mensaje = `${t("Login.messages.errorInicioSesion")} ${t("Login.messages.errorInicioSesionNotificacion")}`;
+			showModal({ type: MODAL_TYPES.ERROR, title: t("Login.labels.title"), content: mensaje });
+			//PENDIENTE ENVIAR NOTIFICACION DE ERROR
+		}
 	};
 
 	return (

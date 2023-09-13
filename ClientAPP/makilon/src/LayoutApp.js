@@ -8,9 +8,11 @@ import styles from "./CSS/common.module.css";
 const { Header, Content, Footer } = Layout;
 
 const LayoutApp = () => {
+	console.log("LayoutApp");
+
 	return (
 		<AuthContext.Consumer>
-			{(auth) => (
+			{({ auth }) => (
 				<Layout className={styles.c_layoutapp}>
 					{/* <TopBar auth={auth}></TopBar> */}
 					<Header style={{ display: "flex", alignItems: "center" }}>

@@ -21,12 +21,12 @@ export const asignarMensajeTranslation = ({ t, rules, production = true }) => {
 	}
 };
 
-export const showModal = ({ type, title, message }) => {
+export const showModal = ({ type, title, content }) => {
 	if (type === MODAL_TYPES.INFO) {
-		Modal.info({ title: title, content: message });
+		Modal.info({ title: title, content: content });
 	} else if (type === MODAL_TYPES.WARNING) {
-		Modal.warning({ title: title, content: message });
+		Modal.warning({ title: title, content: content });
 	} else if (type === MODAL_TYPES.ERROR) {
-		Modal.error({ title: title, content: message });
+		Modal.error({ title: title, content: content });
 	}
 };

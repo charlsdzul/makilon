@@ -56,6 +56,8 @@ $routes->group("api/v1", ["namespace" => 'App\Controllers\API\v1'], static funct
 	$routes->post("usuario/registro", "usuarios::registro");
 	$routes->get("usuario/confirmacion/(:segment)/(:hash)", "usuarios::confirmacion/$1/$2");
 	$routes->post("usuario/login", "usuarios::login");
+	$routes->post("usuario/authenticated", "usuarios::authenticated");
+
 	$routes->post("usuario/logout", "usuarios::logout");
 	$routes->put("usuario/", "usuarios::actualizaDatos");
 	$routes->put("usuario/correo", "usuarios::actualizaCorreo");

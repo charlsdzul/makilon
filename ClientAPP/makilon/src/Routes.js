@@ -21,10 +21,10 @@ export const router = createBrowserRouter([
 				path: "notaccess",
 				element: <NotAccess />,
 			},
-			{
-				path: "*",
-				element: <NotFound />,
-			},
+			// {
+			// 	path: "*",
+			// 	element: <NotFound />,
+			// },
 			{
 				index: true,
 				path: "inicio",
@@ -60,15 +60,13 @@ export const router = createBrowserRouter([
 				path: "dashboard",
 				errorElement: <ErrorBundary />,
 				element: (
-					
-						<AuthContext.Consumer>
-							{(auth) => 
-							<ProtectedRoute auth={{ ...auth }} >
+					<AuthContext.Consumer>
+						{({ auth }) => (
+							<ProtectedRoute auth={auth}>
 								<Dashboard auth={auth} />
 							</ProtectedRoute>
-							}
-					   </AuthContext.Consumer> 
-					
+						)}
+					</AuthContext.Consumer>
 				),
 			},
 		],

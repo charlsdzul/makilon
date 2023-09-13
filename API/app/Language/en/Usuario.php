@@ -40,4 +40,7 @@ return [
 		"emailCuerpo" => "Para confirmar tu correo (<b>{0}</b>) y registro, da click en este enlace -> {1}",
 		"preregistroExitoso" => "Ya solo falta un paso más. Te hemos enviado un mensaje de confirmacion a tu correo. ",
 	],
+	"jwt" => [
+		"jwtInvalido" => "Token Invalido",
+	],
 ];

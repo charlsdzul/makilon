@@ -27,6 +27,10 @@
 			"contrasenaEnBlanco": "Ingresa una contraseña",
 			"contrasenaMaxima": "Contraseña debe tener máximo 15 caracteres",
 			"longitudDatoIncorreto": "Longitud de dato incorrecto"
+		},
+		"messages": {
+			"errorInicioSesion": "Se detecto un problema al iniciar sesión.",
+			"errorInicioSesionNotificacion": "Ya se envio una notificacion sobre este problema, intenta ingresar mas tarde."
 		}
 	}
 }

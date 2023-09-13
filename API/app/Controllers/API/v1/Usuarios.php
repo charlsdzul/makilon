@@ -14,6 +14,8 @@ use Exception;
 use ErrorException;
 use CodeIgniter\HTTP\Response;
 use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
 
 class Usuarios extends ResourceController
 {
@@ -161,23 +163,27 @@ class Usuarios extends ResourceController
 			$key = getenv("JWT_SECRET");
 			$iat = time(); // current timestamp value
 			$exp = $iat + 3600;
+			$createdAt = $iat;
+			$email = $usuario->usu_correo;
+			$role = "admin";
+			$user = $usuario->usu_usuario;
+			$name = $usuario->usu_nombre;
 
 			$payload = [
 				"iat" => $iat, //Time the JWT issued at
 				"exp" => $exp, // Expiration time of token
+				"createdAt" => $createdAt,
 				"email" => $correo,
+				"role" => $role,
+				"user" => $user,
+				"name" => $name,
 			];
 
 			$token = JWT::encode($payload, $key, "HS256");
 
 			$response = [
-				"accessToken" => $token,
-				"createdAt" => $iat,
-				"email" => $usuario->usu_correo,
-				"role" => "admin",
-				"user" => $usuario->usu_usuario,
-				"name" => $usuario->usu_nombre,
-				"title" => lang("Usuario.sesionIniciada"),
+				"token" => $token			
+				
 			];
 
 			$dataLog = [
@@ -190,7 +196,7 @@ class Usuarios extends ResourceController
 
 			$this->logUsuario(["accion" => $logAccion, ...$dataLog]);
 
-			return $this->apiResponse("ok", [...$response, "id" => "login"]);
+			return $this->apiResponse("ok", [...$response]);
 		} catch (Error $e) {
 		
 			$dataLog = [
@@ -247,6 +253,66 @@ class Usuarios extends ResourceController
 			$this->logSistema(["tipo" => "critical", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
 			return $this->respondPlpx("server_error", "Common.solicitudNoProcesada", false);
 		}
+	}
+
+	public function authenticated()
+	{
+
+		$logAccion = "Verificat JWT";
+
+	try {
+
+		$JWT = $this->request->getPost("jwt");
+		$email = $this->request->getPost("email");
+
+		//echo $JWT ;
+		//echo $email ;
+
+	 	$key = getenv("JWT_SECRET");
+		 $decoded = "";
+
+
+		 try {
+			$decoded = JWT::decode("",new Key($key, 'HS256'));
+		var_dump($decoded);
+
+		 } catch(Error $e) {
+			//var_dump($e);
+
+			$response = getErrorsjwt(2000);
+			return $this->apiResponseError("invalid_request", [[...$response]]);		 
+		}
+
+
+ $payload = json_decode(json_encode($decoded),true);
+
+// var_dump($decoded);
+// var_dump($payload);
+
+echo $email ;
+	
+	 if($payload['email'] == $email) {
+		$response = getErrorsUsuario(2000);
+		return $this->apiResponseError("invalid_request", [[...$response, "id" => "login"]]);
+	 }else{
+	 $res=array("status"=>false,"Error"=>"Invalid Token or Token Exipred, So Please login Again!");
+	return $res;
+	 }
+
+	
+	;
+
+	}catch (Error $e) {
+		$dataLog = [
+			"mensaje" => lang("Common.solicitudNoProcesada"),
+			"mensaje_objeto" => $e->getMessage(),
+			"request_respond" => "server_error",
+		];
+		
+		$this->logSistema(["tipo" => "critical", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
+		return $this->apiResponseError("server_error", [getErrorsCommon(801,lang("Usuario.errorLogin"))]);
+	} 
+	
 	}
 
 	/**

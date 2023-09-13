@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import api from "../../Utils/api";
-import AuthService from "../../Services/auth.services";
+import AuthService from "../../Services/auth.services2";
 import CContainer from "../../Components/CContainer";
 import { Button, Form, Input, Radio } from "antd";
 import { InfoCircleOutlined } from "@ant-design/icons";
