@@ -43,4 +43,32 @@ return [
 	"jwt" => [
 		"jwtInvalido" => "Token Invalido",
 	],
+
+	"Common" => [
+		"correoEnBlanco" => "Ingresa un correo",
+		"correoInvalido" => "Correo inválido",
+		"contrasenaEnBlanco" => "Ingresa una contraseña",
+
+	],
+
+
+		"Login" => [
+		
+			"contrasenaMinima" => "Contraseña debe tener mínimo 8 caracteres",
+			"contrasenaMaxima" => "Contraseña debe tener máximo 15 caracteres",
+			"contrasenaInvalida" => "Contraseña inválida",
+			"contrasenasNoIguales" => "Contraseñas ingresadas deben ser iguales",	
+			"sesionIniciada" => "Sesion iniciada",
+			"errorLogin" => "Error en inicio de sesion.",	
+		],
+		"Registro" => [
+			
+			"contrasenasNoIguales" => "Contraseñas ingresadas deben ser iguales",	
+			
+		],
+		"RecuperarContrasena" => [
+				
+		],
+
+	
 ];

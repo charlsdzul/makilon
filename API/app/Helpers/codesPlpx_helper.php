@@ -32,7 +32,7 @@ function getErrorsUsuario($code = null)
 {
 	$codes = [
 		//1000
-		1000 => ["code" => $code, "title" => lang("Usuario.correoInvalido"), "detail" => lang("Usuario.correoEnBlanco")],
+		1000 => ["code" => $code, "title" => lang("Usuario.correoEnBlanco"), "detail" => lang("Usuario.correoEnBlanco")],
 		1001 => ["code" => $code, "title" => lang("Usuario.correoInvalido"), "detail" => lang("Usuario.correoInvalido")],
 		1002 => ["code" => $code, "title" => lang("Usuario.contrasenaInvalida"), "detail" => lang("Usuario.contrasenaEnBlanco")],
 		1003 => ["code" => $code, "title" => lang("Usuario.contrasenaInvalida"), "detail" => lang("Usuario.contrasenaMinima")],

@@ -23,4 +23,9 @@ return [
 	//------
 	"correo" => "Correo",
 	"contrasena" => "Contraseña",
+
+
+	"JWT" => [
+		"jwtInvalido" => "Token Invalido",
+	],
 ];
