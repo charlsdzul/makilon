@@ -34,6 +34,13 @@ class Usuarios extends ResourceController
 		$this->router = \Config\Services::router();
 		helper("/Validators/usuarioValidator");
 	}
+
+
+
+
+
+
+
 	private function logUsuario($dataLog)
 	{
 		$logger = new PlpxLogger();
@@ -266,50 +273,45 @@ class Usuarios extends ResourceController
 
 		try {
 
-			$JWT = $this->request->getPost("jwt");
+			$requestValues = $this->request->getPost();
 
-			$email = $this->request->getPost("email");
+			if (!authenticatedValidator($requestValues, $errors)) {
+				$dataLog = [
+					"mensaje" => lang("Common.errorDatosValidacion"),
+					"mensaje_objeto" => $errors,
+					"request_respond" => "invalid_request",
+				];
 
-			//echo $JWT ;
-			//echo $email ;
-
-			// 	$decoded = base64_decode($JWT, true);
-			// if(false === $decoded) return "false";
-			// else  return "true";
-
-			$key = getenv("JWT_SECRET");
-			$decoded = "";
-
-			echo $logAccion;
-			try {
-				$decoded = JWT::decode("a", new Key($key, 'HS256'));
-				echo $logAccion;
-
-				var_dump($decoded);
-			} catch (Exception $e) {
-				//var_dump($e);
-				$response = getErrorsjwt(2000);
-				return $this->apiResponseError("invalid_request", [[...$response]]);
+				$this->logSistema(["tipo" => "notice", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
+				return $this->apiResponseError("invalid_request", $errors);
 			}
 
-			echo $logAccion . "--*-/*/*/*/*/*/*";
-			$payload = json_decode(json_encode($decoded), true);
+			$jwt = $requestValues["jwt"];
+			$email = $requestValues["email"];
+			$key = getenv("JWT_SECRET");
+			$payload = "";
 
-			// var_dump($decoded);
-			// var_dump($payload);
+			try {
+				$payload = JWT::decode($jwt, new Key($key, 'HS256'));				
+			} catch (Exception $e) {
+				$message = $e->getMessage();	
+				$response = getErrorsjwt(2000,$message);
+				return $this->apiResponseError("invalid_request", [$response]);
+			}
 
-			echo $email;
 
-			if ($payload['email'] == $email) {
-				$response = getErrorsUsuario(2000);
-				return $this->apiResponseError("invalid_request", [[...$response, "id" => "login"]]);
+			if ($payload->email == $email) {
+				$response = [
+					"token" => "asasas"
+	
+				];
+				return $this->apiResponse("ok", [$response]);
+
 			} else {
 				$res = array("status" => false, "Error" => "Invalid Token or Token Exipred, So Please login Again!");
 				return $res;
 			};
-		} catch (\Firebase\JWT\SignatureInvalidException | \UnexpectedValueException | Error $e) {
-			echo "errrrr3333";
-
+		} catch (Exception $e) {
 			$dataLog = [
 				"mensaje" => lang("Common.solicitudNoProcesada"),
 				"mensaje_objeto" => $e->getMessage(),

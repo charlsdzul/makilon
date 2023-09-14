@@ -47,11 +47,14 @@ function getErrorsUsuario($code = null)
 	return $error;
 }
 
-function getErrorsjwt($code = null)
+function getErrorsjwt($code = null, $message = "")
 {
+	//echo $message;
 	$codes = [
 		//2000
-		2000 => ["code" => $code, "title" => lang("Usuario.jwt.jwtInvalido"), "detail" => lang("Usuario.jwt.jwtInvalido")],
+		2000 => ["code" => $code, "title" => lang("Usuario.jwt.jwtInvalido"), "detail" => $message],
+		2001 => ["code" => $code, "title" => lang("Usuario.jwt.jwtInvalido"), "detail" => lang("Usuario.jwt.jwtInvalido")],
+
 		
 	];
 

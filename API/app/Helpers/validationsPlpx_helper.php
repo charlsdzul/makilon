@@ -1,6 +1,7 @@
 <?php
 helper("codesPlpx");
-
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 function usuarioEstaLogueado()
 {
 	$isValid = false;
@@ -66,6 +67,30 @@ function validateEmail($correo = null, &$error = [])
 
 	return $isValid;
 }
+
+function validateJwt($jwt = null, &$error = [])
+{
+	$isValid = true;
+
+	if (isset($jwt)) {
+		if ($jwt == "" || $jwt == "undefined" || $jwt == "null") {
+
+			$error = getErrorsUsuario(1002);
+			$isValid = false;
+		} 
+	} else {
+		$error = getErrorsCommon(200);
+		$isValid = false;
+	}
+
+
+	if (!$isValid) {
+		$error = [...$error, "id" => "jwt"];
+	}
+
+	return $isValid;
+}
+
 
 function validatePassword($psw = null, &$error = [])
 {

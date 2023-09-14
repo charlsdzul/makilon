@@ -40,16 +40,18 @@ export default class AuthService {
 			.then((response) => response.data)
 			.catch((error) => error.response);
 
+		if (response.status === 200) {
+			const token = response?.data?.token;
+			Cookies.set("token", token);
+		}
+
 		return response;
 	};
 
 	authenticated = async () => {
-		console.log("authenticated");
+		const token = this.getAccessTokenFromCokie();
 		const formData = new FormData();
-		formData.append(
-			"jwt",
-			"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2OTQ1ODQ0MDUsImV4cCI6MTY5NDU4ODAwNSwiY3JlYXRlZEF0IjoxNjk0NTg0NDA1LCJlbWFpbCI6ImMuZHp1bEBob3RtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsInVzZXIiOm51bGwsIm5hbWUiOiJjYXJsb3NpXHUwMGNkXHUwMGMxXHUwMGUxIGR6dWwgZmRmZCBmZCBmZCBmZCBmZCBmc2RmZHNmc2YgXHUwMGYxaSJ9.IQjx4t759Yumnvc5XLu9NpTB60Q6CSHNbO7_cWd7NuQ"
-		);
+		formData.append("jwt", token);
 		formData.append("email", "c.dzul@hotmail.com");
 
 		const response = await api
@@ -57,14 +59,17 @@ export default class AuthService {
 			.then((response) => response.data)
 			.catch((error) => error.response);
 
-		console.log(response);
-
 		return response;
 	};
 
 	existsToken = () => {
 		const exists = Cookies.get("token");
 		return exists !== undefined && exists !== null && exists !== "";
+	};
+
+	getAccessTokenFromCokie = () => {
+		const token = Cookies.get("token");
+		return token;
 	};
 
 	// login = (user, password) => {
@@ -75,69 +80,70 @@ export default class AuthService {
 	// 	this.authorize(user, password);
 	// };
 
-	getSessionDataFromToken = (token) => {
-		const decoded = jwt_decode(token);
-		return { expires: decoded.exp, id: decoded.uid, token: token, userName: decoded.sub };
-	};
+	// getSessionDataFromToken = (token) => {
+	// 	const decoded = jwt_decode(token);
+	// 	return { expires: decoded.exp, id: decoded.uid, token: token, userName: decoded.sub };
+	// };
 
-	getAuthInfo = () => {
-		return jwt_decode(_accessToken);
-	};
+	// getAuthInfo = () => {
+	// 	return jwt_decode(_accessToken);
+	// };
 
-	handleAuthentication = (authResult, err) => {
-		if (authResult && authResult.token) {
-			const data = this.getSessionDataFromToken(authResult.token);
-			Cookies.set("token", authResult.token);
-			this.setSession(data);
-			const redirectLocation = localStorage.getItem(REDIRECT_ON_LOGIN) === "undefined" ? "/" : JSON.parse(localStorage.getItem(REDIRECT_ON_LOGIN));
-			this.history.push(redirectLocation);
-		} else if (err) {
-			//notify("The combination of user/password is incorrect.", "error", 5000);
-			console.log(err);
-		}
-		localStorage.removeItem(REDIRECT_ON_LOGIN);
-	};
+	// handleAuthentication = (authResult, err) => {
+	// 	if (authResult && authResult.token) {
+	// 		const data = this.getSessionDataFromToken(authResult.token);
+	// 		Cookies.set("token", authResult.token);
+	// 		this.setSession(data);
+	// 		const redirectLocation = localStorage.getItem(REDIRECT_ON_LOGIN) === "undefined" ? "/" : JSON.parse(localStorage.getItem(REDIRECT_ON_LOGIN));
+	// 		this.history.push(redirectLocation);
+	// 	} else if (err) {
+	// 		//notify("The combination of user/password is incorrect.", "error", 5000);
+	// 		console.log(err);
+	// 	}
+	// 	localStorage.removeItem(REDIRECT_ON_LOGIN);
+	// };
 
 	setSession = (authResult) => {
+		console.log("authResult", authResult);
 		// set the time that the access token will expire
-		_expiresAt = authResult.expires;
+		//_expiresAt = authResult.expires;
 		// If there is a value on the `scope` param from the authResult,
 		// use it to set scopes in the session for the user. Otherwise
 		// use the scopes as requested. If no scopes were requested,
 		// set it to nothing
-		_scopes = authResult.scope || this.requestedScopes || "";
+		//_scopes = authResult.scope || this.requestedScopes || "";
 		_accessToken = authResult.token;
-		_id = authResult.id;
-		_user = authResult.userName;
+		//_id = authResult.id;
+		//_user = authResult.userName;
 		// se crean default para las creaciones de api subsecuentes
-		axios.defaults.headers.common["Authorization"] = "bearer " + authResult.token;
-		axios.defaults.headers.common["Accept-Language"] = i18n.language;
+		//axios.defaults.headers.common["Authorization"] = "bearer " + authResult.token;
+		//axios.defaults.headers.common["Accept-Language"] = i18n.language;
 		// api aun no trae los default, se agregan para esta instancia
-		api.defaults.headers.common["Authorization"] = "bearer " + authResult.token;
-		api.defaults.headers.common["Accept-Language"] = i18n.language;
-		this.scheduleTokenRenewal();
+		//api.defaults.headers.common["Authorization"] = "bearer " + authResult.token;
+		//api.defaults.headers.common["Accept-Language"] = i18n.language;
+		//this.scheduleTokenRenewal();
 	};
 
-	isAuthenticated() {
-		const current_time = Date.now() / 1000;
-		const result = current_time < _expiresAt;
-		//.. console.log("isAuthenticated(): " + current_time + " < " + _expiresAt + " = " + result);
-		return result;
-	}
+	// isAuthenticated() {
+	// 	const current_time = Date.now() / 1000;
+	// 	const result = current_time < _expiresAt;
+	// 	//.. console.log("isAuthenticated(): " + current_time + " < " + _expiresAt + " = " + result);
+	// 	return result;
+	// }
 
-	logout = () => {
-		Cookies.remove("token");
-		_id = null;
-		_accessToken = null;
-		_scopes = null;
-		_expiresAt = null;
-		_user = null;
-		this.history.push("/");
-	};
+	// logout = () => {
+	// 	Cookies.remove("token");
+	// 	_id = null;
+	// 	_accessToken = null;
+	// 	_scopes = null;
+	// 	_expiresAt = null;
+	// 	_user = null;
+	// 	this.history.push("/");
+	// };
 
-	userData = () => {
-		return { userId: _id, userName: _user };
-	};
+	// userData = () => {
+	// 	return { userId: _id, userName: _user };
+	// };
 
 	getAccessToken = () => {
 		if (!_accessToken) {
@@ -146,36 +152,36 @@ export default class AuthService {
 		return _accessToken;
 	};
 
-	userHasScopes(scopes) {
-		const grantedScopes = (_scopes || "").split(" ");
-		return scopes.every((scope) => grantedScopes.includes(scope));
-	}
+	// userHasScopes(scopes) {
+	// 	const grantedScopes = (_scopes || "").split(" ");
+	// 	return scopes.every((scope) => grantedScopes.includes(scope));
+	// }
 
-	silentToken() {
-		Cookies.remove("token");
-		console.log("silentToken: ");
-	}
+	// silentToken() {
+	// 	Cookies.remove("token");
+	// 	console.log("silentToken: ");
+	// }
 
-	renewToken(cb) {
-		console.log("renewToken: " + JSON.stringify(cb));
-		const token = Cookies.get("token");
-		if (token) {
-			const data = this.getSessionDataFromToken(token);
-			this.setSession(data);
-		}
-		// this.auth0.checkSession({}, (err, result) => {
-		//   if (err) {
-		//     console.log(`Error: ${err.error} - ${err.error_description}.`);
-		//   } else {
-		//     this.setSession(result);
-		//   }
-		if (cb) cb(null, null);
-		// });
-	}
+	// renewToken(cb) {
+	// 	console.log("renewToken: " + JSON.stringify(cb));
+	// 	const token = Cookies.get("token");
+	// 	if (token) {
+	// 		const data = this.getSessionDataFromToken(token);
+	// 		this.setSession(data);
+	// 	}
+	// 	// this.auth0.checkSession({}, (err, result) => {
+	// 	//   if (err) {
+	// 	//     console.log(`Error: ${err.error} - ${err.error_description}.`);
+	// 	//   } else {
+	// 	//     this.setSession(result);
+	// 	//   }
+	// 	if (cb) cb(null, null);
+	// 	// });
+	// }
 
 	// implementar silent renew cuando pase el timer...
-	scheduleTokenRenewal() {
-		const delay = _expiresAt * 1000 - Date.now();
-		if (delay > 0) setTimeout(() => this.silentToken(), delay);
-	}
+	// scheduleTokenRenewal() {
+	// 	const delay = _expiresAt * 1000 - Date.now();
+	// 	if (delay > 0) setTimeout(() => this.silentToken(), delay);
+	// }
 }

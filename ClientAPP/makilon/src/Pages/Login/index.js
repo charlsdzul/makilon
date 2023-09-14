@@ -64,10 +64,7 @@ const Login = (props) => {
 	};
 
 	const iniciarSesion = (token) => {
-		Cookies.remove("token");
-
 		if (token) {
-			Cookies.set("token", token);
 			navigate("/dashboard");
 		} else {
 			const mensaje = `${t("Login.messages.errorInicioSesion")} ${t("Login.messages.errorInicioSesionNotificacion")}`;

@@ -26,6 +26,29 @@ function loginValidator($datos = null, &$errors = null)
 	return count($errorsValidation) == 0;
 }
 
+function authenticatedValidator($datos = null, &$errors = null)
+{
+	$errors = new stdClass();
+	$errorsValidation = [];
+	$jwt = $datos["jwt"] ?? "";
+	$email = $datos["email"] ?? "";
+
+	if (validateRequestData($datos, $errorsValidate)) {
+		$errorsValidation += ["datos" => $errorsValidate];
+	} else {
+		if (!validateEmail($email, $errorsEmail)) {
+			array_push($errorsValidation, $errorsEmail);
+		}
+
+		if (!validateJwt($jwt, $errorsJwt)) {
+			array_push($errorsValidation, $errorsJwt);
+		}
+	}
+
+	$errors = $errorsValidation;
+	return count($errorsValidation) == 0;
+}
+
 function registroValidator($datos = null, &$errors = null)
 {
 	$errors = [];

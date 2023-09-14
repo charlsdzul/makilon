@@ -1,29 +1,29 @@
+import { StatusCodes } from "http-status-codes";
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children, auth, redirectPath = "/login" }) => {
-	console.log("ProtectedRoute");
 	const [validDone, setValidDone] = useState(false);
 	const [isValid, setIsValid] = useState(false);
 
 	const validarToken = async () => {
 		const exists = auth.existsToken();
 		if (!exists) {
-			setIsValid(false);
 			setValidDone(true);
 			return;
 		}
 
-		const isAuthenticated = await auth.authenticated();
-		console.log(isAuthenticated);
+		const response = await auth.authenticated();
+		if (response.status === StatusCodes.OK) {
+			setIsValid(true);
+		}
 
-		setIsValid(true);
 		setValidDone(true);
 	};
 
 	useEffect(() => {
-		console.log("assasassas");
-		!validDone && validarToken();
+		if (!validDone) validarToken();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	if (!validDone) return <></>;
@@ -31,8 +31,7 @@ const ProtectedRoute = ({ children, auth, redirectPath = "/login" }) => {
 	if (isValid) {
 		return children;
 	} else {
-		// return <Navigate to={redirectPath} replace />;
-		return <></>;
+		return <Navigate to={redirectPath} replace />;
 	}
 };
 
