@@ -59,6 +59,10 @@ export const router = createBrowserRouter([
 			{
 				path: "dashboard",
 				errorElement: <ErrorBundary />,
+				loader: () => {
+					console.log("111111111111");
+					return null;
+				},
 				element: (
 					<AuthContext.Consumer>
 						{({ auth }) => (

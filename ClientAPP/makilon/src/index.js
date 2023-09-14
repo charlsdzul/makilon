@@ -1,19 +1,22 @@
 import React from "react";
-import { createRoot } from 'react-dom/client';
+import { createRoot } from "react-dom/client";
 import "./index.css";
 //import reportWebVitals from "./reportWebVitals";
 import AppWrapper from "./AppWrapper";
 import "./i18n";
 
-
-
-const domNode = document.getElementById('root');
-localStorage.setItem("i18nextLng","en-US")
+const domNode = document.getElementById("root");
+localStorage.setItem("i18nextLng", "en-US");
 const root = createRoot(domNode);
+root.render(<AppWrapper />);
+
+/*
 root.render(<React.StrictMode>
 	<AppWrapper />
 </React.StrictMode>
 );
+
+*/
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

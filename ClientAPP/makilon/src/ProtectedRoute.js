@@ -16,11 +16,14 @@ const ProtectedRoute = ({ children, auth, redirectPath = "/login" }) => {
 
 		const isAuthenticated = await auth.authenticated();
 		console.log(isAuthenticated);
+
+		setIsValid(true);
+		setValidDone(true);
 	};
 
 	useEffect(() => {
 		console.log("assasassas");
-		validarToken();
+		!validDone && validarToken();
 	}, []);
 
 	if (!validDone) return <></>;
@@ -29,7 +32,7 @@ const ProtectedRoute = ({ children, auth, redirectPath = "/login" }) => {
 		return children;
 	} else {
 		// return <Navigate to={redirectPath} replace />;
-		return children;
+		return <></>;
 	}
 };
 

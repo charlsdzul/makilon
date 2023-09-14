@@ -44,6 +44,7 @@ export default class AuthService {
 	};
 
 	authenticated = async () => {
+		console.log("authenticated");
 		const formData = new FormData();
 		formData.append(
 			"jwt",

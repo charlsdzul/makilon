@@ -15,6 +15,9 @@ use ErrorException;
 use CodeIgniter\HTTP\Response;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
+use Firebase\JWT\UnexpectedValueException;
+
+
 
 
 class Usuarios extends ResourceController
@@ -69,7 +72,7 @@ class Usuarios extends ResourceController
 			$logger = new PlpxLogger();
 			$timeNow = new Time("now");
 			$mensajeJson = is_object($dataLog["mensaje_objeto"]) ? json_encode($dataLog["mensaje_objeto"]) : $dataLog["mensaje_objeto"];
-			
+
 			$lSistema = new \App\Entities\LogSistema([
 				"logsis_controller" => $this->controllerName,
 				"logsis_method" => $this->router->methodName(),
@@ -114,12 +117,12 @@ class Usuarios extends ResourceController
 			$correo = $this->request->getPost("correo");
 			$contrasena = $this->request->getPost("contrasena");
 			$usuarioModel = new UsuarioModel();
-							
-					$usuario = $usuarioModel
-					->select("usu_id,usu_usuario,usu_password,usu_correo,usu_nombre,usu_apellido,usu_tipo,usu_sta")
-					->where("usu_correo", $correo)
-					->first();				
-				
+
+			$usuario = $usuarioModel
+				->select("usu_id,usu_usuario,usu_password,usu_correo,usu_nombre,usu_apellido,usu_tipo,usu_sta")
+				->where("usu_correo", $correo)
+				->first();
+
 			if (is_null($usuario)) {
 				$dataLog = [
 					"mensaje" => "Correo no existe: $correo",
@@ -182,8 +185,8 @@ class Usuarios extends ResourceController
 			$token = JWT::encode($payload, $key, "HS256");
 
 			$response = [
-				"token" => $token			
-				
+				"token" => $token
+
 			];
 
 			$dataLog = [
@@ -198,15 +201,15 @@ class Usuarios extends ResourceController
 
 			return $this->apiResponse("ok", [...$response]);
 		} catch (Error $e) {
-		
+
 			$dataLog = [
 				"mensaje" => lang("Common.solicitudNoProcesada"),
 				"mensaje_objeto" => $e->getMessage(),
 				"request_respond" => "server_error",
 			];
-			
+
 			$this->logSistema(["tipo" => "critical", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
-			return $this->apiResponseError("server_error", [getErrorsCommon(801,lang("Usuario.errorLogin"))]);
+			return $this->apiResponseError("server_error", [getErrorsCommon(801, lang("Usuario.errorLogin"))]);
 		}
 	}
 
@@ -260,59 +263,62 @@ class Usuarios extends ResourceController
 
 		$logAccion = "Verificat JWT";
 
-	try {
 
-		$JWT = $this->request->getPost("jwt");
-		$email = $this->request->getPost("email");
+		try {
 
-		//echo $JWT ;
-		//echo $email ;
+			$JWT = $this->request->getPost("jwt");
 
-	 	$key = getenv("JWT_SECRET");
-		 $decoded = "";
+			$email = $this->request->getPost("email");
 
+			//echo $JWT ;
+			//echo $email ;
 
-		 try {
-			$decoded = JWT::decode("",new Key($key, 'HS256'));
-		var_dump($decoded);
+			// 	$decoded = base64_decode($JWT, true);
+			// if(false === $decoded) return "false";
+			// else  return "true";
 
-		 } catch(Error $e) {
-			//var_dump($e);
+			$key = getenv("JWT_SECRET");
+			$decoded = "";
 
-			$response = getErrorsjwt(2000);
-			return $this->apiResponseError("invalid_request", [[...$response]]);		 
+			echo $logAccion;
+			try {
+				$decoded = JWT::decode("a", new Key($key, 'HS256'));
+				echo $logAccion;
+
+				var_dump($decoded);
+			} catch (Exception $e) {
+				//var_dump($e);
+				$response = getErrorsjwt(2000);
+				return $this->apiResponseError("invalid_request", [[...$response]]);
+			}
+
+			echo $logAccion . "--*-/*/*/*/*/*/*";
+			$payload = json_decode(json_encode($decoded), true);
+
+			// var_dump($decoded);
+			// var_dump($payload);
+
+			echo $email;
+
+			if ($payload['email'] == $email) {
+				$response = getErrorsUsuario(2000);
+				return $this->apiResponseError("invalid_request", [[...$response, "id" => "login"]]);
+			} else {
+				$res = array("status" => false, "Error" => "Invalid Token or Token Exipred, So Please login Again!");
+				return $res;
+			};
+		} catch (\Firebase\JWT\SignatureInvalidException | \UnexpectedValueException | Error $e) {
+			echo "errrrr3333";
+
+			$dataLog = [
+				"mensaje" => lang("Common.solicitudNoProcesada"),
+				"mensaje_objeto" => $e->getMessage(),
+				"request_respond" => "server_error",
+			];
+
+			$this->logSistema(["tipo" => "critical", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
+			return $this->apiResponseError("server_error", [getErrorsCommon(801, lang("Usuario.errorLogin"))]);
 		}
-
-
- $payload = json_decode(json_encode($decoded),true);
-
-// var_dump($decoded);
-// var_dump($payload);
-
-echo $email ;
-	
-	 if($payload['email'] == $email) {
-		$response = getErrorsUsuario(2000);
-		return $this->apiResponseError("invalid_request", [[...$response, "id" => "login"]]);
-	 }else{
-	 $res=array("status"=>false,"Error"=>"Invalid Token or Token Exipred, So Please login Again!");
-	return $res;
-	 }
-
-	
-	;
-
-	}catch (Error $e) {
-		$dataLog = [
-			"mensaje" => lang("Common.solicitudNoProcesada"),
-			"mensaje_objeto" => $e->getMessage(),
-			"request_respond" => "server_error",
-		];
-		
-		$this->logSistema(["tipo" => "critical", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
-		return $this->apiResponseError("server_error", [getErrorsCommon(801,lang("Usuario.errorLogin"))]);
-	} 
-	
 	}
 
 	/**
@@ -446,18 +452,38 @@ echo $email ;
 					"request_respond" => "invalid_request - " . lang("Usuario.errorCrearCuenta"),
 				];
 
+
+
 				$this->logSistema(["tipo" => "alert", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
 				return $this->respondPlpx("invalid_request", "Usuario.errorCrearCuenta", false);
 			}
+
+
+
+
+
+
+
+
+
+
+
+
 
 			if ($idInserted == 0) {
 				//Si el insert en Usuario no es exitoso, marca el campo sta en 0 del preregistro, para permitirle volver a confirmar.
 				$updated = $usuarioPreregistroModel->update($usuarioPreregistro->usupr_id, ["usupr_updated_at" => $timeNow, "usupr_sta" => 0]);
 
+
+
+
+
 				$dataLog = [
 					"mensaje" => "No se pudo realizar el registro de Usuario: $correo",
 					"request_respond" => "invalid_request - " . lang("Usuario.errorCrearCuenta"),
 				];
+
+
 
 				$this->logSistema(["tipo" => "alert", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
 				return $this->respondPlpx("invalid_request", "Usuario.errorCrearCuenta", false);
@@ -467,6 +493,9 @@ echo $email ;
 				"mensaje" => "Usuario confirmado y registrado",
 				"request_respond" => "ok - " . lang("Usuario.registroExitoso"),
 			];
+
+
+
 
 			$this->logSistema(["tipo" => "info", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
 			return $this->respondPlpx("ok", "Usuario.registroExitoso", true);
