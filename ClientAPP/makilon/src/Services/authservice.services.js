@@ -36,7 +36,7 @@ export default class AuthService {
 		formData.append("contrasena", contrasena);
 
 		const response = await api
-			.post("usuario/login", formData)
+			.post("auth/login", formData)
 			.then((response) => response.data)
 			.catch((error) => error.response);
 

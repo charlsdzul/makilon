@@ -31,7 +31,7 @@ function validateRequestData($datos = null, &$error = "")
 	$isValid = false;
 
 	if (is_null($datos) || !$datos) {
-		$error = getErrorsCommon(200);
+		$error = getErrorResponseByCode(200);
 		$isValid = true;
 	}
 
@@ -44,20 +44,20 @@ function validateEmail($correo = null, &$error = [])
 
 	if (isset($correo)) {
 		if ($correo == ""  || $correo == "undefined" || $correo == "null") {
-			$error = getErrorsUsuario(1000);
+			$error = getErrorResponseByCode(1000);
 			$isValid = false;
 		} elseif (!is_string($correo)) {
-			$error = getErrorsCommon(100);
+			$error = getErrorResponseByCode(100);
 			$isValid = false;
 		} elseif (strlen($correo) > 70) {
-			$error = getErrorsCommon(101);
+			$error = getErrorResponseByCode(101);
 			$isValid = false;
 		} elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-			$error = getErrorsUsuario(1001);
+			$error = getErrorResponseByCode(1001);
 			$isValid = false;
 		}
 	} else {
-		$error = getErrorsCommon(200);
+		$error = getErrorResponseByCode(200);
 		$isValid = false;
 	}
 
@@ -75,11 +75,11 @@ function validateJwt($jwt = null, &$error = [])
 	if (isset($jwt)) {
 		if ($jwt == "" || $jwt == "undefined" || $jwt == "null") {
 
-			$error = getErrorsUsuario(1002);
+			$error = getErrorResponseByCode(1002);
 			$isValid = false;
 		} 
 	} else {
-		$error = getErrorsCommon(200);
+		$error = getErrorResponseByCode(200);
 		$isValid = false;
 	}
 
@@ -98,17 +98,17 @@ function validatePassword($psw = null, &$error = [])
 
 	if (isset($psw)) {
 		if ($psw == "" || $psw == "undefined" || $psw == "null") {
-			$error = getErrorsUsuario(1002);
+			$error = getErrorResponseByCode(1002);
 			$isValid = false;
 		} elseif (strlen($psw) < 8) {
-			$error = getErrorsUsuario(1003);
+			$error = getErrorResponseByCode(1003);
 			$isValid = false;
 		} elseif (strlen($psw) > 15) {
-			$error = getErrorsUsuario(1004);
+			$error = getErrorResponseByCode(1004);
 			$isValid = false;
 		}
 	} else {
-		$error = getErrorsCommon(200);
+		$error = getErrorResponseByCode(200);
 		$isValid = false;
 	}
 
@@ -124,7 +124,7 @@ function validatePasswords($pwd1 = "", $pwd2 = "", &$errors = [])
 	$isValid = true;
 
 	if ($pwd1 != $pwd2) {
-		$errors = getErrorsUsuario(1006);
+		$errors = getErrorResponseByCode(1006);
 		$isValid = false;
 	}
 

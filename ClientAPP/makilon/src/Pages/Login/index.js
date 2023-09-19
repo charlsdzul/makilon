@@ -25,7 +25,7 @@ const Login = (props) => {
 	const navigate = useNavigate();
 
 	const { t } = useTranslation(["Login"]);
-	const [rules] = useState(asignarMensajeTranslation({ t, rules: rulesLogin, production: true }));
+	const [rules] = useState(asignarMensajeTranslation({ t, rules: rulesLogin, production: false }));
 
 	const handleSuccessForm = (e) => {
 		setRequesting(true);
@@ -51,7 +51,7 @@ const Login = (props) => {
 
 		if (errors.length > 0) {
 			modalTitulo = errors[0].title ?? "";
-			modalMensaje = errors[0].detail ?? "";
+			modalMensaje = errors[0].action !== "" ? `${errors[0].detail}: ${errors[0].action}` : errors[0].detail;
 		}
 
 		if (response.status === StatusCodes.BAD_REQUEST) {
