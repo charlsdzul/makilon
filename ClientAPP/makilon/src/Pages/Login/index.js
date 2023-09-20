@@ -14,7 +14,7 @@ import { Card } from "antd";
 import CButton from "../../Components/CButton";
 import { rulesLogin } from "./rulesLogin";
 import { useTranslation } from "react-i18next";
-import { asignarMensajeTranslation, showModal } from "../../Utils/util.";
+import { asignarMensajeTranslation, getErrorMessages, showModal } from "../../Utils/utils";
 import { StatusCodes } from "http-status-codes";
 import { MODAL_TYPES } from "../../Utils/utilConst";
 
@@ -51,15 +51,12 @@ const Login = (props) => {
 
 		if (errors.length > 0) {
 			modalTitulo = errors[0].title ?? "";
-			modalMensaje = errors[0].action !== "" ? `${errors[0].detail}: ${errors[0].action}` : errors[0].detail;
+			modalMensaje = getErrorMessages({ errors });
 		}
 
-		if (response.status === StatusCodes.BAD_REQUEST) {
-			modalType = MODAL_TYPES.WARNING;
-		} else {
-			modalType = MODAL_TYPES.ERROR;
-		}
+		console.log(modalMensaje);
 
+		modalType = response.status === StatusCodes.BAD_REQUEST ? MODAL_TYPES.WARNING : MODAL_TYPES.ERROR;
 		showModal({ type: modalType, title: modalTitulo, content: modalMensaje });
 	};
 
