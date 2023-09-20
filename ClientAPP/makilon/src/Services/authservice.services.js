@@ -49,7 +49,7 @@ export default class AuthService {
 	};
 
 	authenticated = async () => {
-		const token = this.getAccessTokenFromCokie();
+		const token = this.getTokenFromCokie();
 		const formData = new FormData();
 		formData.append("jwt", token);
 		formData.append("email", "c.dzul@hotmail.com");
@@ -67,7 +67,7 @@ export default class AuthService {
 		return exists !== undefined && exists !== null && exists !== "";
 	};
 
-	getAccessTokenFromCokie = () => {
+	getTokenFromCokie = () => {
 		const token = Cookies.get("token");
 		return token;
 	};

@@ -38,8 +38,8 @@ const Login = (props) => {
 		setRequesting(false);
 
 		if (response.status === 200) {
-			const accesToken = response?.data?.token;
-			iniciarSesion(accesToken);
+			const token = response?.data?.token;
+			iniciarSesion(token);
 			return;
 		}
 
@@ -62,7 +62,7 @@ const Login = (props) => {
 			navigate("/dashboard");
 		} else {
 			const mensaje = `${t("Login.messages.errorInicioSesion")} ${t("Login.messages.errorInicioSesionNotificacion")}`;
-			showModal({ type: MODAL_TYPES.ERROR, title: t("Login.labels.title"), content: mensaje });
+			showModal({ type: MODAL_TYPES.ERROR, title: t("Login.lblTitleLogin"), content: mensaje });
 			//PENDIENTE ENVIAR NOTIFICACION DE ERROR
 		}
 	};
@@ -71,33 +71,33 @@ const Login = (props) => {
 		<CContainer className={stylesLogin.c_container}>
 			<Row justify="center">
 				<Col xs={16} sm={12} md={10} lg={8} xl={6} xxl={4}>
-					<Card title={t("Login.labels.title")} size="default" type="inner" className={styles.c_shadow}>
+					<Card title={t("Login.lblTitleLogin")} size="default" type="inner" className={styles.c_shadow}>
 						<Row justify="center">
 							<Col span={24}>
 								<Form form={form} layout="vertical" ref={formRef} onFinish={handleSuccessForm}>
-									<Form.Item name="correo" required label={t("Login.labels.correo")} tooltip={t("Login.tooltips.correo")} rules={rules.correo}>
-										<Input placeholder={t("Login.placeholders.correo")} size="large" disabled={requesting} />
+									<Form.Item name="correo" required label={t("Login.lblCorreo")} tooltip={t("Login.ttCorreo")} rules={rules.correo}>
+										<Input placeholder={t("Login.phCorreo")} size="large" disabled={requesting} />
 									</Form.Item>
 									<Form.Item
 										name="contrasena"
 										required
-										label={t("Login.labels.contrasena")}
-										tooltip={{ title: t("Login.tooltips.contrasena"), icon: <InfoCircleOutlined /> }}
+										label={t("Login.lblContrasena")}
+										tooltip={{ title: t("Login.ttContrasena"), icon: <InfoCircleOutlined /> }}
 										rules={rules.contrasena}>
 										<Input.Password
 											size="large"
 											disabled={requesting}
-											placeholder={t("Login.placeholders.contrasena")}
+											placeholder={t("Login.phContrasena")}
 											iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
 										/>
 									</Form.Item>
 									<Row justify="center" gutter={16}>
 										<Col span={24}>
-											<CButton htmlType="submit" size="large" block text={t("Login.labels.ingresar")} loading={requesting} />
+											<CButton htmlType="submit" size="large" block text={t("Login.btnIngresar")} loading={requesting} />
 										</Col>
 
 										<Col>
-											<CButton text={t("Login.labels.olvidasteContrasena")} type="link" disabled={requesting} />
+											<CButton text={t("Login.btnOlvidasteContrasena")} type="link" disabled={requesting} />
 										</Col>
 									</Row>
 								</Form>
@@ -112,7 +112,7 @@ const Login = (props) => {
 							<Col>
 								<CButton
 									type="primary"
-									text={t("Login.labels.crearCuenta")}
+									text={t("Login.btnCrearCuenta")}
 									size="large"
 									style={{ background: "#16ff3f", borderColor: "yellow" }}
 									disabled={requesting}

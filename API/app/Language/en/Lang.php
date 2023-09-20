@@ -2,6 +2,7 @@
 
 return [
     "title" => [
+        "titleLogin": "Iniciar Sesión",
         "errorLogin" => "Error al iniciar sesión",
         "reestablecerMiContra" => "Reestablecer mi contraseña",
     ],
@@ -61,7 +62,6 @@ return [
         "contrasenaMaxima" => "Contraseña debe tener máximo 15 caracteres",
         "contrasenasNoIguales" => "Contraseñas ingresadas deben ser iguales",
         "contrasenaInvalida" => "Contraseña inválida",
-        "contrasenaEnBlanco" => "Ingresa una contraseña",
         "ingresaContrasena" => "Ingresa una contraseña",
 
         "contrasenaNoActualizada" => "No se pudo actualizar tu contraseña",
@@ -92,6 +92,12 @@ return [
         "urlMiCuenta" => "Mi Cuenta",
         "urlConfiguraciones" => "Configuración",
         "urlSalir" => "Salir",
+
+        //botones
+       "btnIngresar"=> "Ingresar",
+       "btnOlvidasteContrasena"=> "Ingresar",
+       "btnCrearCuenta"=> "Crear cuenta",
+
     ],
 
     "action" => [
