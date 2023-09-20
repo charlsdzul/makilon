@@ -132,8 +132,6 @@ class Auth extends ResourceController
                 return $this->apiResponseError("invalid_request", $errors);
             }
 
-            return;
-
             $correo = $this->request->getPost("correo");
             $contrasena = $this->request->getPost("contrasena");
             $usuarioModel = new UsuarioModel();
@@ -154,8 +152,8 @@ class Auth extends ResourceController
                 ];
 
                 $this->logSistema($dataLog);
-                $response = getErrorResponseByCode(1007);
-                return $this->apiResponseError("invalid_request", [[...$response, "id" => "login1"]]);
+                $response = getErrorResponseByCode(["code" => 1007]);
+                return $this->apiResponseError("invalid_request", [$response]);
             }
 
             if ($usuario->usu_sta == 0) {
@@ -169,8 +167,8 @@ class Auth extends ResourceController
                 ];
 
                 $this->logUsuario($dataLog);
-                $response = getErrorResponseByCode(1008);
-                return $this->apiResponseError("invalid_request", [[...$response, "id" => "login"]]);
+                $response = getErrorResponseByCode(["code" => 1008]);
+                return $this->apiResponseError("invalid_request", [$response]);
             }
 
             if (!password_verify($contrasena, $usuario->usu_password)) {
@@ -184,8 +182,8 @@ class Auth extends ResourceController
                 ];
 
                 $this->logUsuario($dataLog);
-                $response = getErrorResponseByCode(1007);
-                return $this->apiResponseError("invalid_request", [[...$response, "id" => "login"]]);
+                $response = getErrorResponseByCode(["code" => 1007]);
+                return $this->apiResponseError("invalid_request", [$response]);
             }
 
             $key = getenv("JWT_SECRET");
@@ -225,7 +223,7 @@ class Auth extends ResourceController
 
             $this->logUsuario($dataLog);
 
-            return $this->apiResponse("ok", [...$response]);
+            return $this->apiResponse("ok", [$response]);
         } catch (Error $e) {
 
             echo $e->getMessage();

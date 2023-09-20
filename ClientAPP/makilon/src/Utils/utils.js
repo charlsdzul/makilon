@@ -25,29 +25,37 @@ export const showModal = ({ type, title, content }) => {
 	if (type === MODAL_TYPES.INFO) {
 		Modal.info({ title: title, content: content });
 	} else if (type === MODAL_TYPES.WARNING) {
-		Modal.warning({ title: title, content: content });
+		Modal.warning({
+			title: title,
+			content: <>{content}</>,
+		});
 	} else if (type === MODAL_TYPES.ERROR) {
 		Modal.error({ title: title, content: content });
 	}
 };
 
-export const getErrorMessages = ({ errors, useLabel = true, useDetail = true, useAction = true, separator = "<br>" }) => {
+export const getErrorMessages = ({ errors, useLabel = true, useDetail = true, useAction = true, separator = <br /> }) => {
 	if (errors.length === 1) {
 		const error = errors[0];
+		const mensaje = generateErrorMensaje({ error, useLabel, useDetail, useAction });
 
-		return generateErrorMensaje({ error, useLabel, useDetail, useAction });
+		return <span>{mensaje}</span>;
 	} else if (errors.length > 1) {
-		let mensajes = "";
+		let mensajes = <></>;
 
 		for (const index in errors) {
-			// console.log(error)
 			const error = errors[index];
 			const mensaje = generateErrorMensaje({ error, useLabel, useDetail, useAction });
-			mensajes = mensajes + mensaje + separator;
-			// ...
+			mensajes = (
+				<>
+					{mensajes}
+					<span>{mensaje}</span>
+					{separator}
+				</>
+			);
 		}
 
-		return mensajes;
+		return <>{mensajes}</>;
 	}
 };
 

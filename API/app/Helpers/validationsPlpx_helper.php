@@ -37,22 +37,22 @@ function validateRequestData($datos = null, &$error = "")
     return $isValid;
 }
 
-function validateEmail($correo = null, &$error = [])
+function validateEmailLogin($correo = null, &$error = [])
 {
     $isValid = true;
 
     if (isset($correo)) {
         if ($correo == "" || $correo == "undefined" || $correo == "null") {
-            $error = getErrorResponseByCode(["code" => 1000]);
+            $error = getErrorResponseByCode(["code" => 1000, "useDetail" => false]);
             $isValid = false;
         } elseif (!is_string($correo)) {
-            $error = getErrorResponseByCode(["code" => 100]);
+            $error = getErrorResponseByCode(["code" => 100, "useDetail" => false]);
             $isValid = false;
         } elseif (strlen($correo) > 70) {
-            $error = getErrorResponseByCode(["code" => 101]);
+            $error = getErrorResponseByCode(["code" => 101, "useDetail" => false]);
             $isValid = false;
         } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-            $error = getErrorResponseByCode(["code" => 1001]);
+            $error = getErrorResponseByCode(["code" => 1001, "useDetail" => false]);
             $isValid = false;
         }
     } else {
@@ -89,19 +89,19 @@ function validateJwt($jwt = null, &$error = [])
     return $isValid;
 }
 
-function validatePassword($psw = null, &$error = [])
+function validatePasswordLogin($psw = null, &$error = [])
 {
     $isValid = true;
 
     if (isset($psw)) {
         if ($psw == "" || $psw == "undefined" || $psw == "null") {
-            $error = getErrorResponseByCode(["code" => 1002]);
+            $error = getErrorResponseByCode(["code" => 1009]);
             $isValid = false;
         } elseif (strlen($psw) < 8) {
-            $error = getErrorResponseByCode(["code" => 1003]);
+            $error = getErrorResponseByCode(["code" => 1009]);
             $isValid = false;
         } elseif (strlen($psw) > 15) {
-            $error = getErrorResponseByCode(["code" => 1004]);
+            $error = getErrorResponseByCode(["code" => 1009]);
             $isValid = false;
         }
     } else {

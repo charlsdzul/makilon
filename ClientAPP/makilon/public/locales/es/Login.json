@@ -22,11 +22,10 @@
 			"contrasena": "Ingresa tu contraseña"
 		},
 		"rules": {
-			"correoEnBlanco": "Ingresa un correo.",
+			"ingresaCorreo": "Ingresa un correo.",
 			"correoInvalido": "Correo inválido",
-			"contrasenaEnBlanco": "Ingresa una contraseña",
-			"contrasenaMaxima": "Contraseña debe tener máximo 15 caracteres",
-			"longitudDatoIncorreto": "Longitud de dato incorrecto"
+			"ingresaContrasena": "Ingresa una contraseña",
+			"contrasenaInvalida": "Contraseña inválida"
 		},
 		"messages": {
 			"errorInicioSesion": "Se detecto un problema al iniciar sesión.",

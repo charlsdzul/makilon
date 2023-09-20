@@ -2,7 +2,7 @@
 
 return [
     "title" => [
-        "errorLogin" => "Error en inicio de sesión",
+        "errorLogin" => "Error al iniciar sesión",
         "reestablecerMiContra" => "Reestablecer mi contraseña",
     ],
 
@@ -62,6 +62,8 @@ return [
         "contrasenasNoIguales" => "Contraseñas ingresadas deben ser iguales",
         "contrasenaInvalida" => "Contraseña inválida",
         "contrasenaEnBlanco" => "Ingresa una contraseña",
+        "ingresaContrasena" => "Ingresa una contraseña",
+
         "contrasenaNoActualizada" => "No se pudo actualizar tu contraseña",
         "contrasenaActualizada" => "Tu contraseña ha sido actualizada",
         "respuestaRecuperarPassword" => "Si el correo que ingresaste es válido, te enviaremos las indicaciones para reestablecer tu contraseña.",

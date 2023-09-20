@@ -2,7 +2,7 @@ export const rulesLogin = {
 	correo: [
 		{
 			required: true,
-			message: "Login.rules.correoEnBlanco",
+			message: "Login.rules.ingresaCorreo",
 		},
 		{
 			pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
@@ -10,17 +10,21 @@ export const rulesLogin = {
 		},
 		{
 			max: 70,
-			message: "Login.rules.longitudDatoIncorreto",
+			message: "Login.rules.correoInvalido",
 		},
 	],
 	contrasena: [
 		{
 			required: true,
-			message: "Login.rules.contrasenaEnBlanco",
+			message: "Login.rules.ingresaContrasena",
 		},
 		{
 			max: 15,
-			message: "Login.rules.contrasenaMaxima",
+			message: "Login.rules.contrasenaInvalida",
+		},
+		{
+			min: 8,
+			message: "Login.rules.contrasenaInvalida",
 		},
 	],
 };

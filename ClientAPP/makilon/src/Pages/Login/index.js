@@ -25,7 +25,7 @@ const Login = (props) => {
 	const navigate = useNavigate();
 
 	const { t } = useTranslation(["Login"]);
-	const [rules] = useState(asignarMensajeTranslation({ t, rules: rulesLogin, production: false }));
+	const [rules] = useState(asignarMensajeTranslation({ t, rules: rulesLogin, production: true }));
 
 	const handleSuccessForm = (e) => {
 		setRequesting(true);
@@ -35,7 +35,6 @@ const Login = (props) => {
 	const login = async ({ correo, contrasena }) => {
 		const auth = new AuthService();
 		const response = await auth.authorize(correo, contrasena);
-		console.log(response);
 		setRequesting(false);
 
 		if (response.status === 200) {
@@ -53,8 +52,6 @@ const Login = (props) => {
 			modalTitulo = errors[0].title ?? "";
 			modalMensaje = getErrorMessages({ errors });
 		}
-
-		console.log(modalMensaje);
 
 		modalType = response.status === StatusCodes.BAD_REQUEST ? MODAL_TYPES.WARNING : MODAL_TYPES.ERROR;
 		showModal({ type: modalType, title: modalTitulo, content: modalMensaje });
