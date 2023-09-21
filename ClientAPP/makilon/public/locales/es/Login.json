@@ -1,6 +1,6 @@
 {
 	"Login": {
-		"lblTitleLogin": "Iniciar SesiÓn",
+		"lblTitleLogin": "Iniciar Sesión",
 		"lblUsuario": "Usuario",
 		"lblCorreo": "Correo",
 		"lblContrasena": "Contraseña",
@@ -14,8 +14,7 @@
 		"ttOlvidasteContrasena": "¿Olvidaste tu contraseña?",
 		"ttCrearCuenta": "Crear cuenta",
 		"phCorreo": "Ingresa tu correo.",
-		"phContrasena": "Ingresa tu contraseña"
-	,
+		"phContrasena": "Ingresa tu contraseña",
 		"rules": {
 			"ingresaCorreo": "Ingresa un correo.",
 			"correoInvalido": "Correo inválido",

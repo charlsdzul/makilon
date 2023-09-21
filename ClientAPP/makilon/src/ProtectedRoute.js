@@ -27,15 +27,15 @@ const ProtectedRoute = ({ children, auth, redirectPath = "/login" }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	return children;
+	//return children;
 
-	// if (!validDone) return <></>;
+	if (!validDone) return <></>;
 
-	// if (isValid) {
-	// 	return children;
-	// } else {
-	//  return <Navigate to={redirectPath} replace />;
-	// }
+	if (isValid) {
+		return children;
+	} else {
+		return <Navigate to={redirectPath} replace />;
+	}
 };
 
 export default ProtectedRoute;

@@ -1,9 +1,9 @@
 import { EyeInvisibleOutlined, EyeTwoTone, InfoCircleOutlined } from "@ant-design/icons";
 import { Card, Col, Divider, Form, Input, Row } from "antd";
 import { StatusCodes } from "http-status-codes";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import styles from "../../CSS/common.module.css";
 import stylesLogin from "../../CSS/login.module.css";
 import CButton from "../../Components/CButton";
@@ -17,6 +17,8 @@ const Login = (props) => {
 	const formRef = useRef(null);
 	const [form] = Form.useForm();
 	const [requesting, setRequesting] = useState(false);
+	const [existValidToken, setExistValidToken] = useState(false);
+
 	const navigate = useNavigate();
 
 	const { t } = useTranslation(["Login"]);
@@ -61,6 +63,20 @@ const Login = (props) => {
 			//PENDIENTE ENVIAR NOTIFICACION DE ERROR
 		}
 	};
+
+	useEffect(() => {
+		const iniciarPrograma = async () => {
+			const response = await props.auth.isAuthenticated();
+			const validToken = response?.data?.isValidToken ?? false;
+			if (validToken) setExistValidToken(true);
+			else props.auth.cleanToken();
+		};
+
+		iniciarPrograma();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	if (existValidToken) return <Navigate to={"/dashboard"} replace />;
 
 	return (
 		<CContainer className={stylesLogin.c_container}>

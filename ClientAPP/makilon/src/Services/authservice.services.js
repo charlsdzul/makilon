@@ -1,8 +1,6 @@
-import axios from "axios";
-import api from "../Utils/api";
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
-import i18n from "i18next";
+import api from "../Utils/api";
 
 const REDIRECT_ON_LOGIN = "redirect_on_login";
 
@@ -70,6 +68,10 @@ export default class AuthService {
 	getTokenFromCokie = () => {
 		const token = Cookies.get("token");
 		return token;
+	};
+
+	cleanToken = () => {
+		Cookies.remove("token");
 	};
 
 	// login = (user, password) => {
