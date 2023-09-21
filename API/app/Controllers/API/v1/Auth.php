@@ -5,9 +5,7 @@ namespace App\Controllers\API\v1;
 use App\Models\UsuarioModel;
 use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\HTTP\Response;
-use CodeIgniter\I18n\Time;
 use CodeIgniter\RESTful\ResourceController;
-use Error;
 use Firebase\JWT\JWT;
 
 class Auth extends ResourceController
@@ -123,9 +121,9 @@ class Auth extends ResourceController
                     "tipo" => "notice",
                     "accion" => $logAccion,
                     "linea" => __LINE__,
-                    "request_respond" => "invalid_request",
                     "mensaje_objeto" => $errors,
-                    "mensaje" => getErrorResponseByCode(["code" => 203, "onlyDetail" => true]),
+                    "mensaje" => "No pasó las validaciones. " . getErrorResponseByCode(["code" => 203, "onlyDetail" => true]),
+                    "request_respond" => "invalid_request",
                 ];
 
                 $this->logSistema($dataLog);
@@ -146,9 +144,9 @@ class Auth extends ResourceController
                     "tipo" => "notice",
                     "accion" => $logAccion,
                     "linea" => __LINE__,
-                    "mensaje" => "Correo no existe: $correo",
+                    "mensaje" => "El correo no está registrado. " . getErrorResponseByCode(["code" => 1007, "onlyDetail" => true]),
                     "mensaje_json" => null,
-                    "request_respond" => "invalid_request - " . lang("Usuario.correoContrasenaInvalida"),
+                    "request_respond" => "invalid_request",
                 ];
 
                 $this->logSistema($dataLog);
@@ -162,8 +160,8 @@ class Auth extends ResourceController
                     "usuario_id" => $usuario->usu_id,
                     "usuario_usuario" => $usuario->usu_usuario,
                     "usuario_correo" => $usuario->usu_correo,
-                    "mensaje" => "Cuenta inactiva",
-                    "request_respond" => "invalid_request - " . lang("Usuario.cuentaInactiva"),
+                    "mensaje" => "La cuenta está desactivada." . getErrorResponseByCode(["code" => 1008, "onlyDetail" => true]),
+                    "request_respond" => "invalid_request",
                 ];
 
                 $this->logUsuario($dataLog);
@@ -177,8 +175,8 @@ class Auth extends ResourceController
                     "usuario_id" => $usuario->usu_id,
                     "usuario_usuario" => $usuario->usu_usuario,
                     "usuario_correo" => $usuario->usu_correo,
-                    "mensaje" => "Password incorrecto",
-                    "request_respond" => "invalid_request - " . lang("Lang.login.correoContrasenaInvalida"),
+                    "mensaje" => "La contraseña ingresada es diferente. " . getErrorResponseByCode(["code" => 1007, "onlyDetail" => true]),
+                    "request_respond" => "invalid_request",
                 ];
 
                 $this->logUsuario($dataLog);
@@ -186,30 +184,32 @@ class Auth extends ResourceController
                 return $this->apiResponseError("invalid_request", [$response]);
             }
 
-            $key = getenv("JWT_SECRET");
-            $iat = time(); // current timestamp value
-            $exp = $iat + 3600;
-            $createdAt = $iat;
-            $email = $usuario->usu_correo;
-            $role = "admin";
-            $user = $usuario->usu_usuario;
-            $name = $usuario->usu_nombre;
-
-            $payload = [
-                "iat" => $iat, //Time the JWT issued at
-                "exp" => $exp, // Expiration time of token
-                "createdAt" => $createdAt,
-                "email" => $correo,
-                "role" => $role,
-                "user" => $user,
-                "name" => $name,
+            $args = [
+                "email" => $usuario->usu_correo,
+                "user" => $usuario->usu_usuario,
+                "name" => $usuario->usu_nombre,
+                "role" => "admin",
             ];
 
-            $token = JWT::encode($payload, $key, "HS256");
+            $token = crearToken($args);
+
+            if ($token == null) {
+                $dataLog = [
+                    "accion" => $logAccion,
+                    "usuario_id" => $usuario->usu_id,
+                    "usuario_usuario" => $usuario->usu_usuario,
+                    "usuario_correo" => $usuario->usu_correo,
+                    "mensaje" => "No se pudo generar el token, se generó como NULL. " . getErrorResponseByCode(["code" => 801, "onlyDetail" => true]),
+                    "request_respond" => "invalid_request",
+                ];
+
+                $this->logUsuario($dataLog);
+                $response = getErrorResponseByCode(["code" => 801, "title" => lang("Lang.title.errorLogin")]);
+                return $this->apiResponseError("invalid_request", [$response]);
+            }
 
             $response = [
                 "token" => $token,
-
             ];
 
             $dataLog = [
@@ -217,28 +217,85 @@ class Auth extends ResourceController
                 "usuario_id" => $usuario->usu_id,
                 "usuario_usuario" => $usuario->usu_usuario,
                 "usuario_correo" => $usuario->usu_correo,
-                "mensaje" => "Sesión iniciada",
-                "request_respond" => "ok - " . lang("Usuario.sesionIniciada"),
+                "mensaje" => getErrorResponseByCode(["code" => 801, "onlyDetail" => true]),
+                "request_respond" => "ok - " . lang("Lang.detail.sesionIniciada"),
             ];
 
             $this->logUsuario($dataLog);
-
-            return $this->apiResponse("ok", [$response]);
-        } catch (Error $e) {
-
-            echo $e->getMessage();
-
+            return $this->apiResponse("ok", $response);
+        } catch (\Exception $e) {
             $dataLog = [
                 "tipo" => "critical",
                 "accion" => $logAccion,
                 "linea" => __LINE__,
-                "mensaje" => lang("Common.solicitudNoProcesada"),
+                "mensaje" => "Error catch. " . $e->getMessage() . ". " . lang("Lang.detail.solicitudNoProcesada"),
                 "mensaje_objeto" => $e->getMessage(),
                 "request_respond" => "server_error",
             ];
 
             $this->logSistema($dataLog);
-            return $this->apiResponseError("server_error", [getErrorResponseByCode(801, lang("Lang.title.login.errorLogin"))]);
+            $response = getErrorResponseByCode(["code" => 801, "title" => lang("Lang.title.errorLogin")]);
+            return $this->apiResponseError("server_error", [$response]);
+        }
+    }
+
+    /**
+     * Verifica si el token de un usuario esta vigente
+     *
+     * @return Response
+     */
+    public function authenticated()
+    {
+        $logAccion = "Verificat JWT";
+
+        try {
+
+            $requestValues = $this->request->getPost();
+
+            if (!authenticatedValidator($requestValues, $errors)) {
+                $dataLog = [
+                    "mensaje" => lang("Common.errorDatosValidacion"),
+                    "mensaje_objeto" => $errors,
+                    "request_respond" => "invalid_request",
+                ];
+
+                $this->logSistema(["tipo" => "notice", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
+                return $this->apiResponseError("invalid_request", $errors);
+            }
+
+            $jwt = $requestValues["jwt"];
+            $email = $requestValues["email"];
+            $key = getenv("JWT_SECRET");
+            $payload = "";
+
+            try {
+                $payload = JWT::decode($jwt, new Key($key, 'HS256'));
+            } catch (Exception $e) {
+                $message = $e->getMessage();
+                $response = getErrorsjwt(2000, $message);
+                return $this->apiResponseError("invalid_request", [$response]);
+            }
+
+            if ($payload->email == $email) {
+                $response = [
+                    "token" => "asasas",
+
+                ];
+                return $this->apiResponse("ok", [$response]);
+
+            } else {
+                $res = array("status" => false, "Error" => "Invalid Token or Token Exipred, So Please login Again!");
+                return $res;
+            };
+        } catch (Exception $e) {
+            $dataLog = [
+                "mensaje" => lang("Common.solicitudNoProcesada"),
+                "mensaje_objeto" => $e->getMessage(),
+                "request_respond" => "server_error",
+            ];
+
+            $this->logSistema(["tipo" => "critical", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
+            return $this->apiResponseError("server_error", [getErrorsCommon(801, lang("Usuario.errorLogin"))]);
         }
     }
 

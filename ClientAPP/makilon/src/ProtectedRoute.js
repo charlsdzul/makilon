@@ -13,7 +13,8 @@ const ProtectedRoute = ({ children, auth, redirectPath = "/login" }) => {
 			return;
 		}
 
-		const response = await auth.authenticated();
+		const response = await auth.isAuthenticated();
+		console.log(response);
 		if (response.status === StatusCodes.OK) {
 			setIsValid(true);
 		}

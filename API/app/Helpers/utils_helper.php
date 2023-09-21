@@ -1,6 +1,7 @@
 <?php
 use App\Libraries\PlpxLogger;
 use CodeIgniter\I18n\Time;
+use Firebase\JWT\JWT;
 
 function logUsuario($args)
 {
@@ -39,16 +40,14 @@ function logSistema($args)
     try {
         $logger = new PlpxLogger();
         $timeNow = new Time("now");
-        $mensajeJson = is_object($args["mensaje_objeto"]) ? json_encode($args["mensaje_objeto"]) : $args["mensaje_objeto"];
+        $lSistema = new \App\Entities\LogSistema();
 
-        $lSistema = new \App\Entities\LogSistema([
-            "logsis_controller" => $args["logsis_controller"],
-            "logsis_method" => $args["logsis_method"],
-            "logsis_request_ip" => $args["logsis_request_ip"],
-            "logsis_inserted_at" => $timeNow,
-            //"logsis_usuario_id" => $this->session->usu_id ?? null,
-        ]);
-
+        $mensaje_objeto = $args["mensaje_objeto"] ?? "";
+        $mensajeJson = is_object($mensaje_objeto) ? json_encode($mensaje_objeto) : $mensaje_objeto;
+        $lSistema->logsis_inserted_at = $timeNow;
+        $lSistema->logsis_controller = $args["logsis_controller"] ?? null;
+        $lSistema->logsis_method = $args["logsis_method"] ?? null;
+        $lSistema->logsis_request_ip = $args["logsis_request_ip"] ?? null;
         $lSistema->logsis_tipo = $args["tipo"] ?? null;
         $lSistema->logsis_accion = $args["accion"] ?? null;
         $lSistema->logsis_mensaje = $args["mensaje"] ?? null;
@@ -56,7 +55,50 @@ function logSistema($args)
         $lSistema->logsis_request_respond = $args["request_respond"] ?? null;
         $lSistema->logsis_linea = $args["linea"] ?? null;
         $logger->loggerSistema($lSistema);
+
     } catch (Exception $e) {
+        echo $e->getMessage();
         $logger->log("critical", $e, __LINE__);
+    }
+}
+
+function crearToken($args)
+{
+    $logger = new PlpxLogger();
+
+    try {
+        $key = getenv("JWT_SECRET");
+        $iat = time(); // current timestamp value
+        $exp = $iat + 3600;
+        $createdAt = $iat;
+        $email = $args["email"];
+        $role = $args["role"];
+        $user = $args["user"];
+        $name = $args["name"];
+
+        $payload = [
+            "iat" => $iat, //Time the JWT issued at
+            "exp" => $exp, // Expiration time of token
+            "createdAt" => $createdAt,
+            "email" => $email,
+            "role" => $role,
+            "user" => $user,
+            "name" => $name,
+        ];
+
+        $token = JWT::encode($payload, $key, "HS256");
+        return $token;
+
+    } catch (Exception $e) {
+        $dataLog = [
+            "mensaje" => "Error catch. " . $e->getMessage(),
+            "mensaje_objeto" => $e,
+            "logsis_method" => "crearToken",
+            "accion" => "Crear Token",
+        ];
+
+        logSistema(["tipo" => "critical", "linea" => __LINE__, ...$dataLog]);
+        $logger->log("critical", $e, __LINE__);
+        return null;
     }
 }

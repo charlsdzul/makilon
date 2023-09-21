@@ -2,7 +2,7 @@
 
 return [
     "title" => [
-        "titleLogin": "Iniciar Sesión",
+        "titleLogin" => "Iniciar Sesión",
         "errorLogin" => "Error al iniciar sesión",
         "reestablecerMiContra" => "Reestablecer mi contraseña",
     ],
@@ -69,8 +69,8 @@ return [
         "respuestaRecuperarPassword" => "Si el correo que ingresaste es válido, te enviaremos las indicaciones para reestablecer tu contraseña.",
 
         //API
-        "solicitudNoProcesada" => "Su solicitud no se pudo procesar.",
-        "queryParamsInvalidos" => "Parámetro {0} de URL inválido.",
+        "solicitudNoProcesada" => "Su solicitud no se pudo procesar",
+        "queryParamsInvalidos" => "Parámetro {0} de URL inválido",
         "accesoNoPermitido" => "Acceso no permitido",
 
         //token
@@ -94,9 +94,9 @@ return [
         "urlSalir" => "Salir",
 
         //botones
-       "btnIngresar"=> "Ingresar",
-       "btnOlvidasteContrasena"=> "Ingresar",
-       "btnCrearCuenta"=> "Crear cuenta",
+        "btnIngresar" => "Ingresar",
+        "btnOlvidasteContrasena" => "Ingresar",
+        "btnCrearCuenta" => "Crear cuenta",
 
     ],
 

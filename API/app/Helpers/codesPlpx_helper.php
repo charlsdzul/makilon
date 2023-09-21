@@ -42,7 +42,7 @@ function getErrorResponseByCode($args)
             1005 => ["code" => $code, "title" => lang("Lang.title.errorLogin"), "label" => lang("Lang.label.contrasena"), "detail" => lang("Lang.detail.contrasenaInvalida"), "action" => lang("Lang.detail.contrasenaInvalida")],
             1006 => ["code" => $code, "title" => lang("Lang.title.errorLogin"), "label" => lang("Lang.label.contrasena"), "detail" => lang("Lang.detail.contrasenaInvalida"), "action" => lang("Lang.detail.contrasenasNoIguales")],
             1007 => ["code" => $code, "title" => lang("Lang.title.errorLogin"), "label" => lang(""), "detail" => lang("Lang.detail.login.correoContrasenaInvalida"), "action" => lang("")],
-            1008 => ["code" => $code, "title" => lang("Lang.title.errorLogin"), "label" => lang("Lang.label.contrasena"), "detail" => lang("Lang.detail.login.cuentaInactiva"), "action" => lang("")],
+            1008 => ["code" => $code, "title" => lang("Lang.title.errorLogin"), "label" => lang(""), "detail" => lang("Lang.detail.login.cuentaInactiva"), "action" => lang("")],
             1009 => ["code" => $code, "title" => lang("Lang.title.errorLogin"), "label" => lang("Lang.label.contrasena"), "detail" => lang("Lang.detail.contrasenaInvalida"), "action" => lang("")],
 
             //2000

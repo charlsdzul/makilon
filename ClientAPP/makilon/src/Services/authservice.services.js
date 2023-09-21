@@ -48,14 +48,14 @@ export default class AuthService {
 		return response;
 	};
 
-	authenticated = async () => {
-		const token = this.getTokenFromCokie();
+	isAuthenticated = async () => {
+		const { token, email } = this.getDataFromToken();
 		const formData = new FormData();
 		formData.append("jwt", token);
-		formData.append("email", "c.dzul@hotmail.com");
+		formData.append("email", email);
 
 		const response = await api
-			.post("usuario/authenticated", formData)
+			.post("auth/authenticated", formData)
 			.then((response) => response.data)
 			.catch((error) => error.response);
 
@@ -80,10 +80,11 @@ export default class AuthService {
 	// 	this.authorize(user, password);
 	// };
 
-	// getSessionDataFromToken = (token) => {
-	// 	const decoded = jwt_decode(token);
-	// 	return { expires: decoded.exp, id: decoded.uid, token: token, userName: decoded.sub };
-	// };
+	getDataFromToken = () => {
+		const token = this.getTokenFromCokie();
+		const decoded = jwt_decode(token);
+		return { expires: decoded.exp, id: decoded.uid, token: token, userName: decoded.sub, email: decoded.email };
+	};
 
 	// getAuthInfo = () => {
 	// 	return jwt_decode(_accessToken);

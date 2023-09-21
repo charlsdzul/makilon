@@ -12,8 +12,6 @@ use CodeIgniter\I18n\Time;
 use CodeIgniter\RESTful\ResourceController;
 use Error;
 use Exception;
-use Firebase\JWT\JWT;
-use Firebase\JWT\Key;
 
 class Usuarios extends ResourceController
 {
@@ -131,62 +129,6 @@ class Usuarios extends ResourceController
 
             $this->logSistema(["tipo" => "critical", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
             return $this->respondPlpx("server_error", "Common.solicitudNoProcesada", false);
-        }
-    }
-
-    public function authenticated()
-    {
-
-        $logAccion = "Verificat JWT";
-
-        try {
-
-            $requestValues = $this->request->getPost();
-
-            if (!authenticatedValidator($requestValues, $errors)) {
-                $dataLog = [
-                    "mensaje" => lang("Common.errorDatosValidacion"),
-                    "mensaje_objeto" => $errors,
-                    "request_respond" => "invalid_request",
-                ];
-
-                $this->logSistema(["tipo" => "notice", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
-                return $this->apiResponseError("invalid_request", $errors);
-            }
-
-            $jwt = $requestValues["jwt"];
-            $email = $requestValues["email"];
-            $key = getenv("JWT_SECRET");
-            $payload = "";
-
-            try {
-                $payload = JWT::decode($jwt, new Key($key, 'HS256'));
-            } catch (Exception $e) {
-                $message = $e->getMessage();
-                $response = getErrorsjwt(2000, $message);
-                return $this->apiResponseError("invalid_request", [$response]);
-            }
-
-            if ($payload->email == $email) {
-                $response = [
-                    "token" => "asasas",
-
-                ];
-                return $this->apiResponse("ok", [$response]);
-
-            } else {
-                $res = array("status" => false, "Error" => "Invalid Token or Token Exipred, So Please login Again!");
-                return $res;
-            };
-        } catch (Exception $e) {
-            $dataLog = [
-                "mensaje" => lang("Common.solicitudNoProcesada"),
-                "mensaje_objeto" => $e->getMessage(),
-                "request_respond" => "server_error",
-            ];
-
-            $this->logSistema(["tipo" => "critical", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
-            return $this->apiResponseError("server_error", [getErrorsCommon(801, lang("Usuario.errorLogin"))]);
         }
     }
 
