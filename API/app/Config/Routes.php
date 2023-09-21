@@ -8,7 +8,7 @@ $routes = Services::routes();
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
 if (is_file(SYSTEMPATH . "Config/Routes.php")) {
-	require SYSTEMPATH . "Config/Routes.php";
+    require SYSTEMPATH . "Config/Routes.php";
 }
 
 /*
@@ -41,35 +41,35 @@ $routes->get("/registro", "Usuario::registro");
 
 // URL de la API
 $routes->group("api/v1", ["namespace" => 'App\Controllers\API\v1'], static function ($routes) {
-	$routes->resource("cantanuncios", ["controller" => "catcantanuncios"]);
-	$routes->resource("estados", ["controller" => "catestados"]);
-	$routes->resource("apartados", ["controller" => "catapartados"]);
-	$routes->resource("modalidades", ["controller" => "catmodalidades"]);
-	$routes->resource("municipios", ["controller" => "catmunicipios"]);
-	$routes->resource("secciones", ["controller" => "catsecciones"]);
+    $routes->resource("cantanuncios", ["controller" => "catcantanuncios"]);
+    $routes->resource("estados", ["controller" => "catestados"]);
+    $routes->resource("apartados", ["controller" => "catapartados"]);
+    $routes->resource("modalidades", ["controller" => "catmodalidades"]);
+    $routes->resource("municipios", ["controller" => "catmunicipios"]);
+    $routes->resource("secciones", ["controller" => "catsecciones"]);
 
-	// $routes->get("municipios/", "catmunicipios");
-	// $routes->get("municipios/(:segment)", 'catmunicipios::show/$1');
+    // $routes->get("municipios/", "catmunicipios");
+    // $routes->get("municipios/(:segment)", 'catmunicipios::show/$1');
 
-	// $routes->get("secciones/", "catsecciones");
-	// $routes->get("secciones/(:segment)", 'catsecciones::show/$1');
-	$routes->post("usuario/registro", "usuarios::registro");
-	$routes->get("usuario/confirmacion/(:segment)/(:hash)", "usuarios::confirmacion/$1/$2");
-	$routes->post("auth/login", "auth::login");
-	$routes->post("usuario/authenticated", "usuarios::authenticated");
+    // $routes->get("secciones/", "catsecciones");
+    // $routes->get("secciones/(:segment)", 'catsecciones::show/$1');
+    $routes->post("usuario/registro", "usuarios::registro");
+    $routes->get("usuario/confirmacion/(:segment)/(:hash)", "usuarios::confirmacion/$1/$2");
+    $routes->post("auth/login", "auth::login");
+    $routes->post("auth/authenticated", "auth::authenticated");
 
-	$routes->post("usuario/logout", "usuarios::logout");
-	$routes->put("usuario/", "usuarios::actualizaDatos");
-	$routes->put("usuario/correo", "usuarios::actualizaCorreo");
-	$routes->put("usuario/psw", "usuarios::actualizaPassword");
-	$routes->post("usuario/psw/recuperar", "usuarios::recuperarPassword");
-	//$routes->put("usuario/pws/recuperar/confirmacion", "usuarios::recuperarPassword");
+    $routes->post("usuario/logout", "usuarios::logout");
+    $routes->put("usuario/", "usuarios::actualizaDatos");
+    $routes->put("usuario/correo", "usuarios::actualizaCorreo");
+    $routes->put("usuario/psw", "usuarios::actualizaPassword");
+    $routes->post("usuario/psw/recuperar", "usuarios::recuperarPassword");
+    //$routes->put("usuario/pws/recuperar/confirmacion", "usuarios::recuperarPassword");
 
-	//$routes->resource("registro", ["controller" => "usuarios"]);
+    //$routes->resource("registro", ["controller" => "usuarios"]);
 });
 
 // $routes->group("api/v1/usuario", ["namespace" => 'App\Controllers\API\v1'], static function ($routes) {
-// 	$routes->get("registro", ["controller" => "usuarios"]);
+//     $routes->get("registro", ["controller" => "usuarios"]);
 
 // });
 
@@ -87,5 +87,5 @@ $routes->group("api/v1", ["namespace" => 'App\Controllers\API\v1'], static funct
  * needing to reload it.
  */
 if (is_file(APPPATH . "Config/" . ENVIRONMENT . "/Routes.php")) {
-	require APPPATH . "Config/" . ENVIRONMENT . "/Routes.php";
+    require APPPATH . "Config/" . ENVIRONMENT . "/Routes.php";
 }

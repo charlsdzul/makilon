@@ -10,21 +10,17 @@ function logUsuario($args)
     try {
         $logger = new PlpxLogger();
         $timeNow = new Time("now");
-        $mensajeJson = is_object($args["mensaje_objeto"] ?? null) ? json_encode($args["mensaje_objeto"]) : null;
-
-        $lUsuario = new \App\Entities\LogUsuario([
-            "logsis_controller" => $args["logsis_controller"],
-            "logsis_method" => $args["logsis_method"],
-            "logsis_request_ip" => $args["logsis_request_ip"],
-            "log_inserted_at" => $timeNow,
-        ]);
-
+        $lUsuario = new \App\Entities\LogUsuario();
+        $lUsuario->log_inserted_at = $timeNow;
+        $lUsuario->log_controller = $args["controller"];
+        $lUsuario->log_method = $args["method"];
+        $lUsuario->log_request_ip = $args["request_ip"];
         $lUsuario->log_usuario_id = $args["usuario_id"];
         $lUsuario->log_usuario = $args["usuario_usuario"];
         $lUsuario->log_usuario_correo = $args["usuario_correo"];
         $lUsuario->log_accion = $args["accion"] ?? null;
         $lUsuario->log_mensaje = $args["mensaje"] ?? null;
-        $lUsuario->log_mensaje_json = $mensajeJson ?? null;
+        $lUsuario->log_exception = $args["exception"];
         $lUsuario->log_request_respond = $args["request_respond"] ?? null;
         $lUsuario->log_linea = $args["linea"] ?? null;
         $logger->loggerUsuario($lUsuario);
@@ -41,17 +37,14 @@ function logSistema($args)
         $logger = new PlpxLogger();
         $timeNow = new Time("now");
         $lSistema = new \App\Entities\LogSistema();
-
-        $mensaje_objeto = $args["mensaje_objeto"] ?? "";
-        $mensajeJson = is_object($mensaje_objeto) ? json_encode($mensaje_objeto) : $mensaje_objeto;
         $lSistema->logsis_inserted_at = $timeNow;
-        $lSistema->logsis_controller = $args["logsis_controller"] ?? null;
-        $lSistema->logsis_method = $args["logsis_method"] ?? null;
-        $lSistema->logsis_request_ip = $args["logsis_request_ip"] ?? null;
+        $lSistema->logsis_controller = $args["controller"] ?? null;
+        $lSistema->logsis_method = $args["method"] ?? null;
+        $lSistema->logsis_request_ip = $args["request_ip"] ?? null;
         $lSistema->logsis_tipo = $args["tipo"] ?? null;
         $lSistema->logsis_accion = $args["accion"] ?? null;
         $lSistema->logsis_mensaje = $args["mensaje"] ?? null;
-        $lSistema->logsis_mensaje_json = $mensajeJson;
+        $lSistema->logsis_exception = $args["exception"] ?? null;
         $lSistema->logsis_request_respond = $args["request_respond"] ?? null;
         $lSistema->logsis_linea = $args["linea"] ?? null;
         $logger->loggerSistema($lSistema);
@@ -94,6 +87,7 @@ function crearToken($args)
             "mensaje" => "Error catch. " . $e->getMessage(),
             "mensaje_objeto" => $e,
             "logsis_method" => "crearToken",
+            'logsis_controller' => "utils_helper.php",
             "accion" => "Crear Token",
         ];
 

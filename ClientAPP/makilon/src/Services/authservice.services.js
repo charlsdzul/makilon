@@ -51,7 +51,7 @@ export default class AuthService {
 	isAuthenticated = async () => {
 		const { token, email } = this.getDataFromToken();
 		const formData = new FormData();
-		formData.append("jwt", token);
+		formData.append("token", token);
 		formData.append("email", email);
 
 		const response = await api

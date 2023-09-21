@@ -1,22 +1,17 @@
-import React, { useState, useRef } from "react";
-import AuthService from "../../Services/authservice.services";
-import CContainer from "../../Components/CContainer";
-import { Divider, Form, Input } from "antd";
-import { InfoCircleOutlined } from "@ant-design/icons";
-import { Col, Row } from "antd";
-import Cookies from "js-cookie";
+import { EyeInvisibleOutlined, EyeTwoTone, InfoCircleOutlined } from "@ant-design/icons";
+import { Card, Col, Divider, Form, Input, Row } from "antd";
+import { StatusCodes } from "http-status-codes";
+import React, { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-
-import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import styles from "../../CSS/common.module.css";
 import stylesLogin from "../../CSS/login.module.css";
-import { Card } from "antd";
 import CButton from "../../Components/CButton";
-import { rulesLogin } from "./rulesLogin";
-import { useTranslation } from "react-i18next";
-import { asignarMensajeTranslation, getErrorMessages, showModal } from "../../Utils/utils";
-import { StatusCodes } from "http-status-codes";
+import CContainer from "../../Components/CContainer";
+import AuthService from "../../Services/authservice.services";
 import { MODAL_TYPES } from "../../Utils/utilConst";
+import { asignarMensajeTranslation, getErrorMessages, showModal } from "../../Utils/utils";
+import { rulesLogin } from "./rulesLogin";
 
 const Login = (props) => {
 	const formRef = useRef(null);

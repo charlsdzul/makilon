@@ -46,8 +46,8 @@ function getErrorResponseByCode($args)
             1009 => ["code" => $code, "title" => lang("Lang.title.errorLogin"), "label" => lang("Lang.label.contrasena"), "detail" => lang("Lang.detail.contrasenaInvalida"), "action" => lang("")],
 
             //2000
-            //2000 => ["code" => $code, "title" => lang("Usuario.jwt.jwtInvalido"), "detail" => $detail],
-            //2001 => ["code" => $code, "title" => lang("Usuario.jwt.jwtInvalido"), "detail" => lang("Usuario.jwt.jwtInvalido")],
+            2000 => ["code" => $code, "title" => lang("Lang.title.auth"), "detail" => $detail],
+            2001 => ["code" => $code, "title" => lang("Lang.title.auth"), "detail" => lang("Lang.detail.tokenInvalido")],
 
             //9000
             //9000 => ["code" => 1000, "status" => 401, "title" => lang("API.accesoNoPermitido"), "detail" => ""],
@@ -116,20 +116,6 @@ function getErrorsUsuario($code = null)
         1006 => ["code" => $code, "title" => lang("Usuario.contrasenaInvalida"), "detail" => lang("Usuario.contrasenasNoIguales")],
         1007 => ["code" => $code, "title" => lang("Usuario.errorLogin"), "detail" => lang("Usuario.correoContrasenaInvalida")],
         1008 => ["code" => $code, "title" => lang("Usuario.errorLogin"), "detail" => lang("Usuario.cuentaInactiva")],
-    ];
-
-    $error = $codes[$code];
-    return $error;
-}
-
-function getErrorsjwt($code = null, $message = "")
-{
-    //echo $message;
-    $codes = [
-        //2000
-        2000 => ["code" => $code, "title" => lang("Usuario.jwt.jwtInvalido"), "detail" => $message],
-        2001 => ["code" => $code, "title" => lang("Usuario.jwt.jwtInvalido"), "detail" => lang("Usuario.jwt.jwtInvalido")],
-
     ];
 
     $error = $codes[$code];

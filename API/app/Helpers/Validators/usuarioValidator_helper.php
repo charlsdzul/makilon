@@ -30,7 +30,7 @@ function authenticatedValidator($datos = null, &$errors = null)
 {
     $errors = new stdClass();
     $errorsValidation = [];
-    $jwt = $datos["jwt"] ?? "";
+    $token = $datos["token"] ?? "";
     $email = $datos["email"] ?? "";
 
     if (validateRequestData($datos, $errorsValidate)) {
@@ -40,7 +40,7 @@ function authenticatedValidator($datos = null, &$errors = null)
             array_push($errorsValidation, $errorsEmail);
         }
 
-        if (!validateJwt($jwt, $errorsJwt)) {
+        if (!validateJwt($token, $errorsJwt)) {
             array_push($errorsValidation, $errorsJwt);
         }
     }

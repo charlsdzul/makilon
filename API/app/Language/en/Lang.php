@@ -3,6 +3,7 @@
 return [
     "title" => [
         "titleLogin" => "Iniciar Sesión",
+        "auth" => "Auth",
         "errorLogin" => "Error al iniciar sesión",
         "reestablecerMiContra" => "Reestablecer mi contraseña",
     ],
