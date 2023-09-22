@@ -1,35 +1,110 @@
-import { ConfigProvider, Layout, Menu } from "antd";
+import { ConfigProvider, Layout, Menu,Icon, Drawer, Button } from "antd";
+import React,{ useState } from "react";
 import { RouterProvider } from "react-router-dom";
 import styles from "./CSS/common.module.css";
+//import "antd/dist/antd.css";
 import "./LayoutApp.css"
+import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
+
 import { router } from "./Routes";
 import AuthContext from "./Utils/AuthContext";
 
-const { Header, Content, Footer } = Layout;
+import {
+	AppstoreOutlined,
+	ContainerOutlined,
+	DesktopOutlined,
+	MailOutlined,
+	MenuFoldOutlined,
+	MenuUnfoldOutlined,
+	PieChartOutlined,
+  } from '@ant-design/icons'
+
+const SubMenu = Menu.SubMenu;
+const MenuItemGroup = Menu.ItemGroup;
+const { Header, Content, Footer, Sider } = Layout;
+
+function getItem(label, key, icon, children, type) {
+	return {
+	  key,
+	  icon,
+	  children,
+	  label,
+	  type,
+	};
+  }
+  const items = [
+	getItem('Option 1', '1', <PieChartOutlined />),
+	getItem('Option 2', '2', <DesktopOutlined />),
+	getItem('Option 3', '3', <ContainerOutlined />),
+	getItem('Navigation One', 'sub1', <MailOutlined />, [
+	  getItem('Option 5', '5'),
+	  getItem('Option 6', '6'),
+	  getItem('Option 7', '7'),
+	  getItem('Option 8', '8'),
+	]),
+	getItem('Navigation Two', 'sub2', <AppstoreOutlined />, [
+	  getItem('Option 9', '9'),
+	  getItem('Option 10', '10'),
+	  getItem('Submenu', 'sub3', null, [getItem('Option 11', '11'), getItem('Option 12', '12')]),
+	]),
+  ];
 
 const LayoutApp = () => {
 	console.log("LayoutApp");
 
+	const [collapsed, setCollapsed] = useState(false);
+	const toggleCollapsed = () => {
+	  setCollapsed(!collapsed);
+	};
+
+	const [visible, setVisible] = useState(false)
+
 	const RightMenu =()=> {
 		
 		  return (
-			<Menu mode="horizontal">
-			  <Menu.Item key="mail">
-				<a href="">Signin</a>
-			  </Menu.Item>
-			  <Menu.Item key="app">
-				<a href="">Signup</a>
-			  </Menu.Item>
-			</Menu>
-		  );
+			// <Menu mode="horizontal">
+			//   <Menu.Item key="mail">
+			// 	<a href="">Signin</a>
+			//   </Menu.Item>
+			//   <Menu.Item key="app">
+			// 	<a href="">Signup</a>
+			//   </Menu.Item>
+			// </Menu>
+
+			<>
+			{/* <Button
+			type="primary"
+			onClick={toggleCollapsed}
+			style={{
+			  marginBottom: 16,
+			}}
+		  />
+		   */}
+		         <Sider trigger={null} collapsible collapsed={collapsed}>
+
+			<Menu
+			className="rightMenu"
+			defaultSelectedKeys={['1']}
+			defaultOpenKeys={['sub1']}
+			mode="inline"
+			///theme="dark"
+			inlineCollapsed={false}
+			items={items}
+		  	/>
+      </Sider>
+
+
+		  </>
+			);
 		
 	  }
+	  
 	
 
 	const LeftMenu = () => {
 		
 		  return (
-		 <Menu mode="horizontal">
+		 <Menu mode="inline">
 			 <Menu.Item key="mail">
 				<a href="">Home</a>
 			  </Menu.Item>
@@ -56,78 +131,57 @@ const LayoutApp = () => {
 			{({ auth }) => (
 				<Layout className={styles.c_layoutapp}>
 					{/* <TopBar auth={auth}></TopBar> */}
-					<Header style={{ display: "flex", alignItems: "center" }}>
 
-						 <nav className="menuBar">
+					<Sider
+						breakpoint="lg"
+						collapsedWidth="0"
+						onBreakpoint={(broken) => {
+						console.log(broken);
+						}}
+						onCollapse={(collapsed, type) => {
+						console.log(collapsed, type);
+						}}
+					>
+						{/* <div className="demo-logo-vertical" /> */}
+						<Menu
+						theme="dark"
+						mode="inline"
+						defaultSelectedKeys={['1']}
+						items ={items}
+					
+						/>
+					</Sider>
+
+	  				<Layout>
+							
+	  <Header className="menuBar" style={{ display: "flex", alignItems: "center" }}>
+ 
           <div className="logo">
             <a href="">logo</a>
           </div>
           <div className="menuCon">
             <div className="leftMenu">
               <LeftMenu />
-            </div>
-            <div className="rightMenu">
-                <RightMenu />
-            </div>
-            <Button className="barsMenu" type="primary" onClick={this.showDrawer}>
+            </div>       
+            <Button className="barsMenu" type="primary" onClick={()=>setVisible(true)}>
               <span className="barsBtn"></span>
             </Button>
+
+
             <Drawer
               title="Basic Drawer"
               placement="right"
               closable={false}
-              onClose={this.onClose}
-              visible={this.state.visible}
-            >
-              <LeftMenu />
-              <RightMenu />
-            </Drawer>
-</div>
-        </nav>
+              onClose={()=>setVisible(false)}
+              visible={visible}
+            />
+           
+			</div>
+    
+		</Header>	
 
-						{/* <Menu
-							theme="dark"
-							mode="horizontal"
-							defaultSelectedKeys={["2"]}
-							style={{ flex: "auto", minWidth: 0 }}
-							items={new Array(15).fill(null).map((_, index) => {
-								const key = index + 1;
-								return {
-									key,
-									label: `nav ${key}`,
-								};
-							})}
-						/> */}
-
-						<ConfigProvider
-							theme={{
-								components: {
-									Menu: {
-										activeBarBorderWidth: 40,
-									},
-								},
-							}}>
-							<Menu
-								theme="dark"
-								mode="horizontal"
-								defaultSelectedKeys={["2"]}
-								style={{ flex: "auto", minWidth: 0 }}
-								items={new Array(15).fill(null).map((_, index) => {
-									const key = index + 1;
-									return {
-										key,
-										label: `nav ${key}`,
-									};
-								})}
-							/>
-						</ConfigProvider>
-					</Header>
-
-					<Content
-						style={{
-							padding: "1rem",
-						}}>
-						<div
+			<Content>
+					<div
 							// className="site-layout-content"
 							style={{
 								background: "camel",
@@ -135,6 +189,21 @@ const LayoutApp = () => {
 							<RouterProvider router={router} />
 						</div>
 					</Content>
+						
+				
+
+					</Layout>
+
+
+				
+
+				
+						
+
+             
+
+					
+					
 
 					{/* <Footer
         style={{

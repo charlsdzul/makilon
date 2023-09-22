@@ -51,13 +51,9 @@ export const router = createBrowserRouter([
 					return data.params;
 				},
 				element: (
-					<AuthContext.Consumer>
-						{({ auth }) => (
-							<ProtectedRoute auth={auth}>
-								<Vacante auth={auth} />
-							</ProtectedRoute>
-						)}
-					</AuthContext.Consumer>
+					
+								<Vacante  />
+							
 				),
 				errorElement: <ErrorBundary />,
 			},
