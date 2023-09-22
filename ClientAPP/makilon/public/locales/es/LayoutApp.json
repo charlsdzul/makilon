@@ -1,0 +1,9 @@
+{
+	"LayoutApp": {
+        "lblAgregarVacante": "Agregar Vacante",
+		"lblNuevaVacante": "Nueva Vacante",
+		"lblMisVacantes": "Mis Vacantes",
+        "lblMiCuenta": "Mi Cuenta",
+        "lblConfiguraciones": "Configuraciones"
+	}
+}
