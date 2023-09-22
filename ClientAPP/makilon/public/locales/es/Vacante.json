@@ -1,0 +1,41 @@
+{
+	"Vacante": {
+		"lblVacante": "Vacante",
+		"lblQueRequiere": "¿Qué se requiere?",
+		"lblQueOfrecemos": "¿Qué ofrecemos?",
+		"lblContratacion": "Contratación",
+		"btnFAQ": "FAQ",
+		"lblTitulo": "Titulo",
+		"ttTitulo": "Titulo de la vacante",
+
+		"lblDescripcion": "Descripcion del puesto",
+		"ttDescripcion": "Descripcion delpuesto",
+
+		"lblPuesto": "Puesto",
+		"ttPuesto": "Titulo de la vacante",
+
+		"lblPuestoEspecifico": "Especifico",
+		"ttPuestoEspecifico": "Especifico",
+
+		"btnOlvidasteContrasena": "¿Olvidaste tu contraseña?",
+		"btnCrearCuenta": "Crear cuenta",
+		"ttTitle": "Iniciar Sesión",
+		"ttCorreo": "Correo que definiste cuando creaste tu cuenta.",
+		"ttContrasena": "Contraseña que definiste cuando creaste tu cuenta.",
+		"ttIngresar": "Ingresar",
+		"ttOlvidasteContrasena": "¿Olvidaste tu contraseña?",
+		"ttCrearCuenta": "Crear cuenta",
+		"phCorreo": "Ingresa tu correo.",
+		"phContrasena": "Ingresa tu contraseña",
+		"rules": {
+			"ingresaCorreo": "Ingresa un correo.",
+			"correoInvalido": "Correo inválido",
+			"ingresaContrasena": "Ingresa una contraseña",
+			"contrasenaInvalida": "Contraseña inválida"
+		},
+		"messages": {
+			"errorInicioSesion": "Se detecto un problema al iniciar sesión.",
+			"errorInicioSesionNotificacion": "Ya se envio una notificacion sobre este problema, intenta ingresar mas tarde."
+		}
+	}
+}

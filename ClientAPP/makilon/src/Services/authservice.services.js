@@ -2,10 +2,6 @@ import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
 import api from "../Utils/api";
 
-const REDIRECT_ON_LOGIN = "redirect_on_login";
-
-// Stored outside class since private
-// eslint-disable-next-line
 let _id = null;
 let _accessToken = null;
 let _scopes = null;
@@ -40,7 +36,7 @@ export default class AuthService {
 
 		if (response.status === 200) {
 			const token = response?.data?.token;
-			Cookies.set("token", token);
+			this.setSession({ token });
 		}
 
 		return response;
@@ -106,8 +102,9 @@ export default class AuthService {
 	// 	localStorage.removeItem(REDIRECT_ON_LOGIN);
 	// };
 
-	setSession = (authResult) => {
-		console.log("authResult", authResult);
+	setSession = ({ token }) => {
+		//console.log("authResult", authResult);
+		Cookies.set("token", token);
 		// set the time that the access token will expire
 		//_expiresAt = authResult.expires;
 		// If there is a value on the `scope` param from the authResult,
@@ -115,7 +112,7 @@ export default class AuthService {
 		// use the scopes as requested. If no scopes were requested,
 		// set it to nothing
 		//_scopes = authResult.scope || this.requestedScopes || "";
-		_accessToken = authResult.token;
+		_accessToken = token;
 		//_id = authResult.id;
 		//_user = authResult.userName;
 		// se crean default para las creaciones de api subsecuentes
@@ -148,12 +145,12 @@ export default class AuthService {
 	// 	return { userId: _id, userName: _user };
 	// };
 
-	getAccessToken = () => {
-		if (!_accessToken) {
-			throw new Error("No access token found.");
-		}
-		return _accessToken;
-	};
+	// getAccessToken = () => {
+	// 	if (!_accessToken) {
+	// 		throw new Error("No access token found.");
+	// 	}
+	// 	return _accessToken;
+	// };
 
 	// userHasScopes(scopes) {
 	// 	const grantedScopes = (_scopes || "").split(" ");

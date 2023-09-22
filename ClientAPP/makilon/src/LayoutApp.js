@@ -1,10 +1,9 @@
+import { ConfigProvider, Layout, Menu } from "antd";
 import { RouterProvider } from "react-router-dom";
-import AuthContext from "./Utils/AuthContext";
-import TopBar from "./Layouts/TopBar";
-import { router } from "./Routes";
-import { Layout, Menu, theme } from "antd";
 import styles from "./CSS/common.module.css";
 import "./LayoutApp.css"
+import { router } from "./Routes";
+import AuthContext from "./Utils/AuthContext";
 
 const { Header, Content, Footer } = Layout;
 
@@ -99,6 +98,29 @@ const LayoutApp = () => {
 								};
 							})}
 						/> */}
+
+						<ConfigProvider
+							theme={{
+								components: {
+									Menu: {
+										activeBarBorderWidth: 40,
+									},
+								},
+							}}>
+							<Menu
+								theme="dark"
+								mode="horizontal"
+								defaultSelectedKeys={["2"]}
+								style={{ flex: "auto", minWidth: 0 }}
+								items={new Array(15).fill(null).map((_, index) => {
+									const key = index + 1;
+									return {
+										key,
+										label: `nav ${key}`,
+									};
+								})}
+							/>
+						</ConfigProvider>
 					</Header>
 
 					<Content
