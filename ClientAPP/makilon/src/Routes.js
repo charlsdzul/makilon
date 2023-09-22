@@ -5,7 +5,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import AuthContext from "./Utils/AuthContext";
 
 const Register = React.lazy(() => import("./Pages/Register"));
-const Vacant = React.lazy(() => import("./Pages/Vacant"));
+const Vacante = React.lazy(() => import("./Pages/Vacante"));
 const Dashboard = React.lazy(() => import("./Pages/Dashboard.js"));
 const Login = React.lazy(() => import("./Pages/Login"));
 const ErrorBundary = React.lazy(() => import("./ErrorBundary"));
@@ -43,15 +43,21 @@ export const router = createBrowserRouter([
 				element: <Register />,
 			},
 			{
-				path: "vacante/:vacanteId",
+				path: "vacante/",
+				//				path: "vacante/:vacanteId",
+
 				loader: (data) => {
 					console.log(data);
 					return data.params;
 				},
 				element: (
-					<React.Suspense fallback={<>...loading</>}>
-						<Vacant />
-					</React.Suspense>
+					<AuthContext.Consumer>
+						{({ auth }) => (
+							<ProtectedRoute auth={auth}>
+								<Vacante auth={auth} />
+							</ProtectedRoute>
+						)}
+					</AuthContext.Consumer>
 				),
 				errorElement: <ErrorBundary />,
 			},
