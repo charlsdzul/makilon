@@ -1,24 +1,27 @@
 import { ConfigProvider, Layout, Menu,Icon, Drawer, Button } from "antd";
-import React,{ useState } from "react";
+import React,{ useEffect, useRef, useState } from "react";
 import { RouterProvider } from "react-router-dom";
 import styles from "./CSS/common.module.css";
 //import "antd/dist/antd.css";
 import { useTranslation } from "react-i18next";
 
 import "./LayoutApp.css"
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import { UploadOutlined,  VideoCameraOutlined } from '@ant-design/icons';
 
 import { router } from "./Routes";
 import AuthContext from "./Utils/AuthContext";
 
 import {
 	AppstoreOutlined,
-	ContainerOutlined,
+	ContainerOutlined,FormOutlined,
 	DesktopOutlined,
+	LogoutOutlined,AreaChartOutlined,
 	MailOutlined,
 	MenuFoldOutlined,
 	MenuUnfoldOutlined,
 	PieChartOutlined,
+	SettingOutlined,
+	UserOutlined,UnorderedListOutlined,HomeOutlined
   } from '@ant-design/icons'
 
 const SubMenu = Menu.SubMenu;
@@ -47,17 +50,9 @@ const LayoutApp = () => {
 	const [visible, setVisible] = useState(false)
 	const { t } = useTranslation(["LayoutApp"]);
 
-	const items = [
-		getItem(t("LayoutApp.lblAgregarVacante"), '1', <PieChartOutlined />),
-		getItem(t("LayoutApp.lblMisVacantes"), '2', <DesktopOutlined />),
-		getItem(t("LayoutApp.lblMiCuenta"), '3', <ContainerOutlined />),
-		getItem(t("LayoutApp.lblConfiguraciones"), 'sub1', <MailOutlined />, [
-		  getItem('Option 5', '5'),
-		  getItem('Option 6', '6'),
-		  getItem('Option 7', '7'),
-		  getItem('Option 8', '8'),
-		]),	
-	  ];
+	const [opcionesMenu,setOpcionesMenu] = useState(
+	
+)
 
 	const RightMenu =()=> {
 		
@@ -85,11 +80,11 @@ const LayoutApp = () => {
 			<Menu
 			className="rightMenu"
 			defaultSelectedKeys={['1']}
-			defaultOpenKeys={['sub1']}
+			//defaultOpenKeys={['sub1']}
 			mode="inline"
 			///theme="dark"
 			inlineCollapsed={false}
-			items={items}
+			items={opcionesMenu}
 		  	/>
       </Sider>
 
@@ -104,27 +99,47 @@ const LayoutApp = () => {
 	const LeftMenu = () => {
 		
 		  return (
-		 <Menu mode="inline">
+		 <Menu mode="horizontal">
 			 <Menu.Item key="mail">
 				<a href="">Home</a>
 			  </Menu.Item>
-			  <SubMenu title={<span>Blogs</span>}>
-				<MenuItemGroup title="Item 1">
-				  <Menu.Item key="setting:1">Option 1</Menu.Item>
-				  <Menu.Item key="setting:2">Option 2</Menu.Item>
-				</MenuItemGroup>
+			  {/* <SubMenu title={<span>Blogs</span>}> */}
+				{/* <MenuItemGroup title="Item 1"> */}
+				  <Menu.Item key="setting:1">Crear Cuenta</Menu.Item>
+				  <Menu.Item key="setting:2">Iniciar Sesión</Menu.Item>
+				{/* </MenuItemGroup>
 				<MenuItemGroup title="Item 2">
 				  <Menu.Item key="setting:3">Option 3</Menu.Item>
 				  <Menu.Item key="setting:4">Option 4</Menu.Item>
-				</MenuItemGroup>
-			  </SubMenu>
-			  <Menu.Item key="alipay">
-				<a href="">Contact Us</a>
-			  </Menu.Item>
+				</MenuItemGroup> */}
+			  {/* </SubMenu> */}
+			 
 			</Menu>
 		  );
 		
 	  }
+
+
+	  const iniciarPrograma = () =>{
+
+		setOpcionesMenu(	[
+			getItem(t("LayoutApp.lblMenuPortal"), '1', <HomeOutlined />),
+			getItem(t("LayoutApp.lblMenuDashboard"), '2',<AreaChartOutlined />),
+			getItem(t("LayoutApp.lblMenuAgregarVacante"), '3', <FormOutlined />),
+			getItem(t("LayoutApp.lblMenuMisVacantes"), '4', <UnorderedListOutlined />),
+			getItem(t("LayoutApp.lblMenuMiCuenta"), '5', <UserOutlined />),
+			getItem(t("LayoutApp.lblMenuConfiguraciones"), 'sub1', <SettingOutlined />, [
+			  getItem('Option 5', '5'),
+			  getItem('Option 6', '6'),
+			  getItem('Option 7', '7'),
+			  getItem('Option 8', '8'),
+			]),	
+			getItem(t("LayoutApp.lblMenuCerrarSesion"), '6',<LogoutOutlined />),
+			
+		  ])
+	  }
+
+	  useEffect(()=> iniciarPrograma(),[])
 
 	return (
 		<AuthContext.Consumer>
@@ -146,8 +161,9 @@ const LayoutApp = () => {
 						<Menu
 						theme="dark"
 						mode="inline"
-						defaultSelectedKeys={['1']}
-						items ={items}
+						defaultSelectedKeys={['3']}
+						items ={opcionesMenu}
+						subMenuOpenDelay={5}
 					
 						/>
 					</Sider>
