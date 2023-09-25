@@ -96,25 +96,38 @@ const LayoutApp = () => {
 	  
 	
 
-	const LeftMenu = () => {
+	const TopMenu = () => {
 		
 		  return (
-		 <Menu mode="horizontal">
-			 <Menu.Item key="mail">
-				<a href="">Home</a>
-			  </Menu.Item>
-			  {/* <SubMenu title={<span>Blogs</span>}> */}
-				{/* <MenuItemGroup title="Item 1"> */}
-				  <Menu.Item key="setting:1">Crear Cuenta</Menu.Item>
-				  <Menu.Item key="setting:2">Iniciar Sesión</Menu.Item>
-				{/* </MenuItemGroup>
-				<MenuItemGroup title="Item 2">
-				  <Menu.Item key="setting:3">Option 3</Menu.Item>
-				  <Menu.Item key="setting:4">Option 4</Menu.Item>
-				</MenuItemGroup> */}
-			  {/* </SubMenu> */}
+		//  <Menu mode="horizontal">
+		// 	 <Menu.Item key="mail">
+		// 		<a href="">Home</a>
+		// 	  </Menu.Item>
+		// 	  {/* <SubMenu title={<span>Blogs</span>}> */}
+		// 		{/* <MenuItemGroup title="Item 1"> */}
+		// 		  <Menu.Item key="setting:1">Crear Cuenta</Menu.Item>
+		// 		  <Menu.Item key="setting:2">Iniciar Sesión</Menu.Item>
+		// 		{/* </MenuItemGroup>
+		// 		<MenuItemGroup title="Item 2">
+		// 		  <Menu.Item key="setting:3">Option 3</Menu.Item>
+		// 		  <Menu.Item key="setting:4">Option 4</Menu.Item>
+		// 		</MenuItemGroup> */}
+		// 	  {/* </SubMenu> */}
 			 
-			</Menu>
+		// 	</Menu>
+
+<Menu
+theme="dark"
+mode="horizontal"
+defaultSelectedKeys={['2']}
+items={new Array(3).fill(null).map((_, index) => {
+  const key = index + 1;
+  return {
+	key,
+	label: `nav ${key}`,
+  };
+})}
+/>
 		  );
 		
 	  }
@@ -145,7 +158,6 @@ const LayoutApp = () => {
 		<AuthContext.Consumer>
 			{({ auth }) => (
 				<Layout className={styles.c_layoutapp}>
-					{/* <TopBar auth={auth}></TopBar> */}
 
 					<Sider
 						breakpoint="lg"
@@ -157,7 +169,6 @@ const LayoutApp = () => {
 						console.log(collapsed, type);
 						}}
 					>
-						{/* <div className="demo-logo-vertical" /> */}
 						<Menu
 						theme="dark"
 						mode="inline"
@@ -175,9 +186,10 @@ const LayoutApp = () => {
           <div className="logo">
             <a href="">logo</a>
           </div>
+		  
           <div className="menuCon">
             <div className="leftMenu">
-              <LeftMenu />
+              <TopMenu />
             </div>       
             <Button className="barsMenu" type="primary" onClick={()=>setVisible(true)}>
               <span className="barsBtn"></span>
