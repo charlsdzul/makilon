@@ -50,11 +50,7 @@ export const router = createBrowserRouter([
 					console.log(data);
 					return data.params;
 				},
-				element: (
-					
-								<Vacante  />
-							
-				),
+				element: <Vacante />,
 				errorElement: <ErrorBundary />,
 			},
 

@@ -1,5 +1,5 @@
-import { MODAL_TYPES } from "./utilConst";
 import { Modal } from "antd";
+import { MODAL_TYPES } from "./utilConst";
 
 export const asignarMensajeTranslation = ({ t, rules, production = true }) => {
 	if (production) {
@@ -85,4 +85,8 @@ const generateErrorMensaje = ({ error, useLabel, useDetail, useAction }) => {
 	console.log(mensaje);
 
 	return mensaje;
+};
+
+export const getUrlPathName = () => {
+	return window.location.pathname;
 };
