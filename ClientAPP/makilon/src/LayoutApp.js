@@ -1,13 +1,12 @@
 import { Layout, Menu } from "antd";
 import React, { useEffect, useState } from "react";
-import { Link, RouterProvider } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import styles from "./CSS/common.module.css";
 //import "antd/dist/antd.css";
 import { useTranslation } from "react-i18next";
 
 import "./LayoutApp.css";
 
-import { router } from "./Routes";
 import AuthContext from "./Utils/AuthContext";
 
 import {
@@ -95,11 +94,11 @@ const LayoutApp = (props) => {
 
 	const iniciarPrograma = () => {
 		setOpcionesMenu([
-			getItem(<Link to={`portal`}>{t("LayoutApp.lblMenuPortal")}</Link>, "/portal", <HomeOutlined />),
-			getItem(<a href={`/dashboard`}>{t("LayoutApp.lblMenuDashboard")}</a>, "/dashboard", <AreaChartOutlined />),
-			getItem(<a href={`/vacante`}>{t("LayoutApp.lblMenuAgregarVacante")}</a>, "/vacante", <FormOutlined />),
-			getItem(<a href={`/mis-vacantes`}>{t("LayoutApp.lblMenuMisVacantes")}</a>, "/mis-vacantes", <UnorderedListOutlined />),
-			getItem(<a href={`/mi-cuenta`}>{t("LayoutApp.lblMenuMiCuenta")}</a>, "/mi-cuenta", <UserOutlined />),
+			getItem(<NavLink to={`/portal`}>{t("LayoutApp.lblMenuPortal")}</NavLink>, "/portal", <HomeOutlined />),
+			getItem( <NavLink to={`/dashboard`}>{t("LayoutApp.lblMenuDashboard")}</NavLink>, "/dashboard", <AreaChartOutlined />),
+			getItem(<NavLink to={`/vacante`}>{t("LayoutApp.lblMenuAgregarVacante")}</NavLink>, "/vacante", <FormOutlined />),
+			getItem(  <NavLink to={`/mis-vacantes`}>{t("LayoutApp.lblMenuMisVacantes")}</NavLink>, "/mis-vacantes", <UnorderedListOutlined />),
+			getItem( <NavLink to={`/mi-cuenta`}>{t("LayoutApp.lblMenuMiCuenta")}</NavLink>, "/mi-cuenta", <UserOutlined />),
 			getItem(t("LayoutApp.lblMenuConfiguraciones"), "sub1", <SettingOutlined />, [
 				getItem("Option 5", "5"),
 				getItem("Option 6", "6"),
@@ -155,12 +154,8 @@ const LayoutApp = (props) => {
 						</Header>
 
 						<Content>
-							<div
-								// className="site-layout-content"
-								style={{
-									background: "camel",
-								}}>
-								<RouterProvider router={router} />
+							<div style={{background: "camel",}}>
+								<Outlet/>
 							</div>
 						</Content>
 					</Layout>

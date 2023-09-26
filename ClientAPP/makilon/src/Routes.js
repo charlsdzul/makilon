@@ -1,5 +1,6 @@
-import React from "react";
+import React ,{Suspense}from "react";
 import { createBrowserRouter } from "react-router-dom";
+import AppWrapper from "./AppWrapper";
 import RecuperarContrasena from "./Pages/RecuperarContrasena";
 import ProtectedRoute from "./ProtectedRoute";
 import AuthContext from "./Utils/AuthContext";
@@ -16,6 +17,8 @@ const Home = React.lazy(() => import("./Pages/Home"));
 export const router = createBrowserRouter([
 	{
 		path: "/",
+		element: <AppWrapper />,
+
 		children: [
 			{
 				path: "notaccess",
@@ -26,8 +29,18 @@ export const router = createBrowserRouter([
 			// 	element: <NotFound />,
 			// },
 			{
-				index: true,
-				path: "inicio",
+				//index: true,
+				path: "portal",
+				element: <Suspense fallback={<>...</>}><Home />	</Suspense>,
+			},
+			{
+				//index: true,
+				path: "mi-cuenta",
+				element: <Home />,
+			},
+			{
+				//index: true,
+				path: "mis-vacantes",
 				element: <Home />,
 			},
 			{
@@ -43,14 +56,15 @@ export const router = createBrowserRouter([
 				element: <Register />,
 			},
 			{
-				path: "vacante/",
+				path: "vacante",
 				//				path: "vacante/:vacanteId",
 
 				loader: (data) => {
 					console.log(data);
 					return data.params;
 				},
-				element: <Vacante />,
+				element:							<Suspense fallback={<>...</>}>
+				<Vacante />	</Suspense>,
 				errorElement: <ErrorBundary />,
 			},
 
@@ -64,9 +78,11 @@ export const router = createBrowserRouter([
 				element: (
 					<AuthContext.Consumer>
 						{({ auth }) => (
+							<Suspense fallback={<>...</>}>
 							<ProtectedRoute auth={auth}>
 								<Dashboard auth={auth} />
 							</ProtectedRoute>
+							</Suspense>
 						)}
 					</AuthContext.Consumer>
 				),

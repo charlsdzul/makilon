@@ -4,11 +4,14 @@ import "./index.css";
 //import reportWebVitals from "./reportWebVitals";
 import AppWrapper from "./AppWrapper";
 import "./i18n";
+import { Link, RouterProvider } from "react-router-dom";
+import { router } from "./Routes";
 
 const domNode = document.getElementById("root");
 localStorage.setItem("i18nextLng", "en-US");
 const root = createRoot(domNode);
-root.render(<AppWrapper />);
+root.render(								<RouterProvider router={router} />
+);
 
 /*
 root.render(<React.StrictMode>
