@@ -1,9 +1,11 @@
-import React ,{Suspense}from "react";
+import React, { Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import AppWrapper from "./AppWrapper";
-import RecuperarContrasena from "./Pages/RecuperarContrasena";
+import LayoutApp from "./LayoutApp";
 import ProtectedRoute from "./ProtectedRoute";
+import AuthService from "./Services/authservice.services";
 import AuthContext from "./Utils/AuthContext";
+
+const auth = new AuthService();
 
 const Register = React.lazy(() => import("./Pages/Register"));
 const Vacante = React.lazy(() => import("./Pages/Vacante"));
@@ -17,7 +19,21 @@ const Home = React.lazy(() => import("./Pages/Home"));
 export const router = createBrowserRouter([
 	{
 		path: "/",
-		element: <AppWrapper />,
+		loader: async () => {
+			const existsToken = auth.existsToken();
+			if (!existsToken) return { isAuthenticated: existsToken };
+
+			const response = await auth.isAuthenticated();
+			if (response === null) return { isAuthenticated: false };
+
+			const isAuthenticated = response?.data?.isValidToken ?? false;
+			return { isAuthenticated: isAuthenticated };
+		},
+		element: (
+			<Suspense fallback={<>...</>}>
+				<LayoutApp />
+			</Suspense>
+		),
 
 		children: [
 			{
@@ -31,57 +47,70 @@ export const router = createBrowserRouter([
 			{
 				//index: true,
 				path: "portal",
-				element: <Suspense fallback={<>...</>}><Home />	</Suspense>,
+				element: (
+					<Suspense fallback={<>...</>}>
+						<Home />{" "}
+					</Suspense>
+				),
 			},
 			{
-				//index: true,
 				path: "mi-cuenta",
 				element: <Home />,
 			},
-			{
-				//index: true,
-				path: "mis-vacantes",
-				element: <Home />,
-			},
+
 			{
 				path: "login",
 				element: <AuthContext.Consumer>{({ auth }) => <Login auth={auth} />}</AuthContext.Consumer>,
 			},
-			{
-				path: "login/recuperar",
-				element: <RecuperarContrasena />,
-			},
+			// {
+			// 	path: "login/recuperar",
+			// 	element: <RecuperarContrasena />,
+			// },
 			{
 				path: "registro",
 				element: <Register />,
 			},
 			{
-				path: "vacante",
-				//				path: "vacante/:vacanteId",
-
-				loader: (data) => {
-					console.log(data);
-					return data.params;
-				},
-				element:							<Suspense fallback={<>...</>}>
-				<Vacante />	</Suspense>,
+				path: "vacante", //path: "vacante/:vacanteId",
+				// loader: (data) => {	return data.params; },
+				element: (
+					<AuthContext.Consumer>
+						{({ auth }) => (
+							<Suspense fallback={<>...</>}>
+								<ProtectedRoute auth={auth}>
+									<Vacante auth={auth} />
+								</ProtectedRoute>
+							</Suspense>
+						)}
+					</AuthContext.Consumer>
+				),
 				errorElement: <ErrorBundary />,
+			},
+			{
+				path: "mis-vacantes",
+				element: (
+					<AuthContext.Consumer>
+						{({ auth }) => (
+							<Suspense fallback={<>...</>}>
+								<ProtectedRoute auth={auth}>
+									<Home auth={auth} />
+								</ProtectedRoute>
+							</Suspense>
+						)}
+					</AuthContext.Consumer>
+				),
 			},
 
 			{
 				path: "dashboard",
 				errorElement: <ErrorBundary />,
-				loader: () => {
-					console.log("111111111111");
-					return null;
-				},
 				element: (
 					<AuthContext.Consumer>
 						{({ auth }) => (
 							<Suspense fallback={<>...</>}>
-							<ProtectedRoute auth={auth}>
-								<Dashboard auth={auth} />
-							</ProtectedRoute>
+								<ProtectedRoute auth={auth}>
+									<Dashboard auth={auth} />
+								</ProtectedRoute>
 							</Suspense>
 						)}
 					</AuthContext.Consumer>

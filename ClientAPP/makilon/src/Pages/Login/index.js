@@ -3,7 +3,7 @@ import { Card, Col, Divider, Form, Input, Row } from "antd";
 import { StatusCodes } from "http-status-codes";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "../../CSS/common.module.css";
 import stylesLogin from "../../CSS/login.module.css";
 import CButton from "../../Components/CButton";
@@ -18,6 +18,7 @@ const Login = (props) => {
 	const [form] = Form.useForm();
 	const [requesting, setRequesting] = useState(false);
 	const [existValidToken, setExistValidToken] = useState(false);
+	const [showLogin, setShowLogin] = useState(false);
 
 	const navigate = useNavigate();
 
@@ -56,7 +57,7 @@ const Login = (props) => {
 
 	const iniciarSesion = (token) => {
 		if (token) {
-			navigate("/dashboard");
+			window.location.href = "/dashboard";
 		} else {
 			const mensaje = `${t("Login.messages.errorInicioSesion")} ${t("Login.messages.errorInicioSesionNotificacion")}`;
 			showModal({ type: MODAL_TYPES.ERROR, title: t("Login.lblTitleLogin"), content: mensaje });
@@ -66,17 +67,36 @@ const Login = (props) => {
 
 	useEffect(() => {
 		const iniciarPrograma = async () => {
+			const existsToken = await props.auth.existsToken();
+			if (!existsToken) {
+				setShowLogin(true);
+				return;
+			}
+
 			const response = await props.auth.isAuthenticated();
+			if (response === null) {
+				props.auth.cleanToken();
+				setShowLogin(true);
+				return;
+			}
+
 			const validToken = response?.data?.isValidToken ?? false;
-			if (validToken) setExistValidToken(true);
-			else props.auth.cleanToken();
+
+			if (validToken) {
+				window.location.href = "/dashboard";
+			} else {
+				props.auth.cleanToken();
+				setShowLogin(true);
+			}
 		};
 
 		iniciarPrograma();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	if (existValidToken) return <Navigate to={"/dashboard"} replace />;
+	console.log("showLogin", showLogin);
+
+	if (!showLogin) return <></>;
 
 	return (
 		<CContainer className={stylesLogin.c_container}>

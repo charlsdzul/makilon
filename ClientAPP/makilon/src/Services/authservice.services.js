@@ -43,10 +43,12 @@ export default class AuthService {
 	};
 
 	isAuthenticated = async () => {
-		const { token, email } = this.getDataFromToken();
+		const dataToken = this.getDataFromToken();
+		if (!dataToken) return null;
+
 		const formData = new FormData();
-		formData.append("token", token);
-		formData.append("email", email);
+		formData.append("token", dataToken?.token);
+		formData.append("email", dataToken?.email);
 
 		const response = await api
 			.post("auth/authenticated", formData)
@@ -79,9 +81,13 @@ export default class AuthService {
 	// };
 
 	getDataFromToken = () => {
-		const token = this.getTokenFromCokie();
-		const decoded = jwt_decode(token);
-		return { expires: decoded.exp, id: decoded.uid, token: token, userName: decoded.sub, email: decoded.email };
+		try {
+			const token = this.getTokenFromCokie();
+			const decoded = jwt_decode(token);
+			return { expires: decoded.exp, id: decoded.uid, token: token, userName: decoded.sub, email: decoded.email, demo: decoded.demo };
+		} catch (error) {
+			return null;
+		}
 	};
 
 	// getAuthInfo = () => {
@@ -123,13 +129,6 @@ export default class AuthService {
 		//api.defaults.headers.common["Accept-Language"] = i18n.language;
 		//this.scheduleTokenRenewal();
 	};
-
-	// isAuthenticated() {
-	// 	const current_time = Date.now() / 1000;
-	// 	const result = current_time < _expiresAt;
-	// 	//.. console.log("isAuthenticated(): " + current_time + " < " + _expiresAt + " = " + result);
-	// 	return result;
-	// }
 
 	// logout = () => {
 	// 	Cookies.remove("token");

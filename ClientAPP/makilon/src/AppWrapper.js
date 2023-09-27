@@ -1,9 +1,12 @@
+import { useLoaderData } from "react-router-dom";
 import App from "./App";
-import AuthContext from "./Utils/AuthContext.js";
 import AuthService from "./Services/authservice.services";
+import AuthContext from "./Utils/AuthContext.js";
 const auth = new AuthService();
 function AppWrapper() {
-	console.log("AppWrapper");
+	const albums = useLoaderData();
+
+	console.log("AppWrapper", albums);
 
 	return (
 		<AuthContext.Provider value={{ auth }}>
@@ -13,3 +16,5 @@ function AppWrapper() {
 }
 
 export default AppWrapper;
+
+//TODO ELIMINAR

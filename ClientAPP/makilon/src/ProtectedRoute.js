@@ -1,20 +1,24 @@
 import { StatusCodes } from "http-status-codes";
 import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children, auth, redirectPath = "/login" }) => {
+	//PENDIENTE REDIRECCIONER AL LOGIN CUANDO SE ELINA EL TOKEN, Y SE SELECCIONA OTRA OPCION DEL SIDER
 	const [validDone, setValidDone] = useState(false);
 	const [isValid, setIsValid] = useState(false);
 
 	const validarToken = async () => {
-		const exists = auth.existsToken();
-		if (!exists) {
+		const existsToken = auth.existsToken();
+		if (!existsToken) {
 			setValidDone(true);
 			return;
 		}
 
 		const response = await auth.isAuthenticated();
-		console.log(response);
+		if (response === null) {
+			setValidDone(true);
+			return;
+		}
+
 		if (response.status === StatusCodes.OK) {
 			setIsValid(true);
 		}
@@ -23,19 +27,20 @@ const ProtectedRoute = ({ children, auth, redirectPath = "/login" }) => {
 	};
 
 	useEffect(() => {
-		if (!validDone) validarToken();
+		validarToken();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	//return children;
+	useEffect(() => {
+		if (validDone && !isValid) {
+			window.location.href = "/login";
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [validDone]);
 
-	if (!validDone) return <></>;
+	console.log("validDone", validDone);
 
-	if (isValid) {
-		return children;
-	} else {
-		return <Navigate to={redirectPath} replace />;
-	}
+	return validDone && isValid ? children : <></>;
 };
 
 export default ProtectedRoute;

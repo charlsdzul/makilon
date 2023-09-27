@@ -1,9 +1,10 @@
+//TODO CAMBIAR NOMBRE APPWRAPPER
 import { Layout, Menu } from "antd";
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
-import styles from "./CSS/common.module.css";
-//import "antd/dist/antd.css";
 import { useTranslation } from "react-i18next";
+import { NavLink, Outlet, useLoaderData } from "react-router-dom";
+import styles from "./CSS/common.module.css";
+import AuthService from "./Services/authservice.services";
 
 import "./LayoutApp.css";
 
@@ -19,6 +20,7 @@ import {
 	UserOutlined,
 } from "@ant-design/icons";
 import { getUrlPathName } from "./Utils/utils";
+const auth = new AuthService();
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -38,7 +40,8 @@ const LayoutApp = (props) => {
 	const [collapsed, setCollapsed] = useState(false);
 	const [opcionesMenu, setOpcionesMenu] = useState();
 	const [currentPathName, setCurrentPathName] = useState("");
-
+	const loaderData = useLoaderData();
+	//console.log("loaderData", loaderData);
 	const toggleCollapsed = () => {
 		setCollapsed(!collapsed);
 	};
@@ -95,10 +98,10 @@ const LayoutApp = (props) => {
 	const iniciarPrograma = () => {
 		setOpcionesMenu([
 			getItem(<NavLink to={`/portal`}>{t("LayoutApp.lblMenuPortal")}</NavLink>, "/portal", <HomeOutlined />),
-			getItem( <NavLink to={`/dashboard`}>{t("LayoutApp.lblMenuDashboard")}</NavLink>, "/dashboard", <AreaChartOutlined />),
+			getItem(<NavLink to={`/dashboard`}>{t("LayoutApp.lblMenuDashboard")}</NavLink>, "/dashboard", <AreaChartOutlined />),
 			getItem(<NavLink to={`/vacante`}>{t("LayoutApp.lblMenuAgregarVacante")}</NavLink>, "/vacante", <FormOutlined />),
-			getItem(  <NavLink to={`/mis-vacantes`}>{t("LayoutApp.lblMenuMisVacantes")}</NavLink>, "/mis-vacantes", <UnorderedListOutlined />),
-			getItem( <NavLink to={`/mi-cuenta`}>{t("LayoutApp.lblMenuMiCuenta")}</NavLink>, "/mi-cuenta", <UserOutlined />),
+			getItem(<NavLink to={`/mis-vacantes`}>{t("LayoutApp.lblMenuMisVacantes")}</NavLink>, "/mis-vacantes", <UnorderedListOutlined />),
+			getItem(<NavLink to={`/mi-cuenta`}>{t("LayoutApp.lblMenuMiCuenta")}</NavLink>, "/mi-cuenta", <UserOutlined />),
 			getItem(t("LayoutApp.lblMenuConfiguraciones"), "sub1", <SettingOutlined />, [
 				getItem("Option 5", "5"),
 				getItem("Option 6", "6"),
@@ -116,60 +119,60 @@ const LayoutApp = (props) => {
 	useEffect(() => iniciarPrograma(), []);
 
 	return (
-		<AuthContext.Consumer>
-			{({ auth }) => (
-				<Layout className={styles.c_layoutapp}>
+		<AuthContext.Provider value={{ auth }}>
+			<Layout className={styles.c_layoutapp}>
+				{loaderData.isAuthenticated && (
 					<Sider
 						breakpoint="lg"
 						collapsedWidth="0"
 						onBreakpoint={(broken) => {
-							console.log(broken);
+							//	console.log(broken);
 						}}
 						onCollapse={(collapsed, type) => {
-							console.log(collapsed, type);
+							//	console.log(collapsed, type);
 						}}>
 						<Menu theme="dark" mode="inline" selectedKeys={[currentPathName]} items={opcionesMenu} subMenuOpenDelay={5} />
 					</Sider>
+				)}
 
-					<Layout>
-						<Header style={{ height: "2.5rem" }}>
-							<Layout className="menuCon">
-								{/* <div className="logo">
+				<Layout>
+					<Header style={{ height: "2.5rem" }}>
+						<Layout className="menuCon">
+							{/* <div className="logo">
 								<a href="">logo</a>
 							</div> */}
 
-								{/* <div className="leftMenu">
+							{/* <div className="leftMenu">
 									<TopMenu />
 								</div> */}
 
-								{/* <div className="rightMenu">
+							{/* <div className="rightMenu">
 									<RightMenu />
 								</div> */}
-								{/* <Button className="barsMenu" type="primary" onClick={() => setVisible(true)}>
+							{/* <Button className="barsMenu" type="primary" onClick={() => setVisible(true)}>
 									<span className="barsBtn"></span>
 								</Button> */}
 
-								{/* <Drawer title="Basic Drawer" placement="right" closable={false} onClose={() => setVisible(false)} visible={visible} /> */}
-							</Layout>
-						</Header>
+							{/* <Drawer title="Basic Drawer" placement="right" closable={false} onClose={() => setVisible(false)} visible={visible} /> */}
+						</Layout>
+					</Header>
 
-						<Content>
-							<div style={{background: "camel",}}>
-								<Outlet/>
-							</div>
-						</Content>
-					</Layout>
+					<Content>
+						<div style={{ background: "camel" }}>
+							<Outlet />
+						</div>
+					</Content>
+				</Layout>
 
-					{/* <Footer
+				{/* <Footer
         style={{
           textAlign: 'center',
         }}
       >
         Ant Design ©2023 Created by Ant UED
       </Footer>        */}
-				</Layout>
-			)}
-		</AuthContext.Consumer>
+			</Layout>
+		</AuthContext.Provider>
 	);
 };
 
