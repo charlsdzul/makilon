@@ -3,7 +3,7 @@ import { Card, Col, Divider, Form, Input, Row } from "antd";
 import { StatusCodes } from "http-status-codes";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import styles from "../../CSS/common.module.css";
 import stylesLogin from "../../CSS/login.module.css";
 import CButton from "../../Components/CButton";
@@ -14,11 +14,13 @@ import { asignarMensajeTranslation, getErrorMessages, showModal } from "../../Ut
 import { rulesLogin } from "./rulesLogin";
 
 const Login = (props) => {
+	console.log("Login", props);
 	const formRef = useRef(null);
 	const [form] = Form.useForm();
 	const [requesting, setRequesting] = useState(false);
 	const [existValidToken, setExistValidToken] = useState(false);
 	const [showLogin, setShowLogin] = useState(false);
+	const loaderData = useLoaderData();
 
 	const navigate = useNavigate();
 
@@ -67,22 +69,9 @@ const Login = (props) => {
 
 	useEffect(() => {
 		const iniciarPrograma = async () => {
-			const existsToken = await props.auth.existsToken();
-			if (!existsToken) {
-				setShowLogin(true);
-				return;
-			}
+			console.log("loaderData Login", loaderData);
 
-			const response = await props.auth.isAuthenticated();
-			if (response === null) {
-				props.auth.cleanToken();
-				setShowLogin(true);
-				return;
-			}
-
-			const validToken = response?.data?.isValidToken ?? false;
-
-			if (validToken) {
+			if (loaderData?.isAuthenticated) {
 				window.location.href = "/dashboard";
 			} else {
 				props.auth.cleanToken();
@@ -93,8 +82,6 @@ const Login = (props) => {
 		iniciarPrograma();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
-
-	console.log("showLogin", showLogin);
 
 	if (!showLogin) return <></>;
 

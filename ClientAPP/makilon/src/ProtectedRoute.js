@@ -38,7 +38,7 @@ const ProtectedRoute = ({ children, auth, redirectPath = "/login" }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [validDone]);
 
-	console.log("validDone", validDone);
+	//console.log("validDone", validDone);
 
 	return validDone && isValid ? children : <></>;
 };

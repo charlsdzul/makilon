@@ -1,10 +1,10 @@
 import React from "react";
-import LayoutApp from "./LayoutApp";
+import AppWrapper from "./AppWrapper";
 
 function App(props) {
 	console.log("App");
 
-	return <LayoutApp />;
+	return <AppWrapper />;
 }
 
 export default App;

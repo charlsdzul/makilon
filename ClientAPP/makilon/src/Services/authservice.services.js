@@ -58,6 +58,17 @@ export default class AuthService {
 		return response;
 	};
 
+	validateTokenRouteLoader = async () => {
+		const existsToken = this.existsToken();
+		if (!existsToken) return { isAuthenticated: existsToken };
+
+		const response = await this.isAuthenticated();
+		if (response === null) return { isAuthenticated: false };
+
+		const isAuthenticated = response?.data?.isValidToken ?? false;
+		return { isAuthenticated: isAuthenticated };
+	};
+
 	existsToken = () => {
 		const exists = Cookies.get("token");
 		return exists !== undefined && exists !== null && exists !== "";

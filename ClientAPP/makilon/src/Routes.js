@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import LayoutApp from "./LayoutApp";
+import AppWrapper from "./AppWrapper";
 import ProtectedRoute from "./ProtectedRoute";
 import AuthService from "./Services/authservice.services";
 import AuthContext from "./Utils/AuthContext";
@@ -20,36 +20,29 @@ export const router = createBrowserRouter([
 	{
 		path: "/",
 		loader: async () => {
-			const existsToken = auth.existsToken();
-			if (!existsToken) return { isAuthenticated: existsToken };
-
-			const response = await auth.isAuthenticated();
-			if (response === null) return { isAuthenticated: false };
-
-			const isAuthenticated = response?.data?.isValidToken ?? false;
-			return { isAuthenticated: isAuthenticated };
+			const validation = await auth.validateTokenRouteLoader();
+			return validation;
 		},
 		element: (
-			<Suspense fallback={<>...</>}>
-				<LayoutApp />
+			<Suspense fallback={<>cargando...</>}>
+				<AppWrapper />
 			</Suspense>
 		),
-
 		children: [
 			{
 				path: "notaccess",
 				element: <NotAccess />,
 			},
-			// {
-			// 	path: "*",
-			// 	element: <NotFound />,
-			// },
 			{
-				//index: true,
+				path: "*",
+				element: <NotFound />,
+			},
+			{
+				index: true,
 				path: "portal",
 				element: (
 					<Suspense fallback={<>...</>}>
-						<Home />{" "}
+						<Home />
 					</Suspense>
 				),
 			},
@@ -57,9 +50,12 @@ export const router = createBrowserRouter([
 				path: "mi-cuenta",
 				element: <Home />,
 			},
-
 			{
 				path: "login",
+				loader: async () => {
+					const validation = auth.validateTokenRouteLoader();
+					return validation;
+				},
 				element: <AuthContext.Consumer>{({ auth }) => <Login auth={auth} />}</AuthContext.Consumer>,
 			},
 			// {
@@ -100,7 +96,6 @@ export const router = createBrowserRouter([
 					</AuthContext.Consumer>
 				),
 			},
-
 			{
 				path: "dashboard",
 				errorElement: <ErrorBundary />,
