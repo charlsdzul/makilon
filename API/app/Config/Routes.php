@@ -51,7 +51,7 @@ $routes->group("api/v1", ["namespace" => 'App\Controllers\API\v1'], static funct
     // $routes->get("municipios/", "catmunicipios");
     // $routes->get("municipios/(:segment)", 'catmunicipios::show/$1');
 
-    // $routes->get("secciones/", "catsecciones");
+    $routes->get("puestos/", "catalogos::puestos");
     // $routes->get("secciones/(:segment)", 'catsecciones::show/$1');
     $routes->post("usuario/registro", "usuarios::registro");
     $routes->get("usuario/confirmacion/(:segment)/(:hash)", "usuarios::confirmacion/$1/$2");

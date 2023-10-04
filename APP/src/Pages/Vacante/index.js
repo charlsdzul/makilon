@@ -3,7 +3,7 @@ import { AutoComplete, Col, Form, Input, Row, Select, Tabs, Typography } from "a
 import Alert from "antd/es/alert/Alert";
 import Card from "antd/es/card/Card";
 import TextArea from "antd/es/input/TextArea";
-import { default as React, useRef, useState } from "react";
+import { default as React, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useLoaderData } from "react-router-dom";
 import styles from "../../CSS/common.module.css";
@@ -108,6 +108,22 @@ const Vacante = (props) => {
 			</CContainer>
 		);
 	};
+
+	useEffect(() => {
+		const iniciarPrograma = async () => {
+			const sourcePuestos = {};
+
+			// if (loaderData?.isAuthenticated) {
+			// 	window.location.href = "/dashboard";
+			// } else {
+			// 	props.auth.cleanToken();
+			// 	setShowLogin(true);
+			// }
+		};
+
+		iniciarPrograma();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return (
 		<CContainer title={esNuevaVacante ? t("Vacante.lblAgregarVacante") : t("Vacante.lblEditarVacante")}>
