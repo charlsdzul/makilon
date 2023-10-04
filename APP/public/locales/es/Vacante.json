@@ -1,21 +1,31 @@
 {
 	"Vacante": {
 		"lblVacante": "Vacante",
+		"lblCrear": "Crear",
+		"lblAgregarVacante": "Agregar Vacante",
+		"lblEditarVacante": "Editar Vacante",
+		"lblID": "ID",
+
+		"lblCrearVacante": "Crear Vacante",
+		"lblNuevaVacante": "Nueva Vacante",
 		"lblQueRequiere": "¿Qué se requiere?",
 		"lblQueOfrecemos": "¿Qué ofrecemos?",
 		"lblContratacion": "Contratación",
 		"btnFAQ": "FAQ",
 		"lblTitulo": "Titulo",
-		"ttTitulo": "Titulo de la vacante",
+		"ttTitulo": "Utiliza un titulo concizo. Los detalles los puedes agregar en las descripciones.",
 
 		"lblDescripcion": "Descripcion del puesto",
 		"ttDescripcion": "Descripcion delpuesto",
+		"phTitulo": "Titulo de la vacante",
 
 		"lblPuesto": "Puesto",
-		"ttPuesto": "Titulo de la vacante",
+		"ttPuesto": "Es la posicion general de la vacante.",
+		"phPuesto": "Puesto de la vacante.",
 
 		"lblPuestoEspecifico": "Especifico",
-		"ttPuestoEspecifico": "Especifico",
+		"phPuestoEspecifico": "Puesto especifico de la vacante",
+		"ttPuestoEspecifico": "Es la posicion especifica de la vacante.",
 
 		"btnOlvidasteContrasena": "¿Olvidaste tu contraseña?",
 		"btnCrearCuenta": "Crear cuenta",
@@ -28,14 +38,16 @@
 		"phCorreo": "Ingresa tu correo.",
 		"phContrasena": "Ingresa tu contraseña",
 		"rules": {
-			"ingresaCorreo": "Ingresa un correo.",
-			"correoInvalido": "Correo inválido",
-			"ingresaContrasena": "Ingresa una contraseña",
-			"contrasenaInvalida": "Contraseña inválida"
+			"ingresaTitulo": "Ingresa un titulo para tu vacante.",
+			"ingresaTituloMinimo": "Ingresa minimo 15 caracteres.",
+			"ingresaTituloDescriptivo": "Te recomendamos agregar un titulo mas descriptivo.",
+			"ingresaPuesto": "Elige un puesto para tu vacante. Si no existe el que deseas, elige 'Otro'",
+			"ingresaPuestoEspecifico": "Ingresa la posicion especifica para tu vacante."
 		},
 		"messages": {
 			"errorInicioSesion": "Se detecto un problema al iniciar sesión.",
-			"errorInicioSesionNotificacion": "Ya se envio una notificacion sobre este problema, intenta ingresar mas tarde."
+			"errorInicioSesionNotificacion": "Ya se envio una notificacion sobre este problema, intenta ingresar mas tarde.",
+			"infoEditarInfoMasAdelante": "Toda esta informacion podras editarla mas adelante 🙂"
 		}
 	}
 }
