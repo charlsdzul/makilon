@@ -10,6 +10,7 @@ import styles from "../../CSS/common.module.css";
 import CButton from "../../Components/CButton";
 import CContainer from "../../Components/CContainer";
 import { asignarMensajeTranslation } from "../../Utils/utils";
+import { obtenerCatalogo } from "../../Utils/utilsRequest";
 import { rulesVacante } from "./rulesVacante";
 
 const { Option } = Select;
@@ -19,9 +20,15 @@ const Vacante = (props) => {
 	const formEditarVacanteRef = useRef(null);
 
 	const [form] = Form.useForm();
+	const puestoEspecificoWatch = Form.useWatch("puestoEspecifico", form);
+	const puestoWatch = Form.useWatch("puesto", form);
+
 	const albums = useLoaderData();
 	const [anotherOptions, setAnotherOptions] = useState([]);
 	const [esNuevaVacante, setEsNuevaVacante] = useState(true);
+	const [sourcePuestos, setSourcePuestos] = useState([]);
+	const [sourcePuestosEspecificos, setSourcePuestosEspecificos] = useState([]);
+
 	const { t } = useTranslation(["Vacante"]);
 
 	const [rules] = useState(asignarMensajeTranslation({ t, rules: rulesVacante, production: true }));
@@ -40,6 +47,7 @@ const Vacante = (props) => {
 	const options = [
 		{
 			value: "Produccion",
+			label: "aa",
 		},
 		{
 			value: "Materiales",
@@ -49,7 +57,7 @@ const Vacante = (props) => {
 		},
 	];
 
-	console.log("Vacant", albums);
+	//console.log("Vacant", albums);
 
 	const Tab1Vacante = () => {
 		return (
@@ -109,22 +117,20 @@ const Vacante = (props) => {
 		);
 	};
 
+	const iniciarPrograma = async () => {
+		const { data: puestos } = await obtenerCatalogo({ catalogo: "puestos" });
+		setSourcePuestos(puestos);
+
+		const { data: puestosEspecificos } = await obtenerCatalogo({ catalogo: "puestosEspecificos" });
+		setSourcePuestosEspecificos(puestosEspecificos);
+	};
+
 	useEffect(() => {
-		const iniciarPrograma = async () => {
-			const sourcePuestos = {};
-
-			// if (loaderData?.isAuthenticated) {
-			// 	window.location.href = "/dashboard";
-			// } else {
-			// 	props.auth.cleanToken();
-			// 	setShowLogin(true);
-			// }
-		};
-
 		iniciarPrograma();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
+	//	console.log(sourcePuestos);
 	return (
 		<CContainer title={esNuevaVacante ? t("Vacante.lblAgregarVacante") : t("Vacante.lblEditarVacante")}>
 			{!esNuevaVacante && (
@@ -155,30 +161,23 @@ const Vacante = (props) => {
 												optionFilterProp="children"
 												filterOption={(input, option) => (option?.label ?? "").includes(input)}
 												filterSort={(optionA, optionB) => (optionA?.label ?? "").toLowerCase().localeCompare((optionB?.label ?? "").toLowerCase())}
-												options={[
-													{
-														value: "1",
-														label: "Otro",
-													},
-													{
-														value: "2",
-														label: "Operador",
-													},
-												]}
+												options={sourcePuestos}
+												fieldNames={{ label: "descripcion", value: "sigla" }}
 											/>
 										</Form.Item>
 									</Col>
 
 									<Col xs={24} sm={24} md={24} lg={10} xl={11} xxl={6}>
 										<Form.Item
-											name="puestoEspecifico"
-											required
-											label={t("Vacante.lblPuestoEspecifico")}
+											name="puestoOtro"
+											label={t("Vacante.lblOtro")}
 											tooltip={t("Vacante.ttPuestoEspecifico")}
-											rules={rules.puestoEspecifico}>
-											<AutoComplete
-												options={options}
-												filterOption={(inputValue, option) => option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
+											rules={puestoWatch === "otro" ? rules.puestoOtro : []}>
+											<Input
+												disabled={puestoWatch !== "otro"}
+												options={sourcePuestosEspecificos}
+												fieldNames={{ label: "descripcion", value: "sigla" }}
+												filterOption={(inputValue, option) => option.descripcion.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
 												placeholder={t("Vacante.phPuestoEspecifico")}
 												allowClear={{
 													clearIcon: <CloseSquareFilled />,
@@ -187,6 +186,47 @@ const Vacante = (props) => {
 										</Form.Item>
 									</Col>
 								</Row>
+
+								<Row justify="center">
+									<Col xs={24} sm={24} md={24} lg={10} xl={11} xxl={6}>
+										<Form.Item
+											name="puestoEspecifico"
+											required
+											label={t("Vacante.lblPuestoEspecifico")}
+											tooltip={t("Vacante.ttPuestoEspecifico")}
+											rules={rules.puestoEspecifico}>
+											<Select
+												showSearch
+												placeholder={t("Vacante.phPuestoEspecifico")}
+												optionFilterProp="children"
+												filterOption={(input, option) => (option?.label ?? "").includes(input)}
+												filterSort={(optionA, optionB) => (optionA?.label ?? "").toLowerCase().localeCompare((optionB?.label ?? "").toLowerCase())}
+												options={sourcePuestosEspecificos}
+												fieldNames={{ label: "descripcion", value: "sigla" }}
+											/>
+										</Form.Item>
+									</Col>
+
+									<Col xs={24} sm={24} md={24} lg={10} xl={11} xxl={6}>
+										<Form.Item
+											name="puestoEspecificoOtro"
+											label={t("Vacante.lblOtro")}
+											tooltip={t("Vacante.ttPuestoEspecifico")}
+											rules={puestoEspecificoWatch === "otro" ? rules.puestoEspecificoOtro : []}>
+											<Input
+												disabled={puestoEspecificoWatch !== "otro"}
+												options={sourcePuestosEspecificos}
+												fieldNames={{ label: "descripcion", value: "sigla" }}
+												filterOption={(inputValue, option) => option.descripcion.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
+												placeholder={t("Vacante.phPuestoEspecifico")}
+												allowClear={{
+													clearIcon: <CloseSquareFilled />,
+												}}
+											/>
+										</Form.Item>
+									</Col>
+								</Row>
+
 								<Row justify="center" style={{ marginBottom: ".5rem" }}>
 									<Col xs={24} sm={24} md={24} lg={8} xl={22} xxl={6}>
 										<Alert showIcon message={t("Vacante.messages.infoEditarInfoMasAdelante")} type="info" />

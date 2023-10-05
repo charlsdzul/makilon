@@ -209,14 +209,14 @@ class ResourceController extends BaseResource
             $order = $this->request->getGet("order");
             $orderBy = $this->request->getGet("orderby");
 
-            $builder = $model->orderBy($orderBy != "" ? $prefijoCampos . $orderBy : $prefijoCampos . "id", $order ?? "asc");
+            $builder = $model->orderBy($orderBy != "" ? $prefijoCampos . $orderBy : $prefijoCampos . "sigla", $order ?? "asc");
             $builder = $model->select($campos)->findAll();
 
             $response = [
                 "data" => $builder,
             ];
 
-            return $this->apiResponse("ok", $response);
+            return $this->apiResponse("ok", $builder);
 
         } catch (Error $e) {
             //log_message("error", $e);
