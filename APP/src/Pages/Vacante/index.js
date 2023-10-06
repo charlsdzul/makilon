@@ -1,5 +1,5 @@
 import { CloseSquareFilled } from "@ant-design/icons";
-import { AutoComplete, Col, Form, Input, Row, Select, Tabs, Typography } from "antd";
+import { AutoComplete, Col, Form, Input, Row, Select, Tabs, Tooltip, Typography } from "antd";
 import Alert from "antd/es/alert/Alert";
 import Card from "antd/es/card/Card";
 import TextArea from "antd/es/input/TextArea";
@@ -21,7 +21,9 @@ const Vacante = (props) => {
 
 	const [form] = Form.useForm();
 	const puestoEspecificoWatch = Form.useWatch("puestoEspecifico", form);
+	const puestoEspecificoOtroWatch = Form.useWatch("puestoEspecificoOtro", form);
 	const puestoWatch = Form.useWatch("puesto", form);
+	const puestoOtroWatch = Form.useWatch("puestoOtro", form);
 
 	const albums = useLoaderData();
 	const [anotherOptions, setAnotherOptions] = useState([]);
@@ -130,7 +132,7 @@ const Vacante = (props) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	//	console.log(sourcePuestos);
+	console.log(puestoWatch, puestoOtroWatch);
 	return (
 		<CContainer title={esNuevaVacante ? t("Vacante.lblAgregarVacante") : t("Vacante.lblEditarVacante")}>
 			{!esNuevaVacante && (
@@ -141,11 +143,11 @@ const Vacante = (props) => {
 
 			{esNuevaVacante ? (
 				<Row justify="center" style={{ marginTop: "5rem" }}>
-					<Col xs={24} sm={24} md={24} lg={24} xl={12} xxl={12}>
+					<Col xs={24} sm={24} md={17} lg={16} xl={14} xxl={14}>
 						<Card title={t("Vacante.lblNuevaVacante")} size="default" type="inner" className={styles.c_shadow}>
 							<Form form={form} layout="vertical" ref={formAgregarVacanteRef} onFinish={handleSuccessForm} wrapperCol={{ span: 23 }}>
 								<Row justify="center">
-									<Col xs={24} sm={24} md={24} lg={12} xl={22} xxl={24}>
+									<Col xs={24} sm={24} md={22} lg={22} xl={22} xxl={22}>
 										<Form.Item name="titulo" required label={t("Vacante.lblTitulo")} tooltip={t("Vacante.ttTitulo")} rules={rules.titulo}>
 											<Input placeholder={t("Vacante.phTitulo")} showCount maxLength={60} />
 										</Form.Item>
@@ -153,7 +155,7 @@ const Vacante = (props) => {
 								</Row>
 
 								<Row justify="center">
-									<Col xs={24} sm={24} md={24} lg={10} xl={11} xxl={6}>
+									<Col xs={24} sm={24} md={11} lg={11} xl={11} xxl={11}>
 										<Form.Item name="puesto" required label={t("Vacante.lblPuesto")} tooltip={t("Vacante.ttPuesto")} rules={rules.puesto}>
 											<Select
 												showSearch
@@ -167,28 +169,30 @@ const Vacante = (props) => {
 										</Form.Item>
 									</Col>
 
-									<Col xs={24} sm={24} md={24} lg={10} xl={11} xxl={6}>
-										<Form.Item
-											name="puestoOtro"
-											label={t("Vacante.lblOtro")}
-											tooltip={t("Vacante.ttPuestoEspecifico")}
-											rules={puestoWatch === "otro" ? rules.puestoOtro : []}>
-											<Input
-												disabled={puestoWatch !== "otro"}
-												options={sourcePuestosEspecificos}
-												fieldNames={{ label: "descripcion", value: "sigla" }}
-												filterOption={(inputValue, option) => option.descripcion.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
-												placeholder={t("Vacante.phPuestoEspecifico")}
-												allowClear={{
-													clearIcon: <CloseSquareFilled />,
-												}}
-											/>
-										</Form.Item>
+									<Col xs={24} sm={24} md={11} lg={11} xl={11} xxl={11}>
+										<Tooltip title={t("Vacante.tt2PuestoOtro")} color="#108ee9" open={puestoWatch === "otro" && !puestoOtroWatch}>
+											<Form.Item
+												name="puestoOtro"
+												label={t("Vacante.lblOtro")}
+												tooltip={t("Vacante.ttPuesto")}
+												rules={puestoWatch === "otro" ? rules.puestoOtro : []}>
+												<Input
+													disabled={puestoWatch !== "otro"}
+													options={sourcePuestosEspecificos}
+													fieldNames={{ label: "descripcion", value: "sigla" }}
+													filterOption={(inputValue, option) => option.descripcion.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
+													placeholder={t("Vacante.phPuestoOtro")}
+													allowClear={{
+														clearIcon: <CloseSquareFilled />,
+													}}
+												/>
+											</Form.Item>
+										</Tooltip>
 									</Col>
 								</Row>
 
 								<Row justify="center">
-									<Col xs={24} sm={24} md={24} lg={10} xl={11} xxl={6}>
+									<Col xs={24} sm={24} md={11} lg={11} xl={11} xxl={11}>
 										<Form.Item
 											name="puestoEspecifico"
 											required
@@ -207,33 +211,39 @@ const Vacante = (props) => {
 										</Form.Item>
 									</Col>
 
-									<Col xs={24} sm={24} md={24} lg={10} xl={11} xxl={6}>
-										<Form.Item
-											name="puestoEspecificoOtro"
-											label={t("Vacante.lblOtro")}
-											tooltip={t("Vacante.ttPuestoEspecifico")}
-											rules={puestoEspecificoWatch === "otro" ? rules.puestoEspecificoOtro : []}>
-											<Input
-												disabled={puestoEspecificoWatch !== "otro"}
-												options={sourcePuestosEspecificos}
-												fieldNames={{ label: "descripcion", value: "sigla" }}
-												filterOption={(inputValue, option) => option.descripcion.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
-												placeholder={t("Vacante.phPuestoEspecifico")}
-												allowClear={{
-													clearIcon: <CloseSquareFilled />,
-												}}
-											/>
-										</Form.Item>
+									<Col xs={24} sm={24} md={11} lg={11} xl={11} xxl={11}>
+										<Tooltip
+											title={t("Vacante.tt2PuestoEspecificoOtro")}
+											defaultOpen
+											color="#108ee9"
+											open={puestoEspecificoWatch === "otro" && !puestoEspecificoOtroWatch}>
+											<Form.Item
+												name="puestoEspecificoOtro"
+												label={t("Vacante.lblOtro")}
+												tooltip={t("Vacante.ttPuestoEspecifico")}
+												rules={puestoEspecificoWatch === "otro" ? rules.puestoEspecificoOtro : []}>
+												<Input
+													disabled={puestoEspecificoWatch !== "otro"}
+													options={sourcePuestosEspecificos}
+													fieldNames={{ label: "descripcion", value: "sigla" }}
+													filterOption={(inputValue, option) => option.descripcion.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
+													placeholder={t("Vacante.phPuestoEspecifico")}
+													allowClear={{
+														clearIcon: <CloseSquareFilled />,
+													}}
+												/>
+											</Form.Item>{" "}
+										</Tooltip>
 									</Col>
 								</Row>
 
-								<Row justify="center" style={{ marginBottom: ".5rem" }}>
-									<Col xs={24} sm={24} md={24} lg={8} xl={22} xxl={6}>
+								<Row justify="center" style={{ marginBottom: "1rem" }}>
+									<Col xs={24} sm={24} md={22} lg={22} xl={22} xxl={22}>
 										<Alert showIcon message={t("Vacante.messages.infoEditarInfoMasAdelante")} type="info" />
 									</Col>
 								</Row>
 								<Row justify="center">
-									<Col xs={24} sm={24} md={24} lg={8} xl={7} xxl={6}>
+									<Col xs={24} sm={24} md={7} lg={7} xl={7} xxl={7}>
 										<CButton type="primary" text={t("Vacante.lblCrear")} size="large" block />
 									</Col>
 								</Row>

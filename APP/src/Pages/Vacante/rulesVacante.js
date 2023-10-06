@@ -23,7 +23,7 @@ export const rulesVacante = {
 	puestoOtro: [
 		{
 			required: true,
-			message: "Vacante.rules.ingresaPuesto",
+			message: "Vacante.rules.ingresaPuestoOtro",
 		},
 	],
 
@@ -36,7 +36,7 @@ export const rulesVacante = {
 	puestoEspecificoOtro: [
 		{
 			required: true,
-			message: "Vacante.rules.ingresaPuestoEspecifico",
+			message: "Vacante.rules.ingresaPuestoEspecificoOtro",
 		},
 	],
 };

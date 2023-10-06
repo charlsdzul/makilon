@@ -23,10 +23,14 @@
 		"lblPuesto": "Puesto",
 		"ttPuesto": "Es la posicion general de la vacante.",
 		"phPuesto": "Puesto de la vacante.",
+		"phPuestoOtro": "Puesto de la vacante.",
+		"tt2PuestoOtro": "Si en la lista no aparece el puesto que necesitas, agregalo aqui. Pronto lo agregaremos a la lista. 😉",
 
 		"lblPuestoEspecifico": "Especifico",
-		"phPuestoEspecifico": "Puesto especifico de la vacante",
-		"ttPuestoEspecifico": "Es la posicion especifica de la vacante.",
+		"phPuestoEspecifico": "Puesto especifico.",
+
+		"ttPuestoEspecifico": "Es la posicion especifica.",
+		"tt2PuestoEspecificoOtro": "Si en la lista no aparece el puesto especifico que necesitas, agregalo aqui. Pronto lo agregaremos a la lista. 😉",
 
 		"btnOlvidasteContrasena": "¿Olvidaste tu contraseña?",
 		"btnCrearCuenta": "Crear cuenta",
@@ -42,8 +46,10 @@
 			"ingresaTitulo": "Ingresa un titulo para tu vacante.",
 			"ingresaTituloMinimo": "Ingresa minimo 15 caracteres.",
 			"ingresaTituloDescriptivo": "Te recomendamos agregar un titulo mas descriptivo.",
-			"ingresaPuesto": "Elige un puesto para tu vacante. Si no existe el que deseas, elige 'Otro'",
-			"ingresaPuestoEspecifico": "Ingresa la posicion especifica para tu vacante."
+			"ingresaPuesto": "Elige un puesto. Si no existe el que deseas, elige 'Otro'",
+			"ingresaPuestoOtro": "Ingresa un puesto.",
+			"ingresaPuestoEspecifico": "Elige un puesto especifico. Si no existe el que deseas, elige 'Otro'",
+			"ingresaPuestoEspecificoOtro": "Ingresa un puesto especifico."
 		},
 		"messages": {
 			"errorInicioSesion": "Se detecto un problema al iniciar sesión.",
