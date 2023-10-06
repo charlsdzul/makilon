@@ -15,15 +15,23 @@ import { rulesVacante } from "./rulesVacante";
 
 const { Option } = Select;
 
+const initialValuesAgregarVacante = {
+	titulo: "",
+	puesto: "",
+	puestoEspecifico: "",
+	puestoOtro: "",
+	puestoEspecificoOtro: "",
+};
+
 const Vacante = (props) => {
 	const formAgregarVacanteRef = useRef(null);
 	const formEditarVacanteRef = useRef(null);
 
-	const [form] = Form.useForm();
-	const puestoEspecificoWatch = Form.useWatch("puestoEspecifico", form);
-	const puestoEspecificoOtroWatch = Form.useWatch("puestoEspecificoOtro", form);
-	const puestoWatch = Form.useWatch("puesto", form);
-	const puestoOtroWatch = Form.useWatch("puestoOtro", form);
+	const [formAgregarVacante] = Form.useForm();
+	const puestoEspecificoWatch = Form.useWatch("puestoEspecifico", formAgregarVacante);
+	const puestoEspecificoOtroWatch = Form.useWatch("puestoEspecificoOtro", formAgregarVacante);
+	const puestoWatch = Form.useWatch("puesto", formAgregarVacante);
+	const puestoOtroWatch = Form.useWatch("puestoOtro", formAgregarVacante);
 
 	const albums = useLoaderData();
 	const [anotherOptions, setAnotherOptions] = useState([]);
@@ -37,9 +45,22 @@ const Vacante = (props) => {
 
 	//const [rules] = useState(asignarMensajeTranslation({ t, rules: rulesLogin, production: true }));
 
-	const handleSuccessForm = (e) => {
-		//setRequesting(true);
-		//login({ correo: e.correo, contrasena: e.contrasena });
+	const handleSuccessFormNuevaVacante = async (e) => {
+		console.log(e);
+
+		// const formData = new FormData();
+		// formData.append("correo", correo);
+		// formData.append("contrasena", contrasena);
+
+		// const response = await api
+		// 	.post("auth/login", formData)
+		// 	.then((response) => response.data)
+		// 	.catch((error) => error.response);
+
+		// if (response.status === 200) {
+		// 	const token = response?.data?.token;
+		// 	this.setSession({ token });
+		// }
 	};
 
 	const onChange = (key) => {
@@ -59,12 +80,15 @@ const Vacante = (props) => {
 		},
 	];
 
-	//console.log("Vacant", albums);
-
 	const Tab1Vacante = () => {
 		return (
 			<CContainer style={{ backgroundColor: "" }}>
-				<Form form={form} layout="vertical" ref={formAgregarVacanteRef} onFinish={handleSuccessForm} wrapperCol={{ span: 23 }}>
+				<Form
+					form={formAgregarVacante}
+					layout="vertical"
+					ref={formAgregarVacanteRef}
+					onFinish={handleSuccessFormNuevaVacante}
+					wrapperCol={{ span: 23 }}>
 					<Row justify="left">
 						<Col xs={24} sm={24} md={24} lg={12} xl={8} xxl={16}>
 							<Form.Item name="titulo" required label={t("Vacante.lblTitulo")} tooltip={t("Vacante.ttTitulo")}>
@@ -145,7 +169,13 @@ const Vacante = (props) => {
 				<Row justify="center" style={{ marginTop: "5rem" }}>
 					<Col xs={24} sm={24} md={17} lg={16} xl={14} xxl={14}>
 						<Card title={t("Vacante.lblNuevaVacante")} size="default" type="inner" className={styles.c_shadow}>
-							<Form form={form} layout="vertical" ref={formAgregarVacanteRef} onFinish={handleSuccessForm} wrapperCol={{ span: 23 }}>
+							<Form
+								form={formAgregarVacante}
+								layout="vertical"
+								initialValues={initialValuesAgregarVacante}
+								ref={formAgregarVacanteRef}
+								onFinish={handleSuccessFormNuevaVacante}
+								wrapperCol={{ span: 23 }}>
 								<Row justify="center">
 									<Col xs={24} sm={24} md={22} lg={22} xl={22} xxl={22}>
 										<Form.Item name="titulo" required label={t("Vacante.lblTitulo")} tooltip={t("Vacante.ttTitulo")} rules={rules.titulo}>
@@ -165,6 +195,7 @@ const Vacante = (props) => {
 												filterSort={(optionA, optionB) => (optionA?.label ?? "").toLowerCase().localeCompare((optionB?.label ?? "").toLowerCase())}
 												options={sourcePuestos}
 												fieldNames={{ label: "descripcion", value: "sigla" }}
+												onChange={() => formAgregarVacante.resetFields(["puestoOtro"])}
 											/>
 										</Form.Item>
 									</Col>
@@ -177,6 +208,7 @@ const Vacante = (props) => {
 												tooltip={t("Vacante.ttPuesto")}
 												rules={puestoWatch === "otro" ? rules.puestoOtro : []}>
 												<Input
+													defaultValue=""
 													disabled={puestoWatch !== "otro"}
 													options={sourcePuestosEspecificos}
 													fieldNames={{ label: "descripcion", value: "sigla" }}
@@ -207,6 +239,7 @@ const Vacante = (props) => {
 												filterSort={(optionA, optionB) => (optionA?.label ?? "").toLowerCase().localeCompare((optionB?.label ?? "").toLowerCase())}
 												options={sourcePuestosEspecificos}
 												fieldNames={{ label: "descripcion", value: "sigla" }}
+												onChange={() => formAgregarVacante.resetFields(["puestoEspecificoOtro"])}
 											/>
 										</Form.Item>
 									</Col>
@@ -214,15 +247,16 @@ const Vacante = (props) => {
 									<Col xs={24} sm={24} md={11} lg={11} xl={11} xxl={11}>
 										<Tooltip
 											title={t("Vacante.tt2PuestoEspecificoOtro")}
-											defaultOpen
 											color="#108ee9"
 											open={puestoEspecificoWatch === "otro" && !puestoEspecificoOtroWatch}>
 											<Form.Item
 												name="puestoEspecificoOtro"
+												def
 												label={t("Vacante.lblOtro")}
 												tooltip={t("Vacante.ttPuestoEspecifico")}
 												rules={puestoEspecificoWatch === "otro" ? rules.puestoEspecificoOtro : []}>
 												<Input
+													defaultValue=""
 													disabled={puestoEspecificoWatch !== "otro"}
 													options={sourcePuestosEspecificos}
 													fieldNames={{ label: "descripcion", value: "sigla" }}
