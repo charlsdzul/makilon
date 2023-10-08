@@ -30,7 +30,7 @@ export default class AuthService {
 		formData.append("contrasena", contrasena);
 
 		const response = await api
-			.post("auth/login", formData)
+			.post({ url: "auth/login", formData })
 			.then((response) => response.data)
 			.catch((error) => error.response);
 
@@ -51,7 +51,7 @@ export default class AuthService {
 		formData.append("email", dataToken?.email);
 
 		const response = await api
-			.post("auth/authenticated", formData)
+			.post({ url: "auth/authenticated", formData })
 			.then((response) => response.data)
 			.catch((error) => error.response);
 

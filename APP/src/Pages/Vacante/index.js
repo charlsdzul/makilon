@@ -9,6 +9,7 @@ import { useLoaderData } from "react-router-dom";
 import styles from "../../CSS/common.module.css";
 import CButton from "../../Components/CButton";
 import CContainer from "../../Components/CContainer";
+import api from "../../Utils/api";
 import { asignarMensajeTranslation } from "../../Utils/utils";
 import { obtenerCatalogo } from "../../Utils/utilsRequest";
 import { rulesVacante } from "./rulesVacante";
@@ -48,14 +49,20 @@ const Vacante = (props) => {
 	const handleSuccessFormNuevaVacante = async (e) => {
 		console.log(e);
 
-		// const formData = new FormData();
-		// formData.append("correo", correo);
-		// formData.append("contrasena", contrasena);
+		const json = {
+			titulo: e.titulo,
+			puesto: e.puesto,
+			puestoOtro: e.puestoOtro,
+			puestoEspecifico: e.puestoEspecifico,
+			puestoEspecificoOtro: e.puestoEspecificoOtro,
+		};
 
-		// const response = await api
-		// 	.post("auth/login", formData)
-		// 	.then((response) => response.data)
-		// 	.catch((error) => error.response);
+		const response = await api
+			.post({ url: "vacante", json })
+			.then((response) => response.data)
+			.catch((error) => error.response);
+
+		console.log(response);
 
 		// if (response.status === 200) {
 		// 	const token = response?.data?.token;
