@@ -1,10 +1,8 @@
 <?php
 namespace App\Libraries;
 
-use App\Entities\LogSistema;
-use App\Entities\LogUsuario;
-use App\Models\LogSistemaModel;
-use App\Models\LogUsuarioModel;
+use App\Entities\Log;
+use App\Models\LogModel;
 
 class PlpxLogger
 {
@@ -24,15 +22,9 @@ class PlpxLogger
         log_message($tipo, $mensajeCompleto, $info);
     }
 
-    public function loggerUsuario(LogUsuario $lUsuario)
+    public function loggerSistema(Log $lSistema)
     {
-        $logModel = new LogUsuarioModel();
-        $logModel->insert($lUsuario);
-    }
-
-    public function loggerSistema(LogSistema $lSistema)
-    {
-        $logModel = new LogSistemaModel();
+        $logModel = new LogModel();
         $logModel->insert($lSistema);
     }
 }

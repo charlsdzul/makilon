@@ -8,8 +8,8 @@ class Vacante extends Entity
     protected $primaryKey = 'vac_id';
     protected $returnType = \App\Entities\Vacante::class;
     protected $datamap = [
-        'sigla' => 'catpu_sigla',
-        'descripcion' => 'catpu_descripcion',
+        //'sigla' => 'catpu_sigla',
+        //'descripcion' => 'catpu_descripcion',
     ];
 
 }

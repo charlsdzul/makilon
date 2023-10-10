@@ -43,7 +43,6 @@ const Login = (props) => {
 			return;
 		}
 
-		let modalType = "";
 		let modalTitulo = "";
 		let modalMensaje = "";
 		const errors = response?.data?.errors ?? [];
@@ -53,7 +52,7 @@ const Login = (props) => {
 			modalMensaje = getErrorMessages({ errors });
 		}
 
-		modalType = response.status === StatusCodes.BAD_REQUEST ? MODAL_TYPES.WARNING : MODAL_TYPES.ERROR;
+		const modalType = response.status === StatusCodes.BAD_REQUEST ? MODAL_TYPES.WARNING : MODAL_TYPES.ERROR;
 		showModal({ type: modalType, title: modalTitulo, content: modalMensaje });
 	};
 

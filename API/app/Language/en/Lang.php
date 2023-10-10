@@ -6,6 +6,7 @@ return [
         "auth" => "Auth",
         "errorLogin" => "Error al iniciar sesión",
         "reestablecerMiContra" => "Reestablecer mi contraseña",
+        "agregarVacante" => "Agregar vacante",
     ],
 
     "label" => [
@@ -99,6 +100,9 @@ return [
         "btnOlvidasteContrasena" => "Ingresar",
         "btnCrearCuenta" => "Crear cuenta",
 
+        //AGREGAR VACANTE
+        "vacanteNoPudoAgregar" => "No pudimos agregar tu vacante. Intenta de nuevo.",
+        "vacanteAgregada" => "Tu vacante se creo con exito. 😎",
     ],
 
     "action" => [

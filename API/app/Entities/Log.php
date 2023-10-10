@@ -2,6 +2,6 @@
 
 use CodeIgniter\Entity\Entity;
 
-class LogSistema extends Entity
+class Log extends Entity
 {
 }

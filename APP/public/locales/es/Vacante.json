@@ -42,6 +42,12 @@
 		"ttCrearCuenta": "Crear cuenta",
 		"phCorreo": "Ingresa tu correo.",
 		"phContrasena": "Ingresa tu contraseña",
+
+		"lblAcompletarVacante": "Acompletar vacante",
+
+		"lblAgregarOtraVacante": "Agregar otra vacante",
+		"lblIDVacante": "ID Vacante: {{id}}",
+
 		"rules": {
 			"ingresaTitulo": "Ingresa un titulo para tu vacante.",
 			"ingresaTituloMinimo": "Ingresa minimo 15 caracteres.",

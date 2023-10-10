@@ -49,6 +49,10 @@ function getErrorResponseByCode($args)
             2000 => ["code" => $code, "title" => lang("Lang.title.auth"), "detail" => $detail],
             2001 => ["code" => $code, "title" => lang("Lang.title.auth"), "detail" => lang("Lang.detail.tokenInvalido")],
 
+            //2100 AGREGAR VACANTE
+            2100 => ["code" => $code, "title" => lang("Lang.title.agregarVacante"), "detail" => lang("Lang.detail.vacanteNoPudoAgregar")],
+            2101 => ["code" => $code, "title" => lang("Lang.title.agregarVacante"), "detail" => lang("Lang.detail.vacanteAgregada")],
+
             //9000
             //9000 => ["code" => 1000, "status" => 401, "title" => lang("API.accesoNoPermitido"), "detail" => ""],
 
