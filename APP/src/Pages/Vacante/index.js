@@ -39,7 +39,7 @@ const Vacante = (props) => {
 
 	const [respuestaAgregar, setRespuestaAgregar] = useState({ exitoso: false, mensaje: "" });
 
-	const [rules] = useState(asignarMensajeTranslation({ t, rules: rulesVacante, production: true }));
+	const [rules] = useState(asignarMensajeTranslation({ t, rules: rulesVacante, production: false }));
 
 	const handleSuccessFormNuevaVacante = async (e) => {
 		const json = {
@@ -60,12 +60,11 @@ const Vacante = (props) => {
 			return;
 		}
 
-		let modalTitulo = "";
-		let modalMensaje = "";
 		const errors = response?.data?.errors ?? [];
+		const modalTitulo = t("Vacante.lblAgregarVacante");
+		let modalMensaje = "";
 
 		if (errors.length > 0) {
-			modalTitulo = errors[0].title ?? "";
 			modalMensaje = getErrorMessages({ errors });
 		}
 
@@ -113,7 +112,7 @@ const Vacante = (props) => {
 				</Row>
 			)}
 			{!respuestaAgregar.exitoso && (
-				<Row justify="center" style={{ marginTop: "5rem" }}>
+				<Row justify="center" style={{ marginTop: "4rem" }}>
 					<Col xs={24} sm={24} md={17} lg={16} xl={14} xxl={14}>
 						<QueueAnim type="scale">
 							<div key="Card">
@@ -159,6 +158,8 @@ const Vacante = (props) => {
 														tooltip={t("Vacante.ttPuesto")}
 														rules={puestoWatch === "otro" ? rules.puestoOtro : []}>
 														<Input
+															maxLength={50}
+															showCount
 															disabled={puestoWatch !== "otro"}
 															options={sourcePuestosEspecificos}
 															fieldNames={{ label: "descripcion", value: "sigla" }}
@@ -208,6 +209,8 @@ const Vacante = (props) => {
 														tooltip={t("Vacante.ttPuestoEspecifico")}
 														rules={puestoEspecificoWatch === "otro" ? rules.puestoEspecificoOtro : []}>
 														<Input
+															maxLength={50}
+															showCount
 															disabled={puestoEspecificoWatch !== "otro"}
 															options={sourcePuestosEspecificos}
 															fieldNames={{ label: "descripcion", value: "sigla" }}
@@ -217,7 +220,7 @@ const Vacante = (props) => {
 																clearIcon: <CloseSquareFilled />,
 															}}
 														/>
-													</Form.Item>{" "}
+													</Form.Item>
 												</Tooltip>
 											</Col>
 										</Row>

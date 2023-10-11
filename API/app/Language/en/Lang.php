@@ -2,7 +2,7 @@
 
 return [
     "title" => [
-        "titleLogin" => "Iniciar Sesión",
+        "login" => "Iniciar Sesión",
         "auth" => "Auth",
         "errorLogin" => "Error al iniciar sesión",
         "reestablecerMiContra" => "Reestablecer mi contraseña",
@@ -24,6 +24,10 @@ return [
         "errorProcesarSolicitud" => "No se pudo procesar tu solicitud, intenta más tarde.",
 
         //datos
+        "datoTipoIncorreto" => "Tipo de dato incorrecto",
+        "datoNoRecibido" => "No recibimos el dato",
+        "datoLongitudIncorrecta" => "Longitud de dato incorrecto",
+
         "errorDatosRecibidos" => "Error en los datos recibidos.",
         "datoInvalido" => "Dato inválido",
         "datoContieneEspaciosOCaracteresInv" => "Dato contiene espacios en blanco o caracteres inválidos",
@@ -36,7 +40,6 @@ return [
         "datosNoActualizados" => "No se pudieron actualizar tus datos",
 
         //cuenta
-        "cuentaInactiva" => "Lo sentimos, tu cuenta se encuentra inactiva",
         "errorCrearCuenta" => "Por el momento no podemos crear su cuenta. Intenta más tarde.",
         "correoCodigoNoExisten" => "Hmm, no pudimos confirmar tu cuenta. Por favor, mandanos un aviso.",
         "correoYaEstaRegistrado" => "Hey, tu correo ya está registrado. Ya puedes iniciar sesión.",
@@ -51,8 +54,11 @@ return [
         "sesionFinalizada" => "Sesión finalizada",
         "preregistroExitoso" => "Ya solo falta un paso más. Te hemos enviado un mensaje de confirmacion a tu correo. ",
 
-        //correo
-        "correoContrasenaInvalida" => "Correo y/o contraseña inválidos",
+        //LOGIN
+        "loginCorreoContrasenaInvalida" => "Correo y/o contraseña inválidos",
+        "loginCuentaInactiva" => "Lo sentimos, tu cuenta se encuentra inactiva.",
+        "loginContrasenaInvalida" => "Contraseña inválida",
+
         "correoNoDisponible" => "El correo ingresado no está disponible para usarse",
         "ingresaCorreo" => "Ingresa un correo",
         "ingresaCorreoValido" => "Ingresa un correo válido",
@@ -63,7 +69,6 @@ return [
         "contrasenaMinima" => "Contraseña debe tener mínimo 8 caracteres",
         "contrasenaMaxima" => "Contraseña debe tener máximo 15 caracteres",
         "contrasenasNoIguales" => "Contraseñas ingresadas deben ser iguales",
-        "contrasenaInvalida" => "Contraseña inválida",
         "ingresaContrasena" => "Ingresa una contraseña",
 
         "contrasenaNoActualizada" => "No se pudo actualizar tu contraseña",
@@ -103,6 +108,16 @@ return [
         //AGREGAR VACANTE
         "vacanteNoPudoAgregar" => "No pudimos agregar tu vacante. Intenta de nuevo.",
         "vacanteAgregada" => "Tu vacante se creo con exito. 😎",
+    ],
+
+    "field" => [
+        "vacanteTitulo" => "Titulo",
+        "vacantePuesto" => "Puesto",
+        "vacantePuestoOtro" => "Puesto (Otro)",
+        "vacantePuestoEspecifico" => "Puesto Especifico",
+        "vacantePuestoEspecificoOtro" => "Puesto Especifico (Otro)",
+        "loginContrasena" => "Contraseña",
+        "loginCorreo" => "Correo",
     ],
 
     "action" => [

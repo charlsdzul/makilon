@@ -34,10 +34,10 @@ export const showModal = ({ type, title, content }) => {
 	}
 };
 
-export const getErrorMessages = ({ errors, useLabel = true, useDetail = true, useAction = true, separator = <br /> }) => {
+export const getErrorMessages = ({ errors, useField = true, useDetail = true, useAction = true, separator = <br /> }) => {
 	if (errors.length === 1) {
 		const error = errors[0];
-		const mensaje = generateErrorMensaje({ error, useLabel, useDetail, useAction });
+		const mensaje = generateErrorMensaje({ error, useField, useDetail, useAction });
 
 		return <span>{mensaje}</span>;
 	} else if (errors.length > 1) {
@@ -45,7 +45,7 @@ export const getErrorMessages = ({ errors, useLabel = true, useDetail = true, us
 
 		for (const index in errors) {
 			const error = errors[index];
-			const mensaje = generateErrorMensaje({ error, useLabel, useDetail, useAction });
+			const mensaje = generateErrorMensaje({ error, useField, useDetail, useAction });
 			mensajes = (
 				<>
 					{mensajes}
@@ -59,11 +59,11 @@ export const getErrorMessages = ({ errors, useLabel = true, useDetail = true, us
 	}
 };
 
-const generateErrorMensaje = ({ error, useLabel, useDetail, useAction }) => {
+const generateErrorMensaje = ({ error, useField, useDetail, useAction }) => {
 	let mensaje = "";
 
-	if (useLabel && error.label) {
-		mensaje = `${error.label}:`;
+	if (useField && error.field) {
+		mensaje = `${error.field}:`;
 	}
 
 	if (useDetail && error.detail) {

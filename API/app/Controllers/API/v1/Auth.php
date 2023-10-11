@@ -12,40 +12,23 @@ use Firebase\JWT\Key;
 class Auth extends ResourceController
 {
     use ResponseTrait;
-    public $session = null;
     public $router = null;
-    public $lUsario = null;
-    public $controllerName = "API/v1/Auth";
-
     public function __construct()
     {
-        $this->session = \Config\Services::session();
         $this->router = \Config\Services::router();
         helper("/Validators/usuarioValidator");
         helper("/utils");
-
     }
 
     private function logSistema($args)
     {
         $args2 = [
-            "controller" => $this->controllerName,
-            "method" => $this->router->methodName(),
-            "request_ip" => $this->request->getIPAddress(),
+            "log_controller" => "API/v1/Auth",
+            "log_method" => $this->router->methodName(),
+            "log_request_ip" => $this->request->getIPAddress(),
         ];
 
         logSistema([...$args, ...$args2]);
-    }
-
-    private function logUsuario($args)
-    {
-        $args2 = [
-            "controller" => $this->controllerName,
-            "method" => $this->router->methodName(),
-            "request_ip" => $this->request->getIPAddress(),
-        ];
-
-        logUsuario([...$args, ...$args2]);
     }
 
     /**
@@ -59,13 +42,14 @@ class Auth extends ResourceController
 
         try {
             if (!loginValidator($this->request->getPost(), $errors)) {
+
+                //Se guarda LOG porque, en teoria, no deberia tener errores en el validator,
+                //porque en el front ya estan la validaciones.
                 $dataLog = [
-                    "tipo" => "notice",
-                    "accion" => $logAccion,
-                    "linea" => __LINE__,
-                    "exception" => $errors,
-                    "mensaje" => "No pasó las validaciones. " . getErrorResponseByCode(["code" => 203, "onlyDetail" => true]),
-                    "request_respond" => "invalid_request",
+                    "log_origen" => "usuario", "log_tipo" => "warning", "log_accion" => $logAccion, "log_linea" => __LINE__,
+                    "log_mensaje" => "No pasó las validaciones del VALIDATOR.",
+                    "log_request_respond" => "invalid_request",
+                    "log_exception" => json_encode($errors),
                 ];
 
                 $this->logSistema($dataLog);
@@ -82,47 +66,52 @@ class Auth extends ResourceController
                 ->first();
 
             if (is_null($usuario)) {
+
+                $response = getErrorResponseByCode(["code" => 1007]);
+
                 $dataLog = [
-                    "tipo" => "notice",
-                    "accion" => $logAccion,
-                    "linea" => __LINE__,
-                    "mensaje" => "El correo no está registrado. " . getErrorResponseByCode(["code" => 1007, "onlyDetail" => true]),
-                    "mensaje_json" => null,
-                    "request_respond" => "invalid_request",
+                    "log_origen" => "usuario", "log_tipo" => "notice", "log_accion" => $logAccion, "log_linea" => __LINE__,
+                    "log_mensaje" => "El correo no está registrado.",
+                    "log_request_respond" => "invalid_request",
+                    "log_usuario_respuesta" => $response,
                 ];
 
                 $this->logSistema($dataLog);
-                $response = getErrorResponseByCode(["code" => 1007]);
                 return $this->apiResponseError("invalid_request", [$response]);
             }
 
             if ($usuario->usu_sta == 0) {
+
+                $response = getErrorResponseByCode(["code" => 1008]);
+
                 $dataLog = [
-                    "accion" => $logAccion,
+                    "log_origen" => "usuario", "log_tipo" => "notice", "log_accion" => $logAccion, "log_linea" => __LINE__,
+                    "log_mensaje" => "La cuenta está desactivada.",
+                    "log_request_respond" => "invalid_request",
+                    "log_usuario_respuesta" => $response,
                     "usuario_id" => $usuario->usu_id,
                     "usuario_usuario" => $usuario->usu_usuario,
                     "usuario_correo" => $usuario->usu_correo,
-                    "mensaje" => "La cuenta está desactivada." . getErrorResponseByCode(["code" => 1008, "onlyDetail" => true]),
-                    "request_respond" => "invalid_request",
                 ];
 
-                $this->logUsuario($dataLog);
-                $response = getErrorResponseByCode(["code" => 1008]);
+                $this->logSistema($dataLog);
                 return $this->apiResponseError("invalid_request", [$response]);
             }
 
             if (!password_verify($contrasena, $usuario->usu_password)) {
+                $response = getErrorResponseByCode(["code" => 1007]);
+
                 $dataLog = [
-                    "accion" => $logAccion,
+                    "log_origen" => "usuario", "log_tipo" => "notice", "log_accion" => $logAccion, "log_linea" => __LINE__,
+                    "log_mensaje" => "La contraseña ingresada es diferente a la del usuario",
+                    "log_request_respond" => "invalid_request",
+                    "log_usuario_respuesta" => $response,
                     "usuario_id" => $usuario->usu_id,
                     "usuario_usuario" => $usuario->usu_usuario,
                     "usuario_correo" => $usuario->usu_correo,
-                    "mensaje" => "La contraseña ingresada es diferente. " . getErrorResponseByCode(["code" => 1007, "onlyDetail" => true]),
-                    "request_respond" => "invalid_request",
                 ];
 
-                $this->logUsuario($dataLog);
-                $response = getErrorResponseByCode(["code" => 1007]);
+                $this->logSistema($dataLog);
                 return $this->apiResponseError("invalid_request", [$response]);
             }
 
@@ -136,17 +125,20 @@ class Auth extends ResourceController
             $token = crearToken($args);
 
             if ($token == null) {
+
+                $response = getErrorResponseByCode(["code" => 201, "title" => lang("Lang.title.login")]);
+
                 $dataLog = [
-                    "accion" => $logAccion,
+                    "log_origen" => "sistema", "log_tipo" => "critical", "log_accion" => $logAccion, "log_linea" => __LINE__,
+                    "log_mensaje" => "No se pudo generar el token, se generó como NULL.",
+                    "log_request_respond" => "invalid_request",
+                    "log_usuario_respuesta" => $response,
                     "usuario_id" => $usuario->usu_id,
                     "usuario_usuario" => $usuario->usu_usuario,
                     "usuario_correo" => $usuario->usu_correo,
-                    "mensaje" => "No se pudo generar el token, se generó como NULL. " . getErrorResponseByCode(["code" => 801, "onlyDetail" => true]),
-                    "request_respond" => "invalid_request",
                 ];
 
-                $this->logUsuario($dataLog);
-                $response = getErrorResponseByCode(["code" => 801, "title" => lang("Lang.title.errorLogin")]);
+                $this->logSistema($dataLog);
                 return $this->apiResponseError("invalid_request", [$response]);
             }
 
@@ -155,28 +147,30 @@ class Auth extends ResourceController
             ];
 
             $dataLog = [
-                "accion" => $logAccion,
+                "log_origen" => "sistema", "log_tipo" => "info", "log_accion" => $logAccion, "log_linea" => __LINE__,
+                "log_mensaje" => lang("Lang.detail.sesionIniciada"),
+                "log_request_respond" => "ok",
                 "usuario_id" => $usuario->usu_id,
                 "usuario_usuario" => $usuario->usu_usuario,
                 "usuario_correo" => $usuario->usu_correo,
-                "mensaje" => getErrorResponseByCode(["code" => 801, "onlyDetail" => true]),
-                "request_respond" => "ok - " . lang("Lang.detail.sesionIniciada"),
-            ];
-
-            $this->logUsuario($dataLog);
-            return $this->apiResponse("ok", $response);
-        } catch (\Exception $e) {
-            $dataLog = [
-                "tipo" => "critical",
-                "accion" => $logAccion,
-                "linea" => __LINE__,
-                "mensaje" => "Error catch. " . $e->getMessage() . ". " . lang("Lang.detail.solicitudNoProcesada"),
-                "exception" => $e,
-                "request_respond" => "server_error",
             ];
 
             $this->logSistema($dataLog);
-            $response = getErrorResponseByCode(["code" => 801, "title" => lang("Lang.title.errorLogin")]);
+            return $this->apiResponse("ok", $response);
+        } catch (\Exception $e) {
+            $mensaje = $e->getMessage();
+            $response = getErrorResponseByCode(["code" => 210]);
+
+            $dataLog = [
+                "log_origen" => "usuario", "log_tipo" => "critical", "log_accion" => $logAccion, "log_linea" => __LINE__,
+                "log_mensaje" => "ERROR CATCH. " . $mensaje,
+                "log_request_respond" => "server_error",
+                "log_exception" => $e,
+                "log_usuario_respuesta" => $response,
+            ];
+
+            $this->logSistema($dataLog);
+            $response = getErrorResponseByCode(["code" => 201, "title" => lang("Lang.title.errorLogin")]);
             return $this->apiResponseError("server_error", [$response]);
         }
     }
@@ -252,15 +246,19 @@ class Auth extends ResourceController
                 return $this->apiResponseError("invalid_request", $response);
             };
         } catch (\Exception $e) {
+            $mensaje = $e->getMessage();
+            $response = getErrorResponseByCode(["code" => 201, "title" => lang("Lang.title.auth")]);
+
             $dataLog = [
-                "mensaje" => lang("Common.solicitudNoProcesada"),
-                "exception" => $e,
-                "request_respond" => "server_error",
+                "log_origen" => "usuario", "log_tipo" => "critical", "log_accion" => $logAccion, "log_linea" => __LINE__,
+                "log_mensaje" => "ERROR CATCH. " . $mensaje,
+                "log_request_respond" => "server_error",
+                "log_exception" => $e,
+                "log_usuario_respuesta" => $response,
             ];
 
-            $this->logSistema(["tipo" => "critical", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
-            return $this->apiResponseError("server_error", [getErrorsCommon(801, lang("Usuario.errorLogin"))]);
+            $this->logSistema($dataLog);
+            return $this->apiResponseError("server_error", $response);
         }
     }
-
 }

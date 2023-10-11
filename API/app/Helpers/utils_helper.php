@@ -34,7 +34,6 @@ function logSistema($args)
 
     try {
         $logger = new PlpxLogger();
-        //$timeNow = new Time("now");
         $lSistema = new \App\Entities\Log();
         $lSistema->log_tipo = $args["log_tipo"] ?? null;
         $lSistema->log_accion = $args["log_accion"] ?? null;

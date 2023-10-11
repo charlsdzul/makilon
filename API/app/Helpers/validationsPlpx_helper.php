@@ -25,11 +25,11 @@ function validateRequestNullOrEmpty($datos = null, &$mensaje = "")
     return $isValid;
 }
 
-function validateRequestData($datos = null, &$error = "")
+function validateRequestData($requestBody = null, &$error = "")
 {
     $isValid = false;
 
-    if (is_null($datos) || !$datos) {
+    if (is_null($requestBody) || !$requestBody) {
         $error = getErrorResponseByCode(["code" => 200]);
         $isValid = true;
     }
@@ -43,25 +43,151 @@ function validateEmailLogin($correo = null, &$error = [])
 
     if (isset($correo)) {
         if ($correo == "" || $correo == "undefined" || $correo == "null") {
-            $error = getErrorResponseByCode(["code" => 1000, "useDetail" => false]);
+            $error = getErrorResponseByCode(["code" => 1000]);
             $isValid = false;
         } elseif (!is_string($correo)) {
-            $error = getErrorResponseByCode(["code" => 100, "useDetail" => false]);
+            $error = getErrorResponseByCode(["code" => 1010]);
             $isValid = false;
         } elseif (strlen($correo) > 70) {
-            $error = getErrorResponseByCode(["code" => 101, "useDetail" => false]);
+            $error = getErrorResponseByCode(["code" => 1011]);
             $isValid = false;
         } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-            $error = getErrorResponseByCode(["code" => 1001, "useDetail" => false]);
+            $error = getErrorResponseByCode(["code" => 1001]);
             $isValid = false;
         }
     } else {
-        $error = getErrorResponseByCode(["code" => 200]);
+        $error = getErrorResponseByCode(["code" => 1012]);
         $isValid = false;
     }
 
     if (!$isValid) {
         $error = [...$error, "id" => "correo"];
+    }
+
+    return $isValid;
+}
+
+function validateTituloVacante($titulo = null, &$error = [])
+{
+    $isValid = true;
+
+    if (isset($titulo)) {
+        if ($titulo == "" || $titulo == "undefined" || $titulo == "null") {
+            $error = getErrorResponseByCode(["code" => 2110]);
+            $isValid = false;
+        } elseif (!is_string($titulo)) {
+            $error = getErrorResponseByCode(["code" => 2111]);
+            $isValid = false;
+        } elseif (strlen($titulo) <= 15) {
+            $error = getErrorResponseByCode(["code" => 2112]);
+            $isValid = false;
+        } elseif (strlen($titulo) > 60) {
+            $error = getErrorResponseByCode(["code" => 2112]);
+            $isValid = false;
+        }
+    } else {
+        $error = getErrorResponseByCode(["code" => 2110]);
+        $isValid = false;
+    }
+
+    return $isValid;
+}
+
+function validatePuestoVacante($puesto = null, &$error = [])
+{
+    $isValid = true;
+
+    if (isset($puesto)) {
+        if ($puesto == "" || $puesto == "undefined" || $puesto == "null") {
+            $error = getErrorResponseByCode(["code" => 2120]);
+            $isValid = false;
+        } elseif (!is_string($puesto)) {
+            $error = getErrorResponseByCode(["code" => 2121]);
+            $isValid = false;
+        } elseif (strlen($puesto) > 20) {
+            $error = getErrorResponseByCode(["code" => 2122]);
+            $isValid = false;
+        }
+    } else {
+        $error = getErrorResponseByCode(["code" => 2120]);
+        $isValid = false;
+    }
+
+    return $isValid;
+}
+
+function validatePuestoOtroVacante($puesto = null, $puestoOtro = null, &$error = [])
+{
+    $isValid = true;
+
+    if ($puesto != "otro") {
+        return $isValid;
+    }
+
+    if (isset($puestoOtro)) {
+        if ($puestoOtro == "" || $puestoOtro == "undefined" || $puestoOtro == "null") {
+            $error = getErrorResponseByCode(["code" => 2140]);
+            $isValid = false;
+        } elseif (!is_string($puestoOtro)) {
+            $error = getErrorResponseByCode(["code" => 2141]);
+            $isValid = false;
+        } elseif (strlen($puestoOtro) > 50) {
+            $error = getErrorResponseByCode(["code" => 2142]);
+            $isValid = false;
+        }
+    } else {
+        $error = getErrorResponseByCode(["code" => 2140]);
+        $isValid = false;
+    }
+
+    return $isValid;
+}
+
+function validatePuestoEspecificoVacante($puestoEspecifico = null, &$error = [])
+{
+    $isValid = true;
+
+    if (isset($puestoEspecifico)) {
+        if ($puestoEspecifico == "" || $puestoEspecifico == "undefined" || $puestoEspecifico == "null") {
+            $error = getErrorResponseByCode(["code" => 2130]);
+            $isValid = false;
+        } elseif (!is_string($puestoEspecifico)) {
+            $error = getErrorResponseByCode(["code" => 2131]);
+            $isValid = false;
+        } elseif (strlen($puestoEspecifico) > 20) {
+            $error = getErrorResponseByCode(["code" => 2132]);
+            $isValid = false;
+        }
+    } else {
+        $error = getErrorResponseByCode(["code" => 2130]);
+        $isValid = false;
+    }
+
+    return $isValid;
+}
+
+function validatePuestoEspecificoOtroVacante($puestoEspecifico = null, $puestoEspecificoOtro = null, &$error = [])
+{
+    $isValid = true;
+
+    if ($puestoEspecifico != "otro") {
+        return $isValid;
+    }
+
+    if (isset($puestoEspecificoOtro)) {
+        if ($puestoEspecificoOtro == "" || $puestoEspecificoOtro == "undefined" || $puestoEspecificoOtro == "null") {
+            $error = getErrorResponseByCode(["code" => 2150]);
+            $isValid = false;
+        } elseif (!is_string($puestoEspecificoOtro)) {
+            $error = getErrorResponseByCode(["code" => 2151]);
+            $isValid = false;
+        } elseif (strlen($puestoEspecificoOtro) > 50) {
+            $error = getErrorResponseByCode(["code" => 2152]);
+            $isValid = false;
+        }
+    } else {
+        $error = getErrorResponseByCode(["code" => 2150]);
+        $isValid = false;
     }
 
     return $isValid;
@@ -74,11 +200,11 @@ function validateJwt($jwt = null, &$error = [])
     if (isset($jwt)) {
         if ($jwt == "" || $jwt == "undefined" || $jwt == "null") {
 
-            $error = getErrorResponseByCode(["code" => 1002]);
+            $error = getErrorResponseByCode(["code" => 100]);
             $isValid = false;
         }
     } else {
-        $error = getErrorResponseByCode(["code" => 200]);
+        $error = getErrorResponseByCode(["code" => 100]);
         $isValid = false;
     }
 
@@ -105,7 +231,7 @@ function validatePasswordLogin($psw = null, &$error = [])
             $isValid = false;
         }
     } else {
-        $error = getErrorResponseByCode(["code" => 200]);
+        $error = getErrorResponseByCode(["code" => 1013]);
         $isValid = false;
     }
 
