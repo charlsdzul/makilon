@@ -1,4 +1,5 @@
 import axios from "axios";
+
 const APIURL = "http://localhost/makilon/API/public/api/v1/";
 
 export const API_URL = APIURL;
@@ -12,11 +13,11 @@ export default {
 			headers: { "Content-Type": json ? "application/json" : "multipart/form-data" },
 		}).then((res) => res);
 	},
-	get: async (url, params, config) => {
+	get: async ({ url, params, config, external = false }) => {
 		return await axios({
 			method: "get",
-			url: API_URL + url,
-			params: params,
+			url: external ? url : API_URL + url,
+			//params: qs.stringify(params),
 		}).then((res) => res);
 	},
 };

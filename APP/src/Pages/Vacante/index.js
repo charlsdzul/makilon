@@ -6,11 +6,13 @@ import { StatusCodes } from "http-status-codes";
 import QueueAnim from "rc-queue-anim";
 import { default as React, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import styles from "../../CSS/common.module.css";
 import CButton from "../../Components/CButton";
 import CContainer from "../../Components/CContainer";
 import api from "../../Utils/api";
 import { MODAL_TYPES } from "../../Utils/utilConst";
+import { URLS_PORTAL } from "../../Utils/utilUrl";
 import { asignarMensajeTranslation, getErrorMessages, showModal } from "../../Utils/utils";
 import { obtenerCatalogo } from "../../Utils/utilsRequest";
 import { rulesVacante } from "./rulesVacante";
@@ -25,6 +27,7 @@ const initialValuesAgregarVacante = {
 
 const Vacante = (props) => {
 	const { t } = useTranslation(["Vacante"]);
+	const navigate = useNavigate();
 
 	const formAgregarVacanteRef = useRef(null);
 	const [formAgregarVacante] = Form.useForm();
@@ -39,7 +42,7 @@ const Vacante = (props) => {
 
 	const [respuestaAgregar, setRespuestaAgregar] = useState({ exitoso: false, mensaje: "" });
 
-	const [rules] = useState(asignarMensajeTranslation({ t, rules: rulesVacante, production: false }));
+	const [rules] = useState(asignarMensajeTranslation({ t, rules: rulesVacante, production: true }));
 
 	const handleSuccessFormNuevaVacante = async (e) => {
 		const json = {
@@ -90,6 +93,10 @@ const Vacante = (props) => {
 		formAgregarVacante.resetFields();
 	};
 
+	const handleClickMisVcantes = () => {
+		navigate(URLS_PORTAL.MIS_VACANTES);
+	};
+
 	return (
 		<CContainer title={t("Vacante.lblAgregarVacante")}>
 			{respuestaAgregar.exitoso && (
@@ -104,6 +111,7 @@ const Vacante = (props) => {
 									extra={[
 										<CButton type="primary" text={t("Vacante.lblAcompletarVacante")} />,
 										<CButton type="default" onClick={handleClickAgregar} text={t("Vacante.lblAgregarOtraVacante")} />,
+										<CButton type="default" onClick={handleClickMisVcantes} text={t("Vacante.lblIrMisVacante")} />,
 									]}
 								/>
 							</div>

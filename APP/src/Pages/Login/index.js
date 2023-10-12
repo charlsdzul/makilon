@@ -10,6 +10,7 @@ import CButton from "../../Components/CButton";
 import CContainer from "../../Components/CContainer";
 import AuthService from "../../Services/authservice.services";
 import { MODAL_TYPES } from "../../Utils/utilConst";
+import { URLS_PORTAL } from "../../Utils/utilUrl";
 import { asignarMensajeTranslation, getErrorMessages, showModal } from "../../Utils/utils";
 import { rulesLogin } from "./rulesLogin";
 
@@ -58,7 +59,7 @@ const Login = (props) => {
 
 	const iniciarSesion = (token) => {
 		if (token) {
-			window.location.href = "/dashboard";
+			window.location.href = URLS_PORTAL.DASHBOARD;
 		} else {
 			const mensaje = `${t("Login.messages.errorInicioSesion")} ${t("Login.messages.errorInicioSesionNotificacion")}`;
 			showModal({ type: MODAL_TYPES.ERROR, title: t("Login.lblTitleLogin"), content: mensaje });
@@ -71,7 +72,7 @@ const Login = (props) => {
 			console.log("loaderData Login", loaderData);
 
 			if (loaderData?.isAuthenticated) {
-				window.location.href = "/dashboard";
+				window.location.href = URLS_PORTAL.DASHBOARD;
 			} else {
 				props.auth.cleanToken();
 				setShowLogin(true);

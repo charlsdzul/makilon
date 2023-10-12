@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import AppWrapper from "./AppWrapper";
+import MisVacantes from "./Pages/MisVacantes";
 import ProtectedRoute from "./ProtectedRoute";
 import AuthService from "./Services/authservice.services";
 import AuthContext from "./Utils/AuthContext";
@@ -89,7 +90,7 @@ export const router = createBrowserRouter([
 						{({ auth }) => (
 							<Suspense fallback={<>...</>}>
 								<ProtectedRoute auth={auth}>
-									<Home auth={auth} />
+									<MisVacantes auth={auth} />
 								</ProtectedRoute>
 							</Suspense>
 						)}

@@ -48,6 +48,8 @@
 		"lblAgregarOtraVacante": "Agregar otra vacante",
 		"lblIDVacante": "ID Vacante: {{id}}",
 
+		"lblIrMisVacante": "Ir a mis vacantes",
+
 		"rules": {
 			"ingresaTitulo": "Ingresa un titulo para tu vacante.",
 			"ingresaTituloMinimo": "Ingresa minimo 15 caracteres.",
