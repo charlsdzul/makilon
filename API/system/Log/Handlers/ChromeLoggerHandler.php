@@ -128,7 +128,7 @@ class ChromeLoggerHandler extends BaseHandler
     /**
      * Converts the object to display nicely in the Chrome Logger UI.
      *
-     * @param mixed $object
+     * @param array|int|object|string $object
      *
      * @return array
      */
@@ -149,7 +149,7 @@ class ChromeLoggerHandler extends BaseHandler
     /**
      * Attaches the header and the content to the passed in request object.
      *
-     * @param ResponseInterface $response
+     * @return void
      */
     public function sendLogs(?ResponseInterface &$response = null)
     {

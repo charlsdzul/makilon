@@ -48,6 +48,8 @@ class Commands
 
     /**
      * Runs a command given
+     *
+     * @return int|void
      */
     public function run(string $command, array $params)
     {
@@ -76,6 +78,8 @@ class Commands
     /**
      * Discovers all commands in the framework and within user code,
      * and collects instances of them to work with.
+     *
+     * @return void
      */
     public function discoverCommands()
     {

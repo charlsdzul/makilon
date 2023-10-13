@@ -14,6 +14,7 @@ namespace CodeIgniter\Test;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
+use CodeIgniter\I18n\Time;
 use Config\Services;
 use Exception;
 use PHPUnit\Framework\Constraint\IsEqual;
@@ -28,6 +29,8 @@ use PHPUnit\Framework\TestCase;
  * @no-final
  *
  * @internal
+ *
+ * @mixin DOMParser
  */
 class TestResponse extends TestCase
 {
@@ -131,6 +134,7 @@ class TestResponse extends TestCase
         if ($status >= 400 || $status < 200) {
             return false;
         }
+
         // Empty bodies are not considered valid, unless in redirects
         return ! ($status < 300 && empty($this->response->getBody()));
     }
@@ -337,7 +341,7 @@ class TestResponse extends TestCase
     public function assertCookieExpired(string $key, string $prefix = '')
     {
         $this->assertTrue($this->response->hasCookie($key, null, $prefix));
-        $this->assertGreaterThan(time(), $this->response->getCookie($key, $prefix)->getExpiresTimestamp());
+        $this->assertGreaterThan(Time::now()->getTimestamp(), $this->response->getCookie($key, $prefix)->getExpiresTimestamp());
     }
 
     // --------------------------------------------------------------------
@@ -347,7 +351,7 @@ class TestResponse extends TestCase
     /**
      * Returns the response's body as JSON
      *
-     * @return false|mixed
+     * @return false|string
      */
     public function getJSON()
     {
@@ -382,7 +386,7 @@ class TestResponse extends TestCase
      * Asserts that the JSON exactly matches the passed in data.
      * If the value being passed in is a string, it must be a json_encoded string.
      *
-     * @param array|string $test
+     * @param array|object|string $test
      *
      * @throws Exception
      */

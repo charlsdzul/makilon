@@ -9,7 +9,9 @@
  * the LICENSE file that was distributed with this source code.
  */
 
+use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
+use CodeIgniter\HTTP\SiteURI;
 use CodeIgniter\HTTP\URI;
 use CodeIgniter\Router\Exceptions\RouterException;
 use Config\App;
@@ -17,76 +19,21 @@ use Config\Services;
 
 // CodeIgniter URL Helpers
 
-if (! function_exists('_get_uri')) {
-    /**
-     * Used by the other URL functions to build a
-     * framework-specific URI based on the App config.
-     *
-     * @internal Outside of the framework this should not be used directly.
-     *
-     * @param string $relativePath May include queries or fragments
-     *
-     * @throws InvalidArgumentException For invalid paths or config
-     */
-    function _get_uri(string $relativePath = '', ?App $config = null): URI
-    {
-        $config ??= config('App');
-
-        if ($config->baseURL === '') {
-            throw new InvalidArgumentException('_get_uri() requires a valid baseURL.');
-        }
-
-        // If a full URI was passed then convert it
-        if (is_int(strpos($relativePath, '://'))) {
-            $full         = new URI($relativePath);
-            $relativePath = URI::createURIString(null, null, $full->getPath(), $full->getQuery(), $full->getFragment());
-        }
-
-        $relativePath = URI::removeDotSegments($relativePath);
-
-        // Build the full URL based on $config and $relativePath
-        $url = rtrim($config->baseURL, '/ ') . '/';
-
-        // Check for an index page
-        if ($config->indexPage !== '') {
-            $url .= $config->indexPage;
-
-            // Check if we need a separator
-            if ($relativePath !== '' && $relativePath[0] !== '/' && $relativePath[0] !== '?') {
-                $url .= '/';
-            }
-        }
-
-        $url .= $relativePath;
-
-        $uri = new URI($url);
-
-        // Check if the baseURL scheme needs to be coerced into its secure version
-        if ($config->forceGlobalSecureRequests && $uri->getScheme() === 'http') {
-            $uri->setScheme('https');
-        }
-
-        return $uri;
-    }
-}
-
 if (! function_exists('site_url')) {
     /**
      * Returns a site URL as defined by the App config.
      *
      * @param array|string $relativePath URI string or array of URI segments
+     * @param string|null  $scheme       URI scheme. E.g., http, ftp
      * @param App|null     $config       Alternate configuration to use
      */
     function site_url($relativePath = '', ?string $scheme = null, ?App $config = null): string
     {
-        // Convert array of segments to a string
-        if (is_array($relativePath)) {
-            $relativePath = implode('/', $relativePath);
-        }
+        $currentURI = Services::request()->getUri();
 
-        $uri = _get_uri($relativePath, $config);
+        assert($currentURI instanceof SiteURI);
 
-        return URI::createURIString($scheme ?? $uri->getScheme(), $uri->getAuthority(), $uri->getPath(), $uri->getQuery(), $uri->getFragment());
+        return $currentURI->siteUrl($relativePath, $scheme, $config);
     }
 }
 
@@ -95,42 +42,34 @@ if (! function_exists('base_url')) {
      * Returns the base URL as defined by the App config.
      * Base URLs are trimmed site URLs without the index page.
      *
-     * @param mixed  $relativePath URI string or array of URI segments
-     * @param string $scheme
+     * @param array|string $relativePath URI string or array of URI segments
+     * @param string|null  $scheme       URI scheme. E.g., http, ftp
      */
     function base_url($relativePath = '', ?string $scheme = null): string
     {
-        $config            = clone config('App');
-        $config->indexPage = '';
+        $currentURI = Services::request()->getUri();
 
-        return rtrim(site_url($relativePath, $scheme, $config), '/');
+        assert($currentURI instanceof SiteURI);
+
+        return $currentURI->baseUrl($relativePath, $scheme);
     }
 }
 
 if (! function_exists('current_url')) {
     /**
      * Returns the current full URL based on the Config\App settings and IncomingRequest.
-     * String returns ignore query and fragment parts.
      *
      * @param bool                 $returnObject True to return an object instead of a string
      * @param IncomingRequest|null $request      A request to use when retrieving the path
      *
-     * @return string|URI
+     * @return string|URI When returning string, the query and fragment parts are removed.
+     *                    When returning URI, the query and fragment parts are preserved.
      */
     function current_url(bool $returnObject = false, ?IncomingRequest $request = null)
     {
         $request ??= Services::request();
-        $path = $request->getPath();
-
-        // Append queries and fragments
-        if ($query = $request->getUri()->getQuery()) {
-            $path .= '?' . $query;
-        }
-        if ($fragment = $request->getUri()->getFragment()) {
-            $path .= '#' . $fragment;
-        }
-
-        $uri = _get_uri($path);
+        /** @var CLIRequest|IncomingRequest $request */
+        $uri = $request->getUri();
 
         return $returnObject ? $uri : URI::createURIString($uri->getScheme(), $uri->getAuthority(), $uri->getPath());
     }
@@ -143,7 +82,7 @@ if (! function_exists('previous_url')) {
      * If that's not available, however, we'll use a sanitized url from $_SERVER['HTTP_REFERER']
      * which can be set by the user so is untrusted and not set by certain browsers/servers.
      *
-     * @return mixed|string|URI
+     * @return string|URI
      */
     function previous_url(bool $returnObject = false)
     {
@@ -162,15 +101,17 @@ if (! function_exists('uri_string')) {
     /**
      * URL String
      *
-     * Returns the path part of the current URL
-     *
-     * @param bool $relative Whether the resulting path should be relative to baseURL
+     * Returns the path part (relative to baseURL) of the current URL
      */
-    function uri_string(bool $relative = false): string
+    function uri_string(): string
     {
-        return $relative
-            ? ltrim(Services::request()->getPath(), '/')
-            : Services::request()->getUri()->getPath();
+        // The value of Services::request()->getUri()->getPath() returns
+        // full URI path.
+        $uri = Services::request()->getUri();
+
+        $path = $uri instanceof SiteURI ? $uri->getRoutePath() : $uri->getPath();
+
+        return ltrim($path, '/');
     }
 }
 
@@ -197,10 +138,10 @@ if (! function_exists('anchor')) {
      *
      * Creates an anchor based on the local URL.
      *
-     * @param mixed    $uri        URI string or array of URI segments
-     * @param string   $title      The link title
-     * @param mixed    $attributes Any attributes
-     * @param App|null $altConfig  Alternate configuration to use
+     * @param array|string        $uri        URI string or array of URI segments
+     * @param string              $title      The link title
+     * @param array|object|string $attributes Any attributes
+     * @param App|null            $altConfig  Alternate configuration to use
      */
     function anchor($uri = '', string $title = '', $attributes = '', ?App $altConfig = null): string
     {
@@ -230,10 +171,10 @@ if (! function_exists('anchor_popup')) {
      * Creates an anchor based on the local URL. The link
      * opens a new window based on the attributes specified.
      *
-     * @param string   $uri        the URL
-     * @param string   $title      the link title
-     * @param mixed    $attributes any attributes
-     * @param App|null $altConfig  Alternate configuration to use
+     * @param string                    $uri        the URL
+     * @param string                    $title      the link title
+     * @param array|false|object|string $attributes any attributes
+     * @param App|null                  $altConfig  Alternate configuration to use
      */
     function anchor_popup($uri = '', string $title = '', $attributes = false, ?App $altConfig = null): string
     {
@@ -280,9 +221,9 @@ if (! function_exists('mailto')) {
     /**
      * Mailto Link
      *
-     * @param string $email      the email address
-     * @param string $title      the link title
-     * @param mixed  $attributes any attributes
+     * @param string              $email      the email address
+     * @param string              $title      the link title
+     * @param array|object|string $attributes any attributes
      */
     function mailto(string $email, string $title = '', $attributes = ''): string
     {
@@ -300,12 +241,13 @@ if (! function_exists('safe_mailto')) {
      *
      * Create a spam-protected mailto link written in Javascript
      *
-     * @param string $email      the email address
-     * @param string $title      the link title
-     * @param mixed  $attributes any attributes
+     * @param string              $email      the email address
+     * @param string              $title      the link title
+     * @param array|object|string $attributes any attributes
      */
     function safe_mailto(string $email, string $title = '', $attributes = ''): string
     {
+        $count = 0;
         if (trim($title) === '') {
             $title = $email;
         }
@@ -371,7 +313,7 @@ if (! function_exists('safe_mailto')) {
         // improve obfuscation by eliminating newlines & whitespace
         $cspNonce = csp_script_nonce();
         $cspNonce = $cspNonce ? ' ' . $cspNonce : $cspNonce;
-        $output   = '<script type="text/javascript"' . $cspNonce . '>'
+        $output   = '<script' . $cspNonce . '>'
                 . 'var l=new Array();';
 
         foreach ($x as $i => $value) {
@@ -521,14 +463,15 @@ if (! function_exists('mb_url_title')) {
 
 if (! function_exists('url_to')) {
     /**
-     * Get the full, absolute URL to a controller method
+     * Get the full, absolute URL to a route name or controller method
      * (with additional arguments)
      *
      * NOTE: This requires the controller/method to
      * have a route defined in the routes Config file.
      *
-     * @param string     $controller Named route or Controller::method
-     * @param int|string ...$args    One or more parameters to be passed to the route
+     * @param string     $controller Route name or Controller::method
+     * @param int|string ...$args    One or more parameters to be passed to the route.
+     *                               The last parameter allows you to set the locale.
      *
      * @throws RouterException
      */
@@ -561,7 +504,7 @@ if (! function_exists('url_is')) {
     {
         // Setup our regex to allow wildcards
         $path        = '/' . trim(str_replace('*', '(\S)*', $path), '/ ');
-        $currentPath = '/' . trim(uri_string(true), '/ ');
+        $currentPath = '/' . trim(uri_string(), '/ ');
 
         return (bool) preg_match("|^{$path}$|", $currentPath, $matches);
     }

@@ -75,6 +75,7 @@ class Filters
      * Escapes the given value with our `esc()` helper function.
      *
      * @param string $value
+     * @phpstan-param 'html'|'js'|'css'|'url'|'attr'|'raw' $context
      */
     public static function esc($value, string $context = 'html'): string
     {
@@ -170,6 +171,8 @@ class Filters
     {
         helper('number');
 
+        $fraction ??= 0;
+
         $options = [
             'type'     => NumberFormatter::CURRENCY,
             'currency' => $currency,
@@ -181,7 +184,7 @@ class Filters
 
     /**
      * Returns a string with all instances of newline character (\n)
-     * converted to an HTML <br/> tag.
+     * converted to an HTML <br> tag.
      */
     public static function nl2br(string $value): string
     {

@@ -98,16 +98,11 @@ trait FilterTestTrait
         $this->response ??= clone Services::response();
 
         // Create our config and Filters instance to reuse for performance
-        $this->filtersConfig ??= config('Filters');
+        $this->filtersConfig ??= config(FiltersConfig::class);
         $this->filters ??= new Filters($this->filtersConfig, $this->request, $this->response);
 
         if ($this->collection === null) {
-            // Load the RouteCollection from Config to gather App route info
-            // (creates $routes using the Service as a starting point)
-            require APPPATH . 'Config/Routes.php';
-
-            $routes->getRoutes('*'); // Triggers discovery
-            $this->collection = $routes;
+            $this->collection = Services::routes()->loadRoutes();
         }
 
         $this->doneFilterSetUp = true;

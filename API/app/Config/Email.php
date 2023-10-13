@@ -6,165 +6,116 @@ use CodeIgniter\Config\BaseConfig;
 
 class Email extends BaseConfig
 {
-	/**
-	 * @var string
-	 */
-	public $fromEmail;
+    public string $fromEmail  = '';
+    public string $fromName   = '';
+    public string $recipients = '';
 
-	/**
-	 * @var string
-	 */
-	public $fromName;
+    /**
+     * The "user agent"
+     */
+    public string $userAgent = 'CodeIgniter';
 
-	/**
-	 * @var string
-	 */
-	public $recipients;
+    /**
+     * The mail sending protocol: mail, sendmail, smtp
+     */
+    public string $protocol = 'mail';
 
-	/**
-	 * The "user agent"
-	 *
-	 * @var string
-	 */
-	public $userAgent = "CodeIgniter";
+    /**
+     * The server path to Sendmail.
+     */
+    public string $mailPath = '/usr/sbin/sendmail';
 
-	/**
-	 * The mail sending protocol: mail, sendmail, smtp
-	 *
-	 * @var string
-	 */
-	public $protocol = "smtp";
+    /**
+     * SMTP Server Address
+     */
+    public string $SMTPHost = '';
 
-	/**
-	 * The server path to Sendmail.
-	 *
-	 * @var string
-	 */
-	public $mailPath = "/usr/sbin/sendmail";
+    /**
+     * SMTP Username
+     */
+    public string $SMTPUser = '';
 
-	/**
-	 * SMTP Server Address
-	 *
-	 * @var string
-	 */
-	public $SMTPHost = "servidor2293.el.controladordns.com";
+    /**
+     * SMTP Password
+     */
+    public string $SMTPPass = '';
 
-	/**
-	 * SMTP Username
-	 *
-	 * @var string
-	 */
-	public $SMTPUser = "doinmobi";
+    /**
+     * SMTP Port
+     */
+    public int $SMTPPort = 25;
 
-	/**
-	 * SMTP Password
-	 *
-	 * @var string
-	 */
-	public $SMTPPass = "9xuIr3E33u";
+    /**
+     * SMTP Timeout (in seconds)
+     */
+    public int $SMTPTimeout = 5;
 
-	/**
-	 * SMTP Port
-	 *
-	 * @var int
-	 */
-	public $SMTPPort = 465;
+    /**
+     * Enable persistent SMTP connections
+     */
+    public bool $SMTPKeepAlive = false;
 
-	/**
-	 * SMTP Timeout (in seconds)
-	 *
-	 * @var int
-	 */
-	public $SMTPTimeout = 60;
+    /**
+     * SMTP Encryption.
+     *
+     * @var string '', 'tls' or 'ssl'. 'tls' will issue a STARTTLS command
+     *             to the server. 'ssl' means implicit SSL. Connection on port
+     *             465 should set this to ''.
+     */
+    public string $SMTPCrypto = 'tls';
 
-	/**
-	 * Enable persistent SMTP connections
-	 *
-	 * @var bool
-	 */
-	public $SMTPKeepAlive = false;
+    /**
+     * Enable word-wrap
+     */
+    public bool $wordWrap = true;
 
-	/**
-	 * SMTP Encryption. Either tls or ssl
-	 *
-	 * @var string
-	 */
-	public $SMTPCrypto = "ssl";
+    /**
+     * Character count to wrap at
+     */
+    public int $wrapChars = 76;
 
-	/**
-	 * Enable word-wrap
-	 *
-	 * @var bool
-	 */
-	public $wordWrap = true;
+    /**
+     * Type of mail, either 'text' or 'html'
+     */
+    public string $mailType = 'text';
 
-	/**
-	 * Character count to wrap at
-	 *
-	 * @var int
-	 */
-	public $wrapChars = 76;
+    /**
+     * Character set (utf-8, iso-8859-1, etc.)
+     */
+    public string $charset = 'UTF-8';
 
-	/**
-	 * Type of mail, either 'text' or 'html'
-	 *
-	 * @var string
-	 */
-	public $mailType = "html";
+    /**
+     * Whether to validate the email address
+     */
+    public bool $validate = false;
 
-	/**
-	 * Character set (utf-8, iso-8859-1, etc.)
-	 *
-	 * @var string
-	 */
-	public $charset = "UTF-8";
+    /**
+     * Email Priority. 1 = highest. 5 = lowest. 3 = normal
+     */
+    public int $priority = 3;
 
-	/**
-	 * Whether to validate the email address
-	 *
-	 * @var bool
-	 */
-	public $validate = false;
+    /**
+     * Newline character. (Use “\r\n” to comply with RFC 822)
+     */
+    public string $CRLF = "\r\n";
 
-	/**
-	 * Email Priority. 1 = highest. 5 = lowest. 3 = normal
-	 *
-	 * @var int
-	 */
-	public $priority = 3;
+    /**
+     * Newline character. (Use “\r\n” to comply with RFC 822)
+     */
+    public string $newline = "\r\n";
 
-	/**
-	 * Newline character. (Use “\r\n” to comply with RFC 822)
-	 *
-	 * @var string
-	 */
-	public $CRLF = "\r\n";
+    /**
+     * Enable BCC Batch Mode.
+     */
+    public bool $BCCBatchMode = false;
 
-	/**
-	 * Newline character. (Use “\r\n” to comply with RFC 822)
-	 *
-	 * @var string
-	 */
-	public $newline = "\r\n";
+    /**
+     * Number of emails in each BCC batch
+     */
+    public int $BCCBatchSize = 200;
 
-	/**
-	 * Enable BCC Batch Mode.
-	 *
-	 * @var bool
-	 */
-	public $BCCBatchMode = false;
-
-	/**
-	 * Number of emails in each BCC batch
-	 *
-	 * @var int
-	 */
-	public $BCCBatchSize = 200;
-
-	/**
-	 * Enable notify message from server
-	 *
-	 * @var bool
-	 */
-	public $DSN = false;
+    /**
+     * Enable notify message from server
+     */
+    public bool $DSN = false;
 }
