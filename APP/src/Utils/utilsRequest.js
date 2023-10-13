@@ -10,7 +10,7 @@ export const obtenerCatalogo = async ({ catalogo, useValueLabel }) => {
 	}
 
 	const response = await api
-		.get(url)
+		.get({ url })
 		.then((response) => response.data)
 		.catch((error) => error.response);
 

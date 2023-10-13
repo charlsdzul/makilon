@@ -15,6 +15,7 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "asm89/stack-cors": "^2.1",
+        "firebase/php-jwt": "^6.9",
         "laminas/laminas-escaper": "^2.9",
         "psr/log": "^1.1"
     },

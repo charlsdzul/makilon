@@ -26,7 +26,7 @@ const initialValuesAgregarVacante = {
 };
 
 const Vacante = (props) => {
-	const { t } = useTranslation(["Vacante"]);
+	const { t } = useTranslation(["Vacante", "Common"]);
 	const navigate = useNavigate();
 
 	const formAgregarVacanteRef = useRef(null);
@@ -58,13 +58,20 @@ const Vacante = (props) => {
 			.then((response) => response.data)
 			.catch((error) => error.response);
 		console.log(response);
+
+		const modalTitulo = t("Vacante.lblAgregarVacante");
+
+		if (!response) {
+			showModal({ type: MODAL_TYPES.ERROR, title: modalTitulo, content: t("Common.messages.noPudimosProcesar") });
+			return;
+		}
+
 		if (response.status === 200) {
 			setRespuestaAgregar({ exitoso: true, mensaje: response.data?.detail, idVacante: response.data?.idVacante });
 			return;
 		}
 
 		const errors = response?.data?.errors ?? [];
-		const modalTitulo = t("Vacante.lblAgregarVacante");
 		let modalMensaje = "";
 
 		if (errors.length > 0) {

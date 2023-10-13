@@ -38,6 +38,11 @@ const Login = (props) => {
 		const response = await auth.authorize(correo, contrasena);
 		setRequesting(false);
 
+		if (!response) {
+			showModal({ type: MODAL_TYPES.WARNING, title: t("Login.lblTitleLogin"), content: t("Login.messages.errorInicioSesion") });
+			return;
+		}
+
 		if (response.status === 200) {
 			const token = response?.data?.token;
 			iniciarSesion(token);

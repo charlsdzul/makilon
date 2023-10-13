@@ -34,7 +34,7 @@ export default class AuthService {
 			.then((response) => response.data)
 			.catch((error) => error.response);
 
-		if (response.status === 200) {
+		if (response?.status === 200) {
 			const token = response?.data?.token;
 			this.setSession({ token });
 		}
