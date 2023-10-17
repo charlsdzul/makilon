@@ -36,6 +36,7 @@ const Login = (props) => {
 	const login = async ({ correo, contrasena }) => {
 		const auth = new AuthService();
 		const response = await auth.authorize(correo, contrasena);
+		console.log(response);
 		setRequesting(false);
 
 		if (!response) {

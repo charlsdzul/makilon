@@ -14,23 +14,13 @@ export default class AuthService {
 	// }
 
 	authorize = async (correo, contrasena) => {
-		// delete api.defaults.headers.common["Authorization"];
-		// delete axios.defaults.headers.common["Authorization"];
-		// api
-		// 	.post("/Account/authenticate", { userCode: user, password: password })
-		// 	.then((response) => {
-		// 		this.handleAuthentication(response.data, null);
-		// 	})
-		// 	.catch((error) => {
-		// 		this.handleAuthentication(null, error);
-		// 	});
-
-		const formData = new FormData();
-		formData.append("correo", correo);
-		formData.append("contrasena", contrasena);
+		const json = {
+			correo,
+			contrasena,
+		};
 
 		const response = await api
-			.post({ url: "auth/login", formData })
+			.post({ url: "auth/login", json, useToken: false })
 			.then((response) => response.data)
 			.catch((error) => error.response);
 
@@ -46,12 +36,13 @@ export default class AuthService {
 		const dataToken = this.getDataFromToken();
 		if (!dataToken) return null;
 
-		const formData = new FormData();
-		formData.append("token", dataToken?.token);
-		formData.append("email", dataToken?.email);
+		const json = {
+			token: dataToken?.token,
+			email: dataToken?.email,
+		};
 
 		const response = await api
-			.post({ url: "auth/authenticated", formData })
+			.post({ url: "auth/authenticated", json, useToken: false })
 			.then((response) => response.data)
 			.catch((error) => error.response);
 

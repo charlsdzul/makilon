@@ -40,9 +40,10 @@ function validateRequestData($requestBody = null, &$error = "")
 function validateEmailLogin($correo = null, &$error = [])
 {
     $isValid = true;
+    // var_dump($correo);
 
     if (isset($correo)) {
-        if ($correo == "" || $correo == "undefined" || $correo == "null") {
+        if ($correo == "" || $correo == "undefined" || $correo == "null" || $correo == "NULL" || $correo == "NULL") {
             $error = getErrorResponseByCode(["code" => 1000]);
             $isValid = false;
         } elseif (!is_string($correo)) {
@@ -72,7 +73,7 @@ function validateTituloVacante($titulo = null, &$error = [])
     $isValid = true;
 
     if (isset($titulo)) {
-        if ($titulo == "" || $titulo == "undefined" || $titulo == "null") {
+        if ($titulo == "" || $titulo == "undefined" || $titulo == "null" || $titulo == "NULL") {
             $error = getErrorResponseByCode(["code" => 2110]);
             $isValid = false;
         } elseif (!is_string($titulo)) {
@@ -98,7 +99,7 @@ function validatePuestoVacante($puesto = null, &$error = [])
     $isValid = true;
 
     if (isset($puesto)) {
-        if ($puesto == "" || $puesto == "undefined" || $puesto == "null") {
+        if ($puesto == "" || $puesto == "undefined" || $puesto == "null" || $puesto == "NULL") {
             $error = getErrorResponseByCode(["code" => 2120]);
             $isValid = false;
         } elseif (!is_string($puesto)) {
@@ -125,7 +126,7 @@ function validatePuestoOtroVacante($puesto = null, $puestoOtro = null, &$error =
     }
 
     if (isset($puestoOtro)) {
-        if ($puestoOtro == "" || $puestoOtro == "undefined" || $puestoOtro == "null") {
+        if ($puestoOtro == "" || $puestoOtro == "undefined" || $puestoOtro == "null" || $puestoOtro == "NULL") {
             $error = getErrorResponseByCode(["code" => 2140]);
             $isValid = false;
         } elseif (!is_string($puestoOtro)) {
@@ -148,7 +149,7 @@ function validatePuestoEspecificoVacante($puestoEspecifico = null, &$error = [])
     $isValid = true;
 
     if (isset($puestoEspecifico)) {
-        if ($puestoEspecifico == "" || $puestoEspecifico == "undefined" || $puestoEspecifico == "null") {
+        if ($puestoEspecifico == "" || $puestoEspecifico == "undefined" || $puestoEspecifico == "null" || $puestoEspecifico == "NULL") {
             $error = getErrorResponseByCode(["code" => 2130]);
             $isValid = false;
         } elseif (!is_string($puestoEspecifico)) {
@@ -175,7 +176,7 @@ function validatePuestoEspecificoOtroVacante($puestoEspecifico = null, $puestoEs
     }
 
     if (isset($puestoEspecificoOtro)) {
-        if ($puestoEspecificoOtro == "" || $puestoEspecificoOtro == "undefined" || $puestoEspecificoOtro == "null") {
+        if ($puestoEspecificoOtro == "" || $puestoEspecificoOtro == "undefined" || $puestoEspecificoOtro == "null" || $puestoEspecificoOtro == "NULL") {
             $error = getErrorResponseByCode(["code" => 2150]);
             $isValid = false;
         } elseif (!is_string($puestoEspecificoOtro)) {
@@ -198,7 +199,7 @@ function validateJwt($jwt = null, &$error = [])
     $isValid = true;
 
     if (isset($jwt)) {
-        if ($jwt == "" || $jwt == "undefined" || $jwt == "null") {
+        if ($jwt == "" || $jwt == "undefined" || $jwt == "null" || $jwt == "NULL") {
 
             $error = getErrorResponseByCode(["code" => 100]);
             $isValid = false;
@@ -220,7 +221,7 @@ function validatePasswordLogin($psw = null, &$error = [])
     $isValid = true;
 
     if (isset($psw)) {
-        if ($psw == "" || $psw == "undefined" || $psw == "null") {
+        if ($psw == "" || $psw == "undefined" || $psw == "null" || $psw == "NULL") {
             $error = getErrorResponseByCode(["code" => 1009]);
             $isValid = false;
         } elseif (strlen($psw) < 8) {

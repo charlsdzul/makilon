@@ -1,4 +1,5 @@
 import { Modal } from "antd";
+import Cookies from "js-cookie";
 import { MODAL_TYPES } from "./utilConst";
 
 export const asignarMensajeTranslation = ({ t, rules, production = true }) => {
@@ -89,4 +90,9 @@ const generateErrorMensaje = ({ error, useField, useDetail, useAction }) => {
 
 export const getUrlPathName = () => {
 	return window.location.pathname;
+};
+
+export const getToken = () => {
+	const token = Cookies.get("token");
+	return token;
 };

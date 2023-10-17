@@ -41,7 +41,12 @@ class Auth extends ResourceController
         $logAccion = "Iniciar sesión";
 
         try {
-            if (!loginValidator($this->request->getPost(), $errors)) {
+
+            $requestBody = $this->request->getJsonVar(["correo", "contrasena"]);
+
+            // var_dump($requestBody);
+
+            if (!loginValidator($requestBody, $errors)) {
 
                 //Se guarda LOG porque, en teoria, no deberia tener errores en el validator,
                 //porque en el front ya estan la validaciones.
@@ -56,8 +61,8 @@ class Auth extends ResourceController
                 return $this->apiResponseError("invalid_request", $errors);
             }
 
-            $correo = $this->request->getPost("correo");
-            $contrasena = $this->request->getPost("contrasena");
+            $correo = $requestBody["correo"];
+            $contrasena = $requestBody["contrasena"];
             $usuarioModel = new UsuarioModel();
 
             $usuario = $usuarioModel
@@ -186,39 +191,41 @@ class Auth extends ResourceController
 
         try {
 
-            $requestValues = $this->request->getPost();
+            $requestBody = $this->request->getJsonVar(["token", "email"]);
 
-            if (!authenticatedValidator($requestValues, $errors)) {
+            if (!authenticatedValidator($requestBody, $errors)) {
                 $dataLog = [
-                    "mensaje" => lang("Lang.detail.errorDatosValidacion"),
-                    "exception" => $errors,
-                    "request_respond" => "invalid_request",
-                ];
-
-                $this->logSistema(["tipo" => "notice", "accion" => $logAccion, "linea" => __LINE__, ...$dataLog]);
-                return $this->apiResponseError("invalid_request", $errors);
-            }
-
-            $token = $requestValues["token"];
-            $email = $requestValues["email"];
-            $key = getenv("JWT_SECRET");
-            $payload = "";
-
-            try {
-                $payload = JWT::decode($token, new Key($key, 'HS256'));
-            } catch (\Exception $e) {
-                $message = $e->getMessage();
-                $dataLog = [
-                    "tipo" => "notice",
-                    "accion" => $logAccion,
-                    "mensaje" => "Error catch. " . $message . ". TOKEN: " . $token,
-                    "exception" => $e,
-                    "request_respond" => "invalid_request",
-                    "linea" => __LINE__,
+                    "log_origen" => "usuario", "log_tipo" => "warning", "log_accion" => $logAccion, "log_linea" => __LINE__,
+                    "log_mensaje" => lang("Lang.detail.errorDatosValidacion"),
+                    "log_request_respond" => "invalid_request",
                 ];
 
                 $this->logSistema($dataLog);
+                return $this->apiResponseError("invalid_request", $errors);
+            }
+
+            $token = $requestBody["token"];
+            $email = $requestBody["email"];
+            $jwt_key = getenv("JWT_SECRET");
+            $jwt_algorithm = getenv("JWT_ALGORITHM");
+            $payload = "";
+
+            try {
+                $payload = JWT::decode($token, new Key($jwt_key, $jwt_algorithm));
+            } catch (\Exception $e) {
+                $message = $e->getMessage();
+
                 $response = [...getErrorResponseByCode(["code" => 2001]), "isValidToken" => false];
+
+                $dataLog = [
+                    "log_origen" => "usuario", "log_tipo" => "critical", "log_accion" => $logAccion, "log_linea" => __LINE__,
+                    "log_mensaje" => "ERROR CATCH. " . $message . ". TOKEN: " . $token,
+                    "log_request_respond" => "invalid_request",
+                    "log_exception" => $e,
+                    "log_usuario_respuesta" => $response,
+                ];
+
+                $this->logSistema($dataLog);
                 return $this->apiResponseError("invalid_request", $response);
             }
 
@@ -233,16 +240,16 @@ class Auth extends ResourceController
 
             } else {
 
+                $response = [...getErrorResponseByCode(["code" => 2001]), "isValidToken" => false];
+
                 $dataLog = [
-                    "tipo" => "critical",
-                    "accion" => $logAccion,
-                    "mensaje" => "Email del token ($payload->email), es diferente del enviado en peticion ($email). TOKEN: " . $token,
-                    "request_respond" => "invalid_request",
-                    "linea" => __LINE__,
+                    "log_origen" => "usuario", "log_tipo" => "critical", "log_accion" => $logAccion, "log_linea" => __LINE__,
+                    "log_mensaje" => "Email del token ($payload->email), es diferente del enviado en peticion ($email). TOKEN: " . $token,
+                    "log_request_respond" => "invalid_request",
+                    "log_usuario_respuesta" => $response,
                 ];
 
                 $this->logSistema($dataLog);
-                $response = [...getErrorResponseByCode(["code" => 2001]), "isValidToken" => false];
                 return $this->apiResponseError("invalid_request", $response);
             };
         } catch (\Exception $e) {

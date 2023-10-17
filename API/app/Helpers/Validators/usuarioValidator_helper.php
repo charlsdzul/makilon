@@ -5,10 +5,12 @@ helper("validationsPlpx");
 
 function loginValidator($datos = null, &$errors = null)
 {
+
+    // var_dump($datos);
     $errors = new stdClass();
     $errorsValidation = [];
-    $correo = $datos["correo"] ?? "";
-    $contrasena = $datos["contrasena"] ?? "";
+    $correo = $datos["correo"];
+    $contrasena = $datos["contrasena"];
 
     if (validateRequestData($datos, $errorsValidate)) {
         $errorsValidation += ["datos" => $errorsValidate];

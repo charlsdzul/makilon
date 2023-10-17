@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Filters\AuthFilter;
 use App\Filters\Cors;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
@@ -26,6 +27,7 @@ class Filters extends BaseConfig
         'invalidchars' => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         "cors" => Cors::class,
+        'authFilter' =>AuthFilter::class,
 
     ];
 
@@ -41,7 +43,7 @@ class Filters extends BaseConfig
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
-            "cors",
+            // "cors",
 
         ],
         'after' => [
@@ -62,7 +64,7 @@ class Filters extends BaseConfig
      * permits any HTTP method to access a controller. Accessing the controller
      * with a method you don't expect could bypass the filter.
      */
-	public $methods = ["get"];
+    public $methods = [];
 
     /**
      * List of filter aliases that should run on any
@@ -72,6 +74,8 @@ class Filters extends BaseConfig
      * 'isLoggedIn' => ['before' => ['account/*', 'profiles/*']]
      */
     public $filters = [
-		"cors" => ["after" => ["api/v1/*"]],
-	];
+        "cors" => ["before" => ["api/v1/*"]],
+        "authFilter" => ["before" => ["api/v1/vacante"]],
+
+    ];
 }

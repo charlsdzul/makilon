@@ -26,8 +26,8 @@ class VacanteModel extends Model
         "vac_puesto_otro" => "string|max_length[20]",
         "vac_puesto_especifico" => "string|max_length[20]",
         "vac_puesto_especifico_otro" => "string|max_length[20]",
-        "vac_sta" => "integer|required|exact_length[1]",
-        "vac_creado_sta" => "integer|required|exact_length[1]",
+        "vac_sta" => "integer|required|in_list[0,1]",
+        "vac_creado_sta" => "integer|required|in_list[0,1]",
     ];
     protected $returnType = \App\Entities\Vacante::class;
 }

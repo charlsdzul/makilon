@@ -53,16 +53,15 @@ const Vacante = (props) => {
 			puestoEspecificoOtro: e.puestoEspecificoOtro,
 		};
 
-		const response = await api
-			.post({ url: "vacante", json })
-			.then((response) => response.data)
-			.catch((error) => error.response);
+		const response = await api.post({ url: "vacante", json }).then((response) => response);
+		//.catch((error) => error);
+
 		console.log(response);
 
 		const modalTitulo = t("Vacante.lblAgregarVacante");
 
 		if (!response) {
-			showModal({ type: MODAL_TYPES.ERROR, title: modalTitulo, content: t("Common.messages.noPudimosProcesar") });
+			showModal({ type: MODAL_TYPES.ERROR, title: modalTitulo, content: t("Common:Common.messages.noPudimosProcesar") });
 			return;
 		}
 

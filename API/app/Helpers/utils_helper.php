@@ -61,7 +61,8 @@ function crearToken($args)
     $logger = new PlpxLogger();
 
     try {
-        $key = getenv("JWT_SECRET");
+        $jwt_key = getenv("JWT_SECRET");
+        $jwt_algorithm = getenv("JWT_ALGORITHM");
         $iat = time(); // current timestamp value
         $exp = $iat + 3600;
         $createdAt = $iat;
@@ -80,7 +81,7 @@ function crearToken($args)
             "name" => $name,
         ];
 
-        $token = JWT::encode($payload, $key, "HS256");
+        $token = JWT::encode($payload, $jwt_key, $jwt_algorithm);
         return $token;
 
     } catch (Exception $e) {

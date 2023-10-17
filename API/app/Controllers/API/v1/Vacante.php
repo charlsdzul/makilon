@@ -40,7 +40,7 @@ class Vacante extends ResourceController
 
         try {
 
-            $requestBody = $this->request->getVar(["titulo", "puesto", "puestoOtro", "puestoEspecifico", "puestoEspecificoOtro"]);
+            $requestBody = $this->request->getJsonVar(["titulo", "puesto", "puestoOtro", "puestoEspecifico", "puestoEspecificoOtro"]);
 
             if (!vacanteValidator($requestBody, $errorsValidator)) {
 

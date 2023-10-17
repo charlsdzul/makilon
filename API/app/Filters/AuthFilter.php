@@ -5,8 +5,11 @@ namespace App\Filters;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
+use Exception;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
-class Cors implements FilterInterface
+class AuthFilter implements FilterInterface
 {
     /**
      * Do whatever processing this filter needs to do.
@@ -25,15 +28,36 @@ class Cors implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        header("Access-Control-Allow-Origin: http://localhost:3000");
-        header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization,Access-Control-Allow-Origin,Access-Control-Allow-Credentials");
-        header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+        $jwt_key = getenv("JWT_SECRET");
+        $jwt_algorithm = getenv("JWT_ALGORITHM");
+        $header = $request->header("Authorization");
+        $token = null;
 
-        $method = $_SERVER['REQUEST_METHOD'];
-        if ($method == "OPTIONS") {
-            die();
+        // extract the token from the header
+        if (!empty($header)) {
+            if (preg_match('/Bearer\s(\S+)/', $header, $matches)) {
+                $token = $matches[1];
+            }
         }
 
+        // check if token is null or empty
+        if (is_null($token) || empty($token)) {
+            $response = service('response');
+            $response->setBody('Token: Access denied');
+            $response->setStatusCode(500);
+            return $response;
+
+        }
+
+        try {
+            // $decoded = JWT::decode($token, $key, array("HS256"));
+            $decoded = JWT::decode($token, new Key($jwt_key, $jwt_algorithm));
+        } catch (Exception $ex) {
+            $response = service('response');
+            $response->setBody('Token: Access denied');
+            $response->setStatusCode(401);
+            return $response;
+        }
     }
 
     /**
@@ -50,6 +74,6 @@ class Cors implements FilterInterface
      */
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-
+        //
     }
 }
