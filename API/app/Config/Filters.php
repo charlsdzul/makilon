@@ -27,7 +27,7 @@ class Filters extends BaseConfig
         'invalidchars' => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         "cors" => Cors::class,
-        'authFilter' =>AuthFilter::class,
+        'authFilter' => AuthFilter::class,
 
     ];
 
@@ -75,7 +75,13 @@ class Filters extends BaseConfig
      */
     public $filters = [
         "cors" => ["before" => ["api/v1/*"]],
-        "authFilter" => ["before" => ["api/v1/vacante"]],
-
+        "authFilter" => ["before" => [
+            "api/v1/vacante",
+            "api/v1/catalogos/puestosEspecificos",
+            "api/v1/catalogos/puestos",
+            "api/v1/mis-vacantes",
+        ],
+        ],
+        //kilon/API/public/api/v1/catalogos/puestosEspecificos
     ];
 }

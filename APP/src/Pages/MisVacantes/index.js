@@ -1,20 +1,21 @@
 import { Col, Row, Table } from "antd";
+import { StatusCodes } from "http-status-codes";
 import { default as React, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import CContainer from "../../Components/CContainer";
-import api from "../../Utils/api";
+import { get } from "../../Utils/api";
 
 const columns = [
 	{
-		title: "Name",
-		dataIndex: "name",
+		title: "id",
+		dataIndex: "id",
 		sorter: true,
-		render: (name) => `${name.first} ${name.last}`,
+		//render: (name) => `${name.first} ${name.last}`,
 		width: "20%",
 	},
 	{
-		title: "Gender",
-		dataIndex: "gender",
+		title: "titulo",
+		dataIndex: "titulo",
 		filters: [
 			{
 				text: "Male",
@@ -28,8 +29,8 @@ const columns = [
 		width: "20%",
 	},
 	{
-		title: "Email",
-		dataIndex: "email",
+		title: "vac_created_at",
+		dataIndex: "vac_created_at",
 	},
 ];
 
@@ -54,21 +55,33 @@ const MisVacantes = (props) => {
 	const llenarGrid = async () => {
 		setLoading(true);
 
-		const url = "https://randomuser.me/api";
-		const params = getRandomuserParams(tableParams);
-		const response = await api
-			.get({ url, params, external: true })
-			.then((response) => response.data.results)
-			.catch((error) => error.response);
-
+		const response = await get({ url: "misvacantes", params: { page: 1, perPage: 1, total: tableParams.totalCount } });
 		console.log(response);
 
-		setData(response);
-		setLoading(false);
+		if (response.status === StatusCodes.OK) {
+			setData(response.data.results);
+			setLoading(false);
 
-		// fetch(`https://randomuser.me/api?${qs.stringify(getRandomuserParams(tableParams))}`)
+			// setTableParams({
+			// 	...tableParams,
+			// 	pagination: {
+			// 		...tableParams.pagination,
+			// 		totalCount: response.data.totalCount,
+			// 		// 200 is mock data, you should read it from server
+			// 		// total: data.totalCount,
+			// 	},
+			// });
+		}
+
+		// console.log(response);
+
+		// setData(response);
+		// setLoading(false);
+
+		// fetch(`https://randomuser.me/api?${QueryString.stringify(getRandomuserParams(tableParams))}`)
 		// 	.then((res) => res.json())
 		// 	.then(({ results }) => {
+		// 		console.log(results);
 		// 		setData(results);
 		// 		setLoading(false);
 		// 		setTableParams({
@@ -93,11 +106,16 @@ const MisVacantes = (props) => {
 	};
 
 	useEffect(() => {
+		llenarGrid();
+	}, [tableParams]);
+
+	useEffect(() => {
 		iniciarPrograma();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const handleTableChange = (pagination, filters, sorter) => {
+		console.log(pagination);
 		setTableParams({
 			pagination,
 			filters,
@@ -118,7 +136,7 @@ const MisVacantes = (props) => {
 						<div key="Result"> */}
 					<Table
 						columns={columns}
-						rowKey={(record) => record.login.uuid}
+						rowKey={(record) => record.id}
 						dataSource={data}
 						pagination={tableParams.pagination}
 						loading={loading}

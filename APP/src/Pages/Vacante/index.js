@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "../../CSS/common.module.css";
 import CButton from "../../Components/CButton";
 import CContainer from "../../Components/CContainer";
-import api from "../../Utils/api";
+import { post } from "../../Utils/api";
 import { MODAL_TYPES } from "../../Utils/utilConst";
 import { URLS_PORTAL } from "../../Utils/utilUrl";
 import { asignarMensajeTranslation, getErrorMessages, showModal } from "../../Utils/utils";
@@ -42,7 +42,7 @@ const Vacante = (props) => {
 
 	const [respuestaAgregar, setRespuestaAgregar] = useState({ exitoso: false, mensaje: "" });
 
-	const [rules] = useState(asignarMensajeTranslation({ t, rules: rulesVacante, production: true }));
+	const [rules] = useState(asignarMensajeTranslation({ t, rules: rulesVacante, production: false }));
 
 	const handleSuccessFormNuevaVacante = async (e) => {
 		const json = {
@@ -53,8 +53,7 @@ const Vacante = (props) => {
 			puestoEspecificoOtro: e.puestoEspecificoOtro,
 		};
 
-		const response = await api.post({ url: "vacante", json }).then((response) => response);
-		//.catch((error) => error);
+		const response = await post({ url: "vacante", json });
 
 		console.log(response);
 
@@ -65,12 +64,12 @@ const Vacante = (props) => {
 			return;
 		}
 
-		if (response.status === 200) {
+		if (response.status === StatusCodes.OK) {
 			setRespuestaAgregar({ exitoso: true, mensaje: response.data?.detail, idVacante: response.data?.idVacante });
 			return;
 		}
 
-		const errors = response?.data?.errors ?? [];
+		const errors = response?.errors ?? [];
 		let modalMensaje = "";
 
 		if (errors.length > 0) {

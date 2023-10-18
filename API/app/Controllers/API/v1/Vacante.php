@@ -112,4 +112,66 @@ class Vacante extends ResourceController
             return $this->apiResponseError("server_error", $response);
         }
     }
+
+    public function misVacantes()
+    {
+        $logAccion = "Mis Vacantes";
+
+        try {
+            // $something = $this->request->getVar('page');
+            //echo $something;
+
+            $requestBody = $this->request->getJsonVar(["page", "perPage", "total"]);
+
+            $page = $requestBody["page"] ?? 1;
+            $perPage = $requestBody["perPage"] ?? 20;
+            //$total = $requestBody["total"] ?? 200;
+            $offset = ($page - 1) * $perPage;
+
+            $vacanteModel = new VacanteModel();
+            $builder = $vacanteModel->builder();
+            $query = $builder->get($perPage, $offset);
+            $vacantes = $query->getResult();
+
+            $totalCount = $query->getNumRows();
+
+            $response = [
+                "results" => $vacantes,
+                "totalCount" => $totalCount,
+            ];
+
+            return $this->apiResponse("ok", $response);
+
+            // $requestBody = $this->request->getJsonVar(["vac_titulo"]);
+
+            // $vacanteModel = new VacanteModel();
+            // $builder = $vacanteModel->paginate();
+
+            // $query = $builder->get(10, 20);
+            // $vacantes = $query->getResult();
+            // $totalCount = $query->getNumRows();
+
+            // $response = [
+            //     "results" => $vacantes,
+            //     "totalCount" => $totalCount,
+            // ];
+
+            // return $this->apiResponse("ok", $response);
+
+        } catch (\Exception $e) {
+            $mensaje = $e->getMessage();
+            $response = getErrorResponseByCode(["code" => 2100]);
+
+            $dataLog = [
+                "log_origen" => "usuario", "log_tipo" => "critical", "log_accion" => $logAccion, "log_linea" => __LINE__,
+                "log_mensaje" => "ERROR CATCH. " . $mensaje,
+                "log_request_respond" => "server_error",
+                "log_exception" => $e,
+                "log_usuario_respuesta" => $response,
+            ];
+
+            $this->logSistema($dataLog);
+            return $this->apiResponseError("server_error", $response);
+        }
+    }
 }

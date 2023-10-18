@@ -1,6 +1,7 @@
+import { StatusCodes } from "http-status-codes";
 import Cookies from "js-cookie";
 import jwt_decode from "jwt-decode";
-import api from "../Utils/api";
+import { post } from "../Utils/api";
 
 let _id = null;
 let _accessToken = null;
@@ -9,22 +10,11 @@ let _expiresAt = null;
 let _user = null;
 
 export default class AuthService {
-	// constructor(history) {
-	// 	this.history = history;
-	// }
-
 	authorize = async (correo, contrasena) => {
-		const json = {
-			correo,
-			contrasena,
-		};
+		const json = { correo, contrasena };
+		const response = await post({ url: "auth/login", json, useToken: false });
 
-		const response = await api
-			.post({ url: "auth/login", json, useToken: false })
-			.then((response) => response.data)
-			.catch((error) => error.response);
-
-		if (response?.status === 200) {
+		if (response?.status === StatusCodes.OK) {
 			const token = response?.data?.token;
 			this.setSession({ token });
 		}
@@ -41,11 +31,7 @@ export default class AuthService {
 			email: dataToken?.email,
 		};
 
-		const response = await api
-			.post({ url: "auth/authenticated", json, useToken: false })
-			.then((response) => response.data)
-			.catch((error) => error.response);
-
+		const response = await post({ url: "auth/authenticated", json, useToken: false });
 		return response;
 	};
 

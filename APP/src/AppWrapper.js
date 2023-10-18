@@ -40,7 +40,7 @@ const AppWrapper = (props) => {
 	const [opcionesMenu, setOpcionesMenu] = useState();
 	const [currentPathName, setCurrentPathName] = useState("");
 	const loaderData = useLoaderData();
-	console.log("loaderData AppWrapper", loaderData);
+	//console.log("loaderData AppWrapper", loaderData);
 	const toggleCollapsed = () => {
 		setCollapsed(!collapsed);
 	};

@@ -26,7 +26,7 @@ const Login = (props) => {
 	const navigate = useNavigate();
 
 	const { t } = useTranslation(["Login"]);
-	const [rules] = useState(asignarMensajeTranslation({ t, rules: rulesLogin, production: true }));
+	const [rules] = useState(asignarMensajeTranslation({ t, rules: rulesLogin, production: false }));
 
 	const handleSuccessForm = (e) => {
 		setRequesting(true);
@@ -44,7 +44,7 @@ const Login = (props) => {
 			return;
 		}
 
-		if (response.status === 200) {
+		if (response.status === StatusCodes.OK) {
 			const token = response?.data?.token;
 			iniciarSesion(token);
 			return;
@@ -52,7 +52,7 @@ const Login = (props) => {
 
 		let modalTitulo = "";
 		let modalMensaje = "";
-		const errors = response?.data?.errors ?? [];
+		const errors = response?.errors ?? [];
 
 		if (errors.length > 0) {
 			modalTitulo = errors[0].title ?? "";

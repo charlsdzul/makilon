@@ -1,4 +1,5 @@
-import api from "./api";
+import { StatusCodes } from "http-status-codes";
+import { get } from "./api";
 
 export const obtenerCatalogo = async ({ catalogo, useValueLabel }) => {
 	let url = "";
@@ -9,19 +10,14 @@ export const obtenerCatalogo = async ({ catalogo, useValueLabel }) => {
 		url = "catalogos/puestosEspecificos";
 	}
 
-	const response = await api
-		.get({ url })
-		.then((response) => response.data)
-		.catch((error) => error.response);
-
-	//console.log(response);
+	const response = await get({ url });
 
 	if (!response) {
-		return { data: [], status: response };
+		return { data: [], status: response?.status };
 	}
 
-	if (!response || response?.status !== 200) {
-		return { data: [], status: response.status };
+	if (!response || response?.status !== StatusCodes.OK) {
+		return { data: [], status: response?.status };
 	}
 
 	let data = [];

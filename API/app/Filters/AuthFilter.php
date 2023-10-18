@@ -43,7 +43,7 @@ class AuthFilter implements FilterInterface
         // check if token is null or empty
         if (is_null($token) || empty($token)) {
             $response = service('response');
-            $response->setBody('Token: Access denied');
+            $response->setBody('Access denied');
             $response->setStatusCode(500);
             return $response;
 
@@ -54,7 +54,7 @@ class AuthFilter implements FilterInterface
             $decoded = JWT::decode($token, new Key($jwt_key, $jwt_algorithm));
         } catch (Exception $ex) {
             $response = service('response');
-            $response->setBody('Token: Access denied');
+            $response->setBody('Access denied');
             $response->setStatusCode(401);
             return $response;
         }

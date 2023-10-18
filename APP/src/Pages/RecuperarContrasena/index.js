@@ -1,15 +1,11 @@
-import React, { useState, useRef } from "react";
-import api from "../../Utils/api";
-import AuthService from "../../Services/auth.services2";
-import CContainer from "../../Components/CContainer";
-import { Button, Form, Input, Radio } from "antd";
-import { InfoCircleOutlined } from "@ant-design/icons";
-import { Col, Divider, Row } from "antd";
-import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import { Card, Col, Form, Input, Row } from "antd";
+import { StatusCodes } from "http-status-codes";
+import React, { useRef } from "react";
 import styles from "../../CSS/common.module.css";
 import stylesLogin from "../../CSS/login.module.css";
-import { Card, Space } from "antd";
 import CButton from "../../Components/CButton";
+import CContainer from "../../Components/CContainer";
+import AuthService from "../../Services/auth.services2";
 
 const cardStyle = {
 	//width: "360px",
@@ -49,7 +45,7 @@ const RecuperarContrasena = (props) => {
 		const response = await AuthService.login(usuario, contrasena);
 		console.log(response);
 
-		if (response.status === 200) {
+		if (response.status === StatusCodes.OK) {
 			localStorage.setItem("token", response.data.accessToken);
 		} else {
 			//alert("hay error")
