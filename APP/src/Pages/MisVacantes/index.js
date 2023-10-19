@@ -1,44 +1,10 @@
 import { Col, Row, Table } from "antd";
 import { StatusCodes } from "http-status-codes";
-import { default as React, useEffect, useState } from "react";
+import QueueAnim from "rc-queue-anim";
+import { default as React, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import CContainer from "../../Components/CContainer";
 import { get } from "../../Utils/api";
-
-const columns = [
-	{
-		title: "id",
-		dataIndex: "id",
-		sorter: true,
-		//render: (name) => `${name.first} ${name.last}`,
-		width: "20%",
-	},
-	{
-		title: "titulo",
-		dataIndex: "titulo",
-		filters: [
-			{
-				text: "Male",
-				value: "male",
-			},
-			{
-				text: "Female",
-				value: "female",
-			},
-		],
-		width: "20%",
-	},
-	{
-		title: "vac_created_at",
-		dataIndex: "vac_created_at",
-	},
-];
-
-const getRandomuserParams = (params) => ({
-	results: params.pagination?.pageSize,
-	page: params.pagination?.current,
-	...params,
-});
 
 const MisVacantes = (props) => {
 	const { t } = useTranslation(["MisVacante"]);
@@ -50,64 +16,89 @@ const MisVacantes = (props) => {
 			current: 1,
 			pageSize: 10,
 		},
+		sorter: {
+			field: "",
+			order: "",
+		},
 	});
+
+	const columns = useMemo(
+		() => [
+			// {
+			// 	title: "vac_id",
+			// 	dataIndex: "vac_id",
+			// 	key: "vac_id",
+			// 	sorter: true,
+			// 	//render: (name) => `${name.first} ${name.last}`,
+			// 	width: "20%",
+			// },
+			{
+				title: "vac_titulo",
+				dataIndex: "vac_titulo",
+				key: "vac_titulo",
+				sorter: true,
+
+				// filters: [
+				// 	{
+				// 		text: "Male",
+				// 		value: "male",
+				// 	},
+				// 	{
+				// 		text: "Female",
+				// 		value: "female",
+				// 	},
+				// ],
+				width: "40%",
+			},
+			{
+				title: "vac_created_at",
+				dataIndex: "vac_created_at",
+				key: "vac_created_at",
+			},
+		],
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[]
+	);
 
 	const llenarGrid = async () => {
 		setLoading(true);
+		//console.log(tableParams);
 
-		const response = await get({ url: "misvacantes", params: { page: 1, perPage: 1, total: tableParams.totalCount } });
-		console.log(response);
+		const response = await get({
+			url: "misvacantes",
+			params: {
+				pagination: {
+					page: tableParams.pagination.current,
+					perPage: tableParams.pagination.pageSize,
+				},
+				sorter: {
+					field: tableParams.sorter.field,
+					order: tableParams.sorter.order,
+				},
+			},
+		});
 
 		if (response.status === StatusCodes.OK) {
 			setData(response.data.results);
 			setLoading(false);
-
-			// setTableParams({
-			// 	...tableParams,
-			// 	pagination: {
-			// 		...tableParams.pagination,
-			// 		totalCount: response.data.totalCount,
-			// 		// 200 is mock data, you should read it from server
-			// 		// total: data.totalCount,
-			// 	},
-			// });
+			setTableParams({
+				...tableParams,
+				pagination: {
+					...tableParams.pagination,
+					total: response.data.totalCount,
+				},
+			});
 		}
-
-		// console.log(response);
-
-		// setData(response);
-		// setLoading(false);
-
-		// fetch(`https://randomuser.me/api?${QueryString.stringify(getRandomuserParams(tableParams))}`)
-		// 	.then((res) => res.json())
-		// 	.then(({ results }) => {
-		// 		console.log(results);
-		// 		setData(results);
-		// 		setLoading(false);
-		// 		setTableParams({
-		// 			...tableParams,
-		// 			pagination: {
-		// 				...tableParams.pagination,
-		// 				total: 200,
-		// 				// 200 is mock data, you should read it from server
-		// 				// total: data.totalCount,
-		// 			},
-		// 		});
-		// 	});
 	};
 
 	const iniciarPrograma = async () => {
 		llenarGrid();
-
-		// const { data: puestos } = await obtenerCatalogo({ catalogo: "puestos" });
-		// setSourcePuestos(puestos);
-		// const { data: puestosEspecificos } = await obtenerCatalogo({ catalogo: "puestosEspecificos" });
-		// setSourcePuestosEspecificos(puestosEspecificos);
 	};
 
 	useEffect(() => {
 		llenarGrid();
-	}, [tableParams]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [JSON.stringify(tableParams)]);
 
 	useEffect(() => {
 		iniciarPrograma();
@@ -116,10 +107,15 @@ const MisVacantes = (props) => {
 
 	const handleTableChange = (pagination, filters, sorter) => {
 		console.log(pagination);
+		console.log(filters);
+		console.log(sorter);
 		setTableParams({
 			pagination,
 			filters,
-			...sorter,
+			sorter: {
+				field: sorter?.field ?? "",
+				order: sorter?.order ?? "",
+			},
 		});
 
 		// `dataSource` is useless since `pageSize` changed
@@ -132,18 +128,27 @@ const MisVacantes = (props) => {
 		<CContainer title={t("Vacante.lblAgregarVacante")}>
 			<Row justify="center" style={{ marginTop: "5rem" }}>
 				<Col xs={24} sm={24} md={17} lg={16} xl={14} xxl={14}>
-					{/* <QueueAnim type="scale">
-						<div key="Result"> */}
-					<Table
-						columns={columns}
-						rowKey={(record) => record.id}
-						dataSource={data}
-						pagination={tableParams.pagination}
-						loading={loading}
-						onChange={handleTableChange}
-					/>
-					{/* </div>
-					</QueueAnim> */}
+					<QueueAnim type="scale">
+						<div key="Result">
+							<Table
+								size="small"
+								sticky
+								columns={columns}
+								rowKey={(record) => record.vac_id}
+								dataSource={data}
+								pagination={tableParams.pagination}
+								loading={loading}
+								onChange={handleTableChange}
+								summary={() => {
+									return (
+										<Table.Summary.Row>
+											<Table.Summary.Cell index={0}>Total de registros: {tableParams.pagination.total}</Table.Summary.Cell>
+										</Table.Summary.Row>
+									);
+								}}
+							/>
+						</div>
+					</QueueAnim>
 				</Col>
 			</Row>
 		</CContainer>

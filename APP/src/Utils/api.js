@@ -24,11 +24,11 @@ export const post = async ({ url, formData, json, useToken = true }) => {
 		headers,
 	};
 
-	console.log(axiosConfig);
+	//console.log(axiosConfig);
 
 	const request = await axios(axiosConfig)
 		.then((response) => {
-			console.log(response);
+			//console.log(response);
 			return {
 				status: response?.status,
 				statusText: response?.statusText,
@@ -36,7 +36,7 @@ export const post = async ({ url, formData, json, useToken = true }) => {
 			};
 		})
 		.catch((response) => {
-			console.log(response);
+			//console.log(response);
 			return {
 				status: response?.response?.status,
 				statusText: response?.response?.statusText,
@@ -64,11 +64,11 @@ export const get = async ({ url, params, useToken = true }) => {
 		headers,
 		params: params,
 	};
-	console.log(axiosConfig);
+	//console.log(axiosConfig);
 
 	const request = await axios(axiosConfig)
 		.then((response) => {
-			console.log(response);
+			//console.log(response);
 			return {
 				status: response?.status,
 				statusText: response?.statusText,
@@ -76,7 +76,7 @@ export const get = async ({ url, params, useToken = true }) => {
 			};
 		})
 		.catch((response) => {
-			console.log(response);
+			//console.log(response);
 			return {
 				status: response?.response?.status,
 				statusText: response?.response?.statusText,

@@ -14,6 +14,7 @@ class Vacante extends ResourceController
     public function __construct()
     {
         $this->router = \Config\Services::router();
+
         helper("/Validators/vacanteValidator");
         helper("/utils");
     }
@@ -118,46 +119,48 @@ class Vacante extends ResourceController
         $logAccion = "Mis Vacantes";
 
         try {
-            // $something = $this->request->getVar('page');
-            //echo $something;
-
-            $requestBody = $this->request->getJsonVar(["page", "perPage", "total"]);
-
-            $page = $requestBody["page"] ?? 1;
-            $perPage = $requestBody["perPage"] ?? 20;
-            //$total = $requestBody["total"] ?? 200;
-            $offset = ($page - 1) * $perPage;
-
             $vacanteModel = new VacanteModel();
             $builder = $vacanteModel->builder();
+
+            // SORTER
+            $sorter = $this->request->getVar('sorter');
+            $orderField = $sorter["field"] ?? "";
+            $orderOption = $sorter["order"] ?? "";
+
+            if ($orderOption == "ascend") {
+                $orderOption = "ASC";
+            } else if ($orderOption == "descend") {
+                $orderOption = "DESC";
+            } else {
+                $orderOption = "";
+            }
+
+            $db = db_connect();
+            if ($db->fieldExists($orderField, 'vac_vacantes')) {
+                $builder->orderBy($orderField, $orderOption);
+            }
+
+            // PAGINATION
+            $pagination = $this->request->getVar('pagination');
+            $page = $pagination["page"] ?? 1;
+            $perPage = $pagination["perPage"] ?? 20;
+            $offset = ($page - 1) * $perPage;
             $query = $builder->get($perPage, $offset);
+
+            //FILTER
+
+            //GET RESULTS
             $vacantes = $query->getResult();
 
-            $totalCount = $query->getNumRows();
+            //COUNT RESULTS
+            $totalCount = $builder->countAllResults(false); // $query->getNumRows();
 
             $response = [
                 "results" => $vacantes,
                 "totalCount" => $totalCount,
             ];
 
-            return $this->apiResponse("ok", $response);
-
-            // $requestBody = $this->request->getJsonVar(["vac_titulo"]);
-
-            // $vacanteModel = new VacanteModel();
-            // $builder = $vacanteModel->paginate();
-
-            // $query = $builder->get(10, 20);
-            // $vacantes = $query->getResult();
-            // $totalCount = $query->getNumRows();
-
-            // $response = [
-            //     "results" => $vacantes,
-            //     "totalCount" => $totalCount,
-            // ];
-
-            // return $this->apiResponse("ok", $response);
-
+            return $this->apiResponse("ok", $response);  
         } catch (\Exception $e) {
             $mensaje = $e->getMessage();
             $response = getErrorResponseByCode(["code" => 2100]);

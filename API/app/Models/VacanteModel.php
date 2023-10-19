@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 
 class VacanteModel extends Model
 {
-    protected $table = "vac_vacante";
+    protected $table = "vac_vacantes";
     protected $primaryKey = "vac_id";
     protected $allowedFields = [
         "vac_titulo",

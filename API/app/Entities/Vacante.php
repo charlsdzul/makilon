@@ -4,7 +4,7 @@ use CodeIgniter\Entity\Entity;
 
 class Vacante extends Entity
 {
-    protected $table = 'vac_vacante';
+    protected $table = 'vac_vacantes';
     protected $primaryKey = 'vac_id';
     protected $returnType = \App\Entities\Vacante::class;
     protected $datamap = [

@@ -79,7 +79,7 @@ class Filters extends BaseConfig
             "api/v1/vacante",
             "api/v1/catalogos/puestosEspecificos",
             "api/v1/catalogos/puestos",
-            "api/v1/mis-vacantes",
+            //"api/v1/misvacantes/",
         ],
         ],
         //kilon/API/public/api/v1/catalogos/puestosEspecificos
