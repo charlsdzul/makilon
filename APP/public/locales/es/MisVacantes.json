@@ -1,0 +1,75 @@
+{
+	"MisVacantes": {
+		"lblMisVacantes": "Mis Vacantes",
+		"captionTitulo": "Titulo",
+		"captionCreado": "Creado",
+		"captionPuesto": "Puesto",
+		"captionPuestoOtro": "Puesto (Otro)",
+		"captionPuestoEspecifico": "Puesto Esp.",
+		"captionPuestoEspecificoOtro": "Puesto Esp. (Otro)",
+
+		"lblCrear": "Crear 😎",
+		"lblAgregarVacante": "Agregar Vacante",
+		"lblEditarVacante": "Editar Vacante",
+		"lblID": "ID",
+		"lblOtro": "Otro",
+
+		"lblCrearVacante": "Crear Vacante",
+		"lblNuevaVacante": "Nueva Vacante",
+		"lblQueRequiere": "¿Qué se requiere?",
+		"lblQueOfrecemos": "¿Qué ofrecemos?",
+		"lblContratacion": "Contratación",
+		"btnFAQ": "FAQ",
+		"lblTitulo": "Titulo",
+		"ttTitulo": "Utiliza un titulo concizo. Los detalles los puedes agregar en las descripciones.",
+
+		"lblDescripcion": "Descripcion del puesto",
+		"ttDescripcion": "Descripcion delpuesto",
+		"phTitulo": "Titulo de la vacante",
+
+		"lblPuesto": "Puesto",
+		"ttPuesto": "Es la posicion general de la vacante.",
+		"phPuesto": "Puesto de la vacante.",
+		"phPuestoOtro": "Puesto de la vacante.",
+		"tt2PuestoOtro": "Si en la lista no aparece el puesto que necesitas, agregalo aqui. Pronto lo agregaremos a la lista. 😉",
+
+		"lblPuestoEspecifico": "Especifico",
+		"phPuestoEspecifico": "Puesto especifico.",
+
+		"ttPuestoEspecifico": "Es la posicion especifica.",
+		"tt2PuestoEspecificoOtro": "Si en la lista no aparece el puesto especifico que necesitas, agregalo aqui. Pronto lo agregaremos a la lista. 😉",
+
+		"btnOlvidasteContrasena": "¿Olvidaste tu contraseña?",
+		"btnCrearCuenta": "Crear cuenta",
+		"ttTitle": "Iniciar Sesión",
+		"ttCorreo": "Correo que definiste cuando creaste tu cuenta.",
+		"ttContrasena": "Contraseña que definiste cuando creaste tu cuenta.",
+		"ttIngresar": "Ingresar",
+		"ttOlvidasteContrasena": "¿Olvidaste tu contraseña?",
+		"ttCrearCuenta": "Crear cuenta",
+		"phCorreo": "Ingresa tu correo.",
+		"phContrasena": "Ingresa tu contraseña",
+
+		"lblAcompletarVacante": "Acompletar vacante",
+
+		"lblAgregarOtraVacante": "Agregar otra vacante",
+		"lblIDVacante": "ID Vacante: {{id}}",
+
+		"lblIrMisVacante": "Ir a mis vacantes",
+
+		"rules": {
+			"ingresaTitulo": "Ingresa un titulo para tu vacante.",
+			"ingresaTituloMinimo": "Ingresa minimo 15 caracteres.",
+			"ingresaTituloDescriptivo": "Te recomendamos agregar un titulo mas descriptivo.",
+			"ingresaPuesto": "Elige un puesto. Si no existe el que deseas, elige 'Otro'",
+			"ingresaPuestoOtro": "Ingresa un puesto.",
+			"ingresaPuestoEspecifico": "Elige un puesto especifico. Si no existe el que deseas, elige 'Otro'",
+			"ingresaPuestoEspecificoOtro": "Ingresa un puesto especifico."
+		},
+		"messages": {
+			"errorInicioSesion": "Se detecto un problema al iniciar sesión.",
+			"errorInicioSesionNotificacion": "Ya se envio una notificacion sobre este problema, intenta ingresar mas tarde.",
+			"infoEditarInfoMasAdelante": "Toda esta informacion podras editarla mas adelante 🙂"
+		}
+	}
+}

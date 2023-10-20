@@ -1,15 +1,33 @@
-import { Col, Row, Table } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
+import { Col, Dropdown, Row, Space, Table } from "antd";
 import { StatusCodes } from "http-status-codes";
 import QueueAnim from "rc-queue-anim";
 import { default as React, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import CContainer from "../../Components/CContainer";
 import { get } from "../../Utils/api";
+import "./index.css";
 
+const items = [
+	{
+		label: "1st menu item",
+		key: "1",
+	},
+	{
+		label: "2nd menu item",
+		key: "2",
+	},
+	{
+		label: "3rd menu item",
+		key: "3",
+	},
+];
 const MisVacantes = (props) => {
-	const { t } = useTranslation(["MisVacante"]);
+	const { t } = useTranslation(["MisVacantes"]);
 
 	const [data, setData] = useState();
+	const [visibleRowContextMenu, setVisibleRowContextMenu] = useState(false);
+
 	const [loading, setLoading] = useState(false);
 	const [tableParams, setTableParams] = useState({
 		pagination: {
@@ -25,35 +43,70 @@ const MisVacantes = (props) => {
 	const columns = useMemo(
 		() => [
 			// {
-			// 	title: "vac_id",
 			// 	dataIndex: "vac_id",
 			// 	key: "vac_id",
-			// 	sorter: true,
-			// 	//render: (name) => `${name.first} ${name.last}`,
-			// 	width: "20%",
 			// },
 			{
-				title: "vac_titulo",
+				title: "Action",
+				dataIndex: "operation",
+				key: "operation",
+				fixed: "right",
+				width: "4rem",
+				render: () => (
+					<Space size="middle">
+						<Dropdown
+							menu={{
+								items,
+							}}>
+							<a>
+								<MenuOutlined />
+							</a>
+						</Dropdown>
+					</Space>
+				),
+			},
+			{
+				title: t("MisVacantes.captionTitulo"),
 				dataIndex: "vac_titulo",
 				key: "vac_titulo",
 				sorter: true,
-
-				// filters: [
-				// 	{
-				// 		text: "Male",
-				// 		value: "male",
-				// 	},
-				// 	{
-				// 		text: "Female",
-				// 		value: "female",
-				// 	},
-				// ],
-				width: "40%",
+				width: "25rem",
+				render: (text) => <a>{text}</a>,
 			},
 			{
-				title: "vac_created_at",
+				title: t("MisVacantes.captionPuesto"),
+				dataIndex: "vac_puesto",
+				key: "vac_puesto",
+				sorter: true,
+				width: "10rem",
+			},
+			{
+				title: t("MisVacantes.captionPuestoOtro"),
+				dataIndex: "vac_puesto_otro",
+				key: "vac_puesto_otro",
+				sorter: true,
+				width: "10rem",
+			},
+			{
+				title: t("MisVacantes.captionPuestoEspecifico"),
+				dataIndex: "vac_puesto_especifico",
+				key: "vac_puesto_especifico",
+				sorter: true,
+				width: "10rem",
+			},
+			{
+				title: t("MisVacantes.captionPuestoEspecificoOtro"),
+				dataIndex: "vac_puesto_especifico_otro",
+				key: "vac_puesto_especifico_otro",
+				sorter: true,
+				width: "10rem",
+			},
+			{
+				title: t("MisVacantes.captionCreado"),
 				dataIndex: "vac_created_at",
 				key: "vac_created_at",
+				sorter: true,
+				width: "10rem",
 			},
 		],
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -125,12 +178,13 @@ const MisVacantes = (props) => {
 	};
 
 	return (
-		<CContainer title={t("Vacante.lblAgregarVacante")}>
+		<CContainer title={t("MisVacantes.lblMisVacantes")}>
 			<Row justify="center" style={{ marginTop: "5rem" }}>
-				<Col xs={24} sm={24} md={17} lg={16} xl={14} xxl={14}>
+				<Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
 					<QueueAnim type="scale">
 						<div key="Result">
 							<Table
+								scroll={{ x: 1500, y: "25rem" }}
 								size="small"
 								sticky
 								columns={columns}
@@ -145,6 +199,12 @@ const MisVacantes = (props) => {
 											<Table.Summary.Cell index={0}>Total de registros: {tableParams.pagination.total}</Table.Summary.Cell>
 										</Table.Summary.Row>
 									);
+								}}
+								onRow={(record, rowIndex) => {
+									return {
+										onClick: (event) => {}, // click row
+										onDoubleClick: (event) => {}, // double click row
+									};
 								}}
 							/>
 						</div>
