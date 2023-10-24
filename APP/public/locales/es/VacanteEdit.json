@@ -1,0 +1,23 @@
+{
+	"VacanteEdit": {
+		"lblVacante": "Vacante",
+		"lblEditarVacante": "Editar Vacante",
+		"lblID": "ID",
+		"lblQueRequiere": "¿Qué se requiere?",
+		"lblContratacion": "Contratación",
+		"lblDescripcion": "Descripcion del puesto",
+		"ttDescripcion": "Descripcion delpuesto",
+		"lblQueOfrecemos": "¿Qué ofrecemos?",
+		"btnFAQ": "FAQ",
+		"lblTitulo": "Titulo",
+		"lblOtro": "Otro",
+		"lblPuesto": "Puesto",
+		"ttPuesto": "Es la posicion general de la vacante.",
+		"phPuesto": "Puesto de la vacante.",
+		"phPuestoOtro": "Puesto de la vacante.",
+		"tt2PuestoOtro": "Si en la lista no aparece el puesto que necesitas, agregalo aqui. Pronto lo agregaremos a la lista. 😉",
+		"lblPuestoEspecifico": "Especifico",
+		"phPuestoEspecifico": "Puesto especifico.",
+		"ttPuestoEspecifico": "Es la posicion especifica."
+	}
+}

@@ -4,6 +4,7 @@ import { StatusCodes } from "http-status-codes";
 import QueueAnim from "rc-queue-anim";
 import { default as React, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import CContainer from "../../Components/CContainer";
 import { get } from "../../Utils/api";
 import "./index.css";
@@ -42,10 +43,6 @@ const MisVacantes = (props) => {
 
 	const columns = useMemo(
 		() => [
-			// {
-			// 	dataIndex: "vac_id",
-			// 	key: "vac_id",
-			// },
 			{
 				title: "Action",
 				dataIndex: "operation",
@@ -71,7 +68,9 @@ const MisVacantes = (props) => {
 				key: "vac_titulo",
 				sorter: true,
 				width: "25rem",
-				render: (text) => <a>{text}</a>,
+				render: (text, record, index) => {
+					return <Link to={`/vacante/${record.vac_id}/edit`}>{text}</Link>;
+				},
 			},
 			{
 				title: t("MisVacantes.captionPuesto"),
