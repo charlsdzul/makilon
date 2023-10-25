@@ -96,3 +96,7 @@ export const getToken = () => {
 	const token = Cookies.get("token");
 	return token;
 };
+
+export const isValidIdVacante = (vacanteId) => {
+	return Number.isInteger(vacanteId);
+};

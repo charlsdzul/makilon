@@ -5,9 +5,6 @@ namespace App\Filters;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
-use Exception;
-use Firebase\JWT\JWT;
-use Firebase\JWT\Key;
 
 class AuthFilter implements FilterInterface
 {
@@ -28,36 +25,43 @@ class AuthFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        $jwt_key = getenv("JWT_SECRET");
-        $jwt_algorithm = getenv("JWT_ALGORITHM");
-        $header = $request->header("Authorization");
-        $token = null;
 
-        // extract the token from the header
-        if (!empty($header)) {
-            if (preg_match('/Bearer\s(\S+)/', $header, $matches)) {
-                $token = $matches[1];
-            }
-        }
+        //$header = $request->header("Authorization");
+        $dataToken = getDataTokenFromRequest($request);
 
-        // check if token is null or empty
-        if (is_null($token) || empty($token)) {
-            $response = service('response');
-            $response->setBody('Access denied');
-            $response->setStatusCode(500);
-            return $response;
-
-        }
-
-        try {
-            // $decoded = JWT::decode($token, $key, array("HS256"));
-            $decoded = JWT::decode($token, new Key($jwt_key, $jwt_algorithm));
-        } catch (Exception $ex) {
+        if (is_null($dataToken)) {
             $response = service('response');
             $response->setBody('Access denied');
             $response->setStatusCode(401);
             return $response;
         }
+
+        // // extract the token from the header
+        // if (!empty($header)) {
+        //     if (preg_match('/Bearer\s(\S+)/', $header, $matches)) {
+        //         $token = $matches[1];
+        //     }
+        // }
+
+        // // check if token is null or empty
+        // if (is_null($token) || empty($token)) {
+        //     $response = service('response');
+        //     $response->setBody('Access denied');
+        //     $response->setStatusCode(401);
+        //     return $response;
+        // }
+
+        // $jwt_key = getenv("JWT_SECRET");
+        // $jwt_algorithm = getenv("JWT_ALGORITHM");
+
+        // try {
+        //     $decoded = JWT::decode($token, new Key($jwt_key, $jwt_algorithm));
+        // } catch (Exception $ex) {
+        //     $response = service('response');
+        //     $response->setBody('Access denied');
+        //     $response->setStatusCode(401);
+        //     return $response;
+        // }
     }
 
     /**

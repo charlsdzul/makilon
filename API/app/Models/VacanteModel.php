@@ -14,6 +14,7 @@ class VacanteModel extends Model
         "vac_puesto_especifico_otro",
         "vac_sta",
         "vac_creado_sta",
+        "vac_usuario_id",
     ];
     protected $useAutoIncrement = true;
     protected $useTimestamps = true;
@@ -28,6 +29,7 @@ class VacanteModel extends Model
         "vac_puesto_especifico_otro" => "string|max_length[20]",
         "vac_sta" => "integer|required|in_list[0,1]",
         "vac_creado_sta" => "integer|required|in_list[0,1]",
+        "vac_usuario_id" => "integer|required",
     ];
     protected $returnType = \App\Entities\Vacante::class;
 }

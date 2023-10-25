@@ -5,6 +5,7 @@ import MisVacantes from "./Pages/MisVacantes";
 import ProtectedRoute from "./ProtectedRoute";
 import AuthService from "./Services/authservice.services";
 import AuthContext from "./Utils/AuthContext";
+import { isValidIdVacante } from "./Utils/utils";
 
 const auth = new AuthService();
 
@@ -88,9 +89,12 @@ export const router = createBrowserRouter([
 			{
 				path: "/vacante/:vacanteId/edit", //path: "vacante/:vacanteId",
 				loader: (data) => {
-					console.log(data);
+					const vacanteId = Number(data.params?.vacanteId ?? 0);
 
-					//throw new Response("Not Found", { status: 200 });
+					if (!isValidIdVacante(vacanteId)) {
+						throw new Response("ID de vacante Inválido 😶", { status: 400 });
+					}
+
 					return data.params;
 				},
 				errorElement: <ErrorBundary />,

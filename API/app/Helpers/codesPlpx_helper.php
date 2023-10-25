@@ -61,6 +61,12 @@ function getErrorResponseByCode($args)
             2150 => ["code" => $code, "title" => lang("Lang.title.agregarVacante"), "field" => lang("Lang.field.vacantePuestoEspecificoOtro"), "detail" => lang("Lang.detail.datoNoRecibido")],
             2151 => ["code" => $code, "title" => lang("Lang.title.agregarVacante"), "field" => lang("Lang.field.vacantePuestoEspecificoOtro"), "detail" => lang("Lang.detail.datoTipoIncorreto")],
             2152 => ["code" => $code, "title" => lang("Lang.title.agregarVacante"), "field" => lang("Lang.field.vacantePuestoEspecificoOtro"), "detail" => lang("Lang.detail.datoLongitudIncorrecta")],
+
+            //2200 EDITAR VACANTE
+            2200 => ["code" => $code, "title" => lang("Lang.title.editarVacante"), "field" => "", "detail" => lang("Lang.detail.vacanteNoSePudoVerificarUsuario")],
+            2201 => ["code" => $code, "title" => lang("Lang.title.editarVacante"), "field" => "", "detail" => lang("Lang.detail.vacanteNoPerteneceAUsuario")],
+            2202 => ["code" => $code, "title" => lang("Lang.title.editarVacante"), "field" => "", "detail" => lang("Lang.detail.vacantePerteneceAUsuario")],
+
         ];
 
         $error = $codes[$code];

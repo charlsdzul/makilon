@@ -7,6 +7,8 @@ return [
         "errorLogin" => "Error al iniciar sesión",
         "reestablecerMiContra" => "Reestablecer mi contraseña",
         "agregarVacante" => "Agregar vacante",
+        "editarVacante" => "Editar vacante",
+
     ],
 
     "label" => [
@@ -81,7 +83,8 @@ return [
         "accesoNoPermitido" => "Acceso no permitido",
 
         //token
-        "tokenInvalido" => "Token Inválido",
+        "tokenInvalido" => "Token inválido",
+        "tokenVencido" => "Token vencido",
 
         //email
         "emailAsunto" => "Registro Pulpox",
@@ -108,6 +111,12 @@ return [
         //AGREGAR VACANTE
         "vacanteNoPudoAgregar" => "No pudimos agregar tu vacante. Intenta de nuevo.",
         "vacanteAgregada" => "Tu vacante se creo con exito. 😎",
+
+        //VACANTE
+        "vacanteNoSePudoVerificarUsuario" => "No pudimos verificar si vacante pertenece al usuario.",
+        "vacanteNoPerteneceAUsuario" => "La vacante no pertenece al usuario.",
+        "vacantePerteneceAUsuario" => "La vacante pertenece al usuario.",
+
     ],
 
     "field" => [

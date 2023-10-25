@@ -4,7 +4,7 @@ const NotFound = (props) => {
 	return (
 		<>
 			<Container fluid>
-				<h1>NotFound</h1>
+				<h1>NotFound 😕</h1>
 			</Container>
 		</>
 	);

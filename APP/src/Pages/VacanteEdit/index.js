@@ -7,8 +7,11 @@ import { useLoaderData } from "react-router-dom";
 import CContainer from "../../Components/CContainer";
 
 import TextArea from "antd/es/input/TextArea";
+import { StatusCodes } from "http-status-codes";
+import NotFound from "../../NotFound";
+import { get } from "../../Utils/api";
 import { asignarMensajeTranslation } from "../../Utils/utils";
-import { obtenerCatalogo } from "../../Utils/utilsRequest";
+import SkeletonVacanteEdit from "./SkeletonVacanteEdit";
 import { rulesVacante } from "./rulesVacante";
 
 // const initialValuesAgregarVacante = {
@@ -21,8 +24,7 @@ import { rulesVacante } from "./rulesVacante";
 
 const VacanteEdit = (props) => {
 	console.log(props);
-	const albums = useLoaderData();
-	console.log(albums);
+	const urlParams = useLoaderData();
 
 	const { t } = useTranslation(["VacanteEdit", "Common"]);
 	//const navigate = useNavigate();
@@ -37,6 +39,8 @@ const VacanteEdit = (props) => {
 
 	const [sourcePuestos, setSourcePuestos] = useState([]);
 	const [sourcePuestosEspecificos, setSourcePuestosEspecificos] = useState([]);
+	const [vacanteValida, setVacanteValida] = useState(false);
+	const [finalizaValidacionesIniciales, setFinalizaValidacionesIniciales] = useState(false);
 
 	// const [respuestaAgregar, setRespuestaAgregar] = useState({
 	// 	exitoso: false,
@@ -81,14 +85,24 @@ const VacanteEdit = (props) => {
 		//showModal({ type: modalType, title: modalTitulo, content: modalMensaje });
 	};
 
-	const iniciarPrograma = async () => {
-		const { data: puestos } = await obtenerCatalogo({ catalogo: "puestos" });
-		setSourcePuestos(puestos);
+	const vacantePerteneceAlUsuario = async (vacanteId) => {
+		const url = "vacante/vacantePerteneceAlUsuario";
+		const response = await get({ url, params: { vacanteId } });
+		console.log(response);
+		return response?.status === StatusCodes.OK;
+	};
 
-		const { data: puestosEspecificos } = await obtenerCatalogo({
-			catalogo: "puestosEspecificos",
-		});
-		setSourcePuestosEspecificos(puestosEspecificos);
+	const iniciarPrograma = async () => {
+		const vacanteId = urlParams.vacanteId;
+
+		const pertenece = await vacantePerteneceAlUsuario(vacanteId);
+		if (!pertenece) {
+			setFinalizaValidacionesIniciales(true);
+			return;
+		}
+
+		setVacanteValida(true);
+		setFinalizaValidacionesIniciales(true);
 	};
 
 	useEffect(() => {
@@ -308,10 +322,13 @@ const VacanteEdit = (props) => {
 			</CContainer>
 		);
 	};
+	if (!finalizaValidacionesIniciales) return <SkeletonVacanteEdit active />;
+
+	if (!vacanteValida) return <NotFound />;
 
 	return (
 		<CContainer title={t("VacanteEdit.lblEditarVacante")}>
-			<Row justify="center" style={{ marginTop: "5rem" }}>
+			<Row justify="center" style={{ marginTop: "2rem" }}>
 				<Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
 					<QueueAnim type="scale">
 						<Tabs

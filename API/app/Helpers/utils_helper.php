@@ -1,6 +1,7 @@
 <?php
 use App\Libraries\PlpxLogger;
 use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 function logUsuario($args)
 {
@@ -70,6 +71,7 @@ function crearToken($args)
         $role = $args["role"];
         $user = $args["user"];
         $name = $args["name"];
+        $id = $args["id"];
 
         $payload = [
             "iat" => $iat, //Time the JWT issued at
@@ -79,6 +81,8 @@ function crearToken($args)
             "role" => $role,
             "user" => $user,
             "name" => $name,
+            "id" => $id,
+
         ];
 
         $token = JWT::encode($payload, $jwt_key, $jwt_algorithm);
@@ -97,4 +101,35 @@ function crearToken($args)
         $logger->log("critical", $e, __LINE__);
         return null;
     }
+}
+
+function getDataTokenFromRequest($request)
+{
+    try {
+        $token = null;
+        $header = $request->header("Authorization");
+
+        if (empty($header)) {
+            return null;
+        } else {
+            if (preg_match('/Bearer\s(\S+)/', $header, $matches)) {
+                $token = $matches[1];
+            }
+        }
+
+        if (is_null($token) || empty($token)) {
+            return null;
+        }
+
+        $jwt_key = getenv("JWT_SECRET");
+        $jwt_algorithm = getenv("JWT_ALGORITHM");
+
+        $decoded = JWT::decode($token, new Key($jwt_key, $jwt_algorithm));
+        return $decoded;
+    } catch (Exception $ex) {
+        // echo $ex->getMessage();
+        //var_dump($ex);
+        return null;
+    }
+
 }

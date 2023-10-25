@@ -14,6 +14,9 @@ $routes->group("api/v1", ["namespace" => 'App\Controllers\API\v1'], static funct
     $routes->post("auth/authenticated", "auth::authenticated");
     $routes->post("vacante", "vacante::crear");
     $routes->get("misvacantes", "vacante::misVacantes");
+
+    $routes->get("vacante/vacantePerteneceAlUsuario", "vacante::vacantePerteneceAlUsuario");
+
     //$routes->option("vacante", "vacante::crear");
 
 });

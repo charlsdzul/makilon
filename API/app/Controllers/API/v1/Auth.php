@@ -125,6 +125,8 @@ class Auth extends ResourceController
                 "user" => $usuario->usu_usuario,
                 "name" => $usuario->usu_nombre,
                 "role" => "admin",
+                "id" => $usuario->usu_id,
+
             ];
 
             $token = crearToken($args);
