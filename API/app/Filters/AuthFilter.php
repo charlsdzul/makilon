@@ -8,6 +8,12 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class AuthFilter implements FilterInterface
 {
+
+    public function __construct()
+    {
+        helper("/utils");
+    }
+
     /**
      * Do whatever processing this filter needs to do.
      * By default it should not return anything during

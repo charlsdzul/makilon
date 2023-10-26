@@ -69,7 +69,7 @@ const MisVacantes = (props) => {
 				sorter: true,
 				width: "25rem",
 				render: (text, record, index) => {
-					return <Link to={`/vacante/${record.vac_id}/edit`}>{text}</Link>;
+					return <Link to={`/vacantes/${record.vac_id}/edit`}>{text}</Link>;
 				},
 			},
 			{
@@ -117,7 +117,7 @@ const MisVacantes = (props) => {
 		//console.log(tableParams);
 
 		const response = await get({
-			url: "misvacantes",
+			url: "vacantes",
 			params: {
 				pagination: {
 					page: tableParams.pagination.current,

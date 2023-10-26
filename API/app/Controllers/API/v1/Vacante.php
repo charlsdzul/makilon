@@ -19,7 +19,7 @@ class Vacante extends ResourceController
         helper("/utils");
     }
 
-    private function logSistema($args)
+    public function logSistema($args)
     {
         $args2 = [
             "log_controller" => "API/v1/Vacante",
@@ -60,6 +60,8 @@ class Vacante extends ResourceController
 
             //PENDIENTE SANITIZAR Y VALIDAR CAMPOS DE ENTRADA
 
+            $dataToken = getDataTokenFromRequest($this->request);
+
             $data = [
                 "vac_titulo" => $requestBody["titulo"],
                 "vac_puesto" => $requestBody["puesto"],
@@ -68,6 +70,7 @@ class Vacante extends ResourceController
                 "vac_puesto_especifico_otro" => $requestBody["puestoEspecificoOtro"],
                 "vac_creado_sta" => 1,
                 "vac_sta" => 0,
+                "vac_usuario_id" => $dataToken->id,
             ];
 
             $vacanteModel = new VacanteModel();
@@ -177,15 +180,14 @@ class Vacante extends ResourceController
             return $this->apiResponseError("server_error", $response);
         }
     }
-
-    public function vacantePerteneceAlUsuario()
+    public function actions($vacanteId)
     {
-        $logAccion = "Vacante Pertenece Al Usuario";
+        $logAccion = "Vacante Actions";
 
         try {
-
-            $requestBody = $this->request->getVar(["vacanteId"]);
-            $vacanteId = $requestBody["vacanteId"];
+            echo $vacanteId;
+            //$requestBody = $this->request->getVar(["vacanteId"]);
+            //$vacanteId = $requestBody["vacanteId"];
             $dataToken = getDataTokenFromRequest($this->request);
 
             if (is_null($dataToken)) {
@@ -244,6 +246,94 @@ class Vacante extends ResourceController
                 $response = getErrorResponseByCode(["code" => 2201]);
                 return $this->apiResponseError("invalid_request", [...$response]);
             }
+
+            $response = getErrorResponseByCode(["code" => 2202]);
+            return $this->apiResponse("ok", [...$response]);
+        } catch (\Exception $e) {
+            $mensaje = $e->getMessage();
+            $response = getErrorResponseByCode(["code" => 2200]);
+
+            $dataLog = [
+                "log_origen" => "usuario", "log_tipo" => "critical", "log_accion" => $logAccion, "log_linea" => __LINE__,
+                "log_mensaje" => "ERROR CATCH. " . $mensaje,
+                "log_request_respond" => "server_error",
+                "log_exception" => $e,
+                "log_usuario_respuesta" => $response,
+            ];
+
+            $this->logSistema($dataLog);
+            return $this->apiResponseError("server_error", $response);
+        }
+    }
+
+    private function vacante($idVacante)
+    {
+        $logAccion = "Obtener Vacante";
+
+        try {
+
+            echo $idVacante;
+
+            // $requestBody = $this->request->getVar(["vacanteId"]);
+            // $vacanteId = $requestBody["vacanteId"];
+            // $dataToken = getDataTokenFromRequest($this->request);
+
+            // if (is_null($dataToken)) {
+
+            //     $response = getErrorResponseByCode(["code" => 2200]);
+
+            //     $dataLog = [
+            //         "log_origen" => "usuario", "log_tipo" => "notice", "log_accion" => $logAccion, "log_linea" => __LINE__,
+            //         "log_mensaje" => "No se pudo obtener data del Token.",
+            //         "log_request_respond" => "invalid_request",
+            //         "log_usuario_respuesta" => $response,
+            //     ];
+
+            //     $this->logSistema($dataLog);
+            //     return $this->apiResponseError("invalid_request", [$response]);
+            // }
+
+            // if (is_null($vacanteId)) {
+
+            //     $response = getErrorResponseByCode(["code" => 2200]);
+
+            //     $dataLog = [
+            //         "log_origen" => "usuario", "log_tipo" => "notice", "log_accion" => $logAccion, "log_linea" => __LINE__,
+            //         "log_mensaje" => "No se recibio ID de la vacante.: " . $vacanteId,
+            //         "log_request_respond" => "invalid_request",
+            //         "log_usuario_respuesta" => $response,
+            //     ];
+
+            //     $this->logSistema($dataLog);
+            //     return $this->apiResponseError("invalid_request", [$response]);
+            // }
+
+            //const
+            // if (!vacanteValidator($requestBody, $errorsValidator)) {
+
+            //     //Se guarda LOG porque, en teoria, no deberia tener errores en el validator,
+            //     //porque en el front ya estan la validaciones.
+            //     $dataLog = [
+            //         "log_origen" => "usuario", "log_tipo" => "warning", "log_accion" => $logAccion, "log_linea" => __LINE__,
+            //         "log_mensaje" => "No pasó las validaciones del VALIDATOR.",
+            //         "log_request_respond" => "invalid_request",
+            //         "log_exception" => json_encode($errorsValidator),
+            //     ];
+
+            //     $this->logSistema($dataLog);
+            //     return $this->apiResponseError("invalid_request", $errorsValidator);
+            // }
+
+            //PENDIENTE SANITIZAR Y VALIDAR CAMPOS DE ENTRADA
+            // $usuarioId = $dataToken->id;
+            // $vacanteModel = new VacanteModel();
+            // $vacante = $vacanteModel
+            //     ->select("vac_id")->where("vac_id", $vacanteId)->where("vac_usuario_id", $usuarioId)->first();
+
+            // if (is_null($vacante)) {
+            //     $response = getErrorResponseByCode(["code" => 2201]);
+            //     return $this->apiResponseError("invalid_request", [...$response]);
+            // }
 
             $response = getErrorResponseByCode(["code" => 2202]);
             return $this->apiResponse("ok", [...$response]);

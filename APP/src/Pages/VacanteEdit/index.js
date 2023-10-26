@@ -9,8 +9,9 @@ import CContainer from "../../Components/CContainer";
 import TextArea from "antd/es/input/TextArea";
 import { StatusCodes } from "http-status-codes";
 import NotFound from "../../NotFound";
-import { get } from "../../Utils/api";
+import { get, post } from "../../Utils/api";
 import { asignarMensajeTranslation } from "../../Utils/utils";
+import { obtenerCatalogo } from "../../Utils/utilsRequest";
 import SkeletonVacanteEdit from "./SkeletonVacanteEdit";
 import { rulesVacante } from "./rulesVacante";
 
@@ -86,8 +87,15 @@ const VacanteEdit = (props) => {
 	};
 
 	const vacantePerteneceAlUsuario = async (vacanteId) => {
-		const url = "vacante/vacantePerteneceAlUsuario";
-		const response = await get({ url, params: { vacanteId } });
+		const url = `vacantes/${vacanteId}/actions`;
+		const response = await post({ url });
+		console.log(response);
+		return response?.status === StatusCodes.OK;
+	};
+
+	const obtenerVacante = async (vacanteId) => {
+		const url = `vacantes/${vacanteId}`;
+		const response = await get({ url });
 		console.log(response);
 		return response?.status === StatusCodes.OK;
 	};
@@ -97,6 +105,18 @@ const VacanteEdit = (props) => {
 
 		const pertenece = await vacantePerteneceAlUsuario(vacanteId);
 		if (!pertenece) {
+			setFinalizaValidacionesIniciales(true);
+			return;
+		}
+
+		const { data: puestos } = await obtenerCatalogo({ catalogo: "puestos" });
+		setSourcePuestos(puestos);
+
+		const { data: puestosEspecificos } = await obtenerCatalogo({ catalogo: "puestosEspecificos" });
+		setSourcePuestosEspecificos(puestosEspecificos);
+
+		const vacante = await obtenerVacante(vacanteId);
+		if (!vacante) {
 			setFinalizaValidacionesIniciales(true);
 			return;
 		}
@@ -131,14 +151,14 @@ const VacanteEdit = (props) => {
 					<Row justify="left">
 						<Col xs={24} sm={24} md={24} lg={12} xl={10} xxl={10}>
 							<Form.Item name="titulo" required label={t("VacanteEdit.lblTitulo")} tooltip={t("VacanteEdit.ttTitulo")}>
-								<Input placeholder={t("Login.phCorreo")} showCount maxLength={60} />
+								<Input placeholder={t("VacanteEdit.phTitulo")} showCount maxLength={60} />
 							</Form.Item>
 						</Col>
 						<Col xs={24} sm={24} md={24} lg={8} xl={7} xxl={7}>
 							<Form.Item name="puesto" required label={t("VacanteEdit.lblPuesto")} tooltip={t("VacanteEdit.ttPuesto")}>
 								<Select
 									showSearch
-									placeholder={t("Vacante.phPuesto")}
+									placeholder={t("VacanteEdit.phPuesto")}
 									optionFilterProp="children"
 									filterOption={(input, option) => (option?.label ?? "").includes(input)}
 									filterSort={(optionA, optionB) => (optionA?.label ?? "").toLowerCase().localeCompare((optionB?.label ?? "").toLowerCase())}
@@ -172,7 +192,7 @@ const VacanteEdit = (props) => {
 					<Row justify="left">
 						<Col xs={24} sm={24} md={24} lg={8} xl={10} xxl={10}>
 							<Form.Item name="descripcion" required label={t("VacanteEdit.lblDescripcion")} tooltip={t("VacanteEdit.ttDescripcion")}>
-								<TextArea rows={6} placeholder="maxLength is 6" maxLength={200} />
+								<TextArea rows={6} placeholder={t("VacanteEdit.phDescripcion")} maxLength={200} />
 							</Form.Item>
 						</Col>
 						<Col xs={24} sm={24} md={24} lg={8} xl={7} xxl={7}>
@@ -184,7 +204,7 @@ const VacanteEdit = (props) => {
 								rules={rules.puestoEspecifico}>
 								<Select
 									showSearch
-									placeholder={t("Vacante.phPuestoEspecifico")}
+									placeholder={t("VacanteEdit.phPuestoEspecifico")}
 									optionFilterProp="children"
 									filterOption={(input, option) => (option?.label ?? "").includes(input)}
 									filterSort={(optionA, optionB) => (optionA?.label ?? "").toLowerCase().localeCompare((optionB?.label ?? "").toLowerCase())}

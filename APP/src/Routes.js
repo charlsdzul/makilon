@@ -71,7 +71,7 @@ export const router = createBrowserRouter([
 				element: <Register />,
 			},
 			{
-				path: "vacante/add", //path: "vacante/:vacanteId",
+				path: "vacantes/add", //path: "vacante/:vacanteId",
 				// loader: (data) => {	return data.params; },
 				element: (
 					<AuthContext.Consumer>
@@ -87,7 +87,7 @@ export const router = createBrowserRouter([
 				errorElement: <ErrorBundary />,
 			},
 			{
-				path: "/vacante/:vacanteId/edit", //path: "vacante/:vacanteId",
+				path: "vacantes/:vacanteId/edit", //path: "vacante/:vacanteId",
 				loader: (data) => {
 					const vacanteId = Number(data.params?.vacanteId ?? 0);
 
@@ -112,7 +112,7 @@ export const router = createBrowserRouter([
 				),
 			},
 			{
-				path: "mis-vacantes",
+				path: "vacantes",
 				element: (
 					<AuthContext.Consumer>
 						{({ auth }) => (

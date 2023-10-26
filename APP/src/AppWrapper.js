@@ -98,8 +98,8 @@ const AppWrapper = (props) => {
 		setOpcionesMenu([
 			getItem(<NavLink to={`/portal`}>{t("LayoutApp.lblMenuPortal")}</NavLink>, "/portal", <HomeOutlined />),
 			getItem(<NavLink to={`/dashboard`}>{t("LayoutApp.lblMenuDashboard")}</NavLink>, "/dashboard", <AreaChartOutlined />),
-			getItem(<NavLink to={`/vacante`}>{t("LayoutApp.lblMenuAgregarVacante")}</NavLink>, "/vacante", <FormOutlined />),
-			getItem(<NavLink to={`/mis-vacantes`}>{t("LayoutApp.lblMenuMisVacantes")}</NavLink>, "/mis-vacantes", <UnorderedListOutlined />),
+			getItem(<NavLink to={`/vacantes/add`}>{t("LayoutApp.lblMenuAgregarVacante")}</NavLink>, "/vacante", <FormOutlined />),
+			getItem(<NavLink to={`/vacantes`}>{t("LayoutApp.lblMenuMisVacantes")}</NavLink>, "/mis-vacantes", <UnorderedListOutlined />),
 			getItem(<NavLink to={`/mi-cuenta`}>{t("LayoutApp.lblMenuMiCuenta")}</NavLink>, "/mi-cuenta", <UserOutlined />),
 			getItem(t("LayoutApp.lblMenuConfiguraciones"), "sub1", <SettingOutlined />, [
 				getItem("Option 5", "5"),

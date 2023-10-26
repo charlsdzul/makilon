@@ -53,7 +53,7 @@ const Vacante = (props) => {
 			puestoEspecificoOtro: e.puestoEspecificoOtro,
 		};
 
-		const response = await post({ url: "vacante", json });
+		const response = await post({ url: "vacantes", json });
 
 		console.log(response);
 

@@ -12,10 +12,20 @@ $routes->group("api/v1", ["namespace" => 'App\Controllers\API\v1'], static funct
     $routes->get("catalogos/puestosEspecificos", "catalogos::puestosEspecificos");
     $routes->post("auth/login", "auth::login");
     $routes->post("auth/authenticated", "auth::authenticated");
-    $routes->post("vacante", "vacante::crear");
-    $routes->get("misvacantes", "vacante::misVacantes");
+    //  $routes->post("vacante", "vacante::crear");
+    // $routes->get("misvacantes", "vacante::misVacantes");
 
-    $routes->get("vacante/vacantePerteneceAlUsuario", "vacante::vacantePerteneceAlUsuario");
+    //$routes->get("vacante/vacantePerteneceAlUsuario", "vacante::vacantePerteneceAlUsuario");
+
+    //$routes->option("vacante", "vacante::crear");
+
+});
+
+$routes->group("api/v1/vacantes", ["namespace" => 'App\Controllers\API\v1'], static function ($routes) {
+    $routes->post("", "vacante::crear");
+    $routes->get("", "vacante::misVacantes");
+    $routes->get("(:num)", "vacante::vacante/$1");
+    $routes->post("(:num)/actions", "vacante::actions/$1");
 
     //$routes->option("vacante", "vacante::crear");
 
