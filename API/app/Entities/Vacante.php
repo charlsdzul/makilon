@@ -10,6 +10,11 @@ class Vacante extends Entity
     protected $datamap = [
         'id' => 'vac_id',
         'titulo' => 'vac_titulo',
+        'puesto' => 'vac_puesto',
+        'puesto_otro' => 'vac_puesto_otro',
+        'puesto_especifico' => 'vac_puesto_especifico',
+        'puesto_especifico_otro' => 'vac_puesto_especifico_otro',
+
     ];
 
 }
