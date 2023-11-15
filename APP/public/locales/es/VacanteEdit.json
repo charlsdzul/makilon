@@ -7,6 +7,18 @@
 		"lblContratacion": "Contratación",
 		"lblDescripcion": "Descripcion del puesto",
 		"phDescripcion": "Descripcion general del puesto",
+		"lblQueSeFabrica": "¿Qué se fabrica?",
+		"lblEsMaquiladora": "¿Es maquiladora?",
+		"lblGeneroPersona": "Género",
+
+		"lblEmpresa": "Empresa",
+		"lblSucursalPlanta": "Sucursal/Planta",
+		"lblSucursalUbicacionDireccion": "Ubicacion/Direccion",
+		"lblVacantesDisponibles": "Vacantes Disponibles",
+
+		"lblGeneroPersonaHombre": "Hombre",
+		"lblGeneroPersonaMujer": "Mujer",
+		"lblGeneroPersonaIndistinto": "Indistinto",
 
 		"ttDescripcion": "Descripcion delpuesto",
 		"lblQueOfrecemos": "¿Qué ofrecemos?",

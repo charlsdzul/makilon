@@ -1,5 +1,5 @@
 import { CloseSquareFilled } from "@ant-design/icons";
-import { Col, Form, Input, Row, Select, Tabs } from "antd";
+import { AutoComplete, Checkbox, Col, Form, Input, InputNumber, Radio, Row, Select, Tabs } from "antd";
 import QueueAnim from "rc-queue-anim";
 import { default as React, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -163,91 +163,230 @@ const VacanteEdit = (props) => {
 					wrapperCol={{ span: 23 }}>
 					<Row justify="left">
 						<Col xs={24} sm={24} md={24} lg={12} xl={10} xxl={10}>
-							<Form.Item name="titulo" required label={t("VacanteEdit.lblTitulo")} tooltip={t("VacanteEdit.ttTitulo")}>
-								<Input placeholder={t("VacanteEdit.phTitulo")} showCount maxLength={60} />
-							</Form.Item>
+							<Row justify="left">
+								<Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
+									<Form.Item name="titulo" required label={t("VacanteEdit.lblTitulo")} tooltip={t("VacanteEdit.ttTitulo")}>
+										<Input placeholder={t("VacanteEdit.phTitulo")} showCount maxLength={60} />
+									</Form.Item>
+								</Col>
+
+								<Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
+									<Form.Item name="descripcion" required label={t("VacanteEdit.lblDescripcion")} tooltip={t("VacanteEdit.ttDescripcion")}>
+										<TextArea rows={6} placeholder={t("VacanteEdit.phDescripcion")} maxLength={200} />
+									</Form.Item>
+								</Col>
+							</Row>
+							<Row justify="left">
+								<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+									<Form.Item
+										name="esMaquiladora"
+										required
+										label={t("VacanteEdit.lblEsMaquiladora")}
+										//tooltip={t("VacanteEdit.ttDescripcion")}
+									>
+										<Checkbox
+										//onSearch={handleSearch}
+										//placeholder="input here"
+										// options={options}
+										/>
+									</Form.Item>
+								</Col>
+
+								<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+									<Form.Item
+										name="queSeFabrica"
+										required
+										label={t("VacanteEdit.lblQueSeFabrica")}
+										//tooltip={t("VacanteEdit.ttDescripcion")}
+									>
+										<AutoComplete
+											//onSearch={handleSearch}
+											placeholder="input here"
+											// options={options}
+										/>
+									</Form.Item>
+								</Col>
+							</Row>
+
+							<Row>
+								<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+									<Form.Item
+										//name="esMaquiladora"
+										required
+										label={t("VacanteEdit.lblEmpresa")}
+										//tooltip={t("VacanteEdit.ttDescripcion")}
+									>
+										<Input
+										//onSearch={handleSearch}
+										//placeholder="input here"
+										// options={options}
+										/>
+									</Form.Item>
+								</Col>
+
+								<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+									<Form.Item
+										//name="esMaquiladora"
+										required
+										label={t("VacanteEdit.lblSucursalPlanta")}
+										//tooltip={t("VacanteEdit.ttDescripcion")}
+									>
+										<Input
+										//onSearch={handleSearch}
+										//placeholder="input here"
+										// options={options}
+										/>
+									</Form.Item>
+								</Col>
+							</Row>
+
+							<Row>
+								<Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
+									<Form.Item
+										//name="esMaquiladora"
+										required
+										label={t("VacanteEdit.lblSucursalUbicacionDireccion")}
+										//tooltip={t("VacanteEdit.ttDescripcion")}
+									>
+										<Input
+										//onSearch={handleSearch}
+										//placeholder="input here"
+										// options={options}
+										/>
+									</Form.Item>
+								</Col>
+							</Row>
 						</Col>
-						<Col xs={24} sm={24} md={24} lg={8} xl={7} xxl={7}>
-							<Form.Item name="puesto" required label={t("VacanteEdit.lblPuesto")} tooltip={t("VacanteEdit.ttPuesto")}>
-								<Select
-									showSearch
-									placeholder={t("VacanteEdit.phPuesto")}
-									optionFilterProp="children"
-									filterOption={(input, option) => (option?.label ?? "").includes(input)}
-									filterSort={(optionA, optionB) => (optionA?.label ?? "").toLowerCase().localeCompare((optionB?.label ?? "").toLowerCase())}
-									options={sourcePuestos}
-									fieldNames={{ label: "descripcion", value: "sigla" }}
-									onChange={() => formeEditarVacante.resetFields(["puesto_otro"])}
-								/>
-							</Form.Item>
-						</Col>
-						<Col xs={24} sm={24} md={24} lg={8} xl={7} xxl={7}>
-							<Form.Item
-								name="puesto_otro"
-								label={t("VacanteEdit.lblOtro")}
-								tooltip={t("VacanteEdit.ttPuesto")}
-								rules={puestoWatch === "otro" ? rules.puestoOtro : []}>
-								<Input
-									maxLength={50}
-									showCount
-									disabled={puestoWatch !== "otro"}
-									options={sourcePuestosEspecificos}
-									fieldNames={{ label: "descripcion", value: "sigla" }}
-									filterOption={(inputValue, option) => option.descripcion.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
-									placeholder={t("VacanteEdit.phPuestoOtro")}
-									allowClear={{
-										clearIcon: <CloseSquareFilled />,
-									}}
-								/>
-							</Form.Item>
+
+						<Col xs={24} sm={24} md={24} lg={12} xl={14} xxl={14}>
+							<Row justify="left">
+								<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+									<Form.Item name="puesto" required label={t("VacanteEdit.lblPuesto")} tooltip={t("VacanteEdit.ttPuesto")}>
+										<Select
+											showSearch
+											placeholder={t("VacanteEdit.phPuesto")}
+											optionFilterProp="children"
+											filterOption={(input, option) => (option?.label ?? "").includes(input)}
+											filterSort={(optionA, optionB) => (optionA?.label ?? "").toLowerCase().localeCompare((optionB?.label ?? "").toLowerCase())}
+											options={sourcePuestos}
+											fieldNames={{ label: "descripcion", value: "sigla" }}
+											onChange={() => formeEditarVacante.resetFields(["puesto_otro"])}
+										/>
+									</Form.Item>
+								</Col>
+
+								<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+									<Form.Item
+										name="puesto_otro"
+										label={t("VacanteEdit.lblOtro")}
+										tooltip={t("VacanteEdit.ttPuesto")}
+										rules={puestoWatch === "otro" ? rules.puestoOtro : []}>
+										<Input
+											maxLength={50}
+											showCount
+											disabled={puestoWatch !== "otro"}
+											options={sourcePuestosEspecificos}
+											fieldNames={{ label: "descripcion", value: "sigla" }}
+											filterOption={(inputValue, option) => option.descripcion.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
+											placeholder={t("VacanteEdit.phPuestoOtro")}
+											allowClear={{
+												clearIcon: <CloseSquareFilled />,
+											}}
+										/>
+									</Form.Item>
+								</Col>
+							</Row>
+
+							<Row justify="left">
+								<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+									<Form.Item
+										name="puesto_especifico"
+										required
+										label={t("VacanteEdit.lblPuestoEspecifico")}
+										tooltip={t("VacanteEdit.ttPuestoEspecifico")}
+										rules={rules.puestoEspecifico}>
+										<Select
+											showSearch
+											placeholder={t("VacanteEdit.phPuestoEspecifico")}
+											optionFilterProp="children"
+											filterOption={(input, option) => (option?.label ?? "").includes(input)}
+											filterSort={(optionA, optionB) => (optionA?.label ?? "").toLowerCase().localeCompare((optionB?.label ?? "").toLowerCase())}
+											options={sourcePuestosEspecificos}
+											fieldNames={{ label: "descripcion", value: "sigla" }}
+											onChange={() => formeEditarVacante.resetFields(["puesto_especifico_otro"])}
+										/>
+									</Form.Item>
+								</Col>
+
+								<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+									<Form.Item
+										name="puesto_especifico_otro"
+										def
+										label={t("VacanteEdit.lblOtro")}
+										tooltip={t("VacanteEdit.ttPuestoEspecifico")}
+										rules={puestoEspecificoWatch === "otro" ? rules.puestoEspecificoOtro : []}>
+										<Input
+											maxLength={50}
+											showCount
+											disabled={puestoEspecificoWatch !== "otro"}
+											options={sourcePuestosEspecificos}
+											fieldNames={{ label: "descripcion", value: "sigla" }}
+											filterOption={(inputValue, option) => option.descripcion.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
+											placeholder={t("VacanteEdit.phPuestoEspecifico")}
+											allowClear={{
+												clearIcon: <CloseSquareFilled />,
+											}}
+										/>
+									</Form.Item>
+								</Col>
+							</Row>
+
+							<Row>
+								<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+									<Form.Item
+										//name="puesto_especifico"
+										required
+										label={t("VacanteEdit.lblGeneroPersona")}
+										//	tooltip={t("VacanteEdit.ttPuestoEspecifico")}
+										//</Col>	rules={rules.puestoEspecifico}
+									>
+										<Radio.Group
+											//	onChange={onChange}
+											defaultValue="a">
+											<Radio.Button value="generoHombre">{t("VacanteEdit.lblGeneroPersonaHombre")}</Radio.Button>
+											<Radio.Button value="generoMujer">{t("VacanteEdit.lblGeneroPersonaMujer")}</Radio.Button>
+											<Radio.Button value="generoIndistinto">{t("VacanteEdit.lblGeneroPersonaIndistinto")}</Radio.Button>
+										</Radio.Group>
+									</Form.Item>
+								</Col>
+
+								<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+									<Form.Item
+										//name="puesto_especifico"
+										required
+										label={t("VacanteEdit.lblVacantesDisponibles")}
+										//	tooltip={t("VacanteEdit.ttPuestoEspecifico")}
+										//</Col>	rules={rules.puestoEspecifico}
+									>
+										<InputNumber
+										//	onChange={onChange}
+										></InputNumber>
+									</Form.Item>
+								</Col>
+							</Row>
 						</Col>
 					</Row>
+
 					<Row justify="left">
-						<Col xs={24} sm={24} md={24} lg={8} xl={10} xxl={10}>
-							<Form.Item name="descripcion" required label={t("VacanteEdit.lblDescripcion")} tooltip={t("VacanteEdit.ttDescripcion")}>
-								<TextArea rows={6} placeholder={t("VacanteEdit.phDescripcion")} maxLength={200} />
-							</Form.Item>
-						</Col>
-						<Col xs={24} sm={24} md={24} lg={8} xl={7} xxl={7}>
-							<Form.Item
-								name="puesto_especifico"
-								required
-								label={t("VacanteEdit.lblPuestoEspecifico")}
-								tooltip={t("VacanteEdit.ttPuestoEspecifico")}
-								rules={rules.puestoEspecifico}>
-								<Select
-									showSearch
-									placeholder={t("VacanteEdit.phPuestoEspecifico")}
-									optionFilterProp="children"
-									filterOption={(input, option) => (option?.label ?? "").includes(input)}
-									filterSort={(optionA, optionB) => (optionA?.label ?? "").toLowerCase().localeCompare((optionB?.label ?? "").toLowerCase())}
-									options={sourcePuestosEspecificos}
-									fieldNames={{ label: "descripcion", value: "sigla" }}
-									onChange={() => formeEditarVacante.resetFields(["puesto_especifico_otro"])}
-								/>
-							</Form.Item>
-						</Col>
-						<Col xs={24} sm={24} md={24} lg={8} xl={7} xxl={7}>
-							<Form.Item
-								name="puesto_especifico_otro"
-								def
-								label={t("VacanteEdit.lblOtro")}
-								tooltip={t("VacanteEdit.ttPuestoEspecifico")}
-								rules={puestoEspecificoWatch === "otro" ? rules.puestoEspecificoOtro : []}>
-								<Input
-									maxLength={50}
-									showCount
-									disabled={puestoEspecificoWatch !== "otro"}
-									options={sourcePuestosEspecificos}
-									fieldNames={{ label: "descripcion", value: "sigla" }}
-									filterOption={(inputValue, option) => option.descripcion.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
-									placeholder={t("VacanteEdit.phPuestoEspecifico")}
-									allowClear={{
-										clearIcon: <CloseSquareFilled />,
-									}}
-								/>
-							</Form.Item>
-						</Col>
+						<Col xs={24} sm={24} md={24} lg={12} xl={10} xxl={10}></Col>
+						<Col xs={24} sm={24} md={24} lg={8} xl={7} xxl={7}></Col>
+						<Col xs={24} sm={24} md={24} lg={8} xl={7} xxl={7}></Col>
+					</Row>
+
+					<Row justify="left">
+						<Col xs={24} sm={24} md={24} lg={8} xl={10} xxl={10}></Col>
+						<Col xs={24} sm={24} md={24} lg={8} xl={7} xxl={7}></Col>
+						<Col xs={24} sm={24} md={24} lg={8} xl={7} xxl={7}></Col>
 					</Row>
 				</Form>
 			</CContainer>
@@ -374,16 +513,14 @@ const VacanteEdit = (props) => {
 									children: <Tab1Vacante />,
 								},
 								{
-									label: t("VacanteEdit.lblQueOfrecemos"),
+									label: t("VacanteEdit.lblQueRequiere"),
 									key: "2",
 									//disabled: true,
-									children: <Tab2QueOfrecemos />,
 								},
 								{
-									label: t("VacanteEdit.lblQueRequiere"),
+									label: t("VacanteEdit.lblQueOfrecemos"),
 									key: "3",
-									children: "Tab 3",
-									disabled: true,
+									children: <Tab2QueOfrecemos />,
 								},
 								{
 									label: t("VacanteEdit.lblContratacion"),
