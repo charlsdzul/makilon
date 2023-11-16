@@ -1,4 +1,4 @@
-import { Layout, Menu } from "antd";
+import { ConfigProvider, Layout, Menu } from "antd";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink, Outlet, useLoaderData } from "react-router-dom";
@@ -158,7 +158,16 @@ const AppWrapper = (props) => {
 
 					<Content>
 						<div style={{ background: "camel" }}>
-							<Outlet />
+							<ConfigProvider
+								theme={{
+									components: {
+										Tabs: {
+											//colorBgContainer: "red" /* here is your component tokens */,
+										},
+									},
+								}}>
+								<Outlet />
+							</ConfigProvider>
 						</div>
 					</Content>
 				</Layout>

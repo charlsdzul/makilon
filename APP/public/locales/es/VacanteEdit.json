@@ -15,6 +15,16 @@
 		"lblSucursalPlanta": "Sucursal/Planta",
 		"lblSucursalUbicacionDireccion": "Ubicacion/Direccion",
 		"lblVacantesDisponibles": "Vacantes Disponibles",
+		"lblRangoEdad": "Rango de Edad",
+		"lblAceptanMenoresEdad": "¿Aceptan menores de edad?",
+		"lblExperienciaRequerida": "Experiencia requerida",
+
+		"lblConExperiencia": "Con experiencia",
+		"lblSinExperiencia": "Sin experiencia",
+		"lblConSinExperiencia": "Con o sin experiencia",
+
+		"lblRequiereComprobanteEstudios": "Requiere comprobante de estudio",
+		"lblComprobanteEstudios": "Comprobante de estudios",
 
 		"lblGeneroPersonaHombre": "Hombre",
 		"lblGeneroPersonaMujer": "Mujer",

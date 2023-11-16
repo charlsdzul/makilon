@@ -5,7 +5,7 @@ const { Title } = Typography;
 
 const CContainer = ({ children, className, style, title }) => {
 	return (
-		<div className={`${styles.c_container} ${className}`} style={{ ...style, padding: "1rem" }}>
+		<div className={`${styles.c_container} ${className}`} style={{ ...style, padding: ".5rem" }}>
 			{title !== "" && (
 				<Title level={3} style={{ margin: 0 }}>
 					{title}

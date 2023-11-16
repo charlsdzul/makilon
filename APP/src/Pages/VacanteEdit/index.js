@@ -1,5 +1,5 @@
 import { CloseSquareFilled } from "@ant-design/icons";
-import { AutoComplete, Checkbox, Col, Form, Input, InputNumber, Radio, Row, Select, Tabs } from "antd";
+import { AutoComplete, Card, Checkbox, Col, Form, Input, InputNumber, Radio, Row, Select, Slider, Tabs } from "antd";
 import QueueAnim from "rc-queue-anim";
 import { default as React, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -151,6 +151,17 @@ const VacanteEdit = (props) => {
 	// const handleClickMisVcantes = () => {
 	// 	navigate(URLS_PORTAL.MIS_VACANTES);
 	// };
+
+	const marks = {
+		15: 15,
+		18: 18,
+		30: 30,
+		40: 40,
+		50: 50,
+		60: 60,
+		70: 70,
+		80: 80,
+	};
 
 	const Tab1Vacante = () => {
 		return (
@@ -346,24 +357,6 @@ const VacanteEdit = (props) => {
 									<Form.Item
 										//name="puesto_especifico"
 										required
-										label={t("VacanteEdit.lblGeneroPersona")}
-										//	tooltip={t("VacanteEdit.ttPuestoEspecifico")}
-										//</Col>	rules={rules.puestoEspecifico}
-									>
-										<Radio.Group
-											//	onChange={onChange}
-											defaultValue="a">
-											<Radio.Button value="generoHombre">{t("VacanteEdit.lblGeneroPersonaHombre")}</Radio.Button>
-											<Radio.Button value="generoMujer">{t("VacanteEdit.lblGeneroPersonaMujer")}</Radio.Button>
-											<Radio.Button value="generoIndistinto">{t("VacanteEdit.lblGeneroPersonaIndistinto")}</Radio.Button>
-										</Radio.Group>
-									</Form.Item>
-								</Col>
-
-								<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
-									<Form.Item
-										//name="puesto_especifico"
-										required
 										label={t("VacanteEdit.lblVacantesDisponibles")}
 										//	tooltip={t("VacanteEdit.ttPuestoEspecifico")}
 										//</Col>	rules={rules.puestoEspecifico}
@@ -376,24 +369,142 @@ const VacanteEdit = (props) => {
 							</Row>
 						</Col>
 					</Row>
+				</Form>
+			</CContainer>
+		);
+	};
 
+	const Tab2QueSeRequiere = () => {
+		return (
+			<CContainer>
+				<Form
+					form={formeEditarVacante}
+					layout="vertical"
+					ref={formAgregarVacanteRef}
+					onFinish={handleSuccessFormNuevaVacante}
+					wrapperCol={{ span: 23 }}>
 					<Row justify="left">
-						<Col xs={24} sm={24} md={24} lg={12} xl={10} xxl={10}></Col>
-						<Col xs={24} sm={24} md={24} lg={8} xl={7} xxl={7}></Col>
-						<Col xs={24} sm={24} md={24} lg={8} xl={7} xxl={7}></Col>
-					</Row>
+						<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={14} style={{ padding: ".25rem" }}>
+							<Card size="small" title="Small size card">
+								<Row justify="left">
+									<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+										<Form.Item
+											//name="puesto_especifico"
+											required
+											label={t("VacanteEdit.lblGeneroPersona")}
+											//	tooltip={t("VacanteEdit.ttPuestoEspecifico")}
+											//</Col>	rules={rules.puestoEspecifico}
+										>
+											<Radio.Group
+												//	onChange={onChange}
+												defaultValue="a">
+												<Radio.Button value="generoHombre">{t("VacanteEdit.lblGeneroPersonaHombre")}</Radio.Button>
+												<Radio.Button value="generoMujer">{t("VacanteEdit.lblGeneroPersonaMujer")}</Radio.Button>
+												<Radio.Button value="generoIndistinto">{t("VacanteEdit.lblGeneroPersonaIndistinto")}</Radio.Button>
+											</Radio.Group>
+										</Form.Item>
+									</Col>
 
-					<Row justify="left">
-						<Col xs={24} sm={24} md={24} lg={8} xl={10} xxl={10}></Col>
-						<Col xs={24} sm={24} md={24} lg={8} xl={7} xxl={7}></Col>
-						<Col xs={24} sm={24} md={24} lg={8} xl={7} xxl={7}></Col>
+									<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+										<Form.Item
+											name="esMaquiladora"
+											required
+											label={t("VacanteEdit.lblAceptanMenoresEdad")}
+											//tooltip={t("VacanteEdit.ttDescripcion")}
+										>
+											<Checkbox
+											//onSearch={handleSearch}
+											//placeholder="input here"
+											// options={options}
+											/>
+										</Form.Item>
+									</Col>
+								</Row>
+								<Row>
+									<Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
+										<Form.Item
+											//name="puesto_especifico"
+											required
+											label={t("VacanteEdit.lblRangoEdad")}
+											//	tooltip={t("VacanteEdit.ttPuestoEspecifico")}
+											//</Col>	rules={rules.puestoEspecifico}
+										>
+											<Slider range marks={marks} defaultValue={[18, 50]} min={15} max={80} />
+										</Form.Item>
+									</Col>
+								</Row>
+							</Card>
+						</Col>
+						<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={14} style={{ padding: ".25rem" }}>
+							<Card size="small" title="Small size card">
+								<Row justify="left">
+									<Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
+										<Form.Item
+											//name="puesto_especifico"
+											required
+											label={t("VacanteEdit.lblExperienciaRequerida")}
+											//	tooltip={t("VacanteEdit.ttPuestoEspecifico")}
+											//</Col>	rules={rules.puestoEspecifico}
+										>
+											<Radio.Group
+												//	onChange={onChange}
+												defaultValue="a">
+												<Radio.Button value="generoHombre">{t("VacanteEdit.lblConExperiencia")}</Radio.Button>
+												<Radio.Button value="generoMujer">{t("VacanteEdit.lblSinExperiencia")}</Radio.Button>
+												<Radio.Button value="generoIndistinto">{t("VacanteEdit.lblConSinExperiencia")}</Radio.Button>
+											</Radio.Group>
+										</Form.Item>
+									</Col>
+								</Row>
+
+								<Row justify="left">
+									<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+										<Form.Item
+											name="puesto_especifico"
+											required
+											label={t("VacanteEdit.lblRequiereComprobanteEstudios")}
+											//tooltip={t("VacanteEdit.ttPuestoEspecifico")}
+											//rules={rules.puestoEspecifico}
+										>
+											<Checkbox
+											//onSearch={handleSearch}
+											//placeholder="input here"
+											// options={options}
+											/>
+										</Form.Item>
+									</Col>
+
+									<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+										<Form.Item
+											name="puesto_especifico_otro"
+											label={t("VacanteEdit.lblComprobanteEstudios")}
+											//tooltip={t("VacanteEdit.ttPuestoEspecifico")}
+											//rules={puestoEspecificoWatch === "otro" ? rules.puestoEspecificoOtro : []}
+										>
+											<Input
+												maxLength={50}
+												showCount
+												disabled={puestoWatch !== "otro"}
+												options={sourcePuestosEspecificos}
+												fieldNames={{ label: "descripcion", value: "sigla" }}
+												filterOption={(inputValue, option) => option.descripcion.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1}
+												placeholder={t("VacanteEdit.phPuestoOtro")}
+												allowClear={{
+													clearIcon: <CloseSquareFilled />,
+												}}
+											/>
+										</Form.Item>
+									</Col>
+								</Row>
+							</Card>
+						</Col>
 					</Row>
 				</Form>
 			</CContainer>
 		);
 	};
 
-	const Tab2QueOfrecemos = () => {
+	const Tab3QueOfrecemos = () => {
 		return (
 			<CContainer style={{ backgroundColor: "" }}>
 				<Form
@@ -499,46 +610,50 @@ const VacanteEdit = (props) => {
 	if (!vacanteValida) return <NotFound />;
 
 	return (
-		<CContainer title={t("VacanteEdit.lblEditarVacante")}>
-			<Row justify="center" style={{ marginTop: "2rem" }}>
-				<Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
-					<QueueAnim type="scale">
-						<Tabs
-							//	onChange={onChange}
-							type="card"
-							items={[
-								{
-									label: t("VacanteEdit.lblVacante"),
-									key: "1",
-									children: <Tab1Vacante />,
-								},
-								{
-									label: t("VacanteEdit.lblQueRequiere"),
-									key: "2",
-									//disabled: true,
-								},
-								{
-									label: t("VacanteEdit.lblQueOfrecemos"),
-									key: "3",
-									children: <Tab2QueOfrecemos />,
-								},
-								{
-									label: t("VacanteEdit.lblContratacion"),
-									key: "4",
-									children: "Tab 4",
-									disabled: true,
-								},
-								{
-									label: t("VacanteEdit.btnFAQ"),
-									key: "5",
-									children: "Tab 5",
-									disabled: true,
-								},
-							]}
-						/>
-					</QueueAnim>
-				</Col>
-			</Row>
+		<CContainer>
+			<Card size="small" title={t("VacanteEdit.lblEditarVacante")}>
+				<Row justify="center">
+					<Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
+						<QueueAnim type="scale">
+							<Tabs
+								//	onChange={onChange}
+								type="card"
+								items={[
+									{
+										label: t("VacanteEdit.lblVacante"),
+										key: "1",
+										children: <Tab1Vacante />,
+									},
+									{
+										label: t("VacanteEdit.lblQueRequiere"),
+										key: "2",
+										children: <Tab2QueSeRequiere />,
+
+										//disabled: true,
+									},
+									{
+										label: t("VacanteEdit.lblQueOfrecemos"),
+										key: "3",
+										children: <Tab3QueOfrecemos />,
+									},
+									{
+										label: t("VacanteEdit.lblContratacion"),
+										key: "4",
+										children: "Tab 4",
+										disabled: true,
+									},
+									{
+										label: t("VacanteEdit.btnFAQ"),
+										key: "5",
+										children: "Tab 5",
+										disabled: true,
+									},
+								]}
+							/>
+						</QueueAnim>
+					</Col>
+				</Row>
+			</Card>
 		</CContainer>
 	);
 };
