@@ -1,5 +1,5 @@
-import { CloseSquareFilled } from "@ant-design/icons";
-import { AutoComplete, Card, Checkbox, Col, Form, Input, InputNumber, Radio, Row, Select, Slider, Tabs } from "antd";
+import { AndroidOutlined, CloseSquareFilled } from "@ant-design/icons";
+import { AutoComplete, Card, Checkbox, Col, Form, Input, InputNumber, Radio, Row, Select, Tabs } from "antd";
 import QueueAnim from "rc-queue-anim";
 import { default as React, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -356,7 +356,7 @@ const VacanteEdit = (props) => {
 								<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
 									<Form.Item
 										//name="puesto_especifico"
-										required
+										//required
 										label={t("VacanteEdit.lblVacantesDisponibles")}
 										//	tooltip={t("VacanteEdit.ttPuestoEspecifico")}
 										//</Col>	rules={rules.puestoEspecifico}
@@ -404,11 +404,40 @@ const VacanteEdit = (props) => {
 											</Radio.Group>
 										</Form.Item>
 									</Col>
-
-									<Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
+								</Row>
+								<Row>
+									<Col xs={24} sm={24} md={24} lg={24} xl={6} xxl={6}>
 										<Form.Item
-											name="esMaquiladora"
-											required
+											//name="puesto_especifico"
+											//required
+											label={t("VacanteEdit.lblEdadMinimo")}
+											//	tooltip={t("VacanteEdit.ttPuestoEspecifico")}
+											//</Col>	rules={rules.puestoEspecifico}
+										>
+											<InputNumber
+											//	onChange={onChange}
+											></InputNumber>
+										</Form.Item>
+									</Col>
+
+									<Col xs={24} sm={24} md={24} lg={24} xl={6} xxl={6}>
+										<Form.Item
+											//name="puesto_especifico"
+											//required
+											label={t("VacanteEdit.lblEdadMaxima")}
+											//	tooltip={t("VacanteEdit.ttPuestoEspecifico")}
+											//</Col>	rules={rules.puestoEspecifico}
+										>
+											<InputNumber
+											//	onChange={onChange}
+											></InputNumber>
+										</Form.Item>
+									</Col>
+
+									<Col xs={24} sm={24} md={24} lg={24} xl={10} xxl={10}>
+										<Form.Item
+											//name="esMaquiladora"
+											//required
 											label={t("VacanteEdit.lblAceptanMenoresEdad")}
 											//tooltip={t("VacanteEdit.ttDescripcion")}
 										>
@@ -417,19 +446,6 @@ const VacanteEdit = (props) => {
 											//placeholder="input here"
 											// options={options}
 											/>
-										</Form.Item>
-									</Col>
-								</Row>
-								<Row>
-									<Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
-										<Form.Item
-											//name="puesto_especifico"
-											required
-											label={t("VacanteEdit.lblRangoEdad")}
-											//	tooltip={t("VacanteEdit.ttPuestoEspecifico")}
-											//</Col>	rules={rules.puestoEspecifico}
-										>
-											<Slider range marks={marks} defaultValue={[18, 50]} min={15} max={80} />
 										</Form.Item>
 									</Col>
 								</Row>
@@ -620,7 +636,12 @@ const VacanteEdit = (props) => {
 								type="card"
 								items={[
 									{
-										label: t("VacanteEdit.lblVacante"),
+										label: (
+											<span>
+												<AndroidOutlined />
+												{t("VacanteEdit.lblVacante")}
+											</span>
+										),
 										key: "1",
 										children: <Tab1Vacante />,
 									},

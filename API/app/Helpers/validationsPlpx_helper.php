@@ -68,30 +68,31 @@ function validateEmailLogin($correo = null, &$error = [])
     return $isValid;
 }
 
-function validateTituloVacante($titulo = null, &$error = [])
+function validateTituloVacante($titulo = null, &$error = []): array
 {
-    $isValid = true;
+    //$isValid = true;
+    $error = [];
 
     if (isset($titulo)) {
         if ($titulo == "" || $titulo == "undefined" || $titulo == "null" || $titulo == "NULL") {
             $error = getErrorResponseByCode(["code" => 2110]);
-            $isValid = false;
-        } elseif (!is_string($titulo)) {
+            //$isValid = false;
+        } else if (!is_string($titulo)) {
             $error = getErrorResponseByCode(["code" => 2111]);
-            $isValid = false;
-        } elseif (strlen($titulo) <= 15) {
+            //$isValid = false;
+        } else if (strlen($titulo) <= 15) {
             $error = getErrorResponseByCode(["code" => 2112]);
-            $isValid = false;
-        } elseif (strlen($titulo) > 60) {
+            //$isValid = false;
+        } else if (strlen($titulo) > 60) {
             $error = getErrorResponseByCode(["code" => 2112]);
-            $isValid = false;
+            // $isValid = false;
         }
     } else {
         $error = getErrorResponseByCode(["code" => 2110]);
-        $isValid = false;
+        //$isValid = false;
     }
 
-    return $isValid;
+    return $error;
 }
 
 function validatePuestoVacante($puesto = null, &$error = [])

@@ -1,9 +1,10 @@
 <?php
+use App\Libraries\DTO\VacanteDTO;
 use App\Models\UsuarioModel;
 
 helper("validationsPlpx");
 
-function vacanteValidator($requestBody = null, &$errors = null)
+function vacanteValidatorRES($requestBody = null, &$errors = null)
 {
     $errors = new stdClass();
     $errorsValidation = [];
@@ -36,6 +37,38 @@ function vacanteValidator($requestBody = null, &$errors = null)
 
     $errors = $errorsValidation;
     return count($errorsValidation) == 0;
+}
+
+function vacanteValidator(VacanteDTO $vacante): array
+{
+    $errorsValidation = [];
+
+    $tituloError = validateTituloVacante($vacante->titulo);
+    if (count($tituloError) > 0) {
+        array_push($errorsValidation, $tituloError);
+    }
+
+    // if (!validateTituloVacante($vacante->titulo, $errorsVacante)) {
+    //     array_push($errorsValidation, $errorsVacante);
+    // }
+
+    if (!validatePuestoVacante($vacante->puesto, $errorsVacante)) {
+        array_push($errorsValidation, $errorsVacante);
+    } else {
+        if (!validatePuestoOtroVacante($vacante->puesto, $vacante->puestoOtro, $errorsVacante)) {
+            array_push($errorsValidation, $errorsVacante);
+        }
+    }
+
+    if (!validatePuestoEspecificoVacante($vacante->puestoEspecifico, $errorsVacante)) {
+        array_push($errorsValidation, $errorsVacante);
+    } else {
+        if (!validatePuestoEspecificoOtroVacante($vacante->puestoEspecifico, $vacante->puestoEspecificoOtro, $errorsVacante)) {
+            array_push($errorsValidation, $errorsVacante);
+        }
+    }
+
+    return $errorsValidation;
 }
 
 function authenticatedValidator($datos = null, &$errors = null)

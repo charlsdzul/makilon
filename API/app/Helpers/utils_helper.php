@@ -133,3 +133,12 @@ function getDataTokenFromRequest($request)
     }
 
 }
+
+function populateObject(&$instance, $request)
+{
+    foreach ($request as $key => $value) {
+        if (property_exists($instance, $key)) {
+            $instance->$key = $value;
+        }
+    }
+}

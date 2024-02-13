@@ -16,7 +16,10 @@
 		"lblSucursalUbicacionDireccion": "Ubicacion/Direccion",
 		"lblVacantesDisponibles": "Vacantes Disponibles",
 		"lblRangoEdad": "Rango de Edad",
-		"lblAceptanMenoresEdad": "¿Aceptan menores de edad?",
+		"lblEdadMinimo": "Edad minima",
+		"lblEdadMaxima": "Edad maxima",
+
+		"lblAceptanMenoresEdad": "¿Aceptan menores de 18 años?",
 		"lblExperienciaRequerida": "Experiencia requerida",
 
 		"lblConExperiencia": "Con experiencia",

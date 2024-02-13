@@ -2,6 +2,7 @@
 
 namespace App\Controllers\API\v1;
 
+use App\Libraries\DTO\VacanteDTO;
 use App\Models\VacanteModel;
 use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\HTTP\Response;
@@ -41,10 +42,13 @@ class Vacante extends ResourceController
 
         try {
 
-            $requestBody = $this->request->getJsonVar(["titulo", "puesto", "puestoOtro", "puestoEspecifico", "puestoEspecificoOtro"]);
+            $requestBody = $this->request->getJsonVar();
+            $vacante = new VacanteDTO();
+            populateObject($vacante, $requestBody);
 
-            if (!vacanteValidator($requestBody, $errorsValidator)) {
+            $errorsValidator = vacanteValidator($vacante);
 
+            if (count($errorsValidator) > 0) {
                 //Se guarda LOG porque, en teoria, no deberia tener errores en el validator,
                 //porque en el front ya estan la validaciones.
                 $dataLog = [
