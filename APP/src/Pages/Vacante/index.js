@@ -47,10 +47,10 @@ const Vacante = (props) => {
 	const handleSuccessFormNuevaVacante = async (e) => {
 		const json = {
 			titulo: e.titulo,
-			puesto: e.puesto,
+			//puesto: e.puesto,
 			puestoOtro: e.puestoOtro,
 			puestoEspecifico: e.puestoEspecifico,
-			puestoEspecificoOtro: e.puestoEspecificoOtro,
+			//puestoEspecificoOtro: e.puestoEspecificoOtro,
 		};
 
 		const response = await post({ url: "vacantes", json });

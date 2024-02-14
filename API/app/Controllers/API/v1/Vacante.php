@@ -3,6 +3,7 @@
 namespace App\Controllers\API\v1;
 
 use App\Libraries\DTO\VacanteDTO;
+use App\Libraries\Validators\VacanteValidator;
 use App\Models\VacanteModel;
 use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\HTTP\Response;
@@ -46,20 +47,24 @@ class Vacante extends ResourceController
             $vacante = new VacanteDTO();
             populateObject($vacante, $requestBody);
 
-            $errorsValidator = vacanteValidator($vacante);
+            //var_dump($vacante);
 
-            if (count($errorsValidator) > 0) {
+            $validationResult = VacanteValidator::validateNuevaVacante($vacante);
+
+            //$errorsValidator = vacanteValidator($vacante);
+
+            if (count($validationResult) > 0) {
                 //Se guarda LOG porque, en teoria, no deberia tener errores en el validator,
                 //porque en el front ya estan la validaciones.
                 $dataLog = [
                     "log_origen" => "usuario", "log_tipo" => "warning", "log_accion" => $logAccion, "log_linea" => __LINE__,
                     "log_mensaje" => "No pasó las validaciones del VALIDATOR.",
                     "log_request_respond" => "invalid_request",
-                    "log_exception" => json_encode($errorsValidator),
+                    "log_exception" => json_encode($validationResult),
                 ];
 
                 $this->logSistema($dataLog);
-                return $this->apiResponseError("invalid_request", $errorsValidator);
+                return $this->apiResponseError("invalid_request", $validationResult);
             }
 
             //PENDIENTE SANITIZAR Y VALIDAR CAMPOS DE ENTRADA
