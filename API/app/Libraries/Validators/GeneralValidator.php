@@ -1,6 +1,8 @@
 <?php
 namespace App\Libraries\Validators;
 
+use App\Libraries\Utils\FieldsLength\VacanteFieldsLength;
+
 class GeneralValidator
 {
     public static function validateTitulo($titulo): array
@@ -12,7 +14,7 @@ class GeneralValidator
             $error = getErrorResponseByCode(["code" => 2110]);
         } else if (!is_string($titulo)) {
             $error = getErrorResponseByCode(["code" => 2111]);
-        } else if (strlen($titulo) <= 15 || strlen($titulo) > 60) {
+        } else if (strlen($titulo) <= VacanteFieldsLength::$TITULO_MIN || strlen($titulo) > VacanteFieldsLength::$TITULO_MAX) {
             $error = getErrorResponseByCode(["code" => 2112]);
         }
 
@@ -28,7 +30,7 @@ class GeneralValidator
             $error = getErrorResponseByCode(["code" => 2120]);
         } else if (!is_string($puesto)) {
             $error = getErrorResponseByCode(["code" => 2121]);
-        } else if (strlen($puesto) > 20) {
+        } else if (strlen($puesto) > VacanteFieldsLength::$PUESTO_MAX) {
             $error = getErrorResponseByCode(["code" => 2122]);
         }
 
@@ -45,7 +47,7 @@ class GeneralValidator
             $error = getErrorResponseByCode(["code" => 2140]);
         } else if (!is_string($puestoOtro)) {
             $error = getErrorResponseByCode(["code" => 2141]);
-        } else if (strlen($puestoOtro) > 50) {
+        } else if (strlen($puestoOtro) > VacanteFieldsLength::$PUESTO_OTRO_MAX) {
             $error = getErrorResponseByCode(["code" => 2142]);
         }
 
@@ -61,7 +63,7 @@ class GeneralValidator
             $error = getErrorResponseByCode(["code" => 2130]);
         } else if (!is_string($puestoEspecifico)) {
             $error = getErrorResponseByCode(["code" => 2131]);
-        } else if (strlen($puestoEspecifico) > 20) {
+        } else if (strlen($puestoEspecifico) > VacanteFieldsLength::$PUESTO_ESP_MAX) {
             $error = getErrorResponseByCode(["code" => 2132]);
         }
 
@@ -78,7 +80,7 @@ class GeneralValidator
             $error = getErrorResponseByCode(["code" => 2150]);
         } else if (!is_string($puestoEspecificoOtro)) {
             $error = getErrorResponseByCode(["code" => 2151]);
-        } else if (strlen($puestoEspecificoOtro) > 50) {
+        } else if (strlen($puestoEspecificoOtro) > VacanteFieldsLength::$PUESTO_ESP_OTRO_MAX) {
             $error = getErrorResponseByCode(["code" => 2152]);
         }
 

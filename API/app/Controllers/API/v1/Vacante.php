@@ -33,7 +33,7 @@ class Vacante extends ResourceController
     }
 
     /**
-     * Permite al usuario hacer login en el sistema.
+     * Agrega una nueva vacante.
      *
      * @return Response
      */
@@ -47,15 +47,11 @@ class Vacante extends ResourceController
             $vacante = new VacanteDTO();
             populateObject($vacante, $requestBody);
 
-            //var_dump($vacante);
-
             $validationResult = VacanteValidator::validateNuevaVacante($vacante);
-
-            //$errorsValidator = vacanteValidator($vacante);
 
             if (count($validationResult) > 0) {
                 //Se guarda LOG porque, en teoria, no deberia tener errores en el validator,
-                //porque en el front ya estan la validaciones.
+                //ya que  el front tiene las validaciones validaciones.
                 $dataLog = [
                     "log_origen" => "usuario", "log_tipo" => "warning", "log_accion" => $logAccion, "log_linea" => __LINE__,
                     "log_mensaje" => "No pasó las validaciones del VALIDATOR.",

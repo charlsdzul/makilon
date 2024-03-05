@@ -11,6 +11,7 @@ import styles from "../../CSS/common.module.css";
 import CButton from "../../Components/CButton";
 import CContainer from "../../Components/CContainer";
 import { post } from "../../Utils/api";
+import { VacanteFieldsLength } from "../../Utils/fieldsLength";
 import { MODAL_TYPES } from "../../Utils/utilConst";
 import { URLS_PORTAL } from "../../Utils/utilUrl";
 import { asignarMensajeTranslation, getErrorMessages, showModal } from "../../Utils/utils";
@@ -140,7 +141,7 @@ const Vacante = (props) => {
 										<Row justify="center">
 											<Col xs={24} sm={24} md={22} lg={22} xl={22} xxl={22}>
 												<Form.Item name="titulo" required label={t("Vacante.lblTitulo")} tooltip={t("Vacante.ttTitulo")} rules={rules.titulo}>
-													<Input placeholder={t("Vacante.phTitulo")} showCount maxLength={60} />
+													<Input placeholder={t("Vacante.phTitulo")} showCount maxLength={VacanteFieldsLength.TITULO_MAX} />
 												</Form.Item>
 											</Col>
 										</Row>
@@ -171,7 +172,7 @@ const Vacante = (props) => {
 														tooltip={t("Vacante.ttPuesto")}
 														rules={puestoWatch === "otro" ? rules.puestoOtro : []}>
 														<Input
-															maxLength={50}
+															maxLength={VacanteFieldsLength.PUESTO_OTRO_MAX}
 															showCount
 															disabled={puestoWatch !== "otro"}
 															options={sourcePuestosEspecificos}
@@ -222,7 +223,7 @@ const Vacante = (props) => {
 														tooltip={t("Vacante.ttPuestoEspecifico")}
 														rules={puestoEspecificoWatch === "otro" ? rules.puestoEspecificoOtro : []}>
 														<Input
-															maxLength={50}
+															maxLength={VacanteFieldsLength.PUESTO_ESP_OTRO_MAX}
 															showCount
 															disabled={puestoEspecificoWatch !== "otro"}
 															options={sourcePuestosEspecificos}

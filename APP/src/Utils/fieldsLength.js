@@ -1,0 +1,8 @@
+export const VacanteFieldsLength = {
+	TITULO_MIN: 15,
+	TITULO_MAX: 60,
+	PUESTO_MAX: 20,
+	PUESTO_OTRO_MAX: 50,
+	PUESTO_ESP_MAX: 20,
+	PUESTO_ESP_OTRO_MAX: 50,
+};

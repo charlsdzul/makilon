@@ -1,3 +1,5 @@
+import { VacanteFieldsLength } from "../../Utils/fieldsLength";
+
 export const rulesVacante = {
 	titulo: [
 		{
@@ -5,7 +7,7 @@ export const rulesVacante = {
 			message: "Vacante.rules.ingresaTitulo",
 		},
 		{
-			min: 15,
+			min: VacanteFieldsLength.TITULO_MIN,
 			message: "Vacante.rules.ingresaTituloMinimo",
 		},
 		{
